@@ -1,4 +1,4 @@
-{% extends "base.html.twig" %}
+{% extends 'layout.html.twig' %}
 
 {% block head %}
     <title> Liste des biens</title>
@@ -10,7 +10,16 @@
     <h1>Liste des biens</h1>
 {% endblock %}
 
-{% block main %}
- {{% dump product %}}
+{% block content %}
+    <h1>Liste des biens</h1>
+    <ul>
+        {% for product in products %}
+            <li>{{ product.id }} - {{ product.title }} : {{ product.description }} <br></li>
+            Date de Parution : {{ product.created_at }}
+            <hr>
+        {% else %}
+            <li>Nothing to display</li>
+        {% endfor %}
+    </ul>
 
 {% endblock %}

@@ -17,7 +17,4 @@ class ProductManager extends AbstractManager
     {
         parent::__construct(self::TABLE);
     }
-
-
-
 }
