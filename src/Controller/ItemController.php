@@ -76,6 +76,11 @@ class ItemController extends AbstractController
         return $this->twig->render('Item/edit.html.twig', ['item' => $item]);
     }
 
+    public function rechercher_bien(): string
+    {
+        return $this->twig->render('Item/rechercher_bien.html.twig');
+    }
+
 
     /**
      * Display item creation page

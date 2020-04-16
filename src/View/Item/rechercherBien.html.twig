@@ -1,0 +1,47 @@
+{% extends "layout.html.twig" %}
+
+{% block head %}
+    <title>Je recherche un bien</title>
+    <style>
+        h1{
+            text-align: center;
+        }
+
+    </style>
+{% endblock %}
+
+{% block header %}
+    <div id="retour" >
+        <i class="fas fa-arrow-circle-left"></i>
+    </div>   <!-- pas un span, lien retour choisir type + icon flèche -->
+{% endblock %}
+
+{% block content %}
+    <h1>Un bien</h1>
+
+    <form action="" method="post">
+{#    <input type="text" placeholder="ex: Une poussette, du bois de construction, ...">#}
+        <div class="container-fluid">
+            <div class="input-group input-group-lg">
+                <div class="input-group-prepend">
+                    <button class="input-group-text" id="inputGroup-sizing-lg">Recherche  <span class="fa fa-search"></span></button>
+                </div>
+                <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg">
+            </div>
+        </div>
+    </form>
+
+    <section id="recherche_avancee_bien">
+        <h6>Recherche Avancée</h6>
+        <button></button>
+    </section>
+
+    <section id="suggestions">
+        <h3>Ce qui pourrez vous intéresser</h3>
+        <div>Carousel</div>
+    </section>
+
+{% endblock %}
+
+
+
