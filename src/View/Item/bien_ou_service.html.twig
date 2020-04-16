@@ -1,0 +1,33 @@
+{% extends "layout.html.twig" %}
+
+{% block title %}
+    Bien ou Service
+{% endblock %}
+
+
+{% block content %}
+    {{ dump() }}
+    <main id="main_bien_service">
+        <header id="retour"><a href="/home/index"><img src="" alt="retour"></a></header>
+        <a href="/item/rechercher/{{ var }}">
+            <section id="bien">
+                <h1>Un bien</h1>
+                <p>exemples</p>
+                <img src="" alt=""> {# idéalement, icones 'dynamiques'#}
+            </section>
+        </a>
+        <a href="/item/rechercher/{{ var }}">
+            <section id="service">
+                <h1>Un Service</h1>
+                <p>exemples</p>
+                <img src="" alt=""> {# idéalement, icones 'dynamiques'#}
+            </section>
+        </a>
+    </main>
+
+    {% include '_nav_bar.html' %}
+{% endblock %}
+
+
+
+
