@@ -3,7 +3,6 @@
 
 namespace App\Model;
 
-
 class ProductManager extends AbstractManager
 {
 
@@ -18,6 +17,7 @@ class ProductManager extends AbstractManager
     {
         parent::__construct(self::TABLE);
     }
+
 
 
 }
