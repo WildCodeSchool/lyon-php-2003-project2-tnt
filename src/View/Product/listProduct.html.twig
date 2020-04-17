@@ -13,18 +13,27 @@
 
     <h1>Liste des biens</h1>
         <div class="container">
+
             {% for product in products %}
+
+
 
                 <div class="card mb-3" style="max-width: 540px;">
                     <div class="row no-gutters">
                         <div class="col-md-4 ">
-                            <img src="..." class="card-img" alt="...">
+                            <img src="{{ product.img }}" class="card-img" alt="Photo de {{ product.title }}"  width=150px height=150px >
                         </div>
                         <div class="col-md-8">
                             <div class="card-body">
-                                <h5 class="card-title">{{ product.title }}</h5>
+                                <div>
+                                    <h5 class="card-title">{{ product.title }}</h5>
+                                    <img src="../assets/images/heart.png" width="20px">
+                                </div>
+                                <p>{{ product.deal_type }}</p>
                                 <p class="card-text">{{ product.description }}</p>
                                 <p class="card-text"><small class="text-muted">Date de Parution : {{ product.created_at }}</small></p>
+                                <p>Proposé par : {{ product.nickname }}</p>
+
                             </div>
                         </div>
                     </div>
