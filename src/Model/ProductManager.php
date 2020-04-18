@@ -19,7 +19,7 @@ class ProductManager extends AbstractManager
     /**
      *
      */
-    const TABLE = 'item';
+    const TABLE = 'product';
 
     /**
      *  Initializes this class.
