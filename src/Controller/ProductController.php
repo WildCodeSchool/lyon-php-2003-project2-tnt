@@ -1,6 +1,5 @@
 <?php
 
-
 namespace App\Controller;
 
 use App\Model\ProductManager;
@@ -19,6 +18,7 @@ class ProductController extends AbstractController
      * @throws \Twig\Error\RuntimeError
      * @throws \Twig\Error\SyntaxError
      */
+
     public function addService()
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -31,4 +31,17 @@ class ProductController extends AbstractController
         }
         return $this->twig->render('Product/addService.html.twig');
     }
-}
+
+
+    public function addGood()
+    {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $productManager = new ProductManager();
+            $product = [
+                'title' => $_POST['title'],
+            ];
+            $id = $productManager->insert($product);
+            header('Location:/product/show/' . $id);
+        }
+        return $this->twig->render('Product/addGood.html.twig');
+    }

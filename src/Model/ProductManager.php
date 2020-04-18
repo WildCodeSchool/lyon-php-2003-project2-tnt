@@ -62,7 +62,8 @@ class ProductManager extends AbstractManager
      * @param array $product
      * @return bool
      */
-    public function update(array $product): bool
+
+    public function update(array $product):bool
     {
 
         // prepared request
