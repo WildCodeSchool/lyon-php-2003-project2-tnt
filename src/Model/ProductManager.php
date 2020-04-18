@@ -25,6 +25,10 @@ class ProductManager extends AbstractManager
      */
     public function selectAll(): array
     {
-        return $this->pdo->query('SELECT * FROM ' . $this->table . ' JOIN user ON user.id = product.user_id JOIN product_type ON product_type.id = product.product_type_id JOIN exchange_type ON exchange_type.id =product.exchange_type_id HAVING product_type_id="1"')->fetchAll();
+        return $this->pdo->query('SELECT * FROM ' . $this->table .
+                                 ' JOIN user ON user.id = product.user_id 
+                                 JOIN product_type ON product_type.id = product.product_type_id
+                                 JOIN exchange_type ON exchange_type.id =product.exchange_type_id
+                                 HAVING product_type_id="1"')->fetchAll();
     }
 }
