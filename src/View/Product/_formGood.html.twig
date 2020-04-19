@@ -1,0 +1,46 @@
+<section class="container-fluid">
+    <form action="" method="post">
+        <div="form-group">
+            <label for="category-select">Quel type de bien proposez-vous ?</label>
+            <select class="form-control" name="category-select">
+                <option>Choisissez une catégorie</option>
+            </select>
+            <select class="form-control" name="category-select">
+                <option>Choisissez une sous-catégorie</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="good-title">Titre de votre annonce</label>
+            <input type="text" class="form-control" id="good-title" placeholder="ex.: ordinateur portable">
+        </div>
+        <div class="range">
+            <label for="state-range">Etat du bien</label>
+            <span>Comme neuf</span>
+            <input type="range" class="custom-range" min="0" max="5" id="state-range">
+            <span>A retaper</span>
+        </div>
+        <div class="form-group">
+            <label for="good-description">Description du bien</label>
+            <input type="text" class="form-control" id="good-description" placeholder="Précisez les caractéristiques principales du bien">
+        </div>
+
+        <!-- insérer ici les éléments d'upload de photo(s) -->
+
+        <div class="form-group form-check">
+            <input type="checkbox" class="form-check-input" id="check-don">
+            <label class="form-check-label" for="check-don">Don</label>
+        </div>
+        <div class="form-group">
+            <label for="service-echange">Ou en échange de:</label>
+            <input type="text" class="form-control" id="service-echange" placeholder="Précisez ici le(s) bien(s)/service(s) souhaité(s) en échange">
+        </div>
+        <div class="form-group form-check">
+            <input type="checkbox" class="form-check-input" id="check-autres">
+            <label class="form-check-label" for="check-autres">Vous êtes ouvert.e à toute proposition</label>
+        </div>
+        <div class="buttons">
+            <button type="button" class="btn btn-outline-primary">Aperçu</button>
+            <button type="button" class="btn btn-primary">Publier !</button>
+        </div>
+    </form>
+</section>
