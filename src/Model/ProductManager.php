@@ -61,6 +61,7 @@ class ProductManager extends AbstractManager
         return $statement->execute();
     }
 
+
     /**
      * Recupère tout depuis les tables product / .
      *
