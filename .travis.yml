@@ -16,6 +16,7 @@ notifications:
     email:
         - matthieu.martinot@wildcodeschool.fr
         - brice.bda974@gmail.com
+        - n.gaget69@gmail.com
 branches:
     only:
         - master
