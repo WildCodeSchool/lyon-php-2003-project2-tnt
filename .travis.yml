@@ -13,9 +13,9 @@ script:
     - ./vendor/bin/phpstan analyse src --level 5
     - ./vendor/bin/phpmd src text phpmd.xml
 notifications:
-    email:
-        - TRAINER@wildcodeschool.fr
-        - STUDENT_MAIL
+email:
+    - matthieu.martinot@wildcodeschool.fr
+    - n.gaget69@gmail.com
 branches:
     only:
         - master
