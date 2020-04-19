@@ -59,4 +59,5 @@ class ProductController extends AbstractController
             header('Location:/product/show/' . $id);
         }
         return $this->twig->render('Product/addGood.html.twig');
+    }
 }
