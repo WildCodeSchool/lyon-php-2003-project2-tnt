@@ -1,19 +1,7 @@
 <?php
 
-
-/**
- * Created by PhpStorm.
- * User: sylvain
- * Date: 07/03/18
- * Time: 18:20
- * PHP version 7
- */
-
 namespace App\Model;
 
-/**
- *
- */
 class ProductManager extends AbstractManager
 {
     /**
@@ -28,7 +16,6 @@ class ProductManager extends AbstractManager
     {
         parent::__construct(self::TABLE);
     }
-
 
     /**
      * @param array $product
@@ -57,7 +44,6 @@ class ProductManager extends AbstractManager
         $statement->execute();
     }
 
-
     /**
      * @param array $product
      * @return bool
@@ -71,5 +57,18 @@ class ProductManager extends AbstractManager
         $statement->bindValue('title', $product['title'], \PDO::PARAM_STR);
 
         return $statement->execute();
+      
+    /**
+     * Recupère tout depuis les tables product / .
+     *
+     * @return array
+     */
+    public function selectAll(): array
+    {
+        return $this->pdo->query('SELECT * FROM ' . $this->table .
+                                 ' JOIN user ON user.id = product.user_id 
+                                 JOIN product_type ON product_type.id = product.product_type_id
+                                 JOIN exchange_type ON exchange_type.id =product.exchange_type_id
+                                 HAVING product_type_id="1"')->fetchAll();
     }
 }
