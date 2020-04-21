@@ -74,3 +74,13 @@ a:active {text-decoration: underline; color: black;}
     height: 340px;
 }
 
+/*
+////////////////////////////////////////////////// Profil/Inscription /////////////////////////
+*/
+
+#inscription form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
