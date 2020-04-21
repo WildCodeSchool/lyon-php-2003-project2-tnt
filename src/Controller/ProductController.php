@@ -45,3 +45,4 @@ class ProductController extends AbstractController
         }
         return $this->twig->render('Product/addGood.html.twig');
     }
+}
