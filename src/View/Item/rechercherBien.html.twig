@@ -1,43 +1,61 @@
 {% extends "layout.html.twig" %}
 
-{% block head %}
-    <title>Je recherche un bien</title>
+{% block stylesheet %}
     <style>
-        h1{
-            text-align: center;
+        body{
+            flex-flow: wrap;
         }
 
+        .bien{
+            width: 100%;
+            text-align: center;
+        }
+        .input-group{
+            flex-direction: row-reverse;
+        }
     </style>
+{% endblock %}
+{% block title %}
+    Je recherche un bien
 {% endblock %}
 
 {% block header %}
-    <div id="retour" >
-        <i class="fas fa-arrow-circle-left"></i>
-    </div>   <!-- pas un span, lien retour choisir type + icon flèche -->
+
 {% endblock %}
 
 {% block content %}
-    <h1>Un bien</h1>
-
-    <form action="" method="post">
-{#    <input type="text" placeholder="ex: Une poussette, du bois de construction, ...">#}
-        <div class="container-fluid">
-            <div class="input-group input-group-lg">
-                <div class="input-group-prepend">
-                    <button class="input-group-text" id="inputGroup-sizing-lg">Recherche  <span class="fa fa-search"></span></button>
+    <header>
+        <div id="retour" >
+            <i class="fas fa-arrow-circle-left"></i>
+        </div>   <!-- pas un span, lien retour choisir type + icon flèche -->
+    </header>
+    <div class="bien">
+        <h1>Un bien</h1>
+    </div>
+    <div class="container">
+        <form>
+    {#    <input type="text" placeholder="ex: Une poussette, du bois de construction, ...">#}
+            <div class="container-fluid">
+                <div class="input-group input-group-lg">
+                    <div class="input-group-prepend">
+                        <button class="input-group-text" id="inputGroup-sizing-lg">Recherche </button>
+                    </div>
+                    <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg">
                 </div>
-                <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg">
             </div>
+        </form>
+
+        <div class="form-group">
+            <label for="sel1">Catégories</label>
+            <select class="form-control" id="sel1">
+                {% for category in categories %}
+                    <option> {{ category.title }} </option>
+                {% endfor %}
+            </select>
         </div>
-    </form>
-
-    <section id="recherche_avancee_bien">
-        <h6>Recherche Avancée</h6>
-        <button></button>
-    </section>
-
+    </div>
     <section id="suggestions">
-        <h3>Ce qui pourrez vous intéresser</h3>
+        <h3>Ce qu'il pourrait vous intéressez</h3>
         <div>Carousel</div>
     </section>
 
