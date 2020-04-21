@@ -16,7 +16,7 @@
 
             {% for product in products %}
 
-
+                {% if  (produc_type_id=1)%}
 
                 <div class="card mb-3" style="max-width: 540px;">
                     <div class="row no-gutters">
@@ -38,6 +38,7 @@
                         </div>
                     </div>
                 </div>
+                {% endif %}
             {% endfor %}
         </div>
 
