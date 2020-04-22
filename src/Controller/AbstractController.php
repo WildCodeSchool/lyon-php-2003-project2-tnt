@@ -39,12 +39,4 @@ abstract class AbstractController
         );
         $this->twig->addExtension(new DebugExtension());
     }
-
-    protected static function testInput($data) : string
-    {
-        $data = trim($data);              // Strip unnecessary characters
-        $data = stripslashes($data);      // Remove backslashes (\)
-        $data = htmlspecialchars($data);  // converts special characters to HTML
-        return $data;
-    }
 }
