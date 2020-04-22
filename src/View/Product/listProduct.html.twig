@@ -31,13 +31,14 @@
                                 </div>
                                 <p>{{ product.deal_type }}</p>
                                 <p class="card-text">{{ product.description }}</p>
-                                <p class="card-text"><small class="text-muted">Date de Parution : {{ product.created_at }}</small></p>
+                                <p class="card-text"><small class="text-muted">Date de Parution : {{ product.created_at|date("m/d/Y") }}</small></p>
                                 <p>Proposé par : {{ product.nickname }}</p>
 
                             </div>
                         </div>
                     </div>
                 </div>
+
             {% endfor %}
         </div>
 
