@@ -60,4 +60,14 @@ class ProductController extends AbstractController
         }
         return $this->twig->render('Product/addGood.html.twig');
     }
+
+    public function rechercherBien(): string
+    {
+        return $this->twig->render('Product/rechercherBien.html.twig');
+    }
+
+    public function rechercherService(): string
+    {
+        return $this->twig->render('Product/rechercherService.html.twig');
+    }
 }
