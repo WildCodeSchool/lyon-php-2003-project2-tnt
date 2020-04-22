@@ -74,7 +74,7 @@ class ProductController extends AbstractController
      */
     public function bienOuService(string $var)
     {
-        return $this->twig->render('Item/bien_ou_service.html.twig', ['var' => $var]);
+        return $this->twig->render('Product/bien_ou_service.html.twig', ['var' => $var]);
     }
 
     /**
@@ -87,6 +87,6 @@ class ProductController extends AbstractController
      */
     public function validation()
     {
-        return $this->twig->render('Item/validation.html.twig');
+        return $this->twig->render('Product/validation.html.twig');
     }
 }
