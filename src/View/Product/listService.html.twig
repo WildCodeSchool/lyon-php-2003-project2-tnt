@@ -11,10 +11,11 @@
 
 {% block content %}
 
-    <h1>Liste des Service</h1>
+    <h1>Liste des Services</h1>
     <div class="container">
 
         {% for product in products %}
+
 
 
 
@@ -31,7 +32,7 @@
                             </div>
                             <p>{{ product.deal_type }}</p>
                             <p class="card-text">{{ product.description }}</p>
-                            <p class="card-text"><small class="text-muted">Date de Parution : {{ product.created_at }}</small></p>
+                            <p class="card-text"><small class="text-muted">Date de Parution : {{ product.created_at|date("m/d/Y") }}</small></p>
                             <p>Proposé par : {{ product.nickname }}</p>
 
                         </div>
