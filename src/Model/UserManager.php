@@ -24,7 +24,7 @@ class UserManager extends AbstractManager
         // prepared request
         $statement = $this->pdo->prepare("INSERT INTO " . self::TABLE . " (`nickname`,`email`,`password`)
                                                    VALUES (:nickname, :email, :password)");
-        $statement->bindValue('nickname', $infos['nickname'] , \PDO::PARAM_STR);
+        $statement->bindValue('nickname', $infos['nickname'], \PDO::PARAM_STR);
         $statement->bindValue('email', $infos['email'], \PDO::PARAM_STR);
         $statement->bindValue('password', $infos['pass'], \PDO::PARAM_STR);
 
@@ -33,7 +33,3 @@ class UserManager extends AbstractManager
         }
     }
 }
-
-
-
-

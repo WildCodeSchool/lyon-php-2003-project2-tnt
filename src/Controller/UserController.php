@@ -10,7 +10,6 @@ class UserController extends AbstractController
     public function inscription()
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-
             $nickname = $email = $pass = '';
             $errors = [];
 
@@ -46,16 +45,9 @@ class UserController extends AbstractController
                     'pass' => $pass
                 ];
                 $id = $userManager->createProfil($infos);
-                echo var_dump($infos);
-//                header('Location:/User/profil/' . $id);
+                header('Location:/User/profil/' . $id);
             }
         }
         return $this->twig->render('User/inscription.html.twig');
     }
-
-//    public function newProfil()
-//    {
-//
-//        return $this->twig->render('User/inscription.html.twig');
-//    }
 }
