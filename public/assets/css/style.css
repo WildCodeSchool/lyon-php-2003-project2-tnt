@@ -75,12 +75,17 @@ a:active {text-decoration: underline; color: black;}
 }
 
 /*
-////////////////////////////////////////////////// Profil/Inscription /////////////////////////
+////////////////////////////////////////////////// User/Inscription /////////////////////////
 */
 
 #inscription form {
     display: flex;
     flex-direction: column;
+    justify-content: space-around;
+}
+
+#inscription form span {
+    display: flex;
     justify-content: space-around;
 }
 

@@ -17,5 +17,3 @@ require_once __DIR__ . '/../src/routing.php';
 
 
 require_once '../vendor/autoload.php';
-
-
