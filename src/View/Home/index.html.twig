@@ -2,6 +2,13 @@
 
 {% block title %} Troc & Troc {% endblock %}
 
+{% block stylesheet %}
+    <style>
+        #modal_compte_non_co, #modal_compte_non_inscrit, #modal_compte_co { display: none;}
+    </style>
+{% endblock %}
+
+
 {% block content %}
     <header class="container-fluid" id="header_home">
         <nav class="navbar navbar-expand-md navbar-dark" id="nav_top">
@@ -49,7 +56,9 @@
     </main>
 
     <footer>
-        {% include '_nav_bar.html' %}
+        {% include '_nav_bar.html.twig' %}
     </footer>
 {% endblock %}
+
+
 

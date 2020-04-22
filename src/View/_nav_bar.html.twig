@@ -1,0 +1,50 @@
+<nav id="nav_bottom">
+    <ul>
+        <li><a href="/home/index"><img src="" alt="Accueil"></a></li>
+        <li><a href=""><img src="" alt="Favoris"></a></li>
+        {% if session is empty or session.user is empty%}
+            <li><img src="" alt="" id="home_no_co_"></li>
+        {% else %}
+            <li><img src="" alt="" id="home_compte_co"></li>
+        {% endif %}
+        <li><a href=""><img src="" alt="Plan Site"></a></li>
+        <li><a href=""><img src="" alt="Aides"></a></li>
+    </ul>
+</nav>
+
+<section id="modal_compte_non_co">
+    {% include 'User/connection.html.twig' %}
+</section>
+
+<section id="modal_compte_non_inscrit">
+    {% include 'User/inscription.html.twig' %}
+</section>
+
+<section id="modal_compte_co">
+    <ul>
+        <li><a href="">Mon inventaire</a></li>
+        <li><a href="">Mes favoris</a></li>
+        <li><a href="">Mes préférences</a></li>
+        <li><a href="">Mon profil</a></li>
+    </ul>
+</section>
+
+<script>
+    $(function () {
+
+        const no_session = $('#home_no_co_');
+        const session = $('#home_compte_co');
+
+        const connection = $('#modal_compte_non_co');
+        const inscription = $('#modal_compte_non_inscrit');
+        const glossary = $('#modal_compte_co');
+
+        no_session.click(() => {
+            connection.fadeIn(1000);
+        });
+
+        session.click(() => {
+            glossary.fadeIn(1000);
+        });
+    });
+</script>
