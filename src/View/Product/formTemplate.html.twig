@@ -1,0 +1,22 @@
+{% macro input(type, class, name, label, placeholder) %}
+    <label for="{{ name }}">{{ label }}</label>
+    <input type="{{ type }}" class="{{ class }}" id="{{ name }}" name = "{{ name }}" placeholder="{{ placeholder }}">
+{% endmacro %}
+
+{% macro textarea(class, name, label, placeholder) %}
+    <label for="{{ name }}">{{ label }}</label>
+    <textarea class="{{ class }}" id="{{ name }}" name = "{{ name }}" placeholder="{{ placeholder }}"></textarea>
+{% endmacro %}
+
+{% macro radio(name, label) %}
+    <div class="custom-control custom-radio custom-control-inline">
+        <input type="radio" id="{{ name }}" name="{{ name }}" class="custom-control-input">
+        <label class="custom-control-label" for="{{ name }}">{{ label }}</label>
+    </div>
+{% endmacro %}
+
+{% macro select(class, name, placeholder) %}
+<select class="{{ class }}" id="{{ name }}" name="{{ name }}">
+    <option>{{ placeholder }}</option>
+</select>
+{% endmacro %}

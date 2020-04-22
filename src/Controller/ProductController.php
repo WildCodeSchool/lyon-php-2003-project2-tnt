@@ -19,7 +19,6 @@ class ProductController extends AbstractController
         return $this->twig->render('Product/listProduct.html.twig', ['products'=>$products]);
     }
 
-
     /**
      * Display item creation page
      *
