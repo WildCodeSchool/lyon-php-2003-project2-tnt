@@ -76,6 +76,11 @@ class ItemController extends AbstractController
         return $this->twig->render('Item/edit.html.twig', ['item' => $item]);
     }
 
+    public function rechercherBien(): string
+    {
+        return $this->twig->render('Item/rechercherBien.html.twig');
+    }
+
 
     /**
      * Display item creation page
@@ -111,5 +116,34 @@ class ItemController extends AbstractController
         $itemManager = new ItemManager();
         $itemManager->delete($id);
         header('Location:/item/index');
+    }
+
+    /**
+     * Display Bien ou Service
+     * joue un rôle de 'routeur'
+     *                           en cours de construction
+     *
+     * @param string $var
+     * @return string
+     * @throws \Twig\Error\LoaderError
+     * @throws \Twig\Error\RuntimeError
+     * @throws \Twig\Error\SyntaxError
+     */
+    public function bienOuService(string $var)
+    {
+        return $this->twig->render('Item/bien_ou_service.html.twig', ['var' => $var]);
+    }
+
+    /**
+     * Display validation form après ajout annonce
+     *
+     * @return string
+     * @throws \Twig\Error\LoaderError
+     * @throws \Twig\Error\RuntimeError
+     * @throws \Twig\Error\SyntaxError
+     */
+    public function validation()
+    {
+        return $this->twig->render('Item/validation.html.twig');
     }
 }

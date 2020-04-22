@@ -1,0 +1,87 @@
+
+.container-fluid {
+    padding: 0;
+}
+
+body {
+
+    margin: auto auto;
+    padding: 0;
+/*
+/////////////////////////////////////////////////////// GENERAL /////////////////////////////////
+*/
+.container-fluid, html, body {padding: 0; margin: 0; box-sizing: border-box;}
+
+body {
+    margin: auto auto;
+    width: 400px;
+    height: 800px;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid black;
+}
+
+
+a:link {text-decoration: none; color: black;}
+a:visited {text-decoration: none; color: black;}
+a:hover {text-decoration: underline; color: green;}
+a:active {text-decoration: underline; color: black;}
+
+#nav_bottom {
+    position: fixed;
+    top: 740px;
+    height: 60px;
+    width: 400px;
+    border: 1px solid black;
+}
+#nav_bottom > ul {
+    display: flex;
+    justify-content: space-around;
+}
+#nav_bottom ul li {
+    list-style-type: none;
+}
+
+/*
+////////////////////////////////////////////////// Home/index /////////////////////////
+*/
+#main_home {
+    display: flex;
+    flex-direction: column;
+}
+
+#main_home h6 {
+    margin: 25px auto;
+}
+
+#header_home, #nav_top, #retour {
+    height: 60px;
+    background-color: #820050;
+    color: white;
+}
+
+#main_home #carousel {
+    height: 150px;
+}
+
+#main_home #examples {
+    height: 100px;
+}
+
+#main_home #troc {
+    height: 320px;
+}
+
+#main_home #propose, #recherche {
+    height: 160px;
+}
+
+
+/*
+////////////////////////////////////////////////// Item/bienOuService /////////////////////////
+*/
+
+#main_bien_service > section {
+    height: 340px;
+}
+
