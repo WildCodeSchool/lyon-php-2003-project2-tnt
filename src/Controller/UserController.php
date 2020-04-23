@@ -2,21 +2,21 @@
 
 namespace App\Controller;
 
-use App\Model\AbstractManager;
 use App\Model\UserManager;
 
 class UserController extends AbstractController
 {
+
     public function inscription()
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $nickname = $email = $pass = '';
             $errors = [];
 
-            if (!empty($_POST['pseudo'])) {
+            if (!empty($_POST['nickname'])) {
                 $nickname = AbstractController::testInput($_POST['pseudo']);
             } else {
-                $errors['pseudo'] = "Nom / Pseudo requis";
+                $errors['nickname'] = "Nom / Pseudo requis";
             }
             if (!empty($_POST['mail'])) {
                 if (filter_var($_POST['mail'], FILTER_VALIDATE_EMAIL)) {
@@ -49,5 +49,29 @@ class UserController extends AbstractController
             }
         }
         return $this->twig->render('User/inscription.html.twig');
+    }
+
+    public function inventaire($id)
+    {
+        // select inventaire.user_id
+        return $this->twig->render('User/inventaire.html.twig');
+    }
+
+    public function favoris($id)
+    {
+        // select favoris.user_id
+        return $this->twig->render('User/favoris.html.twig');
+    }
+
+    public function preferences($id)
+    {
+        // select preferences.user_id
+        return $this->twig->render('User/preferences.html.twig');
+    }
+
+    public function profil($id)
+    {
+        // select user profil
+        return $this->twig->render('User/profil.html.twig');
     }
 }
