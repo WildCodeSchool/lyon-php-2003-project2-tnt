@@ -3,6 +3,9 @@
 namespace App\Controller;
 
 use App\Model\ProductManager;
+use Twig\Error\LoaderError;
+use Twig\Error\RuntimeError;
+use Twig\Error\SyntaxError;
 
 class ProductController extends AbstractController
 {
@@ -36,9 +39,9 @@ class ProductController extends AbstractController
      * Display item creation page
      *
      * @return string
-     * @throws \Twig\Error\LoaderError
-     * @throws \Twig\Error\RuntimeError
-     * @throws \Twig\Error\SyntaxError
+     * @throws LoaderError
+     * @throws RuntimeError
+     * @throws SyntaxError
      */
     public function addService()
     {
@@ -55,68 +58,56 @@ class ProductController extends AbstractController
 
     /**
      * Display item creation page
-     *
+     *  /** @var ($_POST['category_id']); $category_id
+     *'user_id'=> 1,
+    *'product_type_id'=>1,
      * @return string
-     * @throws \Twig\Error\LoaderError
-     * @throws \Twig\Error\RuntimeError
-     * @throws \Twig\Error\SyntaxError
+     * @throws LoaderError
+     * @throws RuntimeError
+     * @throws SyntaxError
      */
     public function addGood()
     {
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $title = $category = $subCategory = $etat = $description = $don = $echange = $proposition = '';
-            $errors =[];
-            if (!empty($_POST['title'])) {
-                $title = AbstractController::testInput($_POST['title']);
-            } else {
+        $title = $category_id = $etat = $exchange_type_id = $description  = $proposition = $enEchangeDe = '';
+        $errors =[];
+        if (($_SERVER['REQUEST_METHOD'] === 'POST') && (!empty($_POST))) {
+            $title = AbstractController::testInput($_POST['title']);
+
+            $category_id = 2;
+            $etat =($_POST['etat']);
+            $description = (!empty($_POST['description'])) ? AbstractController::testInput($_POST['description']) : "";
+            $proposition = (!empty($_POST['proposition'])) ? AbstractController::testInput($_POST['proposition']) : "";
+            $exchange_type_id = (!empty($_POST['echange'])) ? $_POST['echange']= 1 : $_POST['echange'] = 2;
+            $enEchangeDe = (!empty($_POST['enEchangeDe'])) ?  AbstractController::testInput($_POST['enEchangeDe']) : "";
+
+            if (empty($_POST['title'])) {
                 $errors['title'] = "Que souhaitez vous proposer?";
             }
-            if (!empty($_POST['category'])) {
-                $category = AbstractController::testInput($_POST['category']);
-            } else {
-                $errors['category'] = "Renseignez une catégorie";
+            if (empty($_POST['category_id'])) {
+                $errors['category_id'] = "Renseignez une catégorie";
             }
-            if (!empty($_POST['subCategory'])) {
-                $subCategory = AbstractController::testInput($_POST['subCategory']);
-            }
-            if (!empty($_POST['etat'])) {
-                $etat = AbstractController::testInput($_POST['etat']);
-            } else {
+            if ($_POST['etat']) {
                 $errors['etat'] = "Précisez l'état";
-            }
-            if (!empty($_POST['description'])) {
-                $description = AbstractController::testInput($_POST['description']);
-            } else {
-                $errors['descritpion'] = "Renseignez d'avantage d'information";
-            }
-
-            if (!empty($_POST['don'])) {
-                $don = $_POST['don'];
-            }
-            if (!empty($_POST['echange'])) {
-                $echange = AbstractController::testInput($_POST['proposition']);
-            }
-            if (!empty($_POST['proposition'])) {
-                $proposition = AbstractController::testInput($_POST['proposition']);
             }
             if (empty($errors)) {
                 $productManager = new ProductManager();
-                $product=[
+                $product = [
+                    'user_id'=> 1,
+                    'product_type_id'=>1,
                     'title' => $title,
-                    'category' => $category,
-                    'subCategory' => $subCategory,
+                    'category_id' => $category_id,
                     'etat' => $etat,
                     'description' => $description,
-                    'don' => $don,
-                    'echange' => $echange,
-                    'proposition' => $proposition
+                    'exchange_type_id' => $exchange_type_id,
+                    'proposition' => $proposition,
+                    'enEchangeDe'=> $enEchangeDe
                 ];
-            }
 
-            $id = $productManager->insertProduct($product);
-            header('Location:/product/advertGood/' . $id);
+                $id = $productManager->insertProduct($product);
+                header('Location:/product/advertGood/' . $id);
+            }
         }
-        return $this->twig->render('Product/addGood.html.twig');
+        return $this->twig->render('Product/addGood.html.twig', ['errors'=> $errors]);
     }
 
     /**
@@ -126,9 +117,9 @@ class ProductController extends AbstractController
      *
      * @param string $var
      * @return string
-     * @throws \Twig\Error\LoaderError
-     * @throws \Twig\Error\RuntimeError
-     * @throws \Twig\Error\SyntaxError
+     * @throws LoaderError
+     * @throws RuntimeError
+     * @throws SyntaxError
      */
     public function bienOuService(string $var)
     {
@@ -139,9 +130,9 @@ class ProductController extends AbstractController
      * Display validation form après ajout annonce
      *
      * @return string
-     * @throws \Twig\Error\LoaderError
-     * @throws \Twig\Error\RuntimeError
-     * @throws \Twig\Error\SyntaxError
+     * @throws LoaderError
+     * @throws RuntimeError
+     * @throws SyntaxError
      */
     public function validation()
     {
