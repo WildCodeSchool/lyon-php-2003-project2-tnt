@@ -8,9 +8,9 @@
     <textarea class="{{ class }}" id="{{ name }}" name = "{{ name }}" placeholder="{{ placeholder }}"></textarea>
 {% endmacro %}
 
-{% macro radio(name, label) %}
+{% macro radio(group, name, label, checked) %}
     <div class="custom-control custom-radio custom-control-inline">
-        <input type="radio" id="{{ name }}" name="{{ name }}" class="custom-control-input">
+        <input type="radio" id="{{ name }}" name="{{ group }}" value="{{ name }}" {{ checked }} = "" class="custom-control-input">
         <label class="custom-control-label" for="{{ name }}">{{ label }}</label>
     </div>
 {% endmacro %}
