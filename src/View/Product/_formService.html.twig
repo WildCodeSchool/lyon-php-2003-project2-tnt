@@ -4,8 +4,8 @@
     <form action="" method="post">
         <div class="form-group">
             {{ form.input('text', 'form-control','title', 'Titre de votre annonce', 'ex.: 2h de bêchage') }}
+            <span class="error"><small>{{ videErr }}</small></span>
         </div>
-        <!-- TODO: faire select sous twig + lier à la BDD -->
         <div class="form-group">
             {{ form.select('form-control', 'category-select','Choisissez une catégorie') }}
             {{ form.select('form-control', 'subcategory-select','Choisissez une sous-catégorie') }}
