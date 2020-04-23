@@ -48,8 +48,9 @@
         <div class="form-group">
             <label for="sel1">Catégories</label>
             <select class="form-control" id="sel1">
-                {% for category in categories %}
-                    <option> {{ category.title }} </option>
+                <option value="">selectionner une catégorie</option>
+                {% for categorie in category %}
+                    <option value="{{ categorie.id }}"> {{ categorie.name }} </option>
                 {% endfor %}
             </select>
         </div>

@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Model\CategoryManager;
 use App\Model\ProductManager;
 
 class ProductController extends AbstractController
@@ -87,7 +88,7 @@ class ProductController extends AbstractController
      */
     public function bienOuService(string $var)
     {
-        return $this->twig->render('Item/bien_ou_service.html.twig', ['var' => $var]);
+        return $this->twig->render('Product/bien_ou_service.html.twig', ['var' => $var]);
     }
 
     /**
@@ -100,16 +101,18 @@ class ProductController extends AbstractController
      */
     public function validation()
     {
-        return $this->twig->render('Item/validation.html.twig');
+        return $this->twig->render('Product/validation.html.twig');
+    }
+
+    public function rechercherBien(): string
+    {
+        $categoryManager = new CategoryManager();
+        $category = $categoryManager->selectAllCategory();
+        return $this->twig->render('Product/rechercherBien.html.twig', ['category' => $category]);
     }
 
     public function rechercherService(): string
     {
         return $this->twig->render('Product/rechercherService.html.twig');
-    }
-
-    public function rechercherBien(): string
-    {
-        return $this->twig->render('Product/rechercherBien.html.twig');
     }
 }

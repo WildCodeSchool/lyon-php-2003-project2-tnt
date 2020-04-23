@@ -12,8 +12,6 @@ class CategoryManager extends AbstractManager
      *  Initializes this class.
      */
 
-    private $category = [];
-
     public function __construct()
     {
         parent::__construct(self::TABLE);
@@ -21,8 +19,7 @@ class CategoryManager extends AbstractManager
 
     public function selectAllCategory()
     {
-        $query= 'SELECT name FROM ' . self::TABLE ;
-        $statement = $this->pdo->query($query);
-        return $this->category = $statement->fetchAll();
+        $query= 'SELECT * FROM ' . self::TABLE ;
+        return $this->pdo->query($query)->fetchAll();
     }
 }
