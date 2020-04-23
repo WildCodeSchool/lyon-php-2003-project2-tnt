@@ -7,6 +7,7 @@
             <span class="error"><small>{{ videErr }}</small></span>
         </div>
         <div class="form-group">
+            <label>Quel type de service proposez-vous ?</label>
             {{ form.select('form-control', 'category-select','Choisissez une catégorie') }}
             {{ form.select('form-control', 'subcategory-select','Choisissez une sous-catégorie') }}
         </div>
@@ -14,8 +15,8 @@
             {{ form.textarea('form-control','description', 'Description du service', 'Précisez si besoin, et n\'oubliez pas de donner vos disponibilités !') }}
         </div>
         <div class="form-group">
-            {{ form.radio('radioEchange', 'Echange') }}
-            {{ form.radio('radioDon', 'Don') }}
+            {{ form.radio('echangeOuDon', 'echange', 'Echange', 'checked') }}
+            {{ form.radio('echangeOuDon', 'don', 'Don', '') }}
         </div>
         <!--TODO hiddenIfDon à cacher si 'don' est coché (JS)-->
         <div class="form-group hiddenIfDon">
