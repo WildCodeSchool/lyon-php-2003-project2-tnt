@@ -43,7 +43,7 @@ class UserManager extends AbstractManager
      * @param array $infos
      * @return int
      */
-    public function createProfil(array $infos): int
+    public function createProfil(array $infos)
     {
         // prepared request
         $statement = $this->pdo->prepare("INSERT INTO " . self::TABLE . " (`nickname`,`email`,`password`) 
@@ -55,6 +55,5 @@ class UserManager extends AbstractManager
         if ($statement->execute()) {
             return (int)$this->pdo->lastInsertId();
         }
-        return "Une erreur est survenue";
     }
 }

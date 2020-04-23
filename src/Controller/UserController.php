@@ -51,27 +51,27 @@ class UserController extends AbstractController
         return $this->twig->render('User/inscription.html.twig');
     }
 
-    public function inventaire($id)
-    {
-        // select inventaire.user_id
-        return $this->twig->render('User/inventaire.html.twig');
-    }
-
-    public function favoris($id)
-    {
-        // select favoris.user_id
-        return $this->twig->render('User/favoris.html.twig');
-    }
-
-    public function preferences($id)
-    {
-        // select preferences.user_id
-        return $this->twig->render('User/preferences.html.twig');
-    }
-
-    public function profil($id)
-    {
-        // select user profil
-        return $this->twig->render('User/profil.html.twig');
-    }
+//    public function inventaire($id)
+//    {
+//        // select inventaire.user_id
+//        return $this->twig->render('User/inventaire.html.twig');
+//    }
+//
+//    public function favoris($id)
+//    {
+//        // select favoris.user_id
+//        return $this->twig->render('User/favoris.html.twig');
+//    }
+//
+//    public function preferences($id)
+//    {
+//        // select preferences.user_id
+//        return $this->twig->render('User/preferences.html.twig');
+//    }
+//
+//    public function profil($id)
+//    {
+//        // select user profil
+//        return $this->twig->render('User/profil.html.twig');
+//    }
 }

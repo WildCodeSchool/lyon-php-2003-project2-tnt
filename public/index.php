@@ -21,13 +21,11 @@ session_start();
 // Fait office de UserController
 // Form connexion = Nom + mdp , seul cas ou le sizeof($_POST) == 2
 if (sizeof($_POST) === 2) {
-
     $pdo = new UserManager();
 
     if (isset($_POST['nickname'])) {
         $nickname = trim($_POST['nickname']);
         $infos = $pdo->selectOneByNickname($nickname);
-
     } elseif (isset($_POST['email'])) {
         if (filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
             $email = $_POST['email'];
