@@ -94,3 +94,7 @@ a:active {text-decoration: underline; color: black;}
     justify-content: space-around;
 }
 
+
+
+#modal_compte_non_co #input_by_mail { display: none;}
+

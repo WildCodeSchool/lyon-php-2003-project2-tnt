@@ -9,47 +9,70 @@ class UserController extends AbstractController
 
     public function inscription()
     {
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $nickname = $email = $pass = '';
+        if (!empty($_POST)) {
+            $nickname = self::cleanInput($_POST['nickname']);
+            $email = self::cleanInput($_POST['email']);
+            $pass = $_POST['pass'];
+
             $errors = [];
 
-            if (!empty($_POST['nickname'])) {
-                $nickname = AbstractController::testInput($_POST['pseudo']);
-            } else {
+            if (empty($_POST['nickname'])) {
                 $errors['nickname'] = "Nom / Pseudo requis";
             }
-            if (!empty($_POST['mail'])) {
-                if (filter_var($_POST['mail'], FILTER_VALIDATE_EMAIL)) {
-                    $email = $_POST['mail'];
-                } else {
-                    $errors['mail'] = "Format invalide";
-                }
-            } else {
+            if (empty($_POST['email'])) {
                 $errors['email'] = "Email requis";
             }
-            if (!empty($_POST['pass']) && !empty($_POST['pass2'])) {
-                if ($_POST['pass'] === $_POST['pass2']) {
-                    $pass = AbstractController::testInput($_POST['pass']);
-                } else {
-                    $errors['pass'] = "Les mots de passe doivent correspondre";
-                }
-            } else {
-                $errors['pass'] = "Mot de passe requis";
+            if (empty($_POST['pass'])) {
+                $errors['pass'] = "Vérifiez vos mots de passe";
+            }
+
+            if (!self::isNewMail($email)) {
+                $errors['email'] = "Email déjà utilisé";
+            }
+            if (!self::isNewName($nickname)) {
+                $errors['nickname'] = "Navré mais déjà pris !";
             }
 
             if (empty($errors)) {
                 $userManager = new UserManager();
+                $pass = password_hash($pass, PASSWORD_DEFAULT);
                 $infos = [
                     'nickname' => $nickname,
-                    'email' => $email,
-                    'pass' => $pass
+                    'email'    => $email,
+                    'pass'     => $pass
                 ];
                 $id = $userManager->createProfil($infos);
-                header('Location:/User/profil/' . $id);
+                $_SESSION['user'] = [
+                    'id'       => $id,
+                    'nickname' => $nickname
+                ];
+                header('Location: /user/Profil/' . $id);
             }
+            return $this->twig->render('User/inscription.html.twig', ['errors' => $errors]);
         }
         return $this->twig->render('User/inscription.html.twig');
     }
+
+    public static function isNewMail($email) : bool
+    {
+        $userManager = new UserManager();
+        $emails = $userManager->selectAllEmails();
+        if (in_array($email, $emails)) {
+            return false;
+        }
+        return true;
+    }
+
+    public static function isNewName($nickname) : bool
+    {
+        $userManager = new UserManager();
+        $users = $userManager->selectAllNickname();
+        if (in_array($nickname, $users)) {
+            return false;
+        }
+        return true;
+    }
+
 
 //    public function inventaire($id)
 //    {
@@ -69,9 +92,10 @@ class UserController extends AbstractController
 //        return $this->twig->render('User/preferences.html.twig');
 //    }
 //
-//    public function profil($id)
-//    {
-//        // select user profil
-//        return $this->twig->render('User/profil.html.twig');
-//    }
+    public function profil($id)
+    {
+        $profilManager = new UserManager();
+        $profil = $profilManager->selectOneById($id);
+        return $this->twig->render('User/profil.html.twig', ['profil' => $profil]);
+    }
 }

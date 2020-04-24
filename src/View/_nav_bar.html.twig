@@ -26,7 +26,7 @@
 
                 <!-- Modal body -->
                 <div class="modal-body">
-                    {% include 'User/connection.html.twig' %}
+                    {% include 'User/connexion.php' %}
                 </div>
 
                 <!-- Modal footer -->
@@ -45,7 +45,7 @@
 
                 <!-- Modal Header -->
                 <div class="modal-header">
-                    <h4 class="modal-title">Modal Heading</h4>
+                    <h4 class="modal-title">Mon compte - Menu</h4>
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
 
@@ -61,36 +61,27 @@
 
                 <!-- Modal footer -->
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Se déconnecter</button>
                 </div>
 
             </div>
         </div>
     </div>
-
-
 </div>
-
-
-{#
 <script>
     $(function () {
 
-        const no_session = $('#home_no_co_');
-        const session = $('#home_compte_co');
+        const input_name = $('#input_by_name');
+        const input_mail = $('#input_by_mail');
+        const switchy = $('.switch_input');
 
-        const connection = $('#modal_compte_non_co');
-        const glossary = $('#modal_compte_co');
-
-        no_session.click(() => {
-            connection.fadeIn(1000);
+        switchy.click(() => {
+            input_name.slideToggle();
+            input_mail.slideToggle();
         });
 
-        session.click(() => {
-            glossary.fadeIn(1000);
-        });
     });
-</script>#}
+</script>
 
 
 

@@ -41,7 +41,7 @@ abstract class AbstractController
         $this->twig->addGlobal('session', $_SESSION);
     }
 
-    protected static function testInput($data) : string
+    protected static function cleanInput($data) : string
     {
         $data = trim($data);              // Strip unnecessary characters
         $data = stripslashes($data);      // Remove backslashes (\)
