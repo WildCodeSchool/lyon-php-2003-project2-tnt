@@ -2,12 +2,8 @@
 
 {% block stylesheet %}
     <style>
-        body{
-            flex-flow: wrap;
-        }
 
-        .service{
-            width: 100%;
+        h1 {
             text-align: center;
         }
         .input-group{
@@ -24,38 +20,35 @@
 {% endblock %}
 
 {% block content %}
-    <header>
-        <div id="retour" >
-            <i class="fas fa-arrow-circle-left"></i>
-        </div>   <!-- pas un span, lien retour choisir type + icon flèche -->
-    </header>
-    <div class="service">
+    {% include '_nav_retour.html' %}
+    <section class="container-fluid">
         <h1>Un service</h1>
-    </div>
-    <div class="container">
-        <form>
+
+        <form action="" method="get">
             {#    <input type="text" placeholder="ex: Une poussette, du bois de construction, ...">#}
             <div class="container-fluid">
                 <div class="input-group input-group-lg">
                     <div class="input-group-prepend">
-                        <button class="input-group-text" id="inputGroup-sizing-lg">Recherche </button>
+                        <button type="submit" class="input-group-text" id="inputGroup-sizing-lg">Recherche </button>
                     </div>
-                    <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg">
+                    <input type="text" name="search" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg">
                 </div>
             </div>
+
+            <div class="form-group">
+                <label for="sel1">Catégories</label>
+                <select class="form-control" id="sel1" name="category">
+                    {% for category in categories %}
+                        <option value="{{ category.id }}"> {{ category.title }} </option>
+                    {% endfor %}
+                </select>
+            </div>
+
         </form>
 
-        <div class="form-group">
-            <label for="sel1">Catégories</label>
-            <select class="form-control" id="sel1">
-                {% for category in categories %}
-                    <option> {{ category.title }} </option>
-                {% endfor %}
-            </select>
-        </div>
-    </div>
+    </section>
     <section id="suggestions">
-        <h3>Ce qu'il pourrait vous intéressez</h3>
+        <h3>Ce qui pourrait vous intéresser</h3>
         <div>Carousel</div>
     </section>
 
