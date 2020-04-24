@@ -52,7 +52,7 @@ class ProductController extends AbstractController
             $description = (!empty($_POST['description'])) ? AbstractController::cleanInput($_POST['description']) : "";
             $proposition = (!empty($_POST['proposition'])) ? AbstractController::cleanInput($_POST['proposition']) : "";
             //$exchangeTypeId = (!empty($_POST['echange'])) ? $_POST['echange']= 1 : $_POST['echange'] = 2;
-            $enEchangeDe = (!empty($_POST['enEchangeDe'])) ?  AbstractController::cleanInput($_POST['enEchangeDe']) : "";
+            $enEchangeDe = (!empty($_POST['enEchangeDe'])) ? AbstractController::cleanInput($_POST['enEchangeDe']) : "";
 
             if (empty($_POST['title'])) {
                 $errors['title'] = "Que souhaitez vous proposer?";
