@@ -58,9 +58,7 @@ class ProductController extends AbstractController
 
     /**
      * Display item creation page
-     *  /** @var ($_POST['category_id']); $category_id
-     *'user_id'=> 1,
-    *'product_type_id'=>1,
+     *
      * @return string
      * @throws LoaderError
      * @throws RuntimeError
