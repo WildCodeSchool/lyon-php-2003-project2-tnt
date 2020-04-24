@@ -1,17 +1,7 @@
 {% extends 'layout.html.twig' %}
 
-function test_input($data) {
-    $data = trim($data);
-    $data = stripslashes($data);
-    $data = htmlspecialchars($data);
-    return $data;
-}
-
 //catégorie et sous-catégorie : ne doivent pas être vides
 //titre : ne doit pas être vide, vérif texte
 //description : recommander de remplir, vérif texte
 //don ou échange : un des deux doit être coché --> radio
 
-
-// après ajout d'une annonce
-// (validation, remerciement, liens vers accueil / inventaire / déposer une autre annonce)

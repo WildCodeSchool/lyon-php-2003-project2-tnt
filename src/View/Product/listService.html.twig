@@ -1,22 +1,24 @@
 {% extends 'layout.html.twig' %}
 
 {% block title %}
-   Liste des biens
+    Liste des Services
 {% endblock %}
 
 
 {% block header %}
-    <h1>Liste des biens</h1>
+    <h1>Liste des Services</h1>
 {% endblock %}
 
 {% block content %}
 
-    <h1>Liste des biens</h1>
-        <div class="container">
+    <section class="container">
 
+        <h1>Liste des Services</h1>
+
+        {% if products is empty %}
+            <p>Oups ! Aucun résultat pour cette recherche, blablabla</p>
+        {% else %}
             {% for product in products %}
-
-
 
                 <div class="card mb-3" style="max-width: 540px;">
                     <div class="row no-gutters">
@@ -38,9 +40,9 @@
                         </div>
                     </div>
                 </div>
-
             {% endfor %}
-        </div>
+        {% endif %}
+    </section>
 
 {% endblock %}
 

@@ -9,7 +9,9 @@ body {
     height: 800px;
     display: flex;
     flex-direction: column;
+    border: 1px solid black;
 }
+
 
 a:link {text-decoration: none; color: black;}
 a:visited {text-decoration: none; color: black;}
@@ -72,5 +74,20 @@ a:active {text-decoration: underline; color: black;}
 
 #main_bien_service > section {
     height: 340px;
+}
+
+/*
+////////////////////////////////////////////////// User/Inscription /////////////////////////
+*/
+
+#inscription form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+#inscription form span {
+    display: flex;
+    justify-content: space-around;
 }
 
