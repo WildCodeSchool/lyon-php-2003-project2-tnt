@@ -1,8 +1,5 @@
 {% extends "layout.html.twig" %}
-
-
 {% block title %} Inscription {% endblock %}
-
 {% block content %}
 <section id="inscription">
     //modal-head
@@ -10,22 +7,22 @@
     <p>Lorem ipsum</p>
 
     //modal-body
-    <form action="" method="POST">
+    <form action="" method="POST" novalidate>
 
-        <label for="pseudo">Un nom</label>
-        <input type="text" name="pseudo" id="pseudo" placeholder="" required>
-        <span></span>
+        <label for="nickname">Un nom</label>
+        <input type="text" name="nickname" id="nickname" placeholder="" required>
+        <span class="error">{{ (errors.nickname is defined) ? errors.nickname : '' }}</span>
 
-        <label for="mail">Un mail</label>
-        <input type="email" name="mail" id="mail" placeholder="" required>
-        <p></p>
+        <label for="email">Un mail</label>
+        <input type="email" name="email" id="email" placeholder="" required>
+        <span class="error">{{ (errors.email is defined) ? errors.email : '' }}</span>
 
         <label for="pass">Mot de passe</label>
         <input type="password" name="pass" id="pass" placeholder="" required>
 
         <label for="pass2"></label>
         <input type="password" name="pass2" id="pass2" placeholder="Vérification Mot de Passe" required>
-
+        <span class="error">{{ (errors.pass is defined) ? errors.pass : '' }}</span>
         <span>
             <input type="checkbox" name="condition" id="condition" required>
             <label for="condition">"J'accepte les <a href="">conditions générales d'utilisation</a>"</label>
