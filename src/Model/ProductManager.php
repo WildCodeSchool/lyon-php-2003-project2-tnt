@@ -50,7 +50,8 @@ class ProductManager extends AbstractManager
      * @param array $product
      * @return bool
      */
-    public function update(array $product): bool
+
+    public function update(array $product):bool
     {
 
         // prepared request
@@ -88,5 +89,15 @@ class ProductManager extends AbstractManager
                                  JOIN product_type ON product_type.id = product.product_type_id
                                  JOIN exchange_type ON exchange_type.id =product.exchange_type_id
                                  HAVING product_type_id="2"')->fetchAll();
+    }
+
+    public function searchService(string $search, string $category) : array
+    {
+        $query = 'SELECT * FROM '. $this->table .
+                ' JOIN category ON category.id = product.category_id 
+                  JOIN exchange_type ON exchange_type.id =product.exchange_type_id
+                  WHERE category.id ='. $category .' AND product.exchange_type_id = 2 
+                  AND product.title LIKE "%'. $search .'%" ';
+        return $this->pdo->query($query)->fetchAll();
     }
 }

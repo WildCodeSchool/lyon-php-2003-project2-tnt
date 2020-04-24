@@ -7,7 +7,7 @@
 
 {% block content %}
     <main id="main_bien_service">
-        <header id="retour"><a href="/home/index"><img src="" alt="retour"></a></header>
+        {% include '_nav_retour.html' %}
         <a href="/product/{{ (var == 'propose') ? 'addGood' : 'rechercherBien' }}">
             <section id="bien">
                 <h1>Un bien</h1>
