@@ -108,6 +108,15 @@ class ProductController extends AbstractController
     {
         $categoryManager = new CategoryManager();
         $category = $categoryManager->selectAllCategory();
+
+        if ($_GET) {
+            $search = self::testInput($_GET['search']);
+            $category = $_GET['category'];
+
+            $productManager = new ProductManager();
+            $listeBien = $productManager->searchService($search, $category);
+            return $this->twig->render('Product/listService.html.twig', ['products' => $listeBien]);
+        }
         return $this->twig->render('Product/rechercherBien.html.twig', ['category' => $category]);
     }
 

@@ -24,30 +24,26 @@
 {% endblock %}
 
 {% block content %}
-    <header>
-        <div id="retour" >
-            <i class="fas fa-arrow-circle-left"></i>
-        </div>   <!-- pas un span, lien retour choisir type + icon flèche -->
-    </header>
+{#    {% include '_nav_retour.html' %}#}
     <div class="bien">
         <h1>Un bien</h1>
     </div>
     <div class="container">
-        <form>
+        <form method="GET" action="">
     {#    <input type="text" placeholder="ex: Une poussette, du bois de construction, ...">#}
             <div class="container-fluid">
                 <div class="input-group input-group-lg">
                     <div class="input-group-prepend">
-                        <button class="input-group-text" id="inputGroup-sizing-lg">Recherche </button>
+                        <button type="submit" class="input-group-text" id="inputGroup-sizing-lg">Recherche </button>
                     </div>
-                    <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg">
+                    <input type="text" name="search" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg">
                 </div>
             </div>
         </form>
 
         <div class="form-group">
             <label for="sel1">Catégories</label>
-            <select class="form-control" id="sel1">
+            <select class="form-control" id="sel1" name="category">
                 <option value="">selectionner une catégorie</option>
                 {% for categorie in category %}
                     <option value="{{ categorie.id }}"> {{ categorie.name }} </option>
