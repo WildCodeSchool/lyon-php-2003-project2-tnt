@@ -46,13 +46,13 @@ class ProductController extends AbstractController
         $title = $categoryId = $exchangeTypeId = $description  = $proposition = $enEchangeDe = '';
         $errors =[];
         if (($_SERVER['REQUEST_METHOD'] === 'POST') && (!empty($_POST))) {
-            $title = AbstractController::testInput($_POST['title']);
+            $title = AbstractController::cleanInput($_POST['title']);
 
             //$categoryId = 2;
-            $description = (!empty($_POST['description'])) ? AbstractController::testInput($_POST['description']) : "";
-            $proposition = (!empty($_POST['proposition'])) ? AbstractController::testInput($_POST['proposition']) : "";
+            $description = (!empty($_POST['description'])) ? AbstractController::cleanInput($_POST['description']) : "";
+            $proposition = (!empty($_POST['proposition'])) ? AbstractController::cleanInput($_POST['proposition']) : "";
             //$exchangeTypeId = (!empty($_POST['echange'])) ? $_POST['echange']= 1 : $_POST['echange'] = 2;
-            $enEchangeDe = (!empty($_POST['enEchangeDe'])) ?  AbstractController::testInput($_POST['enEchangeDe']) : "";
+            $enEchangeDe = (!empty($_POST['enEchangeDe'])) ?  AbstractController::cleanInput($_POST['enEchangeDe']) : "";
 
             if (empty($_POST['title'])) {
                 $errors['title'] = "Que souhaitez vous proposer?";
@@ -129,7 +129,7 @@ class ProductController extends AbstractController
     public function rechercherService(): string
     {
         if ($_GET) {
-            $search = self::testInput($_GET['search']);
+            $search = self::cleanInput($_GET['search']);
             $category = $_GET['category'];
 
             $productManager = new ProductManager();
