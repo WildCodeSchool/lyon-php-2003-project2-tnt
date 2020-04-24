@@ -98,6 +98,5 @@ class ProductManager extends AbstractManager
                   WHERE category.id ='. $category .' AND product.exchange_type_id = 2 
                   AND product.title LIKE "%'. $search .'%" ';
         return $this->pdo->query($query)->fetchAll();
-
     }
 }

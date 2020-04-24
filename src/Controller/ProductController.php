@@ -110,14 +110,13 @@ class ProductController extends AbstractController
 
     public function rechercherService(): string
     {
-        if($_GET) {
+        if ($_GET) {
             $search = self::testInput($_GET['search']);
             $category = $_GET['category'];
 
             $productManager = new ProductManager();
             $listeServices = $productManager->searchService($search, $category);
             return $this->twig->render('Product/listService.html.twig', ['products' => $listeServices]);
-
         }
         return $this->twig->render('Product/rechercherService.html.twig');
     }
