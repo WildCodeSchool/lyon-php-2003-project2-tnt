@@ -1,0 +1,87 @@
+<div class="container-fluid">
+    <nav id="nav_bottom">
+        <ul>
+            <li><a href="/home/index"><img src="" alt="Accueil"></a></li>
+            <li><a href=""><img src="" alt="Favoris"></a></li>
+            {% if session is empty or session.user is empty%}
+                <li><img src="" alt="no_co" id="home_no_co_" data-toggle="modal" data-target="#modal_compte_non_co"></li>
+            {% else %}
+                <li><img src="" alt="co" id="home_compte_co" data-toggle="modal" data-target="#modal_compte_co"></li>
+            {% endif %}
+            <li><a href=""><img src="" alt="Plan Site"></a></li>
+            <li><a href=""><img src="" alt="Aides"></a></li>
+        </ul>
+    </nav>
+
+    <!-- The Modal Non Connect -->
+    <div class="modal fade" id="modal_compte_non_co">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title">Connexion</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+
+                <!-- Modal body -->
+                <div class="modal-body">
+                    {% include 'User/connexion.php' %}
+                </div>
+
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                    <p>Pas encore inscrit ? <a href="/user/inscription">Rejoignez la communauté !</a></p>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- The Modal Connect -->
+    <div class="modal fade" id="modal_compte_co">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title">Mon compte - Menu</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+
+                <!-- Modal body -->
+                <div class="modal-body">
+                    <ul>
+                        <li><a href="/user/inventaire/{{ session.user.id }}">Mon inventaire</a></li>
+                        <li><a href="/user/favoris/{{ session.user.id }}">Mes favoris</a></li>
+                        <li><a href="/user/preferences/{{ session.user.id }}">Mes préférences</a></li>
+                        <li><a href="/user/profil/{{ session.user.id }}">Mon profil</a></li>
+                    </ul>
+                </div>
+
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Se déconnecter</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $(function () {
+
+        const input_name = $('#input_by_name');
+        const input_mail = $('#input_by_mail');
+        const switchy = $('.switch_input');
+
+        switchy.click(() => {
+            input_name.slideToggle();
+            input_mail.slideToggle();
+        });
+
+    });
+</script>
+
+
+

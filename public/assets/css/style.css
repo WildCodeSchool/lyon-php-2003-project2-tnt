@@ -33,6 +33,9 @@ a:active {text-decoration: underline; color: black;}
     list-style-type: none;
 }
 
+#modal_compte_non_co, #modal_compte_non_inscrit, #modal_compte_co { display: none;}
+
+
 /*
 ////////////////////////////////////////////////// Home/index /////////////////////////
 */
@@ -90,4 +93,8 @@ a:active {text-decoration: underline; color: black;}
     display: flex;
     justify-content: space-around;
 }
+
+
+
+#modal_compte_non_co #input_by_mail { display: none;}
 
