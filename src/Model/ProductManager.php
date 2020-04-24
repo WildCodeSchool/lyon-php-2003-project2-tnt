@@ -99,5 +99,4 @@ class ProductManager extends AbstractManager
                   AND product.title LIKE "%'. $search .'%" ';
         return $this->pdo->query($query)->fetchAll();
     }
-    }
 }
