@@ -1,31 +1,27 @@
+{% import 'Product/formTemplate.html.twig' as form %}
+
 <div class="container-fluid">
     <form action="" method="post">
-        <div="form-group">
-        <label for="category-select">Quel type de service proposez-vous ?</label>
-        <select class="form-control" name="category-select">
-            <option>Choisissez une catégorie</option>
-        </select>
-        <select class="form-control" name="category-select">
-            <option>Choisissez une sous-catégorie</option>
-        </select>
+        <div class="form-group">
+            {{ form.input('text', 'form-control','title', 'Titre de votre annonce', 'ex.: 2h de bêchage') }}
+            <span class="error"><small>{{ videErr }}</small></span>
         </div>
         <div class="form-group">
-            <label for="service-title">Titre de votre annonce</label>
-            <input type="text" class="form-control" id="service-title" placeholder="ex.: 2h de bêchage">
+            {{ form.select('form-control', 'category-select','Choisissez une catégorie') }}
+            {{ form.select('form-control', 'subcategory-select','Choisissez une sous-catégorie') }}
         </div>
         <div class="form-group">
-            <label for="service-description">Description du service</label>
-            <input type="text" class="form-control" id="service-description" placeholder="Précisez si besoin, et n'oubliez pas de donner vos disponibilités !">
-        </div>
-        <div class="form-group form-check">
-            <input type="checkbox" class="form-check-input" id="check-don">
-            <label class="form-check-label" for="check-don">Don</label>
+            {{ form.textarea('form-control','description', 'Description du service', 'Précisez si besoin, et n\'oubliez pas de donner vos disponibilités !') }}
         </div>
         <div class="form-group">
-            <label for="service-echange">Ou en échange de:</label>
-            <input type="text" class="form-control" id="service-echange" placeholder="Précisez ici le(s) bien(s)/service(s) souhaité(s) en échange">
+            {{ form.radio('echangeOuDon', 'echange', 'Echange', 'checked') }}
+            {{ form.radio('echangeOuDon', 'don', 'Don', '') }}
         </div>
-        <div class="form-group form-check">
+        <!--TODO hiddenIfDon à cacher si 'don' est coché (JS)-->
+        <div class="form-group hiddenIfDon">
+            {{ form.input('text', 'form-control','enEchangeDe', 'Ou en échange de', 'Précisez ici le(s) bien(s)/service(s) souhaité(s) en échange') }}
+        </div>
+        <div class="form-group form-check hiddenIfDon">
             <input type="checkbox" class="form-check-input" id="check-autres">
             <label class="form-check-label" for="check-autres">Vous êtes ouvert.e à toute proposition</label>
         </div>

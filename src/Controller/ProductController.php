@@ -57,8 +57,6 @@ class ProductController extends AbstractController
     }
 
     /**
-     * Display item creation page
-     *
      * @return string
      * @throws LoaderError
      * @throws RuntimeError
@@ -66,16 +64,16 @@ class ProductController extends AbstractController
      */
     public function addGood()
     {
-        $title = $category_id = $etat = $exchange_type_id = $description  = $proposition = $enEchangeDe = '';
+        $title = $categoryId = $etat = $exchangeTypeId = $description  = $proposition = $enEchangeDe = '';
         $errors =[];
         if (($_SERVER['REQUEST_METHOD'] === 'POST') && (!empty($_POST))) {
             $title = AbstractController::testInput($_POST['title']);
 
-            $category_id = 2;
+            //$categoryId = 2;
             $etat =($_POST['etat']);
             $description = (!empty($_POST['description'])) ? AbstractController::testInput($_POST['description']) : "";
             $proposition = (!empty($_POST['proposition'])) ? AbstractController::testInput($_POST['proposition']) : "";
-            $exchange_type_id = (!empty($_POST['echange'])) ? $_POST['echange']= 1 : $_POST['echange'] = 2;
+            //$exchangeTypeId = (!empty($_POST['echange'])) ? $_POST['echange']= 1 : $_POST['echange'] = 2;
             $enEchangeDe = (!empty($_POST['enEchangeDe'])) ?  AbstractController::testInput($_POST['enEchangeDe']) : "";
 
             if (empty($_POST['title'])) {
@@ -91,12 +89,12 @@ class ProductController extends AbstractController
                 $productManager = new ProductManager();
                 $product = [
                     'user_id'=> 1,
-                    'product_type_id'=>1,
+                    'product_type_id'=> 1,
                     'title' => $title,
-                    'category_id' => $category_id,
+                    'category_id' => $categoryId,
                     'etat' => $etat,
                     'description' => $description,
-                    'exchange_type_id' => $exchange_type_id,
+                    'exchange_type_id' => $exchangeTypeId,
                     'proposition' => $proposition,
                     'enEchangeDe'=> $enEchangeDe
                 ];
