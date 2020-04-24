@@ -46,7 +46,7 @@ class ProductController extends AbstractController
 
     public function addService()
     {
-        $title = $categoryId = $exchangeTypeId = $description  = $proposition = $enEchangeDe = '';
+        $title = $categoryId = $description  = $proposition = $enEchangeDe = '';
         $errors =[];
         if (($_SERVER['REQUEST_METHOD'] === 'POST') && (!empty($_POST))) {
             $title = AbstractController::testInput($_POST['title']);
@@ -66,12 +66,12 @@ class ProductController extends AbstractController
             if (empty($errors)) {
                 $productManager = new ProductManager();
                 $product = [
-                    'user_id' => 1,
+                    //'user_id' => 1,
                     'product_type_id' => 1,
                     'title' => $title,
                     'category_id' => $categoryId,
                     'description' => $description,
-                    'exchange_type_id' => $exchangeTypeId,
+                    //'exchange_type_id' => $exchangeTypeId,
                     'proposition' => $proposition,
                     'enEchangeDe' => $enEchangeDe
                 ];
@@ -93,39 +93,38 @@ class ProductController extends AbstractController
   
     public function addGood()
     {
-        $title = $categoryId = $etat = $exchangeTypeId = $description  = $proposition = $enEchangeDe = '';
+        $title = $etat = $description = '';
         $errors =[];
         if (($_SERVER['REQUEST_METHOD'] === 'POST') && (!empty($_POST))) {
             $title = AbstractController::testInput($_POST['title']);
-
             //$categoryId = 2;
             $etat =($_POST['etat']);
             $description = (!empty($_POST['description'])) ? AbstractController::testInput($_POST['description']) : "";
-            $proposition = (!empty($_POST['proposition'])) ? AbstractController::testInput($_POST['proposition']) : "";
-            //$exchangeTypeId = (!empty($_POST['echange'])) ? $_POST['echange']= 1 : $_POST['echange'] = 2;
-            $enEchangeDe = (!empty($_POST['enEchangeDe'])) ?  AbstractController::testInput($_POST['enEchangeDe']) : "";
+            //$proposition=(!empty($_POST['proposition'])) ? AbstractController::testInput($_POST['proposition']) : "";
+            //$exchangeTypeId=(!empty($_POST['echange'])) ? $_POST['echange']= 1 : $_POST['echange'] = 2;
+            //$enEchangeDe=(!empty($_POST['enEchangeDe'])) ?  AbstractController::testInput($_POST['enEchangeDe']) : "";
 
             if (empty($_POST['title'])) {
                 $errors['title'] = "Que souhaitez vous proposer?";
             }
-            if (empty($_POST['category_id'])) {
+            /*if (empty($_POST['category_id'])) {
                 $errors['category_id'] = "Renseignez une catégorie";
             }
             if ($_POST['etat']) {
                 $errors['etat'] = "Précisez l'état";
-            }
+            }*/
             if (empty($errors)) {
                 $productManager = new ProductManager();
                 $product = [
-                    'user_id'=> 1,
-                    'product_type_id'=> 1,
+                    //'user_id'=> 1,
+                    //'product_type_id'=> 1,
                     'title' => $title,
-                    'category_id' => $categoryId,
+                    //'category_id' => $categoryId,
                     'etat' => $etat,
                     'description' => $description,
-                    'exchange_type_id' => $exchangeTypeId,
-                    'proposition' => $proposition,
-                    'enEchangeDe'=> $enEchangeDe
+                    //'exchange_type_id' => $exchangeTypeId,
+                    //'proposition' => $proposition,
+                    //'enEchangeDe'=> $enEchangeDe
                 ];
 
                 $id = $productManager->insertProduct($product);
