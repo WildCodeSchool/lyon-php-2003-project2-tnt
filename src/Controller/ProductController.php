@@ -41,7 +41,7 @@ class ProductController extends AbstractController
      * @throws \Twig\Error\RuntimeError
      * @throws \Twig\Error\SyntaxError
      */
-    /*public function addService()
+    public function addBoth($service)
     {
         $productManager = new ProductManager();
         $listCategories = $productManager->selectAllCategories();
@@ -53,15 +53,16 @@ class ProductController extends AbstractController
                 'category' => $_POST['category'],
                 'image' => $_POST['image'],
                 'description' => $_POST['description'],
-                'exchange_type_id' => $_POST['title'],
+                'exchange_type_id' => $_POST['echangeOuDon'],
+                'wantBack' => $_POST['enEchangeDe'],
+                'fullProp' => $_POST['fullProposition'],
             ];
-            // $user_id recup avec $_SESSION
-            // $product_type_id -> ici Service donc id en dur une fois défini
-            $id = $productManager->insert($product, $user_id, $product_type_id);
+            $userId = $_SESSION['user']['id'];
+            $id = $productManager->insert($product, $userId, $service);
             header('Location:/product/show/' . $id);
         }
         return $this->twig->render('Product/addService.html.twig', ['listeCategories' => $listCategories]);
-    }*/
+    }
 
     /**
      * Display item creation page                 EN CONSTRUCTION
