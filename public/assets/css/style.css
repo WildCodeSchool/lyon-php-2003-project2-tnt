@@ -28,9 +28,16 @@ a:active {text-decoration: underline; color: black;}
 #nav_bottom > ul {
     display: flex;
     justify-content: space-around;
+    padding: 0px;
+    margin-top: 10px;
+
 }
 #nav_bottom ul li {
     list-style-type: none;
+}
+
+#nav_bottom ul li img {
+    width: 36px;
 }
 
 #modal_compte_non_co, #modal_compte_non_inscrit, #modal_compte_co { display: none;}
