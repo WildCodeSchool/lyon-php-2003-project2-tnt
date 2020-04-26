@@ -34,6 +34,7 @@ a:active {text-decoration: underline; color: black;}
 }
 #nav_bottom ul li {
     list-style-type: none;
+    cursor: pointer;
 }
 
 #nav_bottom ul li img {
