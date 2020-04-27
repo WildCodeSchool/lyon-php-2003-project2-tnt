@@ -34,7 +34,6 @@
     </div>
     <div class="container">
         <form>
-    {#    <input type="text" placeholder="ex: Une poussette, du bois de construction, ...">#}
             <div class="container-fluid">
                 <div class="input-group input-group-lg">
                     <div class="input-group-prepend">
@@ -49,16 +48,12 @@
             <label for="sel1">Catégories</label>
             <select class="form-control" id="sel1">
                 {% for category in categories %}
-                    <option> {{ category.title }} </option>
+                    <option value="{{ category.id }}"> {{ category.title }} </option>
                 {% endfor %}
             </select>
         </div>
-    </div>
-    <section id="suggestions">
-        <h3>Ce qu'il pourrait vous intéressez</h3>
-        <div>Carousel</div>
-    </section>
 
+    </div>
 {% endblock %}
 
 

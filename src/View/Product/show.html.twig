@@ -1,3 +1,56 @@
 {% extends "layout.html.twig" %}
 
+{% block content %}
+    <section class="container-fluid">
+
+        <input type="text" name="search" placeholder="Votre recherche">
+
+        <div class="form-group">
+            <label for="sel1">Catégories</label>
+            <select class="form-control" id="sel1" name="category">
+                {% for category in categories %}
+                    <option value="{{ category.id }}"> {{ category.title }} </option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <button type="submit">Rechercher</button>
+    </section>
+
+    <section class="container-fluid">
+        {% if var == 'service' or var == 'bien' %}
+            <h1>Liste des {{ var }}s</h1>
+        {% elseif var == 'mysearch' %}
+            <h1>Résultats de votre recherche</h1>
+        {% endif %}
+
+        {% if products is empty %}
+            <p>Oups ! Aucun résultat pour cette recherche, blablabla</p>
+        {% else %}
+            {% for product in products %}
+
+                <div class="card mb-3" style="max-width: 540px;">
+                    <div class="row no-gutters">
+                        <div class="col-md-4 ">
+                            <img src="{{ product.img }}" class="card-img" alt="Photo de {{ product.title }}"  width=150px height=150px >
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                <div>
+                                    <h5 class="card-title">{{ product.title }}</h5>
+                                    <img src="../assets/images/heart.png" width="20px">
+                                </div>
+                                <p>{{ product.deal_type }}</p>
+                                <p class="card-text">{{ product.description }}</p>
+                                <p class="card-text"><small class="text-muted">Date de Parution : {{ product.created_at|date("m/d/Y") }}</small></p>
+                                <p>Proposé par : {{ product.nickname }}</p>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        {% endif %}
+    </section>
+{% endblock %}
 
