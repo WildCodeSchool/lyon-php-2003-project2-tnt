@@ -19,7 +19,7 @@ a:active {text-decoration: underline; color: black;}
 
 #nav_bottom {
     position: fixed;
-    top: 740px;
+    bottom: 0px;
     height: 60px;
     width: 400px;
     border: 1px solid black;
@@ -61,7 +61,12 @@ a:active {text-decoration: underline; color: black;}
     font-size: 0.7em;
 }
 
-#header_home nav > h3 {
+#header_home nav > span {
+    display: flex;
+    justify-content: space-between;
+}
+
+#header_home nav > span > h3 {
     margin-bottom: 0px;
 }
 
@@ -120,4 +125,116 @@ a:active {text-decoration: underline; color: black;}
 
 
 #modal_compte_non_co #input_by_mail { display: none;}
+
+
+/*
+//////////////////////////////////////////////////// BURGER STYLE //////////////////////
+ */
+.menu {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    height: 46px;
+    width: 46px;
+}
+
+.menu-link {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: 1002;
+}
+
+.menu-icon {
+    position: absolute;
+    width: 20px;
+    height: 14px;
+    margin: auto;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 1px;
+}
+
+.menu-circle {
+    background-color: #820050;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    border-radius: 50%;
+    transform: scale(1);
+    z-index: 1000;
+    transition: all 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.menu-overlay {
+    background-color: #820050;
+    color: #fff;
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    transition: opacity 0.2s ease-in-out;
+    z-index: 1001;
+    opacity: 0;
+    visibility: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.menu-overlay a {
+    color: #fff;
+    font-weight: 600;
+    font-size: 32px;
+    padding: 2%;
+    margin-top: 20px;
+}
+
+.menu-overlay ul li a{
+    font-size: 0.9em;
+}
+
+.menu-overlay li {
+    width: 150px;
+}
+
+
+.menu-line {
+    background-color: #fff;
+    height: 2px;
+    width: 100%;
+    border-radius: 2px;
+    position: absolute;
+    left: 0;
+    transition: all 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.menu-line-1 { top: 0; }
+
+.menu-line-2 {
+    top: 0;
+    bottom: 0;
+    margin: auto;
+}
+
+.menu-line-3 { bottom: 0; }
+
+.menu-overlay.open {
+    opacity: 1;
+    visibility: visible;
+}
+
+.menu.open .menu-circle {
+    transform: scale(60);
+}
+
+.menu.open .menu-line-2 { opacity: 0; }
+
+.menu.open .menu-line-1 {
+    transform: translateY(7px) translateY(-50%) rotate(-135deg);
+}
+
+.menu.open .menu-line-3 {
+    transform: translateY(-7px) translateY(50%) rotate(135deg);
+}
 
