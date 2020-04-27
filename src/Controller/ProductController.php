@@ -4,7 +4,6 @@ namespace App\Controller;
 
 use App\Model\ProductManager;
 
-
 class ProductController extends AbstractController
 {
     /**
@@ -14,7 +13,7 @@ class ProductController extends AbstractController
     public function listProduct()
     {
         $productManager = new ProductManager();
-        $products = $productManager->selectAllProduct();
+        $products = $productManager->selectAll(1);
 
         return $this->twig->render('Product/listProduct.html.twig', ['products' => $products]);
     }
@@ -26,7 +25,7 @@ class ProductController extends AbstractController
     public function listService()
     {
             $productManager = new ProductManager();
-            $products = $productManager->selectAllService();
+            $products = $productManager->selectAll(2);
 
             return $this->twig->render('Product/listService.html.twig', ['products'=>$products]);
     }

@@ -41,15 +41,8 @@ abstract class AbstractManager
         $this->pdo = (new Connection())->getPdoConnection();
     }
 
-    /**
-     * Get all row from database.
-     *
-     * @return array
-     */
-    public function selectAll(): array
-    {
-        return $this->pdo->query('SELECT * FROM ' . $this->table)->fetchAll();
-    }
+
+    abstract protected function selectAll($what);
 
     /**
      * Get one row from database by ID.
