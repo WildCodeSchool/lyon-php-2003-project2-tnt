@@ -80,6 +80,7 @@ CREATE TABLE IF NOT EXISTS `tnt_db`.`product` (
   `created_at` DATETIME NOT NULL,
   `user_id` INT NOT NULL,
   `product_type_id` INT NOT NULL,
+  `img` TEXT NULL,
   `exchange_type_id` INT NOT NULL,
   `category_id` INT NOT NULL,
   PRIMARY KEY (`id`, `user_id`, `product_type_id`, `exchange_type_id`, `category_id`),
