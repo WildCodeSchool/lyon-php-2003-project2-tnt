@@ -23,7 +23,7 @@ class ProductController extends AbstractController
             $errors = self::checkErrors([$title,$description,$_POST['echangeOuDon'],
                                          $_POST['enEchangeDe'],$_POST['proposition']]);
             if (!empty($errors)) {
-                return $this->twig->render('Product/.html.twig', ['Categories' => $listCategories,
+                return $this->twig->render('Product/.html.twig', ['categories' => $listCategories,
                                                                                   'errors' => $errors]);
             }
 
@@ -41,7 +41,7 @@ class ProductController extends AbstractController
             $id = $productManager->insert($product, $userId, $bienService);
             header('Location:/product/show/' . $id);
         }
-        return $this->twig->render('Product/add.html.twig', ['Categories' => $listCategories,
+        return $this->twig->render('Product/add.html.twig', ['categories' => $listCategories,
                                                                     'var' => $bienService]);
     }
 
