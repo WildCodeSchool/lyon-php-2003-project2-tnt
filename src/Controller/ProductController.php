@@ -7,31 +7,7 @@ use App\Model\ProductManager;
 class ProductController extends AbstractController
 {
     /**
-     * Affiche la liste des produits
-     *
-     */
-    public function listProduct()
-    {
-        $productManager = new ProductManager();
-        $products = $productManager->selectAll(1);
-
-        return $this->twig->render('Product/listProduct.html.twig', ['products' => $products]);
-    }
-
-    /**
-     * Affiche la liste des service
-     *
-     */
-    public function listService()
-    {
-            $productManager = new ProductManager();
-            $products = $productManager->selectAll(2);
-
-            return $this->twig->render('Product/listService.html.twig', ['products'=>$products]);
-    }
-
-    /**
-     * Display item creation page                 EN CONSTRUCTION
+     * Ajouter Bien ou Service      EN CONSTRUCTION
      *
      *
      */
@@ -91,21 +67,39 @@ class ProductController extends AbstractController
         return $this->twig->render('Product/validation.html.twig');
     }
 
-    public function rechercherBien(): string
+    /**
+     * Affiche la liste des biens OU des services OU de notre recherche
+     * Notre recherche se fait à partir d'une des listes
+     * (affichage de la liste avec input (Rechercher) + filtre (catégorie)
+     *
+     * @param string $what
+     * @return string
+     * @throws \Twig\Error\LoaderError
+     * @throws \Twig\Error\RuntimeError
+     * @throws \Twig\Error\SyntaxError
+     */
+    public function show(string $what)
     {
-        return $this->twig->render('Product/rechercherBien.html.twig');
-    }
+        $productManager = new ProductManager();
+        $productType = -1;
 
-    public function rechercherService(): string
-    {
+        switch ($what) {
+            case 'listService':
+                $productType = 2;
+                $products = $productManager->selectAll(2);
+                return $this->twig->render('Product/show.html.twig', ['products' => $products]);
+            case 'listProduct':
+                $productType = 1;
+                $products = $productManager->selectAll(1);
+                return $this->twig->render('Product/show.html.twig', ['products' => $products]);
+            default: // ... error 404 not found
+        }
+
         if ($_GET) {
             $search = self::cleanInput($_GET['search']);
             $category = $_GET['category'];
-
-            $productManager = new ProductManager();
-            $listeServices = $productManager->search($search, $category, 2);
-            return $this->twig->render('Product/listService.html.twig', ['products' => $listeServices]);
+            $products = $productManager->search($search, $category, $productType);
+            return $this->twig->render('Product/show.html.twig', ['products' => $products]);
         }
-        return $this->twig->render('Product/rechercherService.html.twig');
     }
 }
