@@ -8,14 +8,14 @@
 {% block content %}
     <main id="main_bien_service">
         {% include '_nav_retour.html' %}
-        <a href="/product/{{ (var == 'propose') ? 'addGood' : 'rechercherBien' }}">
+        <a href="/product/{{ (var == 'propose') ? 'add/bien' : 'show/bien' }}">
             <section id="bien">
                 <h1>Un bien</h1>
                 <p>exemples</p>
                 <img src="" alt=""> {# idéalement, icones 'dynamiques'#}
             </section>
         </a>
-        <a href="/product/{{ (var == 'propose') ? 'addService' : 'rechercherService' }}">
+        <a href="/product/{{ (var == 'propose') ? 'add/service' : 'show/service' }}">
             <section id="service">
                 <h1>Un Service</h1>
                 <p>exemples</p>
