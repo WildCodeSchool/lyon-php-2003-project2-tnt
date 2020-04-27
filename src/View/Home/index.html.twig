@@ -3,46 +3,7 @@
 {% block title %} Troc & Troc {% endblock %}
 
 {% block content %}
-    <header class="container-fluid" id="header_home">
-        <nav class="navbar navbar-expand-md navbar-dark" id="nav_top">
-            <!-- Brand -->
-            <span>
-                <h3>Troc & Troc</h3>
-
-                <div class="menu">
-                    <span class="menu-circle"></span>
-                    <a href="#" class="menu-link">
-                      <span class="menu-icon">
-                        <span class="menu-line menu-line-1"></span>
-                        <span class="menu-line menu-line-2"></span>
-                        <span class="menu-line menu-line-3"></span>
-                      </span>
-                    </a>
-                </div>
-            </span>
-
-            <p>"Des échanges sans argent pour des liens plus humains"</p>
-
-        </nav>
-    </header>
-    <div class="menu-overlay">
-        <a href="/">Accueil</a>
-        <a href="#">Je propose</a>
-        <ul>
-            <li><a href="">Un Bien</a></li>
-            <li><a href="">Un Service</a></li>
-        </ul>
-        <a href="#">Je recherche</a>
-        <ul>
-            <li><a href="">Un Bien</a></li>
-            <li><a href="">Un Service</a></li>
-        </ul>
-        <a href="#">Plan du site</a>
-        <a href="#">Infos - FAQ</a>
-        <a href="#">Contact</a>
-        <a href="#">Mentions Légales</a>
-    </div>
-
+    {% include '_nav_top.html' %}
     <main class="container-fluid" id="main_home">
 
         <section id="carousel">carousel</section>

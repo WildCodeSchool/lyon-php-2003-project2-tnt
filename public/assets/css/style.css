@@ -17,6 +17,10 @@ a:visited {text-decoration: none; color: black;}
 a:hover {text-decoration: underline; color: green;}
 a:active {text-decoration: underline; color: black;}
 
+/*
+/////////////////////////////////////////////////////////// NAV BARS //////////////////////////////////////
+ */
+
 #nav_bottom {
     position: fixed;
     bottom: 0px;
@@ -40,7 +44,15 @@ a:active {text-decoration: underline; color: black;}
     width: 36px;
 }
 
-#modal_compte_non_co, #modal_compte_non_inscrit, #modal_compte_co { display: none;}
+#retour img {
+    padding-top: 15px;
+    padding-left: 15px;
+}
+
+#retour h4 {
+    color: white;
+}
+
 
 
 /*
@@ -237,4 +249,7 @@ a:active {text-decoration: underline; color: black;}
 .menu.open .menu-line-3 {
     transform: translateY(-7px) translateY(50%) rotate(135deg);
 }
+
+#modal_compte_non_co, #modal_compte_non_inscrit, #modal_compte_co { display: none;}
+
 
