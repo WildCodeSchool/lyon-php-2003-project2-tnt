@@ -41,9 +41,6 @@ abstract class AbstractManager
         $this->pdo = (new Connection())->getPdoConnection();
     }
 
-
-    abstract protected function selectAll(int $what);
-
     /**
      * Get one row from database by ID.
      *
