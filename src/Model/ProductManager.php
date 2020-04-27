@@ -77,8 +77,6 @@ class ProductManager extends AbstractManager
      * Recupère tous les biens OU services
      * @param int $productType
      * Bien    -> $productType = 1
-     * Service -> $productType = 2
-     *
      * @return array
      */
     public function selectAll(int $productType): array
@@ -95,7 +93,12 @@ class ProductManager extends AbstractManager
         return $state->fetchAll(\PDO::FETCH_ASSOC);
     }
 
-
+    /**
+     * @param string $search
+     * @param int $category
+     * @param int $productType
+     * @return array
+     */
     public function search(string $search, int $category, int $productType) : array
     {
         $query = "SELECT * FROM ". $this->table .
