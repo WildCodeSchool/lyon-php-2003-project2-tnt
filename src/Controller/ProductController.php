@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Model\ProductManager;
+use DateTime;
 
 class ProductController extends AbstractController
 {
@@ -15,6 +16,8 @@ class ProductController extends AbstractController
     {
         $productManager = new ProductManager();
         $listCategories = $productManager->selectAllCategories();
+        $productType = (($bienService == 'service') ? 2 : 1);
+
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $title = self::cleanInput($_POST['title']);
@@ -23,25 +26,25 @@ class ProductController extends AbstractController
             $errors = self::checkErrors([$title,$description,$_POST['echangeOuDon'],
                                          $_POST['enEchangeDe'],$_POST['proposition']]);
             if (!empty($errors)) {
-                return $this->twig->render('Product/.html.twig', ['Categories' => $listCategories,
+                return $this->twig->render('Product/add.html.twig', ['categories' => $listCategories,
                                                                                   'errors' => $errors]);
             }
-
+            $date = new DateTime('now');
             $product = [
                 'title' => $title,
                 'category' => $_POST['category'],
                 'etat' => $_POST['etat'],
-                'image' => $_POST['image'],
                 'description' => $description,
                 'exchange_type_id' => $_POST['echangeOuDon'],
                 'wantBack' => self::cleanInput($_POST['enEchangeDe']),
                 'fullProp' => $_POST['proposition'],
+                'date' => $date->format('d-m-Y')
             ];
             $userId = $_SESSION['user']['id'];
-            $id = $productManager->insert($product, $userId, $bienService);
+            $id = $productManager->insert($product, $userId, $productType);
             header('Location:/product/show/' . $id);
         }
-        return $this->twig->render('Product/add.html.twig', ['Categories' => $listCategories,
+        return $this->twig->render('Product/add.html.twig', ['categories' => $listCategories,
                                                                     'var' => $bienService]);
     }
 
