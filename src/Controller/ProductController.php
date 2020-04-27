@@ -33,23 +33,33 @@ class ProductController extends AbstractController
     /**
      * Display item creation page                 EN CONSTRUCTION
      *
-     * @return string
+     *
      */
-    public function addBoth($bienService)
+    public function add($bienService)
     {
         $productManager = new ProductManager();
         $listCategories = $productManager->selectAllCategories();
 
-
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $title = self::cleanInput($_POST['title']);
+            $description = self::cleanInput($_POST['description']);
+
+            $errors = self::checkErrors([$title,$description,$_POST['echangeOuDon'],
+                                         $_POST['enEchangeDe'],$_POST['proposition']]);
+            if (!empty($errors)) {
+                return $this->twig->render('Product/addService.html.twig', ['listeCategories' => $listCategories,
+                                                                                  'errors' => $errors]);
+            }
+
             $product = [
-                'title' => self::cleanInput($_POST['title']),
+                'title' => $title,
                 'category' => $_POST['category'],
+                'etat' => $_POST['etat'],
                 'image' => $_POST['image'],
-                'description' => self::cleanInput($_POST['description']),
+                'description' => $description,
                 'exchange_type_id' => $_POST['echangeOuDon'],
                 'wantBack' => self::cleanInput($_POST['enEchangeDe']),
-                'fullProp' => $_POST['fullProposition'],
+                'fullProp' => $_POST['proposition'],
             ];
             $userId = $_SESSION['user']['id'];
             $id = $productManager->insert($product, $userId, $bienService);
@@ -93,7 +103,7 @@ class ProductController extends AbstractController
             $category = $_GET['category'];
 
             $productManager = new ProductManager();
-            $listeServices = $productManager->searchService($search, $category);
+            $listeServices = $productManager->search($search, $category, 2);
             return $this->twig->render('Product/listService.html.twig', ['products' => $listeServices]);
         }
         return $this->twig->render('Product/rechercherService.html.twig');
