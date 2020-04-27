@@ -41,7 +41,7 @@ class ProductController extends AbstractController
      * @throws \Twig\Error\RuntimeError
      * @throws \Twig\Error\SyntaxError
      */
-    public function addBoth($service)
+    public function addBoth($bienService)
     {
         $productManager = new ProductManager();
         $listCategories = $productManager->selectAllCategories();
@@ -49,16 +49,16 @@ class ProductController extends AbstractController
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $product = [
-                'title' => $_POST['title'],
+                'title' => self::cleanInput($_POST['title']),
                 'category' => $_POST['category'],
                 'image' => $_POST['image'],
-                'description' => $_POST['description'],
+                'description' => self::cleanInput($_POST['description']),
                 'exchange_type_id' => $_POST['echangeOuDon'],
-                'wantBack' => $_POST['enEchangeDe'],
+                'wantBack' => self::cleanInput($_POST['enEchangeDe']),
                 'fullProp' => $_POST['fullProposition'],
             ];
             $userId = $_SESSION['user']['id'];
-            $id = $productManager->insert($product, $userId, $service);
+            $id = $productManager->insert($product, $userId, $bienService);
             header('Location:/product/show/' . $id);
         }
         return $this->twig->render('Product/addService.html.twig', ['listeCategories' => $listCategories]);
