@@ -16,9 +16,11 @@ class ProductManager extends AbstractManager
     {
         parent::__construct(self::TABLE);
     }
-    
+
     /**
-     * @param array $product                  EN CONSTRUCTION
+     * @param array $product
+     * @param int $userId
+     * @param int $productTypeId
      * @return int
      */
     public function insert(array $product, int $userId, int $productTypeId): int
@@ -73,13 +75,13 @@ class ProductManager extends AbstractManager
 
     /**
      * Recupère tous les biens OU services
-     *
-     * Bien    -> $productType = 1 (int)
-     * Service -> $productType = 2 (int)
+     * @param int $productType
+     * Bien    -> $productType = 1
+     * Service -> $productType = 2
      *
      * @return array
      */
-    public function selectAll($productType): array
+    public function selectAll(int $productType): array
     {
         $query = "SELECT * FROM " . $this->table .
                  " JOIN user ON user.id = product.user_id 
@@ -94,13 +96,17 @@ class ProductManager extends AbstractManager
     }
 
 
-    public function searchService(string $search, string $category) : array
+    public function search(string $search, int $category, int $productType) : array
     {
-        $query = 'SELECT * FROM '. $this->table .
-                ' JOIN category ON category.id = product.category_id 
-                  JOIN exchange_type ON exchange_type.id =product.exchange_type_id
-                  WHERE category.id ='. $category .' AND product.exchange_type_id = 2 
-                  AND product.title LIKE "%'. $search .'%" ';
-        return $this->pdo->query($query)->fetchAll();
+        $query = "SELECT * FROM ". $this->table .
+                " JOIN category ON category.id = product.category_id 
+                  JOIN product_type ON product_type.id =product.product_type_id
+                  WHERE category.id =". $category ." AND product.product_type_id = :productType 
+                  AND product.title LIKE '%". $search ."%'";
+
+        $state = $this->pdo->prepare($query);
+        $state->bindValue(':productType', $productType, \PDO::PARAM_INT);
+        $state->execute();
+        return $state->fetchAll(\PDO::FETCH_ASSOC);
     }
 }

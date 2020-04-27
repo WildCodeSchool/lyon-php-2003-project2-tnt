@@ -42,7 +42,7 @@ abstract class AbstractManager
     }
 
 
-    abstract protected function selectAll($what);
+    abstract protected function selectAll(int $what);
 
     /**
      * Get one row from database by ID.
