@@ -2,6 +2,7 @@
 
 <div class="container-fluid">
     <form action="" method="post">
+
         <div class="form-group">
             {{ form.input('text', 'form-control','title', 'Titre de votre annonce', 'ex.: 2h de bêchage') }}
             {% if errors.title is defined %}<span style="color: red"> {{ errors.title }}</span> {% endif %}

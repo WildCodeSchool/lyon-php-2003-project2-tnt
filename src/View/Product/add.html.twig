@@ -1,0 +1,12 @@
+{% extends "layout.html.twig" %}
+
+
+
+{% block content %}
+    {% if var == 'bien' %}
+        {% include 'Product/_formGood.html.twig' %}
+    {% elseif var == 'service' %}
+        {% include 'Product/_formService.html.twig' %}
+    {% endif %}
+{% endblock %}
+

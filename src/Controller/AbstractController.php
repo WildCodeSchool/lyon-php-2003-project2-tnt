@@ -48,4 +48,22 @@ abstract class AbstractController
         $data = htmlspecialchars($data);  // converts special characters to HTML
         return $data;
     }
+
+    protected static function checkErrors(array $requis) : array
+    {
+        $errors = [];
+
+        if ($requis[0] == '') {
+            $errors['title'] = "Veuillez renseigner un titre valide svp";
+        }
+        if ($requis[1] == '') {
+            $errors['description'] = "Une courte description serait la bienvenue";
+        }
+        if ($requis[2] == '2' && $requis[3] == '' && $requis[4] == '0') {
+            $errors['echange']="Si vous souhaitez procéder à un échange, cocher la case Ouvert.e à toutes propositions 
+                               ou veuillez renseigner les biens / services que vous aimeriez en retour le cas écheant ";
+        }
+
+        return $errors;
+    }
 }
