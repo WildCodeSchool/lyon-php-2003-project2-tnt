@@ -2,10 +2,7 @@
 
 {% block stylesheet %}
     <style>
-        body{
-            flex-flow: wrap;
-        }
-
+ 
         .bien{
             width: 100%;
             text-align: center;
@@ -19,16 +16,8 @@
     Je recherche un bien
 {% endblock %}
 
-{% block header %}
-
-{% endblock %}
-
 {% block content %}
-    <header>
-        <div id="retour" >
-            <i class="fas fa-arrow-circle-left"></i>
-        </div>   <!-- pas un span, lien retour choisir type + icon flèche -->
-    </header>
+    {% include '_nav_retour.html.twig' %}
     <div class="bien">
         <h1>Un bien</h1>
     </div>

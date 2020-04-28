@@ -2,25 +2,21 @@
 
 {% block stylesheet %}
     <style>
-
         h1 {
             text-align: center;
         }
-        .input-group{
+        .input-group {
             flex-direction: row-reverse;
         }
     </style>
 {% endblock %}
+
 {% block title %}
     Je recherche un service
 {% endblock %}
 
-{% block header %}
-
-{% endblock %}
-
 {% block content %}
-    {% include '_nav_retour.html' %}
+    {% include '_nav_retour.html.twig' %}
     <section class="container-fluid">
         <h1>Un service</h1>
 
@@ -51,5 +47,6 @@
         <h3>Ce qui pourrait vous intéresser</h3>
         <div>Carousel</div>
     </section>
+    {% include '_nav_bar.html.twig' %}
 
 {% endblock %}

@@ -6,7 +6,6 @@
 body {
     margin: auto auto;
     width: 400px;
-    height: 800px;
     display: flex;
     flex-direction: column;
     border: 1px solid black;
@@ -18,9 +17,13 @@ a:visited {text-decoration: none; color: black;}
 a:hover {text-decoration: underline; color: green;}
 a:active {text-decoration: underline; color: black;}
 
+/*
+/////////////////////////////////////////////////////////// NAV BARS //////////////////////////////////////
+ */
+
 #nav_bottom {
     position: fixed;
-    top: 740px;
+    bottom: 0px;
     height: 60px;
     width: 400px;
     border: 1px solid black;
@@ -28,12 +31,28 @@ a:active {text-decoration: underline; color: black;}
 #nav_bottom > ul {
     display: flex;
     justify-content: space-around;
+    padding: 0px;
+    margin-top: 10px;
+
 }
 #nav_bottom ul li {
     list-style-type: none;
+    cursor: pointer;
 }
 
-#modal_compte_non_co, #modal_compte_non_inscrit, #modal_compte_co { display: none;}
+#nav_bottom ul li img {
+    width: 36px;
+}
+
+#retour img {
+    padding-top: 15px;
+    padding-left: 15px;
+}
+
+#retour h4 {
+    color: white;
+}
+
 
 
 /*
@@ -44,22 +63,43 @@ a:active {text-decoration: underline; color: black;}
     flex-direction: column;
 }
 
-#main_home h6 {
-    margin: 25px auto;
-}
-
 #header_home, #nav_top, #retour {
     height: 60px;
     background-color: #820050;
     color: white;
 }
 
+#header_home nav > p {
+    font-size: 0.7em;
+}
+
+#header_home nav > span {
+    display: flex;
+    justify-content: space-between;
+}
+
+#header_home nav > span > h3 {
+    margin-bottom: 0px;
+}
+
 #main_home #carousel {
     height: 150px;
+    border: 1px solid black;
 }
 
 #main_home #examples {
-    height: 100px;
+    font-size: 0.9em;
+    margin: 20px;
+}
+
+#main_home #examples img {
+    width: 24px;
+    margin: auto auto;
+    display: block;
+}
+
+#main_home #examples blockquote, #main_home #examples p:last-of-type {
+    text-align: center;
 }
 
 #main_home #troc {
@@ -97,4 +137,119 @@ a:active {text-decoration: underline; color: black;}
 
 
 #modal_compte_non_co #input_by_mail { display: none;}
+
+
+/*
+//////////////////////////////////////////////////// BURGER STYLE //////////////////////
+ */
+.menu {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    height: 46px;
+    width: 46px;
+}
+
+.menu-link {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: 1002;
+}
+
+.menu-icon {
+    position: absolute;
+    width: 20px;
+    height: 14px;
+    margin: auto;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 1px;
+}
+
+.menu-circle {
+    background-color: #820050;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    border-radius: 50%;
+    transform: scale(1);
+    z-index: 1000;
+    transition: all 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.menu-overlay {
+    background-color: #820050;
+    color: #fff;
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    transition: opacity 0.2s ease-in-out;
+    z-index: 1001;
+    opacity: 0;
+    visibility: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.menu-overlay a {
+    color: #fff;
+    font-weight: 600;
+    font-size: 32px;
+    padding: 2%;
+    margin-top: 20px;
+}
+
+.menu-overlay ul li a{
+    font-size: 0.9em;
+}
+
+.menu-overlay li {
+    width: 150px;
+}
+
+
+.menu-line {
+    background-color: #fff;
+    height: 2px;
+    width: 100%;
+    border-radius: 2px;
+    position: absolute;
+    left: 0;
+    transition: all 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.menu-line-1 { top: 0; }
+
+.menu-line-2 {
+    top: 0;
+    bottom: 0;
+    margin: auto;
+}
+
+.menu-line-3 { bottom: 0; }
+
+.menu-overlay.open {
+    opacity: 1;
+    visibility: visible;
+}
+
+.menu.open .menu-circle {
+    transform: scale(60);
+}
+
+.menu.open .menu-line-2 { opacity: 0; }
+
+.menu.open .menu-line-1 {
+    transform: translateY(7px) translateY(-50%) rotate(-135deg);
+}
+
+.menu.open .menu-line-3 {
+    transform: translateY(-7px) translateY(50%) rotate(135deg);
+}
+
+#modal_compte_non_co, #modal_compte_non_inscrit, #modal_compte_co { display: none;}
+
 

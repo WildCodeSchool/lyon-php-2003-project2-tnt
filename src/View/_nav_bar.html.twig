@@ -1,15 +1,15 @@
 <div class="container-fluid">
     <nav id="nav_bottom">
         <ul>
-            <li><a href="/home/index"><img src="" alt="Accueil"></a></li>
-            <li><a href=""><img src="" alt="Favoris"></a></li>
+            <li><a href="/home/index" title="Retour à l'accueil"><img src="/assets/images/icons/home.png" alt="Accueil"></a></li>
+            <li><a href="" title="Mes Favoris"><img src="/assets/images/icons/fav.png" alt="Favoris"></a></li>
             {% if session is empty or session.user is empty%}
-                <li><img src="" alt="no_co" id="home_no_co_" data-toggle="modal" data-target="#modal_compte_non_co"></li>
+                <li><img src="/assets/images/icons/profil.png" alt="no_co" id="home_no_co_" data-toggle="modal" data-target="#modal_compte_non_co"></li>
             {% else %}
-                <li><img src="" alt="co" id="home_compte_co" data-toggle="modal" data-target="#modal_compte_co"></li>
+                <li><img src="/assets/images/icons/profil_co.png" alt="co" id="home_compte_co" data-toggle="modal" data-target="#modal_compte_co"></li>
             {% endif %}
-            <li><a href=""><img src="" alt="Plan Site"></a></li>
-            <li><a href=""><img src="" alt="Aides"></a></li>
+            <li><a href="" title="Plan du site"><img src="/assets/images/icons/map.png" alt="Plan Site"></a></li>
+            <li><a href="" title="Aides"><img src="/assets/images/icons/help.png" alt="Aides"></a></li>
         </ul>
     </nav>
 
