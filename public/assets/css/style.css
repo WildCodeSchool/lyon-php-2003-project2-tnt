@@ -5,7 +5,7 @@
 
 body {
     margin: auto auto;
-    width: 400px;
+    /*width: 400px;*/
     display: flex;
     flex-direction: column;
 }
@@ -24,7 +24,7 @@ a:active {text-decoration: underline; color: black;}
     position: fixed;
     bottom: 0px;
     height: 60px;
-    width: 400px;
+    width: 100%;
     border: 1px solid black;
     background-color: white;
 }
@@ -53,6 +53,12 @@ a:active {text-decoration: underline; color: black;}
     color: white;
 }
 
+#retour section {
+    display: flex;
+    justify-content: space-between;
+
+}
+
 
 
 /*
@@ -61,6 +67,7 @@ a:active {text-decoration: underline; color: black;}
 #main_home {
     display: flex;
     flex-direction: column;
+    font-size: 1.1em;
 }
 
 #header_home, #nav_top, #retour {
@@ -90,6 +97,10 @@ a:active {text-decoration: underline; color: black;}
 #main_home #examples {
     font-size: 0.9em;
     margin: 20px;
+}
+
+#main_home #examples > p:last-of-type {
+    margin-top: 40px;
 }
 
 #main_home #examples img {
@@ -122,6 +133,8 @@ a:active {text-decoration: underline; color: black;}
 
 #add_bien {
     margin-top: 50px;
+    padding: 20px;
+    margin-bottom: 50px;
 }
 
 #add_bien label {
@@ -147,6 +160,8 @@ a:active {text-decoration: underline; color: black;}
 
 #add_service {
     margin-top: 50px;
+    margin-bottom: 50px;
+    padding: 20px;
 }
 
 #add_service label {
