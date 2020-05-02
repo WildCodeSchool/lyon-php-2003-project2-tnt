@@ -59,7 +59,7 @@ abstract class AbstractController
         if ($requis[1] == '') {
             $errors['description'] = "Une courte description serait la bienvenue";
         }
-        if ($requis[2] == '2' && $requis[3] == '' && $requis[4] == '0') {
+        if ($requis[2] == '2' && $requis[3] == '' && $requis[4] == 'pasOuvert') {
             $errors['echange']="Si vous souhaitez procéder à un échange, cocher la case Ouvert.e à toutes propositions 
                                ou veuillez renseigner les biens / services que vous aimeriez en retour le cas écheant ";
         }
