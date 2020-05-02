@@ -26,6 +26,7 @@ a:active {text-decoration: underline; color: black;}
     height: 60px;
     width: 400px;
     border: 1px solid black;
+    background-color: white;
 }
 #nav_bottom > ul {
     display: flex;
