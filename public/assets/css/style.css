@@ -116,6 +116,34 @@ a:active {text-decoration: underline; color: black;}
 
 
 /*
+////////////////////////////////////////////////// Product/_forGood /////////////////////////
+*/
+
+#add_bien {
+    margin-top: 50px;
+}
+
+#add_bien label {
+    font-weight: bold;
+    font-size: 1.2em;
+}
+
+#add_bien span {
+    margin-bottom: 30px;
+}
+
+#add_bien textarea {
+    margin-bottom: 30px;
+}
+
+#add_bien > form > div:last-child {
+    text-align: center;
+}
+
+
+
+
+/*
 ////////////////////////////////////////////////// User/Inscription /////////////////////////
 */
 
@@ -247,5 +275,8 @@ a:active {text-decoration: underline; color: black;}
 }
 
 #modal_compte_non_co, #modal_compte_non_inscrit, #modal_compte_co { display: none;}
+
+
+
 
 

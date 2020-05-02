@@ -5,7 +5,7 @@
 
 {% macro textarea(class, name, label, placeholder) %}
     <label for="{{ name }}">{{ label }}</label>
-    <textarea class="{{ class }}" id="{{ name }}" name = "{{ name }}" placeholder="{{ placeholder }}"></textarea>
+    <textarea class="{{ class }}" id="{{ name }}" name = "{{ name }}" placeholder="{{ placeholder }}" rows="8"></textarea>
 {% endmacro %}
 
 {% macro radio(group, name, label, checked) %}
