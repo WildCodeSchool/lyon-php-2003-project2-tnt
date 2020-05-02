@@ -116,7 +116,7 @@ a:active {text-decoration: underline; color: black;}
 
 
 /*
-////////////////////////////////////////////////// Product/_forGood /////////////////////////
+////////////////////////////////////////////////// Product/_formGood /////////////////////////
 */
 
 #add_bien {
@@ -140,7 +140,30 @@ a:active {text-decoration: underline; color: black;}
     text-align: center;
 }
 
+/*
+////////////////////////////////////////////////// Product/_formService /////////////////////////
+*/
 
+#add_service {
+    margin-top: 50px;
+}
+
+#add_service label {
+    font-weight: bold;
+    font-size: 1.2em;
+}
+
+#add_service span, textarea {
+    margin-bottom: 30px;
+}
+
+#openOrNot {
+    font-size: 0.7em;
+}
+
+#add_service > form > div:last-child {
+    text-align: center;
+}
 
 
 /*
