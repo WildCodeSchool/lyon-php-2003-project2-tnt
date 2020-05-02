@@ -1,12 +1,20 @@
 {% extends "layout.html.twig" %}
 {% block title %} Inscription {% endblock %}
-{% block content %}
-<section id="inscription">
-    //modal-head
-    <h1>Formulaire d'inscription</h1>
-    <p>Lorem ipsum</p>
+{% block stylesheet %}
+    <style>
+        #inscription {
+            padding: 20px;
+        }
+    </style>
+{% endblock %}
 
-    //modal-body
+{% block content %}
+    {% include '_nav_retour.html.twig' %}
+    {% include '_nav_bar.html.twig' %}
+<section id="inscription">
+    <h1>Formulaire d'inscription</h1>
+    <p>Lorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsum</p>
+
     <form action="" method="POST" novalidate>
 
         <label for="nickname">Un nom</label>

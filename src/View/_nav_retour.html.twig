@@ -1,6 +1,6 @@
 <header id="retour">
     <section>
-        {% if var == 'propose' or var == 'recherche' %}
+        {% if var == 'propose' or var == 'recherche' or url == '/index.php/user/inscription' %}
         <a href="/home/index">
             {% elseif url == '/index.php/Product/show/bien' or url == '/index.php/Product/show/service' %}
             <a href="/Product/bienOuService/recherche">
