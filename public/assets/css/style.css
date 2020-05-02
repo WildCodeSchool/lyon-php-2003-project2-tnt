@@ -8,7 +8,6 @@ body {
     width: 400px;
     display: flex;
     flex-direction: column;
-    border: 1px solid black;
 }
 
 
@@ -115,9 +114,6 @@ a:active {text-decoration: underline; color: black;}
 ////////////////////////////////////////////////// Item/bienOuService /////////////////////////
 */
 
-#main_bien_service > section {
-    height: 340px;
-}
 
 /*
 ////////////////////////////////////////////////// User/Inscription /////////////////////////
