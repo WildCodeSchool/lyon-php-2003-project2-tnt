@@ -2,7 +2,7 @@
     <section>
         {% if var == 'propose' or var == 'recherche' %}
         <a href="/home/index">
-            {% elseif url == '/index.php/product/show/bien' or url == '/index.php/Product/show/service' %}
+            {% elseif url == '/index.php/Product/show/bien' or url == '/index.php/Product/show/service' %}
             <a href="/Product/bienOuService/recherche">
                 {% elseif url == '/index.php/Product/add/bien' or url == '/index.php/Product/add/service' %}
                 <a href="/Product/bienOuService/propose">
@@ -21,6 +21,7 @@
                       </span>
                     </a>
                 </div>
+
     </section>
 </header>
 <div class="menu-overlay">
