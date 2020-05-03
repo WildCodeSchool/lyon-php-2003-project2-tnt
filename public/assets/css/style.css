@@ -89,9 +89,13 @@ a:active {text-decoration: underline; color: black;}
     margin-bottom: 0px;
 }
 
+#main_home {
+    margin-top: 100px;
+}
+
 #main_home #carousel {
-    height: 150px;
-    border: 1px solid black;
+    height: 600px;
+    display: none;
 }
 
 #main_home #examples {
@@ -239,7 +243,7 @@ a:active {text-decoration: underline; color: black;}
     border-radius: 50%;
     transform: scale(1);
     z-index: 1000;
-    transition: all 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+    transition: all 1s cubic-bezier(0.19, 1, 0.22, 1);
 }
 
 .menu-overlay {
@@ -300,7 +304,7 @@ a:active {text-decoration: underline; color: black;}
 }
 
 .menu.open .menu-circle {
-    transform: scale(60);
+    transform: scale(2);
 }
 
 .menu.open .menu-line-2 { opacity: 0; }
@@ -315,7 +319,98 @@ a:active {text-decoration: underline; color: black;}
 
 #modal_compte_non_co, #modal_compte_non_inscrit, #modal_compte_co { display: none;}
 
+/*
+/////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////// DESKTOP VIEW ////////////////////////////////////////////////////////////////
+*/
 
+@media (min-width: 992px) {
+    #header_home > nav {
+        background-color: white;
+        flex-direction: column;
+        height: 150px;
+        box-shadow: 3px 3px 3px #777;
+    }
+
+    #header_home span {
+        margin: auto auto;
+    }
+
+    #header_home h3, #header_home p {
+        font-size: 4em;
+        text-align: center;
+        color: #820050;
+    }
+
+    .menu {
+        left: 40px;
+        top: 40px;
+        height: 64px;
+        width: 64px;
+    }
+
+    .menu-overlay {
+        width: 25%;
+    }
+
+    .menu-line {
+        background-color: #820050;
+    }
+
+    .menu-circle {
+        background-color: #fff;
+    }
+
+    .menu-icon {
+        width: 32px;
+        height: 20px;
+    }
+
+    .menu.open .menu-circle {
+        background-color: #820050;
+    }
+
+    .menu.open .menu-line {
+        background-color: white;
+    }
+
+    .menu-overlay > a:first-of-type {
+        margin-top: 80px;
+    }
+
+    #main_home #carousel {
+        display: flex;
+        justify-content: space-around;
+        margin: 0 350px;
+    }
+
+    #main_home #carousel img {
+        width: 100%;
+    }
+
+    #main_home #carousel article {
+        display: flex;
+        flex-direction: column;
+        width: 450px;
+    }
+
+    #main_home #carousel article > div {
+        /*visibility: hidden;*/
+        display: flex;
+        flex-direction: column;
+    }
+
+    #main_home #carousel article:first-of-type {
+        margin-top: 270px;
+    }
+    #main_home #carousel article:last-of-type {
+        margin-top: 230px;
+    }
+
+
+
+
+}
 
 
 
