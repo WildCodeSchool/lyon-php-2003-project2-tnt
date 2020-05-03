@@ -510,14 +510,6 @@ a:active {text-decoration: underline; color: black;}
     /*    margin-top: 100px;*/
     /*}*/
 
-    body {
-        flex-direction: row;
-        padding-top: 150px;
-        width: 80%;
-        /*background-image: linear-gradient(#820050, white);*/
-        /*background-color: #820050;*/
-    }
-
     #recherche_top {
         width: 35%;
         height: 50%;
