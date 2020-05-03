@@ -210,6 +210,7 @@ a:active {text-decoration: underline; color: black;}
 #modal_compte_non_co #input_by_mail { display: none;}
 
 
+
 /*
 //////////////////////////////////////////////////// BURGER STYLE //////////////////////
  */
@@ -246,7 +247,7 @@ a:active {text-decoration: underline; color: black;}
     position: absolute;
     border-radius: 50%;
     transform: scale(1);
-    z-index: 1000;
+    z-index: 500;
     transition: all 1s cubic-bezier(0.19, 1, 0.22, 1);
 }
 
@@ -257,7 +258,7 @@ a:active {text-decoration: underline; color: black;}
     width: 100%;
     position: fixed;
     transition: opacity 0.2s ease-in-out;
-    z-index: 1001;
+    z-index: 1000;
     opacity: 0;
     visibility: hidden;
     display: flex;
@@ -321,7 +322,7 @@ a:active {text-decoration: underline; color: black;}
     transform: translateY(-7px) translateY(50%) rotate(135deg);
 }
 
-#modal_compte_non_co, #modal_compte_non_inscrit, #modal_compte_co { display: none;}
+#modal_compte_non_co, #modal_compte_co { display: none;}
 
 /*
 /////////////////////////////////////////////////////////////////////////////////////////////////
