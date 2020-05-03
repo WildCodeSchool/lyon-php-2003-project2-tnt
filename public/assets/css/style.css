@@ -407,7 +407,7 @@ a:active {text-decoration: underline; color: black;}
     #main_home #carousel {
         display: flex;
         justify-content: space-around;
-        margin: 0 350px;
+        margin: 0 200px;
         color: white;
     }
 
@@ -426,7 +426,7 @@ a:active {text-decoration: underline; color: black;}
     #main_home #carousel article {
         display: flex;
         flex-direction: column;
-        width: 450px;
+        width: 100%;
     }
 
     #main_home #carousel article > div {
@@ -436,10 +436,46 @@ a:active {text-decoration: underline; color: black;}
     }
 
     #main_home #carousel article:first-of-type {
-        margin-top: 270px;
+        margin-top: 180px;
+        margin-left: 50px;
     }
+
+    #main_home #carousel article:first-of-type button {
+        position: fixed;
+        top: 465px;
+
+    }
+
+    #main_home #carousel article:first-of-type h4 {
+        margin-bottom: 20px;
+        margin-left: 30px;
+    }
+
+    #main_home #carousel article:first-of-type ul, #carousel article:last-of-type ul {
+        margin-left: 10px;
+    }
+
+    #main_home #carousel article:first-of-type ul li, #carousel article:last-of-type ul li {
+        margin-top: 10px;
+    }
+
+
     #main_home #carousel article:last-of-type {
-        margin-top: 230px;
+        margin-top: 220px;
+    }
+
+    #main_home #carousel article:last-of-type h4 {
+        margin-top: 20px;
+        margin-left: 30px;
+    }
+
+
+
+    #main_home #carousel button {
+        background-color: white;
+        color: #820050;
+        border-radius: 50px;
+        border: none;
     }
     
     #examples, #troc {
@@ -464,6 +500,28 @@ a:active {text-decoration: underline; color: black;}
         list-style-type: none;
         color: #820050;
 
+    }
+
+    #retour img {
+        display: none;
+    }
+
+    /*#liste {*/
+    /*    margin-top: 100px;*/
+    /*}*/
+
+    body {
+        flex-direction: row;
+        padding-top: 150px;
+        width: 80%;
+        /*background-image: linear-gradient(#820050, white);*/
+        /*background-color: #820050;*/
+    }
+
+    #recherche_top {
+        width: 35%;
+        height: 50%;
+        background-color: white;
     }
 
 
