@@ -94,53 +94,56 @@
 {% block content %}
     {% include '_nav_retour.html.twig' %}
     {% include '_nav_bar.html.twig' %}
+    <div class="row">
+        <section class="col-md-4 offset-md-4" id="recherche_top">
 
-    <section class="container-fluid" id="recherche_top">
+            <input type="text" name="search" placeholder="Votre recherche">
 
-        <input type="text" name="search" placeholder="Votre recherche">
-
-        <div>
+            <div>
             <span>
                 <img src="/assets/images/icons/filtre.png" alt="filtre">
                 <p>Filtrer</p>
             </span>
-            <div class="form-group" id="categories">
-                <label for="sel1">Catégories</label>
-                <select class="form-control" id="sel1" name="category">
-                    {% for category in categories %}
-                        <option value="{{ category.id }}"> {{ category.title }} </option>
-                    {% endfor %}
-                </select>
+                <div class="form-group" id="categories">
+                    <label for="sel1">Catégories</label>
+                    <select class="form-control" id="sel1" name="category">
+                        {% for category in categories %}
+                            <option value="{{ category.id }}"> {{ category.title }} </option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-outline-dark">Go !</button>
             </div>
-            <button type="submit" class="btn btn-outline-dark">Go !</button>
-        </div>
-    </section>
+        </section>
 
-    <section class="container-fluid" id="liste">
+        <section class="container-fluid col-md-12" id="liste">
 
-        {% if products is empty %}
-            <p>Oups ! Aucun résultat pour cette recherche, blablabla</p>
-        {% else %}
-            <p>{{ products|length }} {{ var }}s trouvés</p>
+            {% if products is empty %}
+                <p>Oups ! Aucun résultat pour cette recherche, blablabla</p>
+            {% else %}
+                <p>{{ products|length }} {{ var }}s trouvés</p>
+                <div class="row">
+                {% for product in products %}
 
-            {% for product in products %}
-
-
-                <div class="card">
-                    <div class="card-body">
-                        <img src="{{ product.img }}" class="card-img" alt="Photo de {{ product.title }}" >
-                        <div>
-                            <h4 class="card-title">{{ product.title }}</h4>
-                            <span class="badge badge-success">{{ product.deal_type }}</span>
-                            <p class="card-text">{{ product.description }}</p>
-{#                            <p class="card-text"><small class="text-muted">Date de Parution : {{ product.created_at|date("m/d/Y") }}</small></p>#}
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <img src="{{ product.img }}" class="card-img" alt="Photo de {{ product.title }}" >
+                            <div>
+                                <h4 class="card-title">{{ product.title }}</h4>
+                                <span class="badge badge-success">{{ product.deal_type }}</span>
+                                <p class="card-text">{{ product.description }}</p>
+                                {#                            <p class="card-text"><small class="text-muted">Date de Parution : {{ product.created_at|date("m/d/Y") }}</small></p>#}
+                            </div>
+                            <img src="/assets/images/heart.png" width="40px">
                         </div>
-                        <img src="/assets/images/heart.png" width="40px">
                     </div>
                 </div>
 
-            {% endfor %}
-        {% endif %}
-    </section>
+                {% endfor %}
+                </div>
+            {% endif %}
+        </section>
+    </div>
 {% endblock %}
 

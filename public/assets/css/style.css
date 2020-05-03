@@ -2,6 +2,7 @@
 /////////////////////////////////////////////////////// GENERAL /////////////////////////////////
 */
 .container-fluid, html, body {padding: 0; margin: 0; box-sizing: border-box;}
+.row { margin: 0px;}
 
 body {
     margin: auto auto;
@@ -332,9 +333,9 @@ a:active {text-decoration: underline; color: black;}
 @media (min-width: 992px) {
 
     #nav_bottom {
-        top: 0px;
+        top: 40px;
         right: 0px;
-        height: 150px;
+        height: 50px;
         width: 50px;
         border: none;
     }
@@ -502,16 +503,15 @@ a:active {text-decoration: underline; color: black;}
 
     }
 
+    #retour {
+        height: 40px;
+    }
+
     #retour img {
         display: none;
     }
 
-    /*#liste {*/
-    /*    margin-top: 100px;*/
-    /*}*/
-
     #recherche_top {
-        width: 35%;
         height: 50%;
         background-color: white;
     }
