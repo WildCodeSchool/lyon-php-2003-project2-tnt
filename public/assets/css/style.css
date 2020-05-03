@@ -332,6 +332,11 @@ a:active {text-decoration: underline; color: black;}
 
 @media (min-width: 992px) {
 
+    body, #nav_bottom, .menu-circle {
+        background-color: #fff;
+
+    }
+
     #nav_bottom {
         top: 40px;
         right: 0px;
@@ -382,10 +387,6 @@ a:active {text-decoration: underline; color: black;}
 
     .menu-line, #main_home {
         background-color: #820050;
-    }
-
-    .menu-circle {
-        background-color: #fff;
     }
 
     .menu-icon {
