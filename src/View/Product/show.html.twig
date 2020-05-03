@@ -16,28 +16,26 @@
             padding: 5px;
             margin-top: 5px;
             margin-bottom: 50px;
-
-
         }
 
-        #recherche_top > div:first-of-type {
+        #recherche_top > form > div:first-of-type {
             margin-top: 10px;
             padding: 0 5px;
             display: flex;
             justify-content: space-between;
         }
 
-        #recherche_top > div > span {
+        #recherche_top > form > div > span {
             display: flex;
         }
 
-        #recherche_top > div > span > p {
+        #recherche_top > form > div > span > p {
             margin-top: 5px;
             margin-left: 5px;
             font-size: 0.9em;
         }
 
-        #recherche_top > div > span > img {
+        #recherche_top > form > div > span > img {
             width: 25px;
             height: 30px;
         }
@@ -96,24 +94,26 @@
     {% include '_nav_bar.html.twig' %}
     <div class="row">
         <section class="col-md-4 offset-md-4" id="recherche_top">
+            <form action="" method="get">
+                <input type="text" name="search" placeholder="Votre recherche">
 
-            <input type="text" name="search" placeholder="Votre recherche">
-
-            <div>
-            <span>
-                <img src="/assets/images/icons/filtre.png" alt="filtre">
-                <p>Filtrer</p>
-            </span>
-                <div class="form-group" id="categories">
-                    <label for="sel1">Catégories</label>
-                    <select class="form-control" id="sel1" name="category">
-                        {% for category in categories %}
-                            <option value="{{ category.id }}"> {{ category.title }} </option>
-                        {% endfor %}
-                    </select>
+                <div>
+                <span>
+                    <img src="/assets/images/icons/filtre.png" alt="filtre">
+                    <p>Filtrer</p>
+                </span>
+                    <div class="form-group" id="categories">
+                        <label for="sel1">Catégories</label>
+                        <select class="form-control" id="sel1" name="category">
+                            {% for category in categories %}
+                                <option value="{{ category.id }}"> {{ category.title }} </option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-outline-dark">Go !</button>
                 </div>
-                <button type="submit" class="btn btn-outline-dark">Go !</button>
-            </div>
+            </form>
+
         </section>
 
         <section class="container-fluid col-md-12" id="liste">
