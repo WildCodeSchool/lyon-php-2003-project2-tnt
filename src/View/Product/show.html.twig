@@ -86,16 +86,22 @@
 
         }
 
-        #barter {
+        #barter, #hands {
             width: 250px;
             position: absolute;
             top: 50px;
-            right: 160px;
             z-index: -2;
             opacity: 0.5;
         }
 
+        #barter {
+            right: 160px;
+        }
 
+        #hands {
+            left: 160px;
+
+        }
 
         @media (max-width: 576px) {
 
@@ -112,6 +118,7 @@
     {% include '_nav_retour.html.twig' %}
     {% include '_nav_bar.html.twig' %}
     <div class="row">
+        <img src="/assets/images/hands.jpeg" alt="" id="hands">
         <section class="col-md-4 offset-md-4" id="recherche_top">
             <form action="" method="get">
                 <input type="text" name="search" placeholder="Votre recherche">
