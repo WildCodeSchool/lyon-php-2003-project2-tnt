@@ -28,7 +28,7 @@ a:active {text-decoration: underline; color: black;}
     border: 1px solid black;
     background-color: white;
 }
-#nav_bottom > ul {
+#nav_bottom ul {
     display: flex;
     justify-content: space-around;
     padding: 0px;
@@ -90,7 +90,7 @@ a:active {text-decoration: underline; color: black;}
 }
 
 #main_home {
-    margin-top: 100px;
+    margin-top: 90px;
 }
 
 #main_home #carousel {
@@ -123,6 +123,10 @@ a:active {text-decoration: underline; color: black;}
 
 #main_home #propose, #recherche {
     height: 160px;
+}
+
+#footer_desktop {
+    display: none;
 }
 
 
@@ -325,6 +329,27 @@ a:active {text-decoration: underline; color: black;}
 */
 
 @media (min-width: 992px) {
+
+    #nav_bottom {
+        top: 0px;
+        right: 0px;
+        height: 150px;
+        width: 50px;
+        border: none;
+    }
+
+    #nav_bottom ul{
+        flex-direction: column;
+    }
+
+    #nav_bottom ul li {
+        margin-top: 5px;
+    }
+
+    #nav_bottom ul li:not(:nth-of-type(3)){
+        display: none;
+    }
+
     #header_home > nav {
         background-color: white;
         flex-direction: column;
@@ -353,7 +378,7 @@ a:active {text-decoration: underline; color: black;}
         width: 25%;
     }
 
-    .menu-line {
+    .menu-line, #main_home {
         background-color: #820050;
     }
 
@@ -382,10 +407,19 @@ a:active {text-decoration: underline; color: black;}
         display: flex;
         justify-content: space-around;
         margin: 0 350px;
+        color: white;
+    }
+
+    #main_home {
+        box-shadow: 3px 3px 3px #777;
     }
 
     #main_home #carousel img {
         width: 100%;
+    }
+
+    #main_home #carousel a {
+        color: white;
     }
 
     #main_home #carousel article {
@@ -405,6 +439,30 @@ a:active {text-decoration: underline; color: black;}
     }
     #main_home #carousel article:last-of-type {
         margin-top: 230px;
+    }
+    
+    #examples, #troc {
+        display: none;
+    }
+
+    #footer_desktop {
+        display: block;
+        width: 100%;
+        position: absolute;
+        bottom: 0px;
+    }
+
+    #footer_desktop ul {
+        display: flex;
+        justify-content: space-around;
+        font-weight: bold;
+        text-transform: uppercase;
+    }
+
+    #footer_desktop ul li {
+        list-style-type: none;
+        color: #820050;
+
     }
 
 
