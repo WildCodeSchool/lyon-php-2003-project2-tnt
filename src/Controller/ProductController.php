@@ -105,4 +105,12 @@ class ProductController extends AbstractController
                                                                     'var' => $what,
                                                                     'categories' => $categories]);
     }
+
+    public function details($id)
+    {
+        $manager = new ProductManager();
+        $details = $manager->getDetails($id);
+
+        return $this->twig->render('Product/details.html.twig', ['details' => $details]);
+    }
 }
