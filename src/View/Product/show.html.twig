@@ -147,7 +147,6 @@
             {% if products is empty %}
                 <p>Oups ! Aucun résultat pour cette recherche, blablabla</p>
             {% else %}
-                {{ dump(products) }}
                 <p>{{ products|length }} {{ var }}s trouvés</p>
                 <div class="row">
                 {% for product in products %}
