@@ -27,12 +27,6 @@ class UserManager extends AbstractManager
         return null;
     }
 
-    public function selectAllEmails()
-    {
-        $query = "SELECT user.email FROM ". $this->table;
-        return $this->pdo->query($query)->fetchAll();
-    }
-
     public function selectOneByNickname($nickname)
     {
         $query = "SELECT * FROM " . $this->table . " WHERE nickname=:nickname";
@@ -45,16 +39,9 @@ class UserManager extends AbstractManager
         return null;
     }
 
-    public function selectAllNickname()
-    {
-        $query = "SELECT user.nickname FROM ". $this->table;
-        return $this->pdo->query($query)->fetchAll();
-    }
-
-
     /**
      * @param array $infos
-     * @return int
+     *
      */
     public function createProfil(array $infos)
     {
@@ -68,5 +55,6 @@ class UserManager extends AbstractManager
         if ($statement->execute()) {
             return (int)$this->pdo->lastInsertId();
         }
+        return null;
     }
 }

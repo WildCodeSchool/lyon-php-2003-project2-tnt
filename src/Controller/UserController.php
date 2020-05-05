@@ -10,6 +10,7 @@ class UserController extends AbstractController
     public function inscription()
     {
         if (!empty($_POST)) {
+            $userManager = new UserManager();
             $nickname = self::cleanInput($_POST['nickname']);
             $email = self::cleanInput($_POST['email']);
             $pass = $_POST['pass'];
@@ -26,15 +27,14 @@ class UserController extends AbstractController
                 $errors['pass'] = "Vérifiez vos mots de passe";
             }
 
-            if (!self::isNewMail($email)) {
+            if ($userManager->selectOneByEmail($email)) {
                 $errors['email'] = "Email déjà utilisé";
             }
-            if (!self::isNewName($nickname)) {
+            if ($userManager->selectOneByNickname($nickname)) {
                 $errors['nickname'] = "Navré mais déjà pris !";
             }
 
             if (empty($errors)) {
-                $userManager = new UserManager();
                 $pass = password_hash($pass, PASSWORD_DEFAULT);
                 $infos = [
                     'nickname' => $nickname,
@@ -51,26 +51,6 @@ class UserController extends AbstractController
             return $this->twig->render('User/inscription.html.twig', ['errors' => $errors]);
         }
         return $this->twig->render('User/inscription.html.twig');
-    }
-
-    public static function isNewMail($email) : bool
-    {
-        $userManager = new UserManager();
-        $emails = $userManager->selectAllEmails();
-        if (in_array($email, $emails)) {
-            return false;
-        }
-        return true;
-    }
-
-    public static function isNewName($nickname) : bool
-    {
-        $userManager = new UserManager();
-        $users = $userManager->selectAllNickname();
-        if (in_array($nickname, $users)) {
-            return false;
-        }
-        return true;
     }
 
 

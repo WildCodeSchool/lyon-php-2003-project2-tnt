@@ -14,8 +14,8 @@
     </article>
     <p><?= (isset($errors['login'])) ? $errors['login'] : '' ?></p>
 
-    <label for="pass">Mot de passe</label>
-    <input type="password" name="pass" id="pass">
+    <label for="password">Mot de passe</label>
+    <input type="password" name="password" id="password">
     <p><?= (isset($errors['pass'])) ? $errors['pass'] : '' ?></p>
 
     <button type="submit">Me connecter</button>

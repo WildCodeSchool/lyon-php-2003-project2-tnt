@@ -17,13 +17,14 @@ if (getenv('ENV') === false) {
 }
 require_once __DIR__ . '/../config/config.php';
 session_start();
-if (sizeof($_POST) === 2) {
-    $email = $nickname = $pass = '';
+if ($_POST) {
+    $nickname = $email = $pass = '';
     $errors = [];
 
-    if (isset($_POST['email'])) {
+    if ($_POST['email']) {
         $email = trim($_POST['email']);
-    } elseif (isset($_POST['nickname'])) {
+    }
+    if ($_POST['nickname']) {
         $nickname = trim($_POST['nickname']);
     }
     $pass = $_POST['password'];
@@ -46,7 +47,7 @@ if (sizeof($_POST) === 2) {
         if (empty($user)) {
             $errors['login'] = "Login introuvable";
         } else {
-            if (password_verify($pass, $user['password'])) {
+            if ($pass == $user['password']) {
                 $_SESSION['user'] = [
                     'id' => $user['id'],
                     'nickname' => $user['nickname']
@@ -56,6 +57,7 @@ if (sizeof($_POST) === 2) {
                 $errors['pass'] = "Mauvais mot de passe";
             }
         }
+//        return $this->twig->render();
     }
 }
 require_once __DIR__ . '/../src/routing.php';
