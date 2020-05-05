@@ -13,7 +13,7 @@ body {
 
 
 a:link {text-decoration: none; color: black;}
-a:visited {text-decoration: none; color: black;}
+a:visited {text-decoration: none; color: #000000;}
 a:hover {text-decoration: underline; color: green;}
 a:active {text-decoration: underline; color: black;}
 
@@ -26,7 +26,7 @@ a:active {text-decoration: underline; color: black;}
     bottom: 0px;
     height: 60px;
     width: 400px;
-    border: 1px solid black;
+    border: 1px solid #000000;
 }
 #nav_bottom > ul {
     display: flex;
@@ -66,7 +66,7 @@ a:active {text-decoration: underline; color: black;}
 #header_home, #nav_top, #retour {
     height: 60px;
     background-color: #820050;
-    color: white;
+    color: #ffffff;
 }
 
 #header_home nav > p {

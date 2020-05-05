@@ -252,7 +252,7 @@ CREATE TABLE `user` (
   `email` varchar(100) DEFAULT NULL,
   `phone` varchar(15) DEFAULT NULL,
   `nickname` varchar(45) NOT NULL,
-  `password` varchar(45) DEFAULT NULL,
+  `password` varchar(80) DEFAULT NULL,
   `zip_code` varchar(10) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
