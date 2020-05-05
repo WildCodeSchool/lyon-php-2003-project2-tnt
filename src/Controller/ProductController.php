@@ -27,22 +27,25 @@ class ProductController extends AbstractController
                                          $_POST['enEchangeDe'],$_POST['proposition']]);
             if (!empty($errors)) {
                 return $this->twig->render('Product/add.html.twig', ['categories' => $listCategories,
-                                                                                  'errors' => $errors]);
+                                                                           'errors' => $errors, 'var' => $bienService]);
             }
-            $date = new DateTime('now');
+
+            $fakeCategory = 1;
+            $etat = ((isset($_POST['etat'])) ? $_POST['etat'] : 'null');
+
+            $exchange = (($_POST['echangeOuDon'] == 'echange') ? 2 : 1);
             $product = [
                 'title' => $title,
-                'category' => $_POST['category'],
-                'etat' => $_POST['etat'],
+                'category_id' => $fakeCategory,
+                'etat' => $etat,
                 'description' => $description,
-                'exchange_type_id' => $_POST['echangeOuDon'],
+                'exchange_type_id' => $exchange,
                 'wantBack' => self::cleanInput($_POST['enEchangeDe']),
                 'fullProp' => $_POST['proposition'],
-                'date' => $date->format('d-m-Y')
             ];
             $userId = $_SESSION['user']['id'];
-            $id = $productManager->insert($product, $userId, $productType);
-            header('Location:/product/show/' . $id);
+            $productManager->insert($product, $userId, $productType);
+            header('Location:/product/show/' . $bienService);
         }
         return $this->twig->render('Product/add.html.twig', ['categories' => $listCategories,
                                                                     'var' => $bienService]);

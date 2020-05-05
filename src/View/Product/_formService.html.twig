@@ -16,6 +16,8 @@
         <div class="form-group">
             {{ form.textarea('form-control','description', 'Description du service', 'Précisez si besoin, et n\'oubliez pas de donner vos disponibilités !') }}
         </div>
+        {% if errors.description is defined %}<span style="color: red">{{ errors.description }}</span> {% endif %}
+
         <div class="form-group">
             {{ form.radio('echangeOuDon', 'echange', 'Echange', 'checked') }}
             {{ form.radio('echangeOuDon', 'don', 'Don', '') }}
@@ -24,9 +26,9 @@
         <div class="form-group hiddenIfDon">
             {{ form.input('text', 'form-control','enEchangeDe', 'Ou en échange de', 'Précisez ici le(s) bien(s)/service(s) souhaité(s) en échange') }}
         </div>
-        <div class="form-group form-check hiddenIfDon">
-            <input type="checkbox" class="form-check-input" id="check-autres" name="proposition">
-            <label class="form-check-label" for="check-autres">Vous êtes ouvert.e à toute proposition</label>
+        <div class="form-group">
+            {{ form.radio('proposition', 'ouvert', 'Je suis ouvert à d\'autres proposition', 'checked') }}
+            {{ form.radio('proposition', 'pasOuvert', 'Je souhaite uniquement ces biens / services en échange', '') }}
         </div>
         <div class="buttons">
             <button type="button" class="btn btn-outline-primary">Aperçu</button>

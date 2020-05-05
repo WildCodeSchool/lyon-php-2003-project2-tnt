@@ -247,13 +247,13 @@ DROP TABLE IF EXISTS `user`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `user` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `firstname` varchar(45) NOT NULL,
-  `lastname` varchar(45) DEFAULT NULL,
-  `email` varchar(100) DEFAULT NULL,
-  `phone` varchar(15) DEFAULT NULL,
+  `firstname` varchar(45) NULL,
+  `lastname` varchar(45) NULL,
+  `email` varchar(100) NOT NULL,
+  `phone` varchar(15) NULL,
   `nickname` varchar(45) NOT NULL,
-  `password` varchar(80) DEFAULT NULL,
-  `zip_code` varchar(10) DEFAULT NULL,
+  `password` varchar(100) NOT NULL,
+  `zip_code` varchar(10)  NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -264,7 +264,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES (1,'Nico','Gaget','n@gmail.com','','Ptite bière','1234','69500'),(2,'brice','','','','Pakorek',NULL,NULL),(3,'Justine','','','','Justucru','',''),(4,'Raphael','','','','Raph',NULL,NULL);
+INSERT INTO `user` VALUES (1,'Nico','Gaget','n@gmail.com','','Ptite bière','1234','69500'),(2,'brice','','','','Pakorek',NOT NULL,NULL),(3,'Justine','','','','Justucru','',''),(4,'Raphael','','','','Raph',NOT NULL,NULL);
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
