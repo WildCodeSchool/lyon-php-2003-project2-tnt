@@ -1,0 +1,56 @@
+{% extends "layout.html.twig" %}
+
+
+{% block content %}
+    {% include '_nav_retour.html.twig' %}
+    {% include '_nav_bar.html.twig' %}
+    <form action="" method="POST">
+
+        <article id="input_by_name">
+            <label for="nickname">Nom utilisateur</label>
+            <input type="text" name="nickname" id="nickname">
+            <p class="switch_input">Se connecter avec l'adresse email</p>
+        </article>
+
+        <article id="input_by_mail">
+            <label for="email">Email</label>
+            <input type="email" name="email" id="email">
+            <p class="switch_input">Se connecter avec le nom utilisateur</p>
+        </article>
+
+
+        <p>{{ (errors.login is defined) ? errors.login : '' }}</p>
+
+        <label for="password">Mot de passe</label>
+        <input type="password" name="password" id="password">
+        <p>{{ (errors.pass is defined) ? errors.pass : '' }}</p>
+
+        <button type="submit">Me connecter</button>
+
+        <p>Mot de passe oublié ? <a href="">Réinitialiser le</a></p>
+
+    </form>
+
+{% endblock %}
+
+{% block javascripts %}
+    <script>
+        $(function () {
+
+            const input_name = $('#input_by_name');
+            const input_mail = $('#input_by_mail');
+            const switchy = $('.switch_input');
+
+            input_mail.slideUp();
+
+            switchy.click(() => {
+                input_name.slideToggle();
+                input_mail.slideToggle();
+            });
+
+        });
+    </script>
+{% endblock %}
+
+
+

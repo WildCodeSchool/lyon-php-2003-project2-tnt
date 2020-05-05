@@ -78,4 +78,53 @@ class UserController extends AbstractController
         $profil = $profilManager->selectOneById($id);
         return $this->twig->render('User/profil.html.twig', ['profil' => $profil]);
     }
+
+    public function login()
+    {
+        if ($_POST) {
+            $nickname = $email = $pass = '';
+            $errors = [];
+
+            $email = trim($_POST['email']);
+            $nickname = trim($_POST['nickname']);
+            $pass = $_POST['password'];
+
+            if (empty($nickname) && empty($email)) {
+                $errors['login'] = "Login requis";
+            }
+            if (empty($pass)) {
+                $errors['pass'] = "Mot de passe requis";
+            }
+
+            if (empty($errors)) {
+                $userManager = new UserManager();
+                if ($email == '') {
+                    $user = $userManager->selectOneByNickname($nickname);
+                } else {
+                    $user = $userManager->selectOneByEmail($email);
+                }
+                if (empty($user)) {
+                    $errors['login'] = "Login introuvable";
+                } else {
+                    if ($pass == $user['password']) {
+                        $_SESSION['user'] = [
+                            'id' => $user['id'],
+                            'nickname' => $user['nickname']
+                        ];
+                        header('Location: /');
+                    } else {
+                        $errors['pass'] = "Mauvais mot de passe";
+                    }
+                }
+            }
+            return $this->twig->render('User/login.html.twig', ['errors' => $errors]);
+        }
+        return $this->twig->render('User/login.html.twig');
+    }
+
+    public function logout()
+    {
+        unset($_SESSION['user']);
+        header('Location: /');
+    }
 }
