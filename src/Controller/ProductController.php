@@ -35,7 +35,7 @@ class ProductController extends AbstractController
             $exchange = (($_POST['echangeOuDon'] == 'echange') ? 2 : 1);
             $product = [
                 'title' => $title,
-                'category_id' => $fakeCategory,
+                'category_id' => 1,
                 'etat' => $etat,
                 'description' => $description,
                 'exchange_type_id' => $exchange,
@@ -109,5 +109,19 @@ class ProductController extends AbstractController
     {
 
         return $this->twig->render('Item/show.html.twig');
+    }
+
+    /**
+     * Handle item deletion
+     * @param string $idProduct
+     * @param int $id
+     */
+    public function delete(string $idProduct)
+    {
+        $ProductManager = new ProductManager();
+        $user = $ProductManager->userId($idProduct);
+        $ProductManager->delete($idProduct);
+
+        header('Location: /user/inventaire/' . $user['user_id']);
     }
 }
