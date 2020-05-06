@@ -1,7 +1,113 @@
 {% extends "layout.html.twig" %}
 
+{% block title %}{{ details.0.title }}{% endblock %}
+
+{% block stylesheet %}
+    <style>
+
+        #main {
+            width: 80%;
+            margin-left: auto;
+            margin-right: auto;
+            margin-bottom: 100px;
+        }
+
+        header, #user, #localisation, #echange, .col-md-4:last-of-type > section, .col-md-8:last-of-type {
+            box-shadow: 0 2px 3px #999;
+            background-color: white;
+        }
+
+        header {
+            margin-bottom: 5px;
+        }
+
+        .col-md-8 > img:first-of-type {
+            width: 100%;
+            padding: 20px;
+        }
+
+        .col-md-4 > section {
+            display: flex;
+            margin-top: 10px;
+        }
+
+        .col-md-4 > section > img {
+            width: 10%;
+            margin: 10px;
+        }
+
+        button {
+            width: 100%;
+            margin: 10px;
+        }
+
+        .col-md-4:first-of-type {
+            align-self: center;
+        }
+
+        @media (max-width: 576px) {
+            .col-md-8 > .row {
+                display: flex;
+                flex-direction: column-reverse;
+            }
+
+        }
+
+        .col-md-8 {
+            width: 100%;
+        }
+
+
+    </style>
+{% endblock %}
+
 {% block content %}
-    {{ dump() }}
+    {% include '_nav_retour.html.twig' %}
+    {% include '_nav_bar.html.twig' %}
+    <section class="container-fluid" id="main">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="row">
+                    <div class="col-md-4">
+                        <article id="echange">
+                            <h2>En echange de :</h2>
+                            <p>{{ details.0.enEchangeDe }}</p>
+                            <p>{{ details.0.proposition }}</p>
+                        </article>
+                    </div>
+                    <div class="col-md-8">
+                        <header>
+                            <span class="badge badge-success">{{ details.0.deal_type }}</span>
+                        </header>
+
+                        <img src="{{ details.0.img }}" alt="">
+                        <article>
+                            <h1>{{ details.0.title }}</h1>
+                            <h5>{{ details.0.name }}</h5>
+                            <h6>Etat</h6>
+                            <p>{{ details.0.description }}</p>
+                            <p>{{ details.0.created_at }}</p>
+                        </article>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <article id="user">
+                    <img src="" alt="Photo Profil">
+                    <h3>{{ details.0.nickname }}</h3>
+                </article>
+                <article id="localisation">
+                    <h3>Localisation</h3>
+                    <p>{{ details.0.zip_code }}</p>
+                    <iframe src="" frameborder="0"></iframe>
+                </article>
+                <section>
+                    <img src="/assets/images/heart.png" alt="favoris" title="Ajouter aux Favoris">
+                    <button type="button" class="btn btn-outline-success btn-lg">Faire un Troc</button>
+                </section>
+            </div>
+        </div>
+    </section>
 
 {% endblock %}
 
