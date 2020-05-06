@@ -120,10 +120,10 @@ class ProductManager extends AbstractManager
     /**
      * Get all details from an ad
      *
-     * @param int $id
+     * @param string $productId
      * @return array
      */
-    public function getDetails(int $id): array
+    public function getDetails(string $productId): array
     {
         $query = "SELECT p.img, p.title, p.description, p.created_at, p.proposition, p.enEchangeDe, x.deal_type, 
                          /*etat.title, */category.name, user.email, user.nickname, user.zip_code 
@@ -134,7 +134,7 @@ class ProductManager extends AbstractManager
                   JOIN user ON p.user_id = user.id 
                   WHERE p.id = :id";
         $state = $this->pdo->prepare($query);
-        $state->bindValue('id', $id, \PDO::PARAM_INT);
+        $state->bindValue('id', $productId, \PDO::PARAM_STR);
         $state->execute();
 
         return $state->fetchAll(\PDO::FETCH_ASSOC);

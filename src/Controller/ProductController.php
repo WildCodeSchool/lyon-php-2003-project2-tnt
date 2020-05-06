@@ -109,16 +109,24 @@ class ProductController extends AbstractController
                                                                     'categories' => $categories]);
     }
 
-    public function details($id)
+    public function details(string $productId)
     {
         $manager = new ProductManager();
-        $details = $manager->getDetails(intval($id));
+        $details = $manager->getDetails($productId);
 
 //        try {
-            return $this->twig->render('Product/details.html.twig', ['details' => $details]);
+            return $this->twig->render('Product/details.html.twig', ['details' => $details, 'id' => $productId]);
 //        } catch (LoaderError $e) {
 //        } catch (RuntimeError $e) {
 //        } catch (SyntaxError $e) {
 //        }
+    }
+
+    public function offre($productId)
+    {
+        $manager = new ProductManager();
+        $details = $manager->getDetails($productId);
+
+        return $this->twig->render('Product/offre.html.twig', ['details' => $details]);
     }
 }
