@@ -147,19 +147,22 @@
             {% if products is empty %}
                 <p>Oups ! Aucun résultat pour cette recherche, blablabla</p>
             {% else %}
+
                 <p>{{ products|length }} {{ var }}s trouvés</p>
                 <div class="row">
                 {% for product in products %}
 
-                <div class="col-md-4">
-                    <div class="card">
+                <div class="col-md-4" >
+                    <div class="card" style="height: 180px">
                         <div class="card-body">
                             <img src="{{ product.img }}" class="card-img" alt="Photo de {{ product.title }}" >
                             <div>
                                 <h4 class="card-title">{{ product.title }}</h4>
-                                <h6>Etat : {{ product.etat }}</h6>
+                                <h6>Etat : {{ product.etat }} </h6>
+
                                 <span class="badge badge-success">{{ product.deal_type }}</span>
                                 <p class="card-text">{{ product.description }}</p>
+                                <h6>Proposé le {{ product.created_at | date("d/m/Y") }}</h6>
                                 {#                            <p class="card-text"><small class="text-muted">Date de Parution : {{ product.created_at|date("m/d/Y") }}</small></p>#}
                             </div>
                             <img src="/assets/images/heart.png" width="40px">
