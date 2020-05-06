@@ -127,6 +127,23 @@ class ProductController extends AbstractController
         $manager = new ProductManager();
         $details = $manager->getDetails($productId);
 
+        var_dump($_SESSION);
+        var_dump($details);
+
+        if (isset($_POST['message'])) {
+            $retour = mail(
+                $_SESSION['email'],
+                'Troc & Troc : Nouveau Message',
+                $_POST['message'],
+                'From: ' . $details['email']
+            );
+            if ($retour) {
+                echo '<p>Votre message a été envoyé.</p>';
+            } else {
+                echo '<p>Erreur.</p>';
+            }
+        }
+
         return $this->twig->render('Product/offre.html.twig', ['details' => $details]);
     }
 }
