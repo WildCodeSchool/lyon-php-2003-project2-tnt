@@ -101,7 +101,7 @@ DROP TABLE IF EXISTS `history`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `history` (
-  `id` int(11) NOT NULL,
+  `id` int(11) AUTO_INCREMENT NOT NULL,
   `product_id` int(11) NOT NULL,
   `history_type_id` int(11) NOT NULL,
   `created_at` datetime DEFAULT NULL,
@@ -130,7 +130,7 @@ DROP TABLE IF EXISTS `history_type`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `history_type` (
-  `id` int(11) NOT NULL,
+  `id` int(11) AUTO_INCREMENT NOT NULL,
   `name` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -180,7 +180,7 @@ DROP TABLE IF EXISTS `product`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `product` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(11) AUTO_INCREMENT NOT NULL,
   `title` varchar(100) NOT NULL,
   `description` text,
   `created_at` datetime DEFAULT NULL,
@@ -264,7 +264,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES (1,'Nico','Gaget','n@gmail.com','','Ptite bière','1234','69500'),(2,'brice','','','','Pakorek',NULL,NULL),(3,'Justine','','','','Justucru','',''),(4,'Raphael','','','','Raph',NULL,NULL);
+INSERT INTO `user` VALUES (1,'Nico','Gaget','n@gmail.com','','Ptite bière','1234','69500'),(2,'brice','','','','Pakorek',NOT NULL,NULL),(3,'Justine','','','','Justucru','',''),(4,'Raphael','','','','Raph',NOT NULL,NULL);
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;

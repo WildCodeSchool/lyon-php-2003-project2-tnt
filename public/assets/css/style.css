@@ -75,7 +75,7 @@ a:active {text-decoration: underline; color: black;}
 #header_home, #nav_top, #retour {
     height: 60px;
     background-color: #820050;
-    color: white;
+    color: #ffffff;
 }
 
 #header_home nav > p {
