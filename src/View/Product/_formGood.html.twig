@@ -10,7 +10,11 @@
 
         <span style="display: flex;">
             <div class="form-group">
-                {{ form.select('form-control', 'category_is','Choisissez une catégorie') }}
+                <select name="category" id="selectCategory">
+                    {% for category in categories %}
+                        <option value="{{ category.id }}">{{ category.name }}</option>
+                    {% endfor %}
+                </select>
             </div>
 
             <div class="form-group">

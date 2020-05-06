@@ -33,13 +33,12 @@ class ProductController extends AbstractController
                                                                            'errors' => $errors, 'var' => $bienService]);
             }
 
-            $fakeCategory = 1;
             $etat = ((isset($_POST['etat'])) ? $_POST['etat'] : 'null');
 
             $exchange = (($_POST['echangeOuDon'] == 'echange') ? 2 : 1);
             $product = [
                 'title' => $title,
-                'category_id' => $fakeCategory,
+                'category_id' => 1,
                 'etat' => $etat,
                 'description' => $description,
                 'exchange_type_id' => $exchange,
@@ -128,5 +127,24 @@ class ProductController extends AbstractController
         $details = $manager->getDetails($productId);
 
         return $this->twig->render('Product/offre.html.twig', ['details' => $details]);
+    }
+
+    public function showProduct()
+    {
+
+        return $this->twig->render('Item/show.html.twig');
+    }
+
+    /**
+     * Handle item deletion
+     * @param int $idProduct
+     */
+    public function deleteProduct(int $idProduct)
+    {
+        $deleteProduct = new ProductManager();
+        $user = $deleteProduct->userId($idProduct);
+        $deleteProduct->delete($idProduct);
+
+        header('Location: /user/inventaire/' . $user['user_id']);
     }
 }
