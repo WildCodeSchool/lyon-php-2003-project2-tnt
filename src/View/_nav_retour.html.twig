@@ -1,8 +1,48 @@
 <header id="retour">
-    <a href="/home/index">
-        <img src="/assets/images/icons/previous_white.png" alt="retour">
-    <!--        <h4>Retour</h4>-->
-    </a>
+    <section>
+        {% if var == 'propose' or var == 'recherche' or url == '/index.php/user/inscription' %}
+        <a href="/home/index">
+            {% elseif url == '/index.php/Product/show/bien' or url == '/index.php/Product/show/service' %}
+            <a href="/Product/bienOuService/recherche">
+                {% elseif url == '/index.php/Product/add/bien' or url == '/index.php/Product/add/service' %}
+                <a href="/Product/bienOuService/propose">
+                    {% endif %}
+
+                    <img src="/assets/images/icons/previous_white.png" alt="retour">
+                </a>
+
+                <div class="menu">
+                    <span class="menu-circle"></span>
+                    <a href="#" class="menu-link">
+                      <span class="menu-icon">
+                        <span class="menu-line menu-line-1"></span>
+                        <span class="menu-line menu-line-2"></span>
+                        <span class="menu-line menu-line-3"></span>
+                      </span>
+                    </a>
+                </div>
+
+    </section>
 </header>
+<div class="menu-overlay">
+    <a href="/">Accueil</a>
+    <a href="/Product/bienOuService/propose">Je propose</a>
+    <ul>
+        <li><a href="/Product/add/bien">Un Bien</a></li>
+        <li><a href="/Product/add/service">Un Service</a></li>
+    </ul>
+    <a href="/Product/bienOuService/recherche">Je recherche</a>
+    <ul>
+        <li><a href="/Product/show/bien">Un Bien</a></li>
+        <li><a href="/Product/show/service">Un Service</a></li>
+    </ul>
+    <a href="#">Plan du site</a>
+    <a href="#">Infos - FAQ</a>
+    <a href="#">Contact</a>
+    <a href="#">Mentions Légales</a>
+</div>
+
+
+
 
 {#ici switch URI pour redirection selon page#}

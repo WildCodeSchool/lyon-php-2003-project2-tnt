@@ -39,6 +39,7 @@ abstract class AbstractController
         );
         $this->twig->addExtension(new DebugExtension());
         $this->twig->addGlobal('session', $_SESSION);
+        $this->twig->addGlobal('url', $_SERVER['PHP_SELF']);
     }
 
     protected static function cleanInput($data) : string

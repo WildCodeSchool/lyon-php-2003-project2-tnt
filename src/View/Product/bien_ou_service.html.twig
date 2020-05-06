@@ -4,22 +4,67 @@
     Bien ou Service
 {% endblock %}
 
+{% block stylesheet %}
+    <style>
+
+        #main_bien_service {
+            padding: 20px;
+        }
+
+        #main_bien_service > a:first-of-type section {
+            margin-top: 150px;
+            margin-bottom: 100px;
+        }
+
+        #main_bien_service > a:first-of-type section {
+            padding: 0 20px;
+        }
+
+
+        #main_bien_service section {
+            display: flex;
+            justify-content: space-between;
+
+        }
+
+        #main_bien_service section > span > p {
+            font-size: 0.7em;
+        }
+
+        #main_bien_service section > img {
+            height: 120px;
+            width: 120px;
+            border-radius: 50%;
+            border: 1px solid black;
+        }
+
+
+
+    </style>
+{% endblock %}
+
+
 
 {% block content %}
+    {% include '_nav_retour.html.twig' %}
+
     <main id="main_bien_service">
-        {% include '_nav_retour.html.twig' %}
-        <a href="/product/{{ (var == 'propose') ? 'add/bien' : 'show/bien' }}">
+        <a href="/Product/{{ (var == 'propose') ? 'add/bien' : 'show/bien' }}">
             <section id="bien">
-                <h1>Un bien</h1>
-                <p>exemples</p>
+                <span>
+                    <h1>Un Bien</h1>
+                    <p>"Perceuse, Bois, Voiture, ..."</p>
+                </span>
                 <img src="" alt=""> {# idéalement, icones 'dynamiques'#}
             </section>
         </a>
-        <a href="/product/{{ (var == 'propose') ? 'add/service' : 'show/service' }}">
+        <a href="/Product/{{ (var == 'propose') ? 'add/service' : 'show/service' }}">
             <section id="service">
-                <h1>Un Service</h1>
-                <p>exemples</p>
                 <img src="" alt=""> {# idéalement, icones 'dynamiques'#}
+                <span>
+                    <h1>Un Service</h1>
+                    <p>"Cours de soutien, jardinage, courses, ..."</p>
+                </span>
             </section>
         </a>
     </main>

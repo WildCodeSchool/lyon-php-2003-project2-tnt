@@ -38,12 +38,12 @@ class UserController extends AbstractController
                 $pass = password_hash($pass, PASSWORD_DEFAULT);
                 $infos = [
                     'nickname' => $nickname,
-                    'email'    => $email,
-                    'pass'     => $pass
+                    'email' => $email,
+                    'pass' => $pass
                 ];
                 $id = $userManager->createProfil($infos);
                 $_SESSION['user'] = [
-                    'id'       => $id,
+                    'id' => $id,
                     'nickname' => $nickname
                 ];
                 header('Location: /user/Profil/' . $id);
@@ -53,7 +53,7 @@ class UserController extends AbstractController
         return $this->twig->render('User/inscription.html.twig');
     }
 
-    public static function isNewMail($email) : bool
+    public static function isNewMail($email): bool
     {
         $userManager = new UserManager();
         $emails = $userManager->selectAllEmails();
@@ -63,7 +63,7 @@ class UserController extends AbstractController
         return true;
     }
 
-    public static function isNewName($nickname) : bool
+    public static function isNewName($nickname): bool
     {
         $userManager = new UserManager();
         $users = $userManager->selectAllNickname();
@@ -73,8 +73,15 @@ class UserController extends AbstractController
         return true;
     }
 
+    public function inventaire($id)
+    {
+        $inventaireManager = new UserManager();
+        $inventaire = $inventaireManager->userProduct($id);
 
-//    public function inventaire($id)
+        return $this->twig->render('User/inventaire.html.twig', ['inventaire' => $inventaire]);
+    }
+
+    //    public function inventaire($id)
 //    {
 //        // select inventaire.user_id
 //        return $this->twig->render('User/inventaire.html.twig');
