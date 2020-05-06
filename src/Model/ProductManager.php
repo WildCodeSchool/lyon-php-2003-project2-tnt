@@ -114,11 +114,11 @@ class ProductManager extends AbstractManager
         return $state->fetchAll(\PDO::FETCH_ASSOC);
     }
 
-    public function userId (string $idProduct)
+    public function userId(int $idProduct)
     {
         $query = "SELECT user_id FROM " . $this->table . " WHERE product.id= :idProduct";
         $statement = $this->pdo->prepare($query);
-        $statement->bindValue(':idProduct', $idProduct, \PDO::PARAM_STR);
+        $statement->bindValue(':idProduct', intval($idProduct), \PDO::PARAM_STR);
         $statement->execute();
         return $statement->fetch();
     }

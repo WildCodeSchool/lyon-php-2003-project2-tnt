@@ -113,14 +113,13 @@ class ProductController extends AbstractController
 
     /**
      * Handle item deletion
-     * @param string $idProduct
-     * @param int $id
+     * @param int $idProduct
      */
-    public function delete(string $idProduct)
+    public function deleteProduct(int $idProduct)
     {
-        $ProductManager = new ProductManager();
-        $user = $ProductManager->userId($idProduct);
-        $ProductManager->delete($idProduct);
+        $deleteProduct = new ProductManager();
+        $user = $deleteProduct->userId($idProduct);
+        $deleteProduct->delete($idProduct);
 
         header('Location: /user/inventaire/' . $user['user_id']);
     }
