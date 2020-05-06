@@ -53,26 +53,6 @@ class UserController extends AbstractController
         return $this->twig->render('User/inscription.html.twig');
     }
 
-    public static function isNewMail($email): bool
-    {
-        $userManager = new UserManager();
-        $emails = $userManager->selectAllEmails();
-        if (in_array($email, $emails)) {
-            return false;
-        }
-        return true;
-    }
-
-    public static function isNewName($nickname): bool
-    {
-        $userManager = new UserManager();
-        $users = $userManager->selectAllNickname();
-        if (in_array($nickname, $users)) {
-            return false;
-        }
-        return true;
-    }
-
     public function inventaire($id)
     {
         $inventaireManager = new UserManager();
