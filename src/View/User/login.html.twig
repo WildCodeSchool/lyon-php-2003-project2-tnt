@@ -35,20 +35,8 @@
 
 {% block javascripts %}
     <script>
-        $(function () {
 
-            const input_name = $('#input_by_name');
-            const input_mail = $('#input_by_mail');
-            const switchy = $('.switch_input');
 
-            input_mail.slideUp();
-
-            switchy.click(() => {
-                input_name.slideToggle();
-                input_mail.slideToggle();
-            });
-
-        });
     </script>
 {% endblock %}
 

@@ -38,12 +38,12 @@ class UserController extends AbstractController
                 $pass = password_hash($pass, PASSWORD_DEFAULT);
                 $infos = [
                     'nickname' => $nickname,
-                    'email'    => $email,
-                    'pass'     => $pass
+                    'email' => $email,
+                    'pass' => $pass
                 ];
                 $id = $userManager->createProfil($infos);
                 $_SESSION['user'] = [
-                    'id'       => $id,
+                    'id' => $id,
                     'nickname' => $nickname
                 ];
                 header('Location: /user/Profil/' . $id);
@@ -53,12 +53,14 @@ class UserController extends AbstractController
         return $this->twig->render('User/inscription.html.twig');
     }
 
+    public function inventaire($id)
+    {
+        $inventaireManager = new UserManager();
+        $inventaire = $inventaireManager->userProduct($id);
 
-//    public function inventaire($id)
-//    {
-//        // select inventaire.user_id
-//        return $this->twig->render('User/inventaire.html.twig');
-//    }
+        return $this->twig->render('User/inventaire.html.twig', ['inventaire' => $inventaire]);
+    }
+
 //
 //    public function favoris($id)
 //    {
