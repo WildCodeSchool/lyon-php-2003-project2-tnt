@@ -71,15 +71,16 @@
                     <div class="col-md-4">
                         <article id="echange">
                             <h2>En echange de :</h2>
-                            <p>{{ details.0.enEchangeDe }}</p>
-                            <p>{{ details.0.proposition }}</p>
+                            {% if details.0.deal_type == 'echange' %}
+                                <p>{{ details.0.enEchangeDe }}</p>
+                                <p>{{ details.0.proposition }}</p>
+                            {% else %}
+                                <p>Rien du tout :)</p>
+                                <p>(Un sourire tout au plus)</p>
+                            {% endif %}
                         </article>
                     </div>
                     <div class="col-md-8">
-                        <header>
-                            <span class="badge badge-success">{{ details.0.deal_type }}</span>
-                        </header>
-
                         <img src="{{ details.0.img }}" alt="">
                         <article>
                             <h1>{{ details.0.title }}</h1>
