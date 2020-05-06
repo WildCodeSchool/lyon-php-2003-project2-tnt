@@ -105,4 +105,10 @@ class ProductController extends AbstractController
                                                                     'var' => $what,
                                                                     'categories' => $categories]);
     }
+
+    public function showProduct(){
+
+        return $this->twig->render('Item/show.html.twig');
+    }
+
 }
