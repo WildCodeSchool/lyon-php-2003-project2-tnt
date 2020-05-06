@@ -4,6 +4,9 @@ namespace App\Controller;
 
 use App\Model\ProductManager;
 use DateTime;
+use Twig\Error\LoaderError;
+use Twig\Error\RuntimeError;
+use Twig\Error\SyntaxError;
 
 class ProductController extends AbstractController
 {
@@ -109,8 +112,13 @@ class ProductController extends AbstractController
     public function details($id)
     {
         $manager = new ProductManager();
-        $details = $manager->getDetails($id);
+        $details = $manager->getDetails(intval($id));
 
-        return $this->twig->render('Product/details.html.twig', ['details' => $details]);
+//        try {
+            return $this->twig->render('Product/details.html.twig', ['details' => $details]);
+//        } catch (LoaderError $e) {
+//        } catch (RuntimeError $e) {
+//        } catch (SyntaxError $e) {
+//        }
     }
 }

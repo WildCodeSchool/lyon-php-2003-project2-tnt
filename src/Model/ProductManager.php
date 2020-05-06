@@ -118,21 +118,22 @@ class ProductManager extends AbstractManager
     /**
      * Get all details from an ad
      *
-     * @param string $id
+     * @param int $id
      * @return array
      */
-    public function getDetails(string $id): array
+    public function getDetails(int $id): array
     {
         $query = "SELECT p.img, p.title, p.description, p.created_at, p.proposition, p.enEchangeDe, x.deal_type, 
-                         etat.title, category.name, user.email, user.nickname, user.zip_code 
+                         /*etat.title, */category.name, user.email, user.nickname, user.zip_code 
                   FROM product AS p 
                   JOIN exchange_type as x ON p.exchange_type_id = x.id 
-                  JOIN etat ON p.etat_id = etat.id 
+                  /*JOIN etat ON p.etat_id = etat.id */
                   JOIN category ON p.category_id = category.id 
                   JOIN user ON p.user_id = user.id 
                   WHERE p.id = :id";
         $state = $this->pdo->prepare($query);
-        $state->bindValue('id', $id, \PDO::PARAM_STR);
+        $state->bindValue('id', $id, \PDO::PARAM_INT);
+        $state->execute();
 
         return $state->fetchAll(\PDO::FETCH_ASSOC);
     }

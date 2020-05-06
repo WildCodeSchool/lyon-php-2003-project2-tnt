@@ -85,7 +85,6 @@
         }
 
         #liste {
-            z-index: -1;
             padding: 10px;
 
         }
@@ -106,16 +105,21 @@
             left: 160px;
 
         }
-
-        @media (max-width: 576px) {
-
-            #barter { display: none;}
-        }
-
         .row {
             width: 80%;
             margin: auto auto;
         }
+
+        .card {
+            position: relative;
+        }
+
+        @media (max-width: 576px) {
+
+            #barter { display: none;}
+            .row { width: 100%;}
+        }
+
 
         .col-md-6 > a {
             display: block;
@@ -162,7 +166,7 @@
                 <div class="row">
                 {% for product in products %}
                     <div class="col-md-6">
-                        <div class="card" id="{{ product.id }}" >
+                        <div class="card mx-auto" id="{{ product.id }}" >
                             <div class="card-body">
                                 <img src="{{ product.img }}" class="card-img" alt="Photo de {{ product.title }}" >
                                 <div>
@@ -172,6 +176,7 @@
                                     {#                            <p class="card-text"><small class="text-muted">Date de Parution : {{ product.created_at|date("m/d/Y") }}</small></p>#}
                                 </div>
                                 <img src="/assets/images/heart.png" width="40px">
+                                <a href="/product/details/{{ product.id }}" class="stretched-link"></a>
                             </div>
                         </div>
                     </div>
