@@ -69,4 +69,17 @@ class UserManager extends AbstractManager
             return (int)$this->pdo->lastInsertId();
         }
     }
+
+    public function userProduct($id)
+    {
+        $query= "SELECT * FROM product having user_id = :id";
+
+        $statement = $this->pdo->prepare($query);
+        $statement->bindValue(':id', $id, \PDO::PARAM_STR);
+
+        if ($statement->execute()) {
+            return $statement->fetchAll();
+        }
+        return null;
+    }
 }

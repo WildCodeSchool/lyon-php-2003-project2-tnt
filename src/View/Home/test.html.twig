@@ -3,29 +3,22 @@
 {% block title %} Troc & Troc {% endblock %}
 
 {% block content %}
-    {% include '_nav_top.html' %}
     <main class="container-fluid" id="main_home">
 
         <section id="carousel">
             <article>
-                <div id="div_one">
-                    <ul>
-                        <li><a href="/Product/show/bien">Rechercher un bien</a></li>
-                        <li><a href="/Product/show/service">Rechercher un service</a></li>
-                    </ul>
-                    <h4>Quelle genre d'affaire ?</h4>
+                <div>
+                    <a href="">Un bien</a>
+                    <a href="">Un service</a>
                 </div>
-                <button type="button" class="btn btn-primary btn-lg" id="button_search"><h1>Chercher une affaire</h1></button>
+                <h1>Rechercher une affaire</h1>
             </article>
             <img src="/assets/images/icons/stream.svg" alt="">
             <article>
-                <button type="button" class="btn btn-primary btn-lg" id="button_prop"><h1>Proposer une affaire</h1></button>
-                <div id="div_two">
-                    <h4>Quelle genre d'affaire ?</h4>
-                    <ul>
-                        <li><a href="/Product/add/bien">Proposer un bien</a></li>
-                        <li><a href="/Product/add/service">Proposer un service</a></li>
-                    </ul>
+                <h1>Proposer une affaire</h1>
+                <div>
+                    <a href="">Un bien</a>
+                    <a href="">Un service</a>
                 </div>
             </article>
         </section>
@@ -62,30 +55,7 @@
     </footer>
 {% endblock %}
 
-{% block javascripts %}
-    <script>
-        $(function () {
-            const div_search = $('#div_one');
-            const div_prop = $('#div_two');
-            const button_search = $('#button_search');
-            const button_prop = $('#button_prop');
-
-            div_search.fadeOut();
-            div_prop.fadeOut();
-
-            button_search.on('click', function () {
-                div_search.fadeToggle(400);
-                div_prop.fadeOut();
-            })
-
-            button_prop.on('click', function () {
-                div_prop.fadeToggle(400);
-                div_search.fadeOut();
-            })
-
-        });
-
-    </script>
+{% block javascript %}
 {% endblock %}
 
 

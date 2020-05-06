@@ -1,5 +1,5 @@
 {% import 'Product/formTemplate.html.twig' as form %}
-<section class="container-fluid">
+<section class="container-fluid" id="add_bien">
     <form action="" method="post">
 
         <div class="form-group">
@@ -8,28 +8,30 @@
             {% if errors.title is defined %}<span style="color: red"> {{ errors.title }}</span> {% endif %}
         </div>
 
+        <span style="display: flex;">
+            <div class="form-group">
+                <select name="category" id="selectCategory">
+                    {% for category in categories %}
+                        <option value="{{ category.id }}">{{ category.name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="form-group">
+                <select for="state-range" class="form-control" name="etat">
+                    <option>Etat</option>
+                    <option>Neuf</option>
+                    <option>Bon état</option>
+                    <option>Etat satisfaisant</option>
+                    <option>Satisfaisant</option>
+
+                </select>
+                {% if errors.etat is defined %}<span style="color: red">{{ errors.etat }}</span> {% endif %}
+            </div>
+        </span>
+
         <div class="form-group">
-            {{ form.select('form-control', 'category_is','Choisissez une catégorie') }}
-
-        </div>
-
-        <div class="form-group">
-            <select for="state-range" class="form-control" name="etat">
-                <option>Etat</option>
-                <option>Neuf</option>
-                <option>Bon état</option>
-                <option>Etat satisfaisant</option>
-                <option>Satisfaisant</option>
-
-            </select>
-            {% if errors.etat is defined %}<span style="color: red">{{ errors.etat }}</span> {% endif %}
-
-        </div>
-
-        <div class="form-group">
-            <label for="good-description">Description du bien</label>
-            <input  name="description" type="text" class="form-control" id="good-description" placeholder="Précisez les caractéristiques principales du bien">
-
+            {{ form.textarea('form-control','description', 'Description du bien', '') }}
         </div>
 
         <!-- insérer ici les éléments d'upload de photo(s) -->
@@ -42,9 +44,9 @@
         <div class="form-group hiddenIfDon">
             {{ form.input('text', 'form-control','enEchangeDe', 'Ou en échange de', 'Précisez ici le(s) bien(s)/service(s) souhaité(s) en échange') }}
         </div>
-        <div class="form-group form-check">
-            <input name="proposition" type="checkbox" class="form-check-input" id="check-autres">
-            <label class="form-check-label" for="check-autres">Vous êtes ouvert.e à toute proposition</label>
+        <div class="form-group">
+            {{ form.radio('proposition', 'ouvert', 'Je suis ouvert à d\'autres proposition', 'checked') }}
+            {{ form.radio('proposition', 'pasOuvert', 'Je souhaite uniquement ces biens / services en échange', '') }}
         </div>
 
         <div class="buttons">

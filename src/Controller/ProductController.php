@@ -30,7 +30,6 @@ class ProductController extends AbstractController
                                                                            'errors' => $errors, 'var' => $bienService]);
             }
 
-            $fakeCategory = 1;
             $etat = ((isset($_POST['etat'])) ? $_POST['etat'] : 'null');
 
             $exchange = (($_POST['echangeOuDon'] == 'echange') ? 2 : 1);
@@ -106,9 +105,9 @@ class ProductController extends AbstractController
                                                                     'categories' => $categories]);
     }
 
-    public function showProduct(){
+    public function showProduct()
+    {
 
         return $this->twig->render('Item/show.html.twig');
     }
-
 }

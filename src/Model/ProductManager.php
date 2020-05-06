@@ -102,10 +102,10 @@ class ProductManager extends AbstractManager
     public function search(string $search, int $category, int $productType) : array
     {
         $query = "SELECT * FROM ". $this->table .
-                " JOIN category ON category.id = product.category_id 
+                " /*JOIN category ON category.id = product.category_id 
                   JOIN product_type ON product_type.id =product.product_type_id
-                  WHERE category.id =". $category ." AND product.product_type_id = :productType 
-                  AND product.title LIKE '%". $search ."%'";
+                  */WHERE /*category.id =". $category ." AND product.product_type_id = :productType 
+                  AND */product.title LIKE '%". $search ."%'";
 
         $state = $this->pdo->prepare($query);
         $state->bindValue(':productType', $productType, \PDO::PARAM_INT);

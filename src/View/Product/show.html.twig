@@ -1,63 +1,169 @@
 {% extends "layout.html.twig" %}
 
+{% block stylesheet %}
+    <style>
+        [name="search"] {
+            width: 100%;
+            height: 60px;
+        }
+
+        #categories {
+            display: none;
+        }
+
+        #recherche_top {
+            box-shadow: 2px 2px 5px #999;
+            padding: 5px;
+            margin-top: 5px;
+            margin-bottom: 50px;
+            background-color: #fff;
+        }
+
+        #recherche_top > form > div:first-of-type {
+            margin-top: 10px;
+            padding: 0 5px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        #recherche_top > form > div > span {
+            display: flex;
+        }
+
+        #recherche_top > form > div > span > p {
+            margin-top: 5px;
+            margin-left: 5px;
+            font-size: 0.9em;
+        }
+
+        #recherche_top > form > div > span > img {
+            width: 25px;
+            height: 30px;
+        }
+
+        #recherche_top > div {
+            display: flex;
+        }
+
+        .card-body {
+            display: flex;
+            padding: 5px;
+            margin-bottom: 5px;
+            box-shadow: 5px 5px 5px #999;
+            height: 130px;
+        }
+
+        .card-body > img:first-of-type {
+            height: 75px;
+            width: 75px;
+            margin: auto 10px;
+        }
+
+        .card-body > img:last-of-type {
+            height: 20px;
+            width: 20px;
+            align-self: center;
+            position: absolute;
+            right: 15px;
+        }
+
+        .card-body h4 {
+            margin-top: 15px;
+        }
+
+        .card-body p {
+            font-size: 0.7em;
+            margin-top: 15px;
+        }
+
+        .card-title {
+            margin-bottom: 0;
+        }
+
+        #liste {
+            z-index: -1;
+            padding: 10px;
+
+        }
+
+        #barter {
+            width: 250px;
+            position: absolute;
+            top: 50px;
+            right: 160px;
+            z-index: -2;
+            opacity: 0.5;
+        }
+
+
+
+        @media (max-width: 576px) {
+
+            #barter { display: none;}
+
+
+        }
+
+    </style>
+{% endblock %}
+
+
 {% block content %}
     {% include '_nav_retour.html.twig' %}
     {% include '_nav_bar.html.twig' %}
+    <div class="row">
+        <section class="col-md-4 offset-md-4" id="recherche_top">
+            <form action="" method="get">
+                <input type="text" name="search" placeholder="Votre recherche">
 
-    <section class="container-fluid">
+                <div>
+                <span>
+                    <img src="/assets/images/icons/filtre.png" alt="filtre">
+                    <p>Filtrer</p>
+                </span>
+                    <div class="form-group" id="categories">
+                        <label for="sel1">Catégories</label>
+                        <select class="form-control" id="sel1" name="category">
+                            {% for category in categories %}
+                                <option value="{{ category.id }}"> {{ category.title }} </option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-outline-dark">Go !</button>
+                </div>
+            </form>
+        </section>
+        <img src="/assets/images/barter.png" alt="" id="barter">
 
-        <input type="text" name="search" placeholder="Votre recherche">
+        <section class="container-fluid col-md-12" id="liste">
 
-        <div class="form-group">
-            <label for="sel1">Catégories</label>
-            <select class="form-control" id="sel1" name="category">
-                {% for category in categories %}
-                    <option value="{{ category.id }}"> {{ category.title }} </option>
-                {% endfor %}
-            </select>
-        </div>
+            {% if products is empty %}
+                <p>Oups ! Aucun résultat pour cette recherche, blablabla</p>
+            {% else %}
+                <p>{{ products|length }} {{ var }}s trouvés</p>
+                <div class="row">
+                {% for product in products %}
 
-        <button type="submit">Rechercher</button>
-
-    </section>
-
-    <section class="container-fluid">
-        {% if var == 'service' or var == 'bien' %}
-            <h1>Liste des {{ var }}s</h1>
-        {% elseif var == 'mysearch' %}
-            <h1>Résultats de votre recherche</h1>
-        {% endif %}
-
-        {% if products is empty %}
-            <p>Oups ! Aucun résultat pour cette recherche, blablabla</p>
-        {% else %}
-            {{ dump(products) }}
-            {% for product in products %}
-
-                <div class="card mb-3" style="max-width: 540px;">
-                    <div class="row no-gutters">
-                        <div class="col-md-4 ">
-                            <img src="{{ product.img }}" class="card-img" alt="Photo de {{ product.title }}"  width=150px height=150px >
-                        </div>
-                        <div class="col-md-8">
-                            <div class="card-body">
-                                <div>
-                                    <h5 class="card-title">{{ product.title }}</h5>
-                                    <img src="../assets/images/heart.png" width="20px">
-                                </div>
-                                <p>{{ product.deal_type }}</p>
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <img src="{{ product.img }}" class="card-img" alt="Photo de {{ product.title }}" >
+                            <div>
+                                <h4 class="card-title">{{ product.title }}</h4>
+                                <h6>Etat : {{ product.etat }}</h6>
+                                <span class="badge badge-success">{{ product.deal_type }}</span>
                                 <p class="card-text">{{ product.description }}</p>
-                                <p class="card-text"><small class="text-muted">Date de Parution : {{ product.created_at|date("m/d/Y") }}</small></p>
-                                <p>Proposé par : {{ product.nickname }}</p>
-                                <li><a href="/Item/show/{{ product.id }}">modifier votre produit {{ product.title }}</li></a>
-
-
+                                {#                            <p class="card-text"><small class="text-muted">Date de Parution : {{ product.created_at|date("m/d/Y") }}</small></p>#}
                             </div>
+                            <img src="/assets/images/heart.png" width="40px">
                         </div>
                     </div>
                 </div>
-            {% endfor %}
-        {% endif %}
-    </section>
+
+                {% endfor %}
+                </div>
+            {% endif %}
+        </section>
+    </div>
 {% endblock %}
 
