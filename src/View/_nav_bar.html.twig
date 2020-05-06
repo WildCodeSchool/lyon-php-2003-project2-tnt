@@ -28,7 +28,7 @@
 
                 <!-- Modal body -->
                 <div class="modal-body">
-                    {% include 'User/connexion.php' %}
+                    <p><a href="/user/login">Connectez-vous</a></p>
                 </div>
 
                 <!-- Modal footer -->
@@ -63,26 +63,12 @@
 
                 <!-- Modal footer -->
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-danger" data-dismiss="modal">Se déconnecter</button>
+                    <a href="/user/logout"><button type="button" class="btn btn-danger">Se déconnecter</button></a>
                 </div>
 
             </div>
         </div>
     </div>
-<script>
-    $(function () {
-
-        const input_name = $('#input_by_name');
-        const input_mail = $('#input_by_mail');
-        const switchy = $('.switch_input');
-
-        switchy.click(() => {
-            input_name.slideToggle();
-            input_mail.slideToggle();
-        });
-
-    });
-</script>
 
 
 

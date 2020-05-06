@@ -10,6 +10,7 @@ class UserController extends AbstractController
     public function inscription()
     {
         if (!empty($_POST)) {
+            $userManager = new UserManager();
             $nickname = self::cleanInput($_POST['nickname']);
             $email = self::cleanInput($_POST['email']);
             $pass = $_POST['pass'];
@@ -26,15 +27,14 @@ class UserController extends AbstractController
                 $errors['pass'] = "Vérifiez vos mots de passe";
             }
 
-            if (!self::isNewMail($email)) {
+            if ($userManager->selectOneByEmail($email)) {
                 $errors['email'] = "Email déjà utilisé";
             }
-            if (!self::isNewName($nickname)) {
+            if ($userManager->selectOneByNickname($nickname)) {
                 $errors['nickname'] = "Navré mais déjà pris !";
             }
 
             if (empty($errors)) {
-                $userManager = new UserManager();
                 $pass = password_hash($pass, PASSWORD_DEFAULT);
                 $infos = [
                     'nickname' => $nickname,
@@ -53,26 +53,6 @@ class UserController extends AbstractController
         return $this->twig->render('User/inscription.html.twig');
     }
 
-    public static function isNewMail($email): bool
-    {
-        $userManager = new UserManager();
-        $emails = $userManager->selectAllEmails();
-        if (in_array($email, $emails)) {
-            return false;
-        }
-        return true;
-    }
-
-    public static function isNewName($nickname): bool
-    {
-        $userManager = new UserManager();
-        $users = $userManager->selectAllNickname();
-        if (in_array($nickname, $users)) {
-            return false;
-        }
-        return true;
-    }
-
     public function inventaire($id)
     {
         $inventaireManager = new UserManager();
@@ -81,11 +61,6 @@ class UserController extends AbstractController
         return $this->twig->render('User/inventaire.html.twig', ['inventaire' => $inventaire]);
     }
 
-    //    public function inventaire($id)
-//    {
-//        // select inventaire.user_id
-//        return $this->twig->render('User/inventaire.html.twig');
-//    }
 //
 //    public function favoris($id)
 //    {
@@ -104,5 +79,54 @@ class UserController extends AbstractController
         $profilManager = new UserManager();
         $profil = $profilManager->selectOneById($id);
         return $this->twig->render('User/profil.html.twig', ['profil' => $profil]);
+    }
+
+    public function login()
+    {
+        if ($_POST) {
+            $nickname = $email = $pass = '';
+            $errors = [];
+
+            $email = trim($_POST['email']);
+            $nickname = trim($_POST['nickname']);
+            $pass = $_POST['password'];
+
+            if (empty($nickname) && empty($email)) {
+                $errors['login'] = "Login requis";
+            }
+            if (empty($pass)) {
+                $errors['pass'] = "Mot de passe requis";
+            }
+
+            if (empty($errors)) {
+                $userManager = new UserManager();
+                if ($email == '') {
+                    $user = $userManager->selectOneByNickname($nickname);
+                } else {
+                    $user = $userManager->selectOneByEmail($email);
+                }
+                if (empty($user)) {
+                    $errors['login'] = "Login introuvable";
+                } else {
+                    if ($pass == $user['password']) {
+                        $_SESSION['user'] = [
+                            'id' => $user['id'],
+                            'nickname' => $user['nickname']
+                        ];
+                        header('Location: /');
+                    } else {
+                        $errors['pass'] = "Mauvais mot de passe";
+                    }
+                }
+            }
+            return $this->twig->render('User/login.html.twig', ['errors' => $errors]);
+        }
+        return $this->twig->render('User/login.html.twig');
+    }
+
+    public function logout()
+    {
+        unset($_SESSION['user']);
+        header('Location: /');
     }
 }

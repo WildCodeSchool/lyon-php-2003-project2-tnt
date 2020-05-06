@@ -81,11 +81,12 @@ class ProductManager extends AbstractManager
      */
     public function selectAll(int $productType): array
     {
-        $query = "SELECT * FROM " . $this->table .
+        $query = "SELECT product.id, product.title, product.description, product.exchange_type_id, product.img, 
+                   exchange_type.deal_type FROM " . $this->table .
                  " JOIN user ON user.id = product.user_id 
                    JOIN product_type ON product_type.id = product.product_type_id
                    JOIN exchange_type ON exchange_type.id = product.exchange_type_id
-                   HAVING product_type_id = :productType";
+                   WHERE product_type_id = :productType";
 
         $state = $this->pdo->prepare($query);
         $state->bindValue(':productType', $productType, \PDO::PARAM_INT);

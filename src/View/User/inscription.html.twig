@@ -2,8 +2,17 @@
 {% block title %} Inscription {% endblock %}
 {% block stylesheet %}
     <style>
-        #inscription {
-            padding: 20px;
+        #inscription > div {
+            background-color: #FFF;
+        }
+        .error {
+            color: #820050;
+        }
+
+        form > div > div {
+            margin-top: 20px;
+            font-size: 0.8em;
+            display: inline;
         }
     </style>
 {% endblock %}
@@ -11,33 +20,40 @@
 {% block content %}
     {% include '_nav_retour.html.twig' %}
     {% include '_nav_bar.html.twig' %}
-<section id="inscription">
-    <h1>Formulaire d'inscription</h1>
-    <p>Lorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsum</p>
+<section id="inscription" class="row container-fluid">
+    <div class="col-md-4 offset-md-4">
+        <h1>Formulaire d'inscription</h1>
+        <p>Lorem ipsumLorem ipsumLorem ipsumLorem </p>
+        <p>Lorem ipsumLorem ipsumLorem ipsumLorem </p>
 
-    <form action="" method="POST" novalidate>
+        <form action="" method="POST" novalidate>
 
-        <label for="nickname">Un nom</label>
-        <input type="text" name="nickname" id="nickname" placeholder="" required>
-        <span class="error">{{ (errors.nickname is defined) ? errors.nickname : '' }}</span>
+            <div class="form-group">
+                <label for="nickname">Un nom</label><br>
+                <input type="text" name="nickname" id="nickname" placeholder="" required>
+                <p class="error">{{ (errors.nickname is defined) ? errors.nickname : '' }}</p>
 
-        <label for="email">Un mail</label>
-        <input type="email" name="email" id="email" placeholder="" required>
-        <span class="error">{{ (errors.email is defined) ? errors.email : '' }}</span>
+                <label for="email">Un mail</label><br>
+                <input type="email" name="email" id="email" placeholder="" required>
+                <p class="error">{{ (errors.email is defined) ? errors.email : '' }}</p>
 
-        <label for="pass">Mot de passe</label>
-        <input type="password" name="pass" id="pass" placeholder="" required>
+                <label for="pass">Mot de passe</label><br>
+                <input type="password" name="pass" id="pass" placeholder="" required>
 
-        <label for="pass2"></label>
-        <input type="password" name="pass2" id="pass2" placeholder="Vérification Mot de Passe" required>
-        <span class="error">{{ (errors.pass is defined) ? errors.pass : '' }}</span>
-        <span>
-            <input type="checkbox" name="condition" id="condition" required>
-            <label for="condition">"J'accepte les <a href="">conditions générales d'utilisation</a>"</label>
-        </span>
-        <button type="submit">Créer mon compte</button>
+                <label for="pass2"></label>
+                <input type="password" name="pass2" id="pass2" placeholder="Vérification Mot de Passe" required>
+                <p class="error">{{ (errors.pass is defined) ? errors.pass : '' }}</p>
+                <div>
+                    <input type="checkbox" name="condition" id="condition" required>
+                    <label for="condition">"J'accepte les <a href=""></a>"</label>
+                </div>
+            </div>
 
-    </form>
+            <button type="submit" class="btn btn-outline-dark">Créer mon compte</button>
+
+        </form>
+
+    </div>
 </section>
 {% endblock %}
 
