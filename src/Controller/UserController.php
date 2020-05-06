@@ -110,7 +110,8 @@ class UserController extends AbstractController
                     if ($pass == $user['password']) {
                         $_SESSION['user'] = [
                             'id' => $user['id'],
-                            'nickname' => $user['nickname']
+                            'nickname' => $user['nickname'],
+                            'email' => $user['email']
                         ];
                         header('Location: /');
                     } else {
