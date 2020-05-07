@@ -9,7 +9,7 @@ body {
     /*width: 400px;*/
     display: flex;
     flex-direction: column;
-    background-color: #F1F1F0;
+    /*background-color: #F1F1F0;*/
 }
 
 
@@ -74,7 +74,7 @@ a:active {text-decoration: underline; color: black;}
 
 #header_home, #nav_top, #retour {
     height: 60px;
-    background-color: #820050;
+    background-color: #00A99D;
     color: #ffffff;
 }
 
@@ -97,7 +97,12 @@ a:active {text-decoration: underline; color: black;}
 
 #main_home #carousel {
     height: 600px;
-    display: none;
+    margin: auto auto;
+    padding: 0px 50px;
+}
+
+#main_home  #carousel > img {
+    height: 60%;
 }
 
 #main_home #examples {
