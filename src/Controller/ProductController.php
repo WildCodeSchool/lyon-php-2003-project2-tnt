@@ -126,9 +126,6 @@ class ProductController extends AbstractController
         $manager = new ProductManager();
         $details = $manager->getDetails($productId);
 
-        var_dump($_SESSION);
-        var_dump($details);
-
         if (isset($_POST['message'])) {
             $retour = mail(
                 $_SESSION['email'],

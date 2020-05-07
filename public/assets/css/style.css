@@ -179,7 +179,7 @@ a:active {text-decoration: underline; color: black;}
     font-size: 1.2em;
 }
 
-#add_service span, textarea {
+#add_service span {
     margin-bottom: 30px;
 }
 
