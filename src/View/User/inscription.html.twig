@@ -2,9 +2,22 @@
 {% block title %} Inscription {% endblock %}
 {% block stylesheet %}
     <style>
+
+        #inscription {
+            padding: 16px;
+        }
+
         #inscription > div {
             background-color: #FFF;
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 2px 3px 3px #777;
         }
+
+        h1 {
+            margin-bottom: 20px;
+        }
+
         .error {
             color: #820050;
         }
@@ -22,9 +35,8 @@
     {% include '_nav_bar.html.twig' %}
 <section id="inscription" class="row container-fluid">
     <div class="col-md-4 offset-md-4">
-        <h1>Formulaire d'inscription</h1>
-        <p>Lorem ipsumLorem ipsumLorem ipsumLorem </p>
-        <p>Lorem ipsumLorem ipsumLorem ipsumLorem </p>
+        <h1>Inscription</h1>
+        <hr>
 
         <form action="" method="POST" novalidate>
 
@@ -45,11 +57,11 @@
                 <p class="error">{{ (errors.pass is defined) ? errors.pass : '' }}</p>
                 <div>
                     <input type="checkbox" name="condition" id="condition" required>
-                    <label for="condition">"J'accepte les <a href=""></a>"</label>
+                    <label for="condition">"J'accepte les <a href="">conditions générales d'utilisations</a>"</label>
                 </div>
             </div>
 
-            <button type="submit" class="btn btn-outline-dark">Créer mon compte</button>
+            <button type="submit" class="btn btn-warning">Créer mon compte</button>
 
         </form>
 

@@ -6,17 +6,16 @@
 
 body {
     margin: auto auto;
-    /*width: 400px;*/
     display: flex;
     flex-direction: column;
     background-color: #F1F1F0;
 }
 
 
-a:link {text-decoration: none; color: black;}
-a:visited {text-decoration: none; color: black;}
-a:hover {text-decoration: underline; color: #820050;}
-a:active {text-decoration: underline; color: black;}
+a:link {text-decoration: none; color: #00A99D;}
+a:visited {text-decoration: none; color: #00A99D;}
+a:hover {text-decoration: underline; color: #00A99D;}
+a:active {text-decoration: underline; color: #00A99D;}
 
 /*
 /////////////////////////////////////////////////////////// NAV BARS //////////////////////////////////////

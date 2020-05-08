@@ -38,9 +38,11 @@
             {{ form.radio('proposition', 'ouvert', 'Je suis ouvert à d\'autres proposition', 'checked') }}
             {{ form.radio('proposition', 'pasOuvert', 'Je souhaite uniquement ces biens / services en échange', '') }}
         </div>
-        <div class="buttons">
-            <button type="button" class="btn btn-outline-primary">Aperçu</button>
-            <button type="submit" class="btn btn-primary">Publier !</button>
-        </div>
+        {% if session is not empty %}
+            <div class="buttons">
+                <button type="button" class="btn btn-outline-primary">Aperçu</button>
+                <button type="submit" class="btn btn-primary">Publier !</button>
+            </div>
+        {% endif %}
     </form>
 </div>

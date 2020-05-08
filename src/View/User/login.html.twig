@@ -1,35 +1,68 @@
 {% extends "layout.html.twig" %}
 
+{% block stylesheet %}
+    <style>
+        .card {
+            background-color: #FFF;
+            margin: 10px;
+            border-radius: 5px;
+            box-shadow: 2px 3px 3px #777;
+        }
+
+        .switch_input {
+            font-size: 0.7em;
+            color: #00A99D;
+            cursor: pointer;
+        }
+        button {
+            margin-bottom: 10px;
+        }
+    </style>
+{% endblock %}
+
+
 
 {% block content %}
     {% include '_nav_retour.html.twig' %}
     {% include '_nav_bar.html.twig' %}
-    <form action="" method="POST">
 
-        <article id="input_by_name">
-            <label for="nickname">Nom utilisateur</label>
-            <input type="text" name="nickname" id="nickname">
-            <p class="switch_input">Se connecter avec l'adresse email</p>
-        </article>
+    <article class="card">
+        <section class="card-header"><h3>Se connecter</h3></section>
+        <section class="card-body">
+            <form action="" method="POST">
 
-        <article id="input_by_mail">
-            <label for="email">Email</label>
-            <input type="email" name="email" id="email">
-            <p class="switch_input">Se connecter avec le nom utilisateur</p>
-        </article>
+                <article id="input_by_name">
+                    <label for="nickname">Nom utilisateur</label>
+                    <input type="text" name="nickname" id="nickname">
+                    <p class="switch_input">Se connecter avec l'adresse email</p>
+                </article>
+
+                <article id="input_by_mail">
+                    <label for="email">Email</label>
+                    <input type="email" name="email" id="email">
+                    <p class="switch_input">Se connecter avec le nom utilisateur</p>
+                </article>
 
 
-        <p>{{ (errors.login is defined) ? errors.login : '' }}</p>
+                <p>{{ (errors.login is defined) ? errors.login : '' }}</p>
 
-        <label for="password">Mot de passe</label>
-        <input type="password" name="password" id="password">
-        <p>{{ (errors.pass is defined) ? errors.pass : '' }}</p>
+                <label for="password">Mot de passe</label><br>
+                <input type="password" name="password" id="password">
+                <p>{{ (errors.pass is defined) ? errors.pass : '' }}</p>
 
-        <button type="submit">Me connecter</button>
+                <button type="submit" class="btn btn-warning">Me connecter</button>
 
-        <p>Mot de passe oublié ? <a href="">Réinitialiser le</a></p>
+                <p>Mot de passe oublié ? <a href="">Réinitialiser le</a></p>
 
-    </form>
+            </form>
+
+        </section>
+        <section class="card-footer">
+            Pas encore inscrit ?
+            <a href="/user/inscription">C'est par ici !</a>
+        </section>
+    </article>
+
 
 {% endblock %}
 
