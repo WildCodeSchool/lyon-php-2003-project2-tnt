@@ -1,0 +1,80 @@
+{% extends "layout.html.twig" %}
+
+{% block title %}
+    Faire une offre
+{% endblock %}
+
+{% block stylesheet %}
+    <style>
+        .container-fluid {
+            width: 85%;
+            margin: auto auto;
+        }
+
+        .card-body {
+            display: flex;
+        }
+
+        img {
+            width: 30px;
+        }
+
+        .row > div {
+            padding: 0;
+        }
+
+        h4 {
+            margin-top: 30px;
+        }
+
+        form {
+            margin-top: 20px;
+        }
+
+        button, textarea {
+            width: 100%;
+        }
+
+        textarea {
+            margin-bottom: 10px;
+        }
+
+
+
+    </style>
+{% endblock %}
+
+{% block content %}
+{#    {{ dump() }}#}
+    {% include '_nav_retour.html.twig' %}
+    {% include '_nav_bar.html.twig' %}
+    <section class="container-fluid">
+
+        <h4>Rappel de l'offre</h4>
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card mx-auto">
+                    <div class="card-body">
+                        <div>
+                            <h4 class="card-title">{{ details.0.title }}</h4>
+                            <span class="badge badge-success">{{ details.0.deal_type }}</span>
+                            <p class="card-text">{{ details.0.description }}</p>
+                            {#                            <p class="card-text"><small class="text-muted">Date de Parution : {{ product.created_at|date("m/d/Y") }}</small></p>#}
+                        </div>
+                        <a href="/product/details/{{ details.0.id }}" class="stretched-link"></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <form action="mailto:brice.darmenia@sfr.fr" method="post" enctype="text/plain">
+            <label for="message">Votre message :</label>
+            <textarea type="text" name="message" id="message" rows="12"></textarea>
+            <button type="submit" class="btn btn-success">Envoyer</button>
+        </form>
+
+    </section>
+
+{% endblock %}
+
