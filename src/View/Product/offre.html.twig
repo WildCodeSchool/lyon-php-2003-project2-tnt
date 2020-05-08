@@ -13,31 +13,77 @@
 
         .card-body {
             display: flex;
+            padding: 10px;
         }
 
-        img {
-            width: 30px;
+        .row, form {
+            margin-top: 10px;
+            padding: 0 10px;
+            background-color: #FFF;
+            box-shadow: 0 3px 3px #777777;
         }
 
         .row > div {
             padding: 0;
         }
 
-        h4 {
-            margin-top: 30px;
+        h5 {
+            margin-top: 10px;
         }
 
-        form {
-            margin-top: 20px;
-        }
-
-        button, textarea {
+        button, textarea, .row, form {
             width: 100%;
+            border-radius: 5px;
         }
 
         textarea {
             margin-bottom: 10px;
         }
+
+        form {
+            margin-top: 20px;
+            margin-bottom: 100px;
+        }
+
+        .card {
+            box-shadow: 0 2px 2px #777;
+        }
+
+        .card-body, .card-header {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .card-header {
+            background-color: rgba(0,169,157,0.6);
+            color: #FFF;
+        }
+
+        .card-title {
+            margin-bottom: 0;
+        }
+
+        .badge {
+            height: 50%;
+        }
+
+        #echange {
+            margin: 20px 0;
+        }
+
+        button {
+            margin-bottom: 10px;
+        }
+
+        label {
+            margin: 5px auto;
+            width: 100%;
+            text-align: center;
+            font-weight: bold;
+            color: #00A99D;
+            font-size: 1.2em;
+        }
+
 
 
 
@@ -45,33 +91,45 @@
 {% endblock %}
 
 {% block content %}
-{#    {{ dump() }}#}
     {% include '_nav_retour.html.twig' %}
     {% include '_nav_bar.html.twig' %}
     <section class="container-fluid">
 
-        <h4>Rappel de l'offre</h4>
 
         <div class="row">
             <div class="col-md-6">
+                <h5>Rappel de l'offre</h5>
                 <div class="card mx-auto">
+                    <div class="card-header">
+                        <h4 class="card-title">{{ details.0.title }}</h4>
+                        <span class="badge badge-warning">{{ details.0.deal_type }}</span>
+                    </div>
                     <div class="card-body">
-                        <div>
-                            <h4 class="card-title">{{ details.0.title }}</h4>
-                            <span class="badge badge-success">{{ details.0.deal_type }}</span>
                             <p class="card-text">{{ details.0.description }}</p>
-                            {#                            <p class="card-text"><small class="text-muted">Date de Parution : {{ product.created_at|date("m/d/Y") }}</small></p>#}
-                        </div>
+                            <p class="card-text">{{ details.0.etat }}</p>
                         <a href="/product/details/{{ details.0.id }}" class="stretched-link"></a>
                     </div>
                 </div>
             </div>
+            {% if details.0.deal_type == 'echange' %}
+                <div class="col-md-6" id="echange">
+                    <div class="card mx-auto">
+                        <div class="card-header">
+                            <h4 class="card-title">En échange de :</h4>
+                        </div>
+                        <div class="card-body">
+                            <p class="card-text">{{ details.0.enEchangeDe }}</p>
+                            <p class="card-text">{{ details.0.proposition }}</p>
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
         </div>
 
         <form action="mailto:brice.darmenia@sfr.fr" method="post" enctype="text/plain">
-            <label for="message">Votre message :</label>
-            <textarea type="text" name="message" id="message" rows="12"></textarea>
-            <button type="submit" class="btn btn-success">Envoyer</button>
+            <label for="message">Votre message</label>
+            <textarea type="text" name="message" id="message" rows="8"></textarea>
+            <button type="submit" class="btn btn-warning">Envoyer</button>
         </form>
 
     </section>
