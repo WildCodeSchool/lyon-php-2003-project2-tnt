@@ -29,6 +29,7 @@ a:active {text-decoration: underline; color: black;}
     width: 100%;
     border: 1px solid black;
     background-color: white;
+    z-index: 10;
 }
 #nav_bottom ul {
     display: flex;
@@ -66,12 +67,6 @@ a:active {text-decoration: underline; color: black;}
 /*
 ////////////////////////////////////////////////// Home/index /////////////////////////
 */
-#main_home {
-    display: flex;
-    flex-direction: column;
-    font-size: 1.1em;
-}
-
 #header_home, #nav_top, #retour {
     height: 60px;
     background-color: #00A99D;
@@ -89,51 +84,6 @@ a:active {text-decoration: underline; color: black;}
 
 #header_home nav > span > h3 {
     margin-bottom: 0px;
-}
-
-#main_home {
-    margin-top: 90px;
-}
-
-#main_home #carousel {
-    height: 600px;
-    margin: auto auto;
-    padding: 0px 50px;
-}
-
-#main_home  #carousel > img {
-    height: 60%;
-}
-
-#main_home #examples {
-    font-size: 0.9em;
-    margin: 20px;
-}
-
-#main_home #examples > p:last-of-type {
-    margin-top: 40px;
-}
-
-#main_home #examples img {
-    width: 24px;
-    margin: auto auto;
-    display: block;
-}
-
-#main_home #examples blockquote, #main_home #examples p:last-of-type {
-    text-align: center;
-}
-
-#main_home #troc {
-    height: 320px;
-}
-
-#main_home #propose, #recherche {
-    height: 160px;
-}
-
-#footer_desktop {
-    display: none;
 }
 
 

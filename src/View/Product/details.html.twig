@@ -7,17 +7,21 @@
 
         #main {
             width: 100%;
-            margin: 50px auto 100px auto;
+            margin: 30px auto 100px auto;
         }
 
         header, #user, #localisation, #echange > article,
         #action, #ad {
-            box-shadow: 0 2px 3px #999;
+            box-shadow: 0 3px 3px #999;
             background-color: white;
         }
 
         header {
             margin-bottom: 5px;
+        }
+
+        #ad {
+            margin-bottom: 10px;
         }
 
         #ad > img {
@@ -56,6 +60,10 @@
         #core > div {
             display: flex;
             flex-direction: column-reverse;
+        }
+
+        #echange {
+            padding: 0px;
         }
 
         #echange > article {
@@ -161,7 +169,7 @@
                 <section class="container-fluid" id="action">
                     <img src="/assets/images/heart.png" alt="favoris" title="Ajouter aux Favoris">
                     <a href="/product/offre/{{ id }}">
-                        <button type="button" class="btn btn-danger btn-lg">Faire un Troc</button>
+                        <button type="button" class="btn btn-warning btn-lg">Faire un Troc</button>
                         <button type="button" class="btn btn-outline-warning btn-sm">Mettre en favoris</button>
                     </a>
                 </section>
