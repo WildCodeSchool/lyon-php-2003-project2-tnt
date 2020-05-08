@@ -16,35 +16,42 @@
         }
 
         #carousel {
-            height: 600px;
+            height: 250px;
             margin: 40px auto;
             padding: 0px 20px;
             display: flex;
         }
 
         #carousel > img {
-            height: 50%;
+            height: 80%;
         }
 
         #carousel > blockquote {
             font-size: 0.8em;
             margin-left: 20px;
-            margin-top: 40px;
+            margin-top: 0px;
         }
 
 
-        #main_home #troc {
+         #troc {
             height: 320px;
+            padding: 20px;
+             margin-bottom: 100px;
         }
 
-        #main_home #propose, #recherche {
+        #propose, #recherche {
             height: 160px;
+            display: flex;
+            justify-content: space-between;
         }
 
         #footer_desktop {
             display: none;
         }
 
+        #propose > img, #recherche > img {
+            width: 50%;
+        }
 
     </style>
 {% endblock %}
@@ -69,8 +76,18 @@
         </section>
 
         <section id="troc">
-            <article id="propose"><a href="/product/bienOuService/propose">je propose</a></article>
-            <article id="recherche"><a href="/product/bienOuService/recherche">je recherche</a></article>
+            <article id="propose">
+                <div>
+                    <a href="/product/bienOuService/propose">je propose</a>
+                </div>
+                <img src="/assets/images/right_hand.jpg" alt="Right_hand">
+            </article>
+            <article id="recherche">
+                <img src="/assets/images/right_hand.jpg" alt="Right_hand">
+                <div>
+                    <a href="/product/bienOuService/recherche">je recherche</a>
+                </div>
+            </article>
         </section>
 
         <section id="footer_desktop">
