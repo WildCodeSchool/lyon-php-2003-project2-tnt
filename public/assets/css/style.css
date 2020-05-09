@@ -17,6 +17,8 @@ a:visited {text-decoration: none; color: #00A99D;}
 a:hover {text-decoration: underline; color: #00A99D;}
 a:active {text-decoration: underline; color: #00A99D;}
 
+.breadcrumb { background-color: transparent;}
+
 /*
 /////////////////////////////////////////////////////////// NAV BARS //////////////////////////////////////
  */
@@ -82,66 +84,6 @@ a:active {text-decoration: underline; color: #00A99D;}
 
 #header_home nav > span > h3 {
     margin-bottom: 0px;
-}
-
-
-/*
-////////////////////////////////////////////////// Item/bienOuService /////////////////////////
-*/
-
-
-/*
-////////////////////////////////////////////////// Product/_formGood /////////////////////////
-*/
-
-#add_bien {
-    margin-top: 50px;
-    padding: 20px;
-    margin-bottom: 50px;
-}
-
-#add_bien label {
-    font-weight: bold;
-    font-size: 1.2em;
-}
-
-#add_bien span {
-    margin-bottom: 30px;
-}
-
-#add_bien textarea {
-    margin-bottom: 30px;
-}
-
-#add_bien > form > div:last-child {
-    text-align: center;
-}
-
-/*
-////////////////////////////////////////////////// Product/_formService /////////////////////////
-*/
-
-#add_service {
-    margin-top: 50px;
-    margin-bottom: 50px;
-    padding: 20px;
-}
-
-#add_service label {
-    font-weight: bold;
-    font-size: 1.2em;
-}
-
-#add_service span {
-    margin-bottom: 30px;
-}
-
-#openOrNot {
-    font-size: 0.7em;
-}
-
-#add_service > form > div:last-child {
-    text-align: center;
 }
 
 
@@ -287,7 +229,7 @@ a:active {text-decoration: underline; color: #00A99D;}
 @media (min-width: 992px) {
 
     #nav_bottom {
-        top: 40px;
+        top: 70px;
         right: 0px;
         height: 50px;
         width: 50px;
@@ -307,146 +249,10 @@ a:active {text-decoration: underline; color: #00A99D;}
         display: none;
     }
 
-    #header_home > nav {
-        background-color: white;
-        flex-direction: column;
-        height: 150px;
-        box-shadow: 3px 3px 3px #777;
-    }
-
-    #header_home span {
-        margin: auto auto;
-    }
-
-    #header_home h3, #header_home p {
-        font-size: 4em;
-        text-align: center;
-        color: #820050;
-    }
-
-    .menu {
-        left: 40px;
-        top: 40px;
-        height: 64px;
-        width: 64px;
-    }
-
-    .menu-overlay {
-        width: 25%;
-        background-color: #FFF;
-        color: #820050;
-    }
-
-    .menu-overlay a {
-        color: #820050;
-    }
-
-    .menu-overlay > a:nth-of-type(2), .menu-overlay > a:nth-of-type(3), .menu-overlay > ul {
-        margin-left: 50px;
-    }
-
-    .menu-overlay li {
-        font-size: 1.5em;
-        margin-left: 50px;
-        width: 100%;
-    }
-
-    .menu-line, #main_home {
-        background-color: #820050;
-    }
-
-    .menu-icon {
-        width: 32px;
-        height: 20px;
-    }
-
-    .menu.open .menu-circle {
-        background-color: #FFF;
-    }
-
-    .menu.open .menu-line {
-        background-color: #820050;
-    }
-
-    .menu-overlay > a:first-of-type {
-        margin-top: 80px;
-    }
-
-    #main_home #carousel {
-        display: flex;
-        justify-content: space-around;
-        margin: 0 200px;
-        color: white;
-    }
-
     #main_home {
         box-shadow: 3px 3px 3px #777;
     }
 
-    #main_home #carousel img {
-        width: 100%;
-    }
-
-    #main_home #carousel a {
-        color: white;
-    }
-
-    #main_home #carousel article {
-        display: flex;
-        flex-direction: column;
-        width: 100%;
-    }
-
-    #main_home #carousel article > div {
-        /*visibility: hidden;*/
-        display: flex;
-        flex-direction: column;
-    }
-
-    #main_home #carousel article:first-of-type {
-        margin-top: 180px;
-        margin-left: 50px;
-    }
-
-    #main_home #carousel article:first-of-type button {
-        position: fixed;
-        top: 465px;
-
-    }
-
-    #main_home #carousel article:first-of-type h4 {
-        margin-bottom: 20px;
-        margin-left: 30px;
-    }
-
-    #main_home #carousel article:first-of-type ul, #carousel article:last-of-type ul {
-        margin-left: 10px;
-    }
-
-    #main_home #carousel article:first-of-type ul li, #carousel article:last-of-type ul li {
-        margin-top: 10px;
-    }
-
-
-    #main_home #carousel article:last-of-type {
-        margin-top: 220px;
-    }
-
-    #main_home #carousel article:last-of-type h4 {
-        margin-top: 20px;
-        margin-left: 30px;
-    }
-
-    #main_home #carousel button {
-        background-color: white;
-        color: #820050;
-        border-radius: 50px;
-        border: none;
-    }
-    
-    #examples, #troc {
-        display: none;
-    }
 
     #footer_desktop {
         display: block;
@@ -465,19 +271,6 @@ a:active {text-decoration: underline; color: #00A99D;}
     #footer_desktop ul li {
         list-style-type: none;
         color: #820050;
-    }
-
-    #retour {
-        height: 40px;
-    }
-
-    #retour img {
-        display: none;
-    }
-
-    #recherche_top {
-        height: 50%;
-        background-color: white;
     }
 }
 

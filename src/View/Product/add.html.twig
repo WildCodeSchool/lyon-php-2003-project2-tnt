@@ -8,6 +8,62 @@
             padding: 20px;
         }
 
+        #add_service, #add_bien {
+            margin: 20px auto 100px;
+            background-color: #FFF;
+            box-shadow: 3px 3px 3px #00A99D;
+            padding: 10px;
+            border-radius: 3px;
+            width: 95%;
+        }
+
+        label:first-of-type, label:nth-of-type(2) {
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+
+        textarea {
+            margin-bottom: 30px;
+        }
+
+        #openOrNot {
+            font-size: 0.7em;
+        }
+
+
+        #cat_etat {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 30px;
+            height: 50px;
+            padding: 10px 0;
+        }
+
+        .form-group {
+            margin-bottom: 0;
+        }
+
+        .buttons {
+            margin: 10px auto;
+
+        }
+
+
+
+
+        @media (min-width: 500px) {
+            #add_bien, #add_service {
+                width: 70%;
+
+            }
+        }
+
+        @media (min-width: 800px) {
+            #add_bien, #add_service {
+                width: 50%;
+            }
+        }
+
     </style>
 {% endblock %}
 
@@ -17,8 +73,8 @@
     {% include '_nav_bar.html.twig' %}
     {% if session is empty %}
         <blockquote>
-            Vous devez être connecté pour publier une annonce :)
-            Rendez-vous ici pour profiter de toutes les fonctionnalités du site
+            Vous devez être connecté.e pour publier une annonce :)<br>
+            <a href="/user/login">Rendez-vous ici</a> pour profiter de toutes les fonctionnalités du site
         </blockquote>
 
     {% endif %}

@@ -75,11 +75,16 @@
             display: none;
         }
 
+        .breadcrumb {
+            background-color: transparent;
+        }
+
 
         @media (min-width: 768px) {
 
             #main {
-                margin-top: 70px;
+                margin-top: 20px;
+                width: 90%;
             }
 
             a {
@@ -113,18 +118,7 @@
             #action > a > button:last-of-type {
                 display: block;
             }
-
-
-
-
         }
-
-        @media (min-width: 768px) {
-            #main {
-                width: 90%;
-            }
-        }
-
 
     </style>
 {% endblock %}
@@ -133,8 +127,8 @@
     <main class="container-fluid">
         {% include '_nav_retour.html.twig' %}
         {% include '_nav_bar.html.twig' %}
+        {% include 'arianne.html.twig' %}
         <section class="container-fluid" id="main">
-            {#        {{ dump() }}#}
             <div class="row">
                 <div class="col-md-9" id="core">
                     <div class="row">
