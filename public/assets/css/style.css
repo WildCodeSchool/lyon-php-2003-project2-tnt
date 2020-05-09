@@ -17,7 +17,7 @@ a:visited {text-decoration: none; color: #00A99D;}
 a:hover {text-decoration: underline; color: #00A99D;}
 a:active {text-decoration: underline; color: #00A99D;}
 
-.breadcrumb { background-color: transparent;}
+.breadcrumb { background-color: transparent; font-size: 0.8em;}
 
 /*
 /////////////////////////////////////////////////////////// NAV BARS //////////////////////////////////////
@@ -61,8 +61,6 @@ a:active {text-decoration: underline; color: #00A99D;}
     justify-content: space-between;
 
 }
-
-
 
 /*
 ////////////////////////////////////////////////// Home/index /////////////////////////
@@ -166,9 +164,16 @@ a:active {text-decoration: underline; color: #00A99D;}
 .menu-overlay a {
     color: #fff;
     font-weight: 600;
-    font-size: 32px;
     padding: 2%;
     margin-top: 20px;
+}
+.menu-overlay > a:nth-of-type(2),
+.menu-overlay > a:nth-of-type(3) {
+    font-size: 32px;
+}
+
+.menu-overlay > ul:last-of-type {
+    margin-bottom: 50px;
 }
 
 .menu-overlay ul li a{
