@@ -7,10 +7,13 @@
 {% block stylesheet %}
     <style>
         .container-fluid {
-            width: 85%;
+            width: 100%;
             margin: auto auto;
         }
 
+        main {
+            padding: 10px;
+        }
         .card-body {
             display: flex;
             padding: 10px;
@@ -18,7 +21,7 @@
 
         .row, form {
             margin-top: 10px;
-            padding: 0 10px;
+            padding: 10px;
             background-color: #FFF;
             box-shadow: 0 3px 3px #777777;
         }
@@ -84,6 +87,17 @@
             font-size: 1.2em;
         }
 
+        @media (min-width: 768px) {
+            .container-fluid {
+                width: 100%;
+            }
+            .row, form {
+                width: 50%;
+                margin: 20px auto;
+            }
+        }
+
+
 
 
 
@@ -91,48 +105,51 @@
 {% endblock %}
 
 {% block content %}
-    {% include '_nav_retour.html.twig' %}
-    {% include '_nav_bar.html.twig' %}
-    <section class="container-fluid">
 
+    <section class="container-fluid" id="main">
+        {% include '_nav_retour.html.twig' %}
+        {% include '_nav_bar.html.twig' %}
+        <main>
 
         <div class="row">
-            <div class="col-md-6">
-                <h5>Rappel de l'offre</h5>
-                <div class="card mx-auto">
-                    <div class="card-header">
-                        <h4 class="card-title">{{ details.0.title }}</h4>
-                        <span class="badge badge-warning">{{ details.0.deal_type }}</span>
-                    </div>
-                    <div class="card-body">
-                            <p class="card-text">{{ details.0.description }}</p>
-                            <p class="card-text">{{ details.0.etat }}</p>
-                        <a href="/product/details/{{ details.0.id }}" class="stretched-link"></a>
-                    </div>
-                </div>
-            </div>
-            {% if details.0.deal_type == 'echange' %}
-                <div class="col-md-6" id="echange">
+                <div class="col-md-12">
+                    <h5>Rappel de l'offre</h5>
                     <div class="card mx-auto">
                         <div class="card-header">
-                            <h4 class="card-title">En échange de :</h4>
+                            <h4 class="card-title">{{ details.0.title }}</h4>
+                            <span class="badge badge-warning">{{ details.0.deal_type }}</span>
                         </div>
                         <div class="card-body">
-                            <p class="card-text">{{ details.0.enEchangeDe }}</p>
-                            <p class="card-text">{{ details.0.proposition }}</p>
+                            <p class="card-text">{{ details.0.description }}</p>
+                            <p class="card-text">{{ details.0.etat }}</p>
+                            <a href="/product/details/{{ details.0.id }}" class="stretched-link"></a>
                         </div>
                     </div>
                 </div>
-            {% endif %}
-        </div>
+                {% if details.0.deal_type == 'echange' %}
+                    <div class="col-md-6" id="echange">
+                        <div class="card mx-auto">
+                            <div class="card-header">
+                                <h4 class="card-title">En échange de :</h4>
+                            </div>
+                            <div class="card-body">
+                                <p class="card-text">{{ details.0.enEchangeDe }}</p>
+                                <p class="card-text">{{ details.0.proposition }}</p>
+                            </div>
+                        </div>
+                    </div>
+                {% endif %}
+            </div>
 
-        <form action="mailto:brice.darmenia@sfr.fr" method="post" enctype="text/plain">
-            <label for="message">Votre message</label>
-            <textarea type="text" name="message" id="message" rows="8"></textarea>
-            <button type="submit" class="btn btn-warning">Envoyer</button>
-        </form>
+            <form action="mailto:brice.darmenia@sfr.fr" method="post" enctype="text/plain">
+                <label for="message">Votre message</label>
+                <textarea type="text" name="message" id="message" rows="8"></textarea>
+                <button type="submit" class="btn btn-warning">Envoyer</button>
+            </form>
 
+    </main>
     </section>
+
 
 {% endblock %}
 

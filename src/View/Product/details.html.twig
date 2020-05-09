@@ -78,6 +78,10 @@
 
         @media (min-width: 768px) {
 
+            #main {
+                margin-top: 70px;
+            }
+
             a {
                 width: 100%;
             }
@@ -115,7 +119,7 @@
 
         }
 
-        @media (min-width: 992px) {
+        @media (min-width: 768px) {
             #main {
                 width: 90%;
             }
@@ -126,57 +130,60 @@
 {% endblock %}
 
 {% block content %}
-    {% include '_nav_retour.html.twig' %}
-    {% include '_nav_bar.html.twig' %}
-    <section class="container-fluid" id="main">
-        {{ dump() }}
-        <div class="row">
-            <div class="col-md-9" id="core">
-                <div class="row">
-                    <div class="col-md-3" id="echange">
-                        <article>
-                            <h5>En echange</h5>
-                            {% if details.0.deal_type == 'echange' %}
-                                <p>{{ details.0.enEchangeDe }}</p>
-                                <p>{{ details.0.proposition }}</p>
-                            {% else %}
-                                <p>Rien du tout :)</p>
-                                <p>(Un sourire tout au plus)</p>
-                            {% endif %}
-                        </article>
-                    </div>
-                    <div class="col-md-8" id="ad">
-                        <img src="{{ details.0.img }}" alt="">
-                        <article>
-                            <h1>{{ details.0.title }}</h1>
-                            <h5>{{ details.0.name }}</h5>
-                            <h6>Etat</h6>
-                            <p>{{ details.0.description }}</p>
-                            <p>{{ details.0.created_at }}</p>
-                        </article>
+    <main class="container-fluid">
+        {% include '_nav_retour.html.twig' %}
+        {% include '_nav_bar.html.twig' %}
+        <section class="container-fluid" id="main">
+            {#        {{ dump() }}#}
+            <div class="row">
+                <div class="col-md-9" id="core">
+                    <div class="row">
+                        <div class="col-md-3" id="echange">
+                            <article>
+                                <h5>En echange</h5>
+                                {% if details.0.deal_type == 'echange' %}
+                                    <p>{{ details.0.enEchangeDe }}</p>
+                                    <p>{{ details.0.proposition }}</p>
+                                {% else %}
+                                    <p>Rien du tout :)</p>
+                                    <p>(Un sourire tout au plus)</p>
+                                {% endif %}
+                            </article>
+                        </div>
+                        <div class="col-md-8" id="ad">
+                            <img src="{{ details.0.img }}" alt="">
+                            <article>
+                                <h1>{{ details.0.title }}</h1>
+                                <h5>{{ details.0.name }}</h5>
+                                <h6>Etat</h6>
+                                <p>{{ details.0.description }}</p>
+                                <p>{{ details.0.created_at }}</p>
+                            </article>
+                        </div>
                     </div>
                 </div>
+                <aside class="col-md-3">
+                    <article id="user">
+                        <img src="" alt="Photo Profil">
+                        <h3>{{ details.0.nickname }}</h3>
+                    </article>
+                    <article id="localisation">
+                        <h3>Localisation</h3>
+                        <p>{{ details.0.zip_code }}</p>
+                        <iframe src="" frameborder="0"></iframe>
+                    </article>
+                    <section class="container-fluid" id="action">
+                        <img src="/assets/images/heart.png" alt="favoris" title="Ajouter aux Favoris">
+                        <a href="/product/offre/{{ id }}">
+                            <button type="button" class="btn btn-warning btn-lg">Faire un Troc</button>
+                            <button type="button" class="btn btn-outline-warning btn-sm">Mettre en favoris</button>
+                        </a>
+                    </section>
+                </aside>
             </div>
-            <aside class="col-md-3">
-                <article id="user">
-                    <img src="" alt="Photo Profil">
-                    <h3>{{ details.0.nickname }}</h3>
-                </article>
-                <article id="localisation">
-                    <h3>Localisation</h3>
-                    <p>{{ details.0.zip_code }}</p>
-                    <iframe src="" frameborder="0"></iframe>
-                </article>
-                <section class="container-fluid" id="action">
-                    <img src="/assets/images/heart.png" alt="favoris" title="Ajouter aux Favoris">
-                    <a href="/product/offre/{{ id }}">
-                        <button type="button" class="btn btn-warning btn-lg">Faire un Troc</button>
-                        <button type="button" class="btn btn-outline-warning btn-sm">Mettre en favoris</button>
-                    </a>
-                </section>
-            </aside>
-        </div>
-    </section>
+        </section>
+
+    </main>
 
 {% endblock %}
 
