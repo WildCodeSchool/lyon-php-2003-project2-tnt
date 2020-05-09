@@ -1,0 +1,21 @@
+<div>
+    <ul>
+        <li>N° Adhérent : {{ user.id}}</li>
+        <li>Pseudo : {{ user.nickname }}</li>
+        <li>Nom : {{ user.lastname}}</li>
+        <li>Prénom : {{ user.firstname}}</li>
+        <li>Téléphone : {{ user.phone}}</li>
+        <li>Email : {{ user.email}}</li>
+        <li>Code Postal : {{ user.zip_code}}</li>
+    </ul>
+</div>
+<div>
+    <a href="/User/edit/{{ user.id }}">
+        <button type="button" class="btn btn-primary btn-sm"
+                style="background-color: #00A99D">
+            Mettre à jour vos informations personnelles
+        </button>
+    </a>
+
+
+</div>
