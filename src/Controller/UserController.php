@@ -44,7 +44,8 @@ class UserController extends AbstractController
                 $id = $userManager->createProfil($infos);
                 $_SESSION['user'] = [
                     'id' => $id,
-                    'nickname' => $nickname
+                    'nickname' => $nickname,
+                    'email' => $email
                 ];
                 header('Location: /user/Profil/' . $id);
             }
