@@ -1,0 +1,18 @@
+{% for product in inventaire %}
+    <div class="card mb-3" style="max-width: 540px;">
+        <div class="row no-gutters">
+            <div class="col-md-4">
+                <img src="{{ product.img }}" class="card-img" alt="{{ product.title }}">
+            </div>
+            <div class="col-md-8">
+                <div class="card-body">
+                    <h5 class="card-title">{{ product.title }}</h5>
+                    <p class="card-text">Description : {{ product.description }}</p>
+                    <p class="card-text"><small class="text-muted">Proposé le {{ product.created_at | date('d/m/Y') }}</small></p>
+                    <a href="/product/deleteProduct/{{product.id}}">Supprimer</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endfor %}
