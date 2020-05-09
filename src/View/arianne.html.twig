@@ -1,6 +1,20 @@
 <ul class="breadcrumb">
     <li class="breadcrumb-item"><a href="#">Accueil</a></li>
-    <li class="breadcrumb-item"><a href="#">Recherche</a></li>
-    <li class="breadcrumb-item"><a href="#">Bien</a></li>
-    <li class="breadcrumb-item active">Perceuse</li>
+    <li class="breadcrumb-item"><a href="/Product/bienOuService/recherche">Recherche</a></li>
+
+    {% if 'bien' in url %}
+        <li class="breadcrumb-item"><a href="/Product/show/bien">Bien</a></li>
+    {% elseif 'service' in url %}
+        <li class="breadcrumb-item"><a href="/Product/show/service">Service</a></li>
+    {% endif %}
+
+    {% if 'details' in url %}
+        {% if details.0.name == 'bien' %}
+            <li class="breadcrumb-item"><a href="/Product/show/bien">Bien</a></li>
+        {% else %}
+            <li class="breadcrumb-item"><a href="/Product/show/service">Service</a></li>
+        {% endif %}
+        <li class="breadcrumb-item">{{ details.0.title }}</li>
+    {% endif %}
+    
 </ul>
