@@ -46,6 +46,7 @@
         form {
             margin-top: 20px;
             margin-bottom: 100px;
+            background-color: #00A99D;
         }
 
         .card {
@@ -58,7 +59,7 @@
         }
 
         .card-header {
-            background-color: rgba(0,169,157,0.6);
+            background-color: rgba(0,169,157,1);
             color: #FFF;
         }
 
@@ -83,7 +84,7 @@
             width: 100%;
             text-align: center;
             font-weight: bold;
-            color: #00A99D;
+            color: #FFF;
             font-size: 1.2em;
         }
 
@@ -113,7 +114,8 @@
 
         <div class="row">
                 <div class="col-md-12">
-                    <h5>Rappel de l'offre</h5>
+                    <h5>Rappel du troc</h5>
+                    <hr>
                     <div class="card mx-auto">
                         <div class="card-header">
                             <h4 class="card-title">{{ details.0.title }}</h4>
@@ -143,7 +145,7 @@
 
             <form action="mailto:brice.darmenia@sfr.fr" method="post" enctype="text/plain">
                 <label for="message">Votre message</label>
-                <textarea type="text" name="message" id="message" rows="8"></textarea>
+                <textarea type="text" name="message" id="message" rows="8" placeholder="Bonjour, je suis intéressé.e par ..."></textarea>
                 <button type="submit" class="btn btn-warning">Envoyer</button>
             </form>
 

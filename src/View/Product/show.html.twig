@@ -5,10 +5,17 @@
 
 {% block stylesheet %}
     <style>
+
         [name="search"] {
             width: 100%;
             height: 60px;
+            background-color: rgba(0,169,157,0.5);
+            color: white;
+            font-weight: bold;
+            font-size: 1.2em;
+            text-align: center;
         }
+
 
         #categories {
             display: none;
@@ -17,9 +24,9 @@
         #recherche_top {
             box-shadow: 2px 2px 5px #999;
             padding: 5px;
-            margin-top: 20px;
-            margin-bottom: 50px;
+            margin: 20px 5px 50px;
             background-color: #fff;
+            border-radius: 5px;
         }
 
         #recherche_top > form > div:first-of-type {
@@ -48,19 +55,33 @@
             display: flex;
         }
 
+
+
+        #col {
+            padding: 5px;
+            background-color: transparent;
+        }
+
+        .card {
+            position: relative;
+            box-shadow: 3px 3px 3px rgb(0,169,157);
+            border-radius: 5px;
+            background-color: #FFF;
+
+        }
+
         .card-body {
             display: flex;
             padding: 5px;
-            margin-bottom: 7px;
-            box-shadow: 3px 3px 3px rgb(0,169,157);
             height: 130px;
-
         }
 
         .card-body > img:first-of-type {
             height: 75px;
             width: 75px;
             margin: auto 10px;
+            padding: 2px;
+
         }
 
         .card-body > img:last-of-type {
@@ -71,13 +92,14 @@
             right: 15px;
         }
 
-        .card-body h4 {
+        .card-body h6 {
             margin-top: 15px;
+            font-weight: 600;
         }
 
         .card-body p {
             font-size: 0.7em;
-            margin-top: 15px;
+            margin-top: 10px;
         }
 
         .card-title {
@@ -93,42 +115,52 @@
         #barter, #hands {
             width: 250px;
             position: absolute;
-            top: 50px;
             z-index: -2;
             opacity: 0.5;
+            display: none;
         }
         #barter {
             right: 160px;
+            top: 50px;
         }
         #hands {
             left: 160px;
-
+            top: 50px;
         }
+
         .row {
             width: 100%;
             margin: auto auto;
         }
 
-        .card {
-            position: relative;
+        .badge {
+            font-size: 0.6em;
         }
 
-        @media (max-width: 576px) {
+        @media (min-width: 577px) {
+            #recherche_top {
+                margin: 20px auto 40px;
+            }
 
-            #barter { display: none;}
-            .row { width: 100%;}
-            .row > img {
-                display: none;
+            #col {
+                width: 80%;
+            }
+
+            #barter, #hands {
+                display: block;
             }
         }
 
-        [name="search"] {
-            background-color: rgba(0,169,157,0.5);
-            color: white;
-            font-weight: bold;
-            font-size: 1.2em;
-            text-align: center;
+        @media (min-width: 992px) {
+            .row {
+                width: 80%;
+            }
+            #col {
+                width: 80%;
+            }
         }
+
+
 
     </style>
 {% endblock %}
@@ -139,7 +171,7 @@
     {% include '_nav_bar.html.twig' %}
     <div class="row">
         <img src="/assets/images/hands.jpeg" alt="" id="hands">
-        <section class="col-md-6 offset-md-3" id="recherche_top">
+        <section class="col-md-6" id="recherche_top">
             <form action="" method="get">
                 <input type="text" name="search" placeholder="Votre recherche">
 
@@ -175,8 +207,8 @@
                             <div class="card-body">
                                 <img src="{{ product.img }}" class="card-img" alt="Photo de {{ product.title }}" >
                                 <div>
-                                    <h4 class="card-title">{{ product.title }}</h4>
-                                    <span class="badge badge-success">{{ product.deal_type }}</span>
+                                    <h6 class="card-title">{{ product.title }}</h6>
+                                    <span class="badge badge-pill badge-success">{{ product.deal_type }}</span>
                                     <p class="card-text">{{ product.description }}</p>
                                     {#                            <p class="card-text"><small class="text-muted">Date de Parution : {{ product.created_at|date("m/d/Y") }}</small></p>#}
                                 </div>
