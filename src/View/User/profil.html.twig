@@ -1,2 +1,74 @@
 {% extends "layout.html.twig" %}
+{% block content %}
+    {% include '_nav_retour.html.twig' %}
+    {% include '_nav_bar.html.twig' %}
 
+    <div class="accordion" id="accordionExample">
+        <div class="card">
+            <div class="card-header" id="headingOne">
+                <h2 class="mb-0">
+                    <h3>Votre compte :</h3>
+                    <button class="btn btn-link"
+                            type="button"
+                            data-toggle="collapse"
+                            data-target="#collapseOne"
+                            aria-expanded="true"
+                            aria-controls="collapseOne">
+                          Gérez vos informations
+                    </button>
+                </h2>
+            </div>
+
+            <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+                <div class="card-body">
+                    {% include 'User/_user_info.html.twig' %}
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-header" id="headingTwo">
+                <h2 class="mb-0">
+                    <h3>Votre inventaire :</h3>
+                    <button class="btn btn-link collapsed"
+                            type="button"
+                            data-toggle="collapse"
+                            data-target="#collapseTwo"
+                            aria-expanded="false"
+                            aria-controls="collapseTwo">
+                         liste des biens et services que vous proposez actuellement
+                    </button>
+                </h2>
+            </div>
+            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+                <div class="card-body" id="inventaire">
+                    {% include 'User/_inventaire.html.twig' %}
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-header" id="headingThree">
+                <h2 class="mb-0">
+                    <h3>Vos favoris :</h3>
+                    <button class="btn btn-link collapsed"
+                            type="button"
+                            data-toggle="collapse"
+                            data-target="#collapseThree"
+                            aria-expanded="false"
+                            aria-controls="collapseThree">
+                         liste des biens et produits que vous avez repérez
+                    </button>
+                </h2>
+            </div>
+            <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+                <div class="card-body">
+                        {#  Affichage des favoris#}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block user %}
+
+
+{% endblock %}
