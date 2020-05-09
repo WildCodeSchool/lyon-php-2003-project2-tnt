@@ -66,7 +66,7 @@ class UserController extends AbstractController
      * @throws \Twig\Error\RuntimeError
      * @throws \Twig\Error\SyntaxError
      */
-    public function edit($id)
+    public function edit(int $id)
     {
         $userManager = new UserManager();
         $user = $userManager->selectUserById($id);
@@ -81,7 +81,7 @@ class UserController extends AbstractController
             $userManager->update($user);
             header("Location :/User/profil/$id");
         }
-        return $this->twig->render('User/edit.html.twig',['user' => $user]);
+        return $this->twig->render('User/edit.html.twig', ['user' => $user]);
     }
 //
 

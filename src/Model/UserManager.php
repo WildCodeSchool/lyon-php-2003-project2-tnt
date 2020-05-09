@@ -92,7 +92,11 @@ class UserManager extends AbstractManager
         $statement->execute();
     }
 
-    public function selectUserById($id)
+    /**
+     * @param int $id
+     * @return mixed
+     */
+    public function selectUserById(int $id)
     {
         $statement = $this->pdo->prepare("SELECT * FROM " . $this->table . " WHERE user.id = :id");
         $statement->bindValue(':id', $id, \PDO::PARAM_INT);
