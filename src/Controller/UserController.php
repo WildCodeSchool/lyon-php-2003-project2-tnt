@@ -66,7 +66,7 @@ class UserController extends AbstractController
      * @throws \Twig\Error\RuntimeError
      * @throws \Twig\Error\SyntaxError
      */
-    public function edit(int $id)
+    public function edit(int $id):string
     {
         $userManager = new UserManager();
         $user = $userManager->selectUserById($id);
@@ -92,7 +92,7 @@ class UserController extends AbstractController
      * @throws \Twig\Error\RuntimeError
      * @throws \Twig\Error\SyntaxError
      */
-    public function profil($id)
+    public function profil(int $id):string
     {
         $userManager = new UserManager();
         $user = $userManager->selectOneById($id);
