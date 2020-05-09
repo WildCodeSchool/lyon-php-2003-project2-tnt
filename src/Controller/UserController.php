@@ -4,7 +4,6 @@ namespace App\Controller;
 
 use App\Model\UserManager;
 
-
 class UserController extends AbstractController
 {
 
@@ -80,7 +79,6 @@ class UserController extends AbstractController
         $user = $userManager->selectUserById($id);
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-
             $user['lastname'] = self::cleanInput($_POST['lastname']);
             $user['firstname'] = self::cleanInput($_POST['firstname']);
             $user['email'] = self::cleanInput($_POST['email']);
@@ -88,9 +86,9 @@ class UserController extends AbstractController
             $user['zip_code'] = self::cleanInput($_POST['zip_code']);
 
             $userManager->update($user);
-            header( "Location :/User/profil/$id");
+            header("Location :/User/profil/$id");
         }
-        return $this->twig->render('User/edit.html.twig', ['user' => $user]);
+        return $this->twig->render('User/edit.html.twig',['user' => $user]);
     }
 //
 
