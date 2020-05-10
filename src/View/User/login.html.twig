@@ -16,6 +16,11 @@
         }
         button {
             margin-bottom: 10px;
+            background-color: #f59800;
+            color: #FFF;
+            border-radius: 5px;
+            font-weight: 600;
+            padding: 5px 10px;
         }
 
         @media (min-width: 500px) {
@@ -76,7 +81,7 @@
                 <input type="password" name="password" id="password"  required>
                 <p class="error">{{ (errors.pass is defined) ? errors.pass : '' }}</p>
 
-                <button type="submit" class="btn btn-warning">Me connecter</button>
+                <button type="submit">Me connecter</button>
 
                 <p>Mot de passe oublié ? <a href="">Réinitialiser le</a></p>
 
