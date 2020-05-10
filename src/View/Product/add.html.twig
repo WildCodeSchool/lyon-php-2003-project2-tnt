@@ -47,10 +47,6 @@
             margin: 10px auto;
 
         }
-
-
-
-
         @media (min-width: 500px) {
             #add_bien, #add_service {
                 width: 70%;
@@ -62,6 +58,10 @@
             #add_bien, #add_service {
                 width: 35%;
             }
+        }
+
+        #add_service select {
+            margin-bottom: 40px;
         }
 
     </style>
@@ -84,4 +84,24 @@
         {% include 'Product/_formService.html.twig' %}
     {% endif %}
 {% endblock %}
+
+{% block javascripts %}
+    <script>
+        $(function () {
+            const don = $('#don');
+            const echange = $('#echange');
+            const hiddenIfDon = $('.hiddenIfDon');
+
+            don.on('click', function () {
+                hiddenIfDon.fadeOut(400)
+            });
+
+            echange.on('click', function () {
+                hiddenIfDon.fadeIn(400)
+            });
+
+        });
+    </script>
+{% endblock %}
+
 
