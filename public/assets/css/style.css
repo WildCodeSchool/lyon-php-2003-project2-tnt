@@ -71,16 +71,18 @@ a:active {text-decoration: underline; color: #00A99D;}
     color: #ffffff;
 }
 
-#header_home nav > p {
-    font-size: 0.7em;
+#nav_top > p {
+    font-size: 0.8em;
 }
 
-#header_home nav > span {
+#nav_top {
     display: flex;
     justify-content: space-between;
+    box-shadow: 0 3px 3px #777;
 }
 
-#header_home nav > span > h3 {
+#nav_top > h2 {
+    margin-right: 120px;
     margin-bottom: 0px;
 }
 
@@ -234,6 +236,7 @@ a:active {text-decoration: underline; color: #00A99D;}
 @media (min-width: 992px) {
 
     #nav_bottom {
+        position: absolute;
         top: 70px;
         right: 0px;
         height: 50px;

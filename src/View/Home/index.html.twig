@@ -4,13 +4,22 @@
 
 {% block stylesheet %}
     <style>
+        .col-6 {
+            max-width: 100%;
+        }
+
+        #nav_top > span:first-of-type {
+            display: none;
+        }
+
         #main_home {
             display: flex;
             flex-direction: column;
             font-size: 1.1em;
             margin-top: 20px;
-            background-image: url("/assets/images/paperClip.png");
-            background-repeat: no-repeat;
+            /*background-image: url("/assets/images/paperClip.png");*/
+            /*background-repeat: no-repeat;*/
+            background-color: #FFF;
 
         }
 
@@ -20,44 +29,57 @@
         }
 
         #carousel {
-            height: 300px;
-            margin: 40px auto;
-            padding: 0px 20px;
+            height: 80%;
+            margin: 40px auto 0px;
             display: flex;
         }
 
-        #main_home > img {
+        #carousel > blockquote {
+            font-size: 1em;
+            margin-left: 20px;
+            margin-bottom: 20px;
+            margin-right: 20px;
+            padding: 10px;
+            background-color: #f59800;
+            color: #FFF;
+            /*box-shadow: 2px 2px 3px #777777;*/
+            height: 100%;
+            border-radius: 5px;
+        }
+        blockquote > p:first-of-type {
+            font-size: 1.2em;
+            font-weight: 600;
+        }
+        blockquote > p:last-of-type {
+            font-size: 1.1em;
+            margin-bottom: 40px;
+            font-weight: 600;
+        }
+        blockquote > p:nth-of-type(3) {
+            font-size: 0.8em;
+        }
+        blockquote > p > a:link {
+            background-color: #FFF;
+            padding: 5px;
+            border-radius: 5px;
+            font-weight: 600;
+            /*text-decoration: underline;*/
+        }
+
+        #clip {
             height: auto;
             width: 70%;
             padding: 30px;
-            margin-top: 20px;
+            margin-left: 40px;
             transform: rotateZ(25deg);
-            z-index: -1000;
-        }
-
-        #carousel > blockquote {
-            font-size: 0.8em;
-            margin-left: 20px;
-            margin-top: 0px;
-            padding: 10px;
-            background-color: white;
-            box-shadow: 2px 2px 3px #777777;
-            height: 100%;
-        }
-
-        #carousel > blockquote > p {
-            font-size: 0.9em;
-        }
-
-        #carousel > blockquote > p:first-of-type {
-            font-size: 1.1em;
-            font-weight: 600;
+            /*z-index: -1000;*/
         }
 
 
-         #troc {
-            height: 320px;
-            padding: 20px;
+
+        #troc {
+             height: 320px;
+             padding: 20px;
              margin-bottom: 100px;
         }
 
@@ -75,6 +97,52 @@
             width: 50%;
         }
 
+        #main_home > .row:first-of-type {
+            display: flex;
+            flex-direction: column-reverse;
+        }
+
+        @media (min-width: 500px) {
+            #nav_top > span:first-of-type {
+                display: block;
+            }
+
+
+            #main_home {
+                width: 60%;
+                margin: 10px auto 50px;
+            }
+
+            #main_home > .row:first-of-type {
+                flex-direction: row;
+            }
+
+            #carousel {
+                height: 80%;
+                margin: 40px auto;
+                display: flex;
+            }
+
+            #carousel > blockquote {
+                font-size: 1.2em;
+                margin-left: 20px;
+                margin-bottom: 20px;
+                margin-right: 20px;
+            }
+
+            blockquote > p:first-of-type {
+                font-size: 1.4em;
+                font-weight: 600;
+            }
+
+
+            #clip {
+                width: 70%;
+                padding: 30px;
+                margin-left: 80px;
+            }
+        }
+
     </style>
 {% endblock %}
 
@@ -82,44 +150,52 @@
 {% block content %}
     {% include '_nav_top.html' %}
     <main class="container-fluid" id="main_home">
+        <div class="row">
+            <div class="col-6">
+                <img src="/assets/images/paperClip.png" alt="" id="clip">
+            </div>
 
-        <p><strong>"Des échanges sans argent pour des liens plus humains"</strong></p>
-{#        <img src="/assets/images/paperClip.png" alt="">#}
-        <section id="carousel">
-            <blockquote>
-                <p>Avez-vous déjà eu vent<br>de cette fabuleuse histoire de troc ?</p>
-                <p>D'un homme qui, à partir d'un simple trombone, obtenu une maison ?</p>
-                <p>Pour connaître son histoire, <a href="">c'est par ici.</a></p>
+            <div class="col-6" id="carousel">
+                <blockquote class="shadow-lg">
+                    <p>Avez-vous déjà eu vent<br>de cette fabuleuse histoire de troc ?</p>
+                    <hr>
+                    <p>D'un homme qui, à partir d'un simple trombone, obtenu une maison ?</p>
+                    <p>Pour connaître son histoire, <a href="">c'est par ici.</a></p>
 
-                <p>Et vous, jusqu'où pourriez-vous aller à partir d'un simple trombone ?</p>
-            </blockquote>
-        </section>
+                    <p>Et vous,<br> quel sera votre troc du jour ?</p>
+                </blockquote>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <section id="troc">
+                    <article id="propose">
+                        <div>
+                            <a href="/product/bienOuService/propose">je propose</a>
+                        </div>
+                        <img src="/assets/images/right_hand.jpg" alt="Right_hand">
+                    </article>
+                    <article id="recherche">
+                        <img src="/assets/images/right_hand.jpg" alt="Right_hand">
+                        <div>
+                            <a href="/product/bienOuService/recherche">je recherche</a>
+                        </div>
+                    </article>
+                </section>
+            </div>
+        </div>
 
-        <section id="troc">
-            <article id="propose">
-                <div>
-                    <a href="/product/bienOuService/propose">je propose</a>
-                </div>
-                <img src="/assets/images/right_hand.jpg" alt="Right_hand">
-            </article>
-            <article id="recherche">
-                <img src="/assets/images/right_hand.jpg" alt="Right_hand">
-                <div>
-                    <a href="/product/bienOuService/recherche">je recherche</a>
-                </div>
-            </article>
-        </section>
-
-        <section id="footer_desktop">
-            <ul>
-                <a href=""><li>En savoir plus</li></a>
-                <a href=""><li>Plan du site</li></a>
-                <a href=""><li>Contactez nous</li></a>
-                <a href=""><li>Mentions Légales</li></a>
-            </ul>
-        </section>
 
     </main>
+    <section id="footer_desktop">
+        <ul>
+            <a href=""><li>En savoir plus</li></a>
+            <a href=""><li>Plan du site</li></a>
+            <a href=""><li>Contactez nous</li></a>
+            <a href=""><li>Mentions Légales</li></a>
+        </ul>
+    </section>
+
 
     <footer>
         {% include '_nav_bar.html.twig' %}
