@@ -108,7 +108,7 @@ class UserController extends AbstractController
                 if (empty($user)) {
                     $errors['login'] = "Login introuvable";
                 } else {
-                    if ($pass == $user['password']) {
+                    if (password_verify($pass, $user['password'])) {
                         $_SESSION['user'] = [
                             'id' => $user['id'],
                             'nickname' => $user['nickname'],
