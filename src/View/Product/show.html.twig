@@ -112,20 +112,42 @@
 
         }
 
-        #barter, #hands {
-            width: 250px;
+        #book, #velo, #shoes, #pull, #musik, #photo, #sac {
+            width: 200px;
             position: absolute;
             z-index: -2;
             opacity: 0.5;
             display: none;
         }
-        #barter {
-            right: 160px;
+        #velo {
+            right: 120px;
             top: 100px;
         }
-        #hands {
-            left: 160px;
-            top: 100px;
+        #photo {
+            left: 100px;
+            top: 80px;
+        }
+        #shoes {
+            right: 20px;
+            top: 500px;
+        }
+        #book {
+            left: 30px;
+            top: 600px;
+        }
+        #sac {
+            left: 30px;
+            top: 1300px;
+            opacity: 0.3;
+        }
+        #musik {
+            right: 30px;
+            top: 1000px;
+            width: 200px;
+        }
+        #pull {
+            top: 1400px;
+            right: 200px;
         }
 
         .row {
@@ -148,7 +170,7 @@
                 width: 80%;
             }
 
-            #barter, #hands {
+            #photo, #sac, #photo, #book, #velo, #shoes, #musik, #pull {
                 display: block;
             }
         }
@@ -171,7 +193,6 @@
     {% include 'arianne.html.twig' %}
 
     <div class="row">
-        <img src="/assets/images/hands.jpeg" alt="" id="hands">
         <section class="col-md-6" id="recherche_top">
             <form action="" method="get">
                 <input type="text" name="search" placeholder="Votre recherche">
@@ -193,7 +214,14 @@
                 </div>
             </form>
         </section>
-        <img src="/assets/images/barter.png" alt="" id="barter">
+        <img src="/assets/images/photo.png" alt="" id="photo">
+        <img src="/assets/images/sac.png" alt="" id="sac">
+        <img src="/assets/images/book.png" alt="" id="book">
+        <img src="/assets/images/musik.png" alt="" id="musik">
+        <img src="/assets/images/pull.png" alt="" id="pull">
+        <img src="/assets/images/sac.png" alt="" id="sac">
+        <img src="/assets/images/shoes.png" alt="" id="shoes">
+        <img src="/assets/images/velo.png" alt="" id="velo">
 
         <section class="container-fluid col-md-12" id="liste">
 
