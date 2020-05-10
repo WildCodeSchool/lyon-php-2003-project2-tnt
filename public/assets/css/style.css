@@ -22,6 +22,9 @@ a:active {text-decoration: underline; color: #00A99D;}
 ul > li {
     list-style-type: none;
 }
+.custom-radio:last-of-type {
+    margin-bottom: 30px;
+}
 
 /*
 /////////////////////////////////////////////////////////// NAV BARS //////////////////////////////////////

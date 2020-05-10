@@ -11,7 +11,7 @@
         #add_service, #add_bien {
             margin: 20px auto 100px;
             background-color: #FFF;
-            box-shadow: 3px 3px 3px #00A99D;
+            box-shadow: 3px 3px 3px rgba(0,169,157,0.7);
             padding: 10px;
             border-radius: 3px;
             width: 95%;
@@ -44,9 +44,32 @@
         }
 
         .buttons {
-            margin: 10px auto;
-
+            display: flex;
+            justify-content: center;
+            margin-top: 40px;
         }
+
+        [type="submit"] {
+            background-color: #f59800;
+            border: none;
+            font-weight: 600;
+        }
+        [type="submit"]:hover {
+            background-color: #FFF;
+            color: #f59800;
+            border: 1px solid #f59800;
+        }
+        [type="button"] {
+            color: #f59800;
+            border-color: #f59800;
+        }
+        [type="button"]:hover {
+            background-color: #FFF;
+            color: #f59800;
+            border-color: #f59800;
+            cursor: not-allowed;
+        }
+
         @media (min-width: 500px) {
             #add_bien, #add_service {
                 width: 70%;
@@ -62,6 +85,27 @@
 
         #add_service select {
             margin-bottom: 40px;
+        }
+
+        #nature {
+            text-align: center;
+            width: 70%;
+            margin: auto auto;
+            box-shadow: 1px 1px 3px #f59800;
+        }
+        #nature label {
+            font-size: 0.9em;
+        }
+        #nature .card-header {
+            background-color: #f59800;
+            color: #FFF;
+            padding-top: 10px;
+            padding-bottom: 0px;
+        }
+        #nature .card-title {
+            font-size: 1em;
+            font-weight: 600;
+
         }
 
     </style>
@@ -99,7 +143,6 @@
             echange.on('click', function () {
                 hiddenIfDon.fadeIn(400)
             });
-
         });
     </script>
 {% endblock %}

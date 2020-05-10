@@ -36,16 +36,23 @@
 
         <!-- insérer ici les éléments d'upload de photo(s) -->
 
-        <div class="form-group">
-            {{ form.radio('echangeOuDon', 'echange', 'Echange', 'checked') }}
-            {{ form.radio('echangeOuDon', 'don', 'Don', '') }}
+        <div class="form-group" id="nature">
+            <div class="card mx-auto">
+                <div class="card-header">
+                    <h4 class="card-title">Nature de l'offre</h4>
+                </div>
+                <div class="card-body">
+                    {{ form.radio('echangeOuDon', 'echange', 'Echange', 'checked') }}
+                    {{ form.radio('echangeOuDon', 'don', 'Don', '') }}
+                </div>
+            </div>
         </div>
 
         <div class="form-group hiddenIfDon">
             {{ form.textarea('form-control','enEchangeDe', '', 'Précisez ici le(s) bien(s)/service(s) souhaité(s) en échange') }}
         </div>
         <div class="form-group hiddenIfDon">
-            {{ form.radio('proposition', 'ouvert', 'Je suis ouvert à d\'autres proposition', 'checked') }}
+            {{ form.radio('proposition', 'ouvert', 'Je suis ouvert à d\'autres propositions', 'checked') }}
             {{ form.radio('proposition', 'pasOuvert', 'Je souhaite uniquement ces biens / services en échange', '') }}
         </div>
         {% if session is not empty %}

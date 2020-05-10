@@ -10,9 +10,9 @@
 
 
 {% macro radio(group, name, label, checked) %}
-    <div class="custom-control custom-radio custom-control-inline">
-        <input type="radio" id="{{ name }}" name="{{ group }}" value="{{ name }}" {{ checked }} = "" class="custom-control-input">
-        <label class="custom-control-label" for="{{ name }}">{{ label }}</label>
+    <div class="form-check-inline">
+        <input type="radio" id="{{ name }}" name="{{ group }}" value="{{ name }}" {{ checked }} = "" class="form-check-input">
+        <label class="form-check-label" for="{{ name }}">{{ label }}</label>
     </div>
 {% endmacro %}
 
