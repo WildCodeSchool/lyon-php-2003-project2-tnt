@@ -161,4 +161,24 @@ class ProductController extends AbstractController
 
         header('Location: /user/inventaire/' . $user['user_id']);
     }
+
+    public function uploadImage()
+    {
+        if(!empty($_FILES['files']['name'])) {
+            $files = $_FILES['files'];
+            $file_type = explode('/', $files['type']);
+            $file_ext = end($file_type);
+
+            $fileErrors = self::checkFile($files);
+
+            if ($fileErrors == '') {
+                $file_name_new = uniqid('', true) . '.' . $file_ext;
+                $file_destination = $_SERVER['DOCUMENT_ROOT'] . '/uploads/' . $file_name_new;
+                move_uploaded_file($file_tmp, $file_destination);
+
+                $image = $productManager->addImage($file_name_new);
+            }
+            return $this->twig->render('Product/add.html.twig', ['files' => $files]);
+        }
+    }
 }

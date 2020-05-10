@@ -64,7 +64,23 @@ abstract class AbstractController
             $errors['echange']="Si vous souhaitez procéder à un échange, cocher la case Ouvert.e à toutes propositions 
                                ou veuillez renseigner les biens / services que vous aimeriez en retour le cas écheant ";
         }
+        return $errors;
+    }
 
+    protected static function checkFile(array $files) {
+        $errors = [];
+
+        $allowedExt = array('jpg', 'png', 'gif', 'jpeg');
+        $file_type = explode('/', $files['type']);
+        $file_ext = end($file_type);
+
+        if ($files['size'] > 1000000) {
+            $errors['size'] = "File must not exceed 1Mo";
+        } elseif (!empty($files['error'])) {
+            $errors['code'] = "Upload failed";
+        } elseif (!in_array($file_ext, $allowedExt)) {
+            $errors['ext'] = "file extension" . $file_ext . " is not allowed.";
+        }
         return $errors;
     }
 }
