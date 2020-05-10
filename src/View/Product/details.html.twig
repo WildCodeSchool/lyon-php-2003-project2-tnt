@@ -86,7 +86,7 @@
 
             #main {
                 margin-top: 20px;
-                width: 90%;
+                width: 70%;
             }
 
             a {
@@ -108,6 +108,9 @@
             #ad {
                 margin-left: 20px;
             }
+            #ad > img {
+                width: 300px;
+            }
 
             aside {
                 padding-left: 0px!important;
@@ -121,6 +124,14 @@
                 display: block;
             }
         }
+
+        #map {
+            height: 100%;
+        }
+        #row_map {
+            height: 200px;
+        }
+
 
     </style>
 {% endblock %}
@@ -166,7 +177,11 @@
                     <article id="localisation">
                         <h3>Localisation</h3>
                         <p>{{ details.0.zip_code }}</p>
-                        <iframe src="" frameborder="0"></iframe>
+                        <div class="row" id="row_map">
+                            <div class="col-12">
+                                <div id="map"></div>
+                            </div>
+                        </div>
                     </article>
                     <section class="container-fluid" id="action">
                         <img src="/assets/images/heart.png" alt="favoris" title="Ajouter aux Favoris">
@@ -180,5 +195,39 @@
 
     </main>
 
+{% endblock %}
+
+{% block javascripts %}
+    <script>
+        function initMap() {
+            var map = new google.maps.Map(document.getElementById('map'), {
+                zoom: 8,
+                center: {lat: -34.397, lng: 150.644}
+            });
+            var geocoder = new google.maps.Geocoder();
+
+            document.getElementById('submit').addEventListener('click', function() {
+                geocodeAddress(geocoder, map);
+            });
+        }
+
+        function geocodeAddress(geocoder, resultsMap) {
+            var address = document.getElementById('address').value;
+            geocoder.geocode({'address': address}, function(results, status) {
+                if (status === 'OK') {
+                    resultsMap.setCenter(results[0].geometry.location);
+                    var marker = new google.maps.Marker({
+                        map: resultsMap,
+                        position: results[0].geometry.location
+                    });
+                } else {
+                    alert('Geocode was not successful for the following reason: ' + status);
+                }
+            });
+        }
+    </script>
+    <script async defer
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAVaXQaad_Vg7tnUN45WoFZoM3ACOc80Qs&callback=initMap">
+    </script>
 {% endblock %}
 

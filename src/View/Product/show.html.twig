@@ -135,6 +135,8 @@
 
         .badge {
             font-size: 0.6em;
+            background-color: #f59800;
+            color: #FFF;
         }
 
         @media (min-width: 577px) {
@@ -159,9 +161,6 @@
                 width: 80%;
             }
         }
-
-
-
     </style>
 {% endblock %}
 
@@ -210,7 +209,7 @@
                                 <img src="{{ product.img }}" class="card-img" alt="Photo de {{ product.title }}" >
                                 <div>
                                     <h6 class="card-title">{{ product.title }}</h6>
-                                    <span class="badge badge-pill badge-success">{{ product.deal_type }}</span>
+                                    <span class="badge badge-pill">{{ product.deal_type }}</span>
                                     <p class="card-text">{{ product.description }}</p>
                                     {#                            <p class="card-text"><small class="text-muted">Date de Parution : {{ product.created_at|date("m/d/Y") }}</small></p>#}
                                 </div>
@@ -224,16 +223,6 @@
             {% endif %}
         </section>
     </div>
-{% endblock %}
-
-{% block javascripts %}
-    <script>
-        $(function () {
-            const card = $('.card');
-        });
-
-    </script>
-
 {% endblock %}
 
 

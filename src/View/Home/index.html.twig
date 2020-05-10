@@ -66,14 +66,6 @@
             /*text-decoration: underline;*/
         }
 
-        #clip {
-            height: auto;
-            width: 70%;
-            padding: 30px;
-            margin-left: 40px;
-            transform: rotateZ(25deg);
-            /*z-index: -1000;*/
-        }
 
 
 
@@ -81,12 +73,23 @@
              height: 320px;
              padding: 20px;
              margin-bottom: 100px;
+             display: flex;
+            flex-direction: column;
         }
-
-        #propose, #recherche {
-            height: 160px;
-            display: flex;
-            justify-content: space-between;
+        #troc > img {
+            width: 100%;
+            display: block;
+        }
+        #troc > article {
+            text-align: center;
+            font-size: 1.6em;
+            font-weight: 500;
+        }
+        article a:link, article a:visited {
+            color: #f59800;
+        }
+        article a:hover {
+            color: #00A99D;
         }
 
         #footer_desktop {
@@ -119,8 +122,8 @@
 
             #carousel {
                 height: 80%;
-                margin: 40px auto;
                 display: flex;
+                margin-left: -5em;
             }
 
             #carousel > blockquote {
@@ -141,6 +144,29 @@
                 padding: 30px;
                 margin-left: 80px;
             }
+
+            #troc > img {
+                width: 40%;
+                margin: auto auto;
+                display: block;
+                flex-direction: row;
+            }
+        }
+        #clips {
+            display: flex;
+            justify-content: center;
+        }
+        .clip {
+            height: auto;
+            width: 17%;
+            padding: 20px;
+            /*margin-top: -140px;*/
+            /*margin-left: 40px;*/
+            transform: rotateZ(35deg);
+            display: block;
+        }
+        .left_clip {
+            transform: rotateZ(-30deg);
         }
 
     </style>
@@ -151,8 +177,12 @@
     {% include '_nav_top.html' %}
     <main class="container-fluid" id="main_home">
         <div class="row">
-            <div class="col-6">
-                <img src="/assets/images/paperClip.png" alt="" id="clip">
+            <div class="col-6" id="clips">
+                <img src="/assets/images/paperClip.png" alt="" class="clip left_clip">
+                <img src="/assets/images/paperClip.png" alt="" class="clip">
+                <img src="/assets/images/paperClip.png" alt="" class="clip left_clip">
+                <img src="/assets/images/paperClip.png" alt="" class="clip">
+
             </div>
 
             <div class="col-6" id="carousel">
@@ -168,19 +198,18 @@
         </div>
         <div class="row">
             <div class="col-12">
-                <section id="troc">
+                <section id="troc" class="shadow-lg">
+
                     <article id="propose">
-                        <div>
-                            <a href="/product/bienOuService/propose">je propose</a>
-                        </div>
-                        <img src="/assets/images/right_hand.jpg" alt="Right_hand">
+                        <a href="/product/bienOuService/propose">Proposer un Troc</a>
                     </article>
+
+                    <img src="/assets/images/mains4.png" alt="">
+
                     <article id="recherche">
-                        <img src="/assets/images/right_hand.jpg" alt="Right_hand">
-                        <div>
-                            <a href="/product/bienOuService/recherche">je recherche</a>
-                        </div>
+                        <a href="/product/bienOuService/recherche">Rechercher un troc</a>
                     </article>
+
                 </section>
             </div>
         </div>
@@ -222,9 +251,6 @@
                 div_prop.fadeToggle(400);
                 div_search.fadeOut();
             })
-
-
-
         });
 
     </script>
