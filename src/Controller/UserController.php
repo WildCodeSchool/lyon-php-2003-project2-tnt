@@ -13,19 +13,10 @@ class UserController extends AbstractController
             $userManager = new UserManager();
             $nickname = self::cleanInput($_POST['nickname']);
             $email = self::cleanInput($_POST['email']);
+            $zipCode = self::cleanInput($_POST['zipCode']);
             $pass = $_POST['pass'];
 
-            $errors = [];
-
-            if (empty($_POST['nickname'])) {
-                $errors['nickname'] = "Nom / Pseudo requis";
-            }
-            if (empty($_POST['email'])) {
-                $errors['email'] = "Email requis";
-            }
-            if (empty($_POST['pass'])) {
-                $errors['pass'] = "Vérifiez vos mots de passe";
-            }
+            $errors = self::checkIfEmpty([$_POST['nickname'],$_POST['email'],$_POST['pass'],$_POST['zipCode']]);
 
             if ($userManager->selectOneByEmail($email)) {
                 $errors['email'] = "Email déjà utilisé";
@@ -39,12 +30,14 @@ class UserController extends AbstractController
                 $infos = [
                     'nickname' => $nickname,
                     'email' => $email,
-                    'pass' => $pass
+                    'pass' => $pass,
+                    'zipCode' => $zipCode
                 ];
                 $id = $userManager->createProfil($infos);
                 $_SESSION['user'] = [
                     'id' => $id,
-                    'nickname' => $nickname
+                    'nickname' => $nickname,
+                    'email' => $email
                 ];
                 header('Location: /user/Profil/' . $id);
             }
@@ -138,7 +131,7 @@ class UserController extends AbstractController
                 if (empty($user)) {
                     $errors['login'] = "Login introuvable";
                 } else {
-                    if ($pass == $user['password']) {
+                    if (password_verify($pass, $user['password'])) {
                         $_SESSION['user'] = [
                             'id' => $user['id'],
                             'nickname' => $user['nickname'],
@@ -159,5 +152,23 @@ class UserController extends AbstractController
     {
         unset($_SESSION['user']);
         header('Location: /');
+    }
+
+    public static function checkIfEmpty(array $toCheck) : array
+    {
+        $errors = [];
+        if (empty($toCheck[0])) {
+            $errors['nickname'] = "Nom / Pseudo requis";
+        }
+        if (empty($toCheck[1])) {
+            $errors['email'] = "Email requis";
+        }
+        if (empty($toCheck[2])) {
+            $errors['pass'] = "Vérifiez vos mots de passe";
+        }
+        if (empty($toCheck[3])) {
+            $errors['zipCode'] = "Veuillez renseigner un code postal à 5 chiffres svp";
+        }
+        return $errors;
     }
 }

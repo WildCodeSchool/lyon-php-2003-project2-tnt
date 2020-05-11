@@ -4,7 +4,7 @@
             <li><a href="/home/index" title="Retour à l'accueil"><img src="/assets/images/icons/home.png" alt="Accueil"></a></li>
             <li><a href="" title="Mes Favoris"><img src="/assets/images/icons/fav.png" alt="Favoris"></a></li>
             {% if session is empty or session.user is empty%}
-                <li><img src="/assets/images/icons/profil.png" alt="no_co" id="home_no_co_" data-toggle="modal" data-target="#modal_compte_non_co"></li>
+                <li><a href="/user/login"><img src="/assets/images/icons/profil.png" id="home_no_co_"></a></li>
             {% else %}
                 <li><img src="/assets/images/icons/profil_co.png" alt="co" id="home_compte_co" data-toggle="modal" data-target="#modal_compte_co"></li>
             {% endif %}
@@ -14,32 +14,6 @@
     </nav>
 </div>
 
-
-<!-- The Modal Non Connect -->
-    <div class="modal fade" id="modal_compte_non_co">
-        <div class="modal-dialog">
-            <div class="modal-content">
-
-                <!-- Modal Header -->
-                <div class="modal-header">
-                    <h4 class="modal-title">Connexion</h4>
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                </div>
-
-                <!-- Modal body -->
-                <div class="modal-body">
-                    <p><a href="/user/login">Connectez-vous</a></p>
-                </div>
-
-                <!-- Modal footer -->
-                <div class="modal-footer">
-                    <p>Pas encore inscrit ? <a href="/user/inscription">Rejoignez la communauté !</a></p>
-                </div>
-
-            </div>
-        </div>
-    </div>
-
     <!-- The Modal Connect -->
     <div class="modal fade" id="modal_compte_co">
         <div class="modal-dialog">
@@ -47,17 +21,17 @@
 
                 <!-- Modal Header -->
                 <div class="modal-header">
-                    <h4 class="modal-title">Mon compte - Menu</h4>
+                    <h4 class="modal-title">Menu Personnel</h4>
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
 
                 <!-- Modal body -->
-                <div class="modal-body">
+                <div class="modal-body" id="menu_profil">
                     <ul>
-                        <li><a href="/user/profil/{{ session.user.id }}">Mon inventaire</a></li>
-                        <li><a href="/user/favoris/{{ session.user.id }}">Mes favoris</a></li>
-                        <li><a href="/user/preferences/{{ session.user.id }}">Mes préférences</a></li>
-                        <li><a href="/user/profil/{{ session.user.id }}">Mon profil</a></li>
+                        <li><img src="/assets/images/icons/malle.png" alt=""><a href="/user/inventaire/{{ session.user.id }}">Mon inventaire</a></li>
+                        <li><img src="/assets/images/heart.png" alt=""><a href="/user/favoris/{{ session.user.id }}">Mes favoris</a></li>
+                        <li><img src="/assets/images/icons/filtre.png" alt=""><a href="/user/preferences/{{ session.user.id }}">Mes préférences</a></li>
+                        <li><img src="/assets/images/icons/profil.png" alt=""><a href="/user/profil/{{ session.user.id }}">Mon profil</a></li>
                     </ul>
                 </div>
 

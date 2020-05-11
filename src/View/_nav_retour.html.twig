@@ -6,7 +6,16 @@
             <a href="/Product/bienOuService/recherche">
                 {% elseif url == '/index.php/Product/add/bien' or url == '/index.php/Product/add/service' %}
                 <a href="/Product/bienOuService/propose">
-                    {% endif %}
+                    {% elseif 'offre' in url %}
+                    {% set id = url|split('/')|last %}
+                    <a href="/Product/details/{{ id }}">
+                        {% elseif 'details' in url %}
+                        {% if details.0.name == 'bien' %}
+                        <a href="/Product/show/bien">
+                            {% else %}
+                            <a href="/Product/show/service">
+                        {% endif %}
+        {% endif %}
 
                     <img src="/assets/images/icons/previous_white.png" alt="retour">
                 </a>
@@ -25,6 +34,7 @@
     </section>
 </header>
 <div class="menu-overlay">
+
     <a href="/">Accueil</a>
     <a href="/Product/bienOuService/propose">Je propose</a>
     <ul>

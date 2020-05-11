@@ -48,11 +48,12 @@ class UserManager extends AbstractManager
     public function createProfil(array $infos)
     {
         // prepared request
-        $statement = $this->pdo->prepare("INSERT INTO " . $this->table . " (`nickname`,`email`,`password`) 
-                                                   VALUES (:nickname, :email, :password)");
+        $statement = $this->pdo->prepare("INSERT INTO user (`nickname`,`email`,`password`,`zip_code`) 
+                                                   VALUES (:nickname, :email, :password, :zip_code)");
         $statement->bindValue('nickname', $infos['nickname'], PDO::PARAM_STR);
         $statement->bindValue('email', $infos['email'], PDO::PARAM_STR);
         $statement->bindValue('password', $infos['pass'], PDO::PARAM_STR);
+        $statement->bindValue('zip_code', $infos['zipCode'], PDO::PARAM_STR);
 
         if ($statement->execute()) {
             return (int)$this->pdo->lastInsertId();
