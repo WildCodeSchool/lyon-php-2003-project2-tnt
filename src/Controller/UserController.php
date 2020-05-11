@@ -46,13 +46,6 @@ class UserController extends AbstractController
         return $this->twig->render('User/inscription.html.twig');
     }
 
-    public function inventaire($id)
-    {
-        $inventaireManager = new UserManager();
-        $inventaire = $inventaireManager->userProduct($id);
-
-        return $this->twig->render('User/inventaire.html.twig', ['inventaire' => $inventaire]);
-    }
 
 //    public function favoris($id)
 //    {
@@ -65,12 +58,50 @@ class UserController extends AbstractController
 //        // select preferences.user_id
 //        return $this->twig->render('User/preferences.html.twig');
 //    }
-//
-    public function profil($id)
+
+    /**
+     * @param int $id
+     * @return string
+     * @throws \Twig\Error\LoaderError
+     * @throws \Twig\Error\RuntimeError
+     * @throws \Twig\Error\SyntaxError
+     */
+    public function edit(int $id):string
     {
-        $profilManager = new UserManager();
-        $profil = $profilManager->selectOneById($id);
-        return $this->twig->render('User/profil.html.twig', ['profil' => $profil]);
+        $userManager = new UserManager();
+        $user = $userManager->selectUserById($id);
+
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $user['lastname'] = self::cleanInput($_POST['lastname']);
+            $user['firstname'] = self::cleanInput($_POST['firstname']);
+            $user['email'] = self::cleanInput($_POST['email']);
+            $user['phone'] = self::cleanInput($_POST['phone']);
+            $user['zip_code'] = self::cleanInput($_POST['zip_code']);
+
+            $userManager->update($user);
+            header("Location :/User/profil/$id");
+        }
+        return $this->twig->render('User/edit.html.twig', ['user' => $user]);
+    }
+//
+
+    /**
+     * @param int $id
+     * @return string
+     * @throws \Twig\Error\LoaderError
+     * @throws \Twig\Error\RuntimeError
+     * @throws \Twig\Error\SyntaxError
+     */
+    public function profil(int $id):string
+    {
+        $userManager = new UserManager();
+        $user = $userManager->selectOneById($id);
+
+        $inventaireManager = new UserManager();
+        $inventaire = $inventaireManager->userProduct($id);
+
+
+        return $this->twig->render('User/profil.html.twig', ['user' => $user, 'inventaire' => $inventaire]);
     }
 
     public function login()
