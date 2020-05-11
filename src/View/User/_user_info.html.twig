@@ -1,21 +1,47 @@
 <div>
-    <ul>
-        <li>N° Adhérent : {{ user.id}}</li>
-        <li>Pseudo : {{ user.nickname }}</li>
-        <li>Nom : {{ user.lastname}}</li>
-        <li>Prénom : {{ user.firstname}}</li>
-        <li>Téléphone : {{ user.phone}}</li>
-        <li>Email : {{ user.email}}</li>
-        <li>Code Postal : {{ user.zip_code}}</li>
-    </ul>
-</div>
-<div>
-    <a href="/User/edit/{{ user.id }}">
-        <button type="button" class="btn btn-primary btn-sm"
-                style="background-color: #00A99D">
-            Mettre à jour vos informations personnelles
-        </button>
-    </a>
+    <table>
+        <tbody>
+            <tr>
+                <td>N° Adhérent : </td>
+                <td>{{ user.id}}</td>
+            </tr>
+            <tr>
+                <td>Pseudo</td>
+                <td>{{ user.nickname }}</td>
+            </tr>
+            <tr>
+                <td>Nom</td>
+                <td>{{ user.nickname }}</td>
+            </tr>
+            <tr>
+                <td>Prénom</td>
+                <td>{{ user.firstname }}</td>
+            </tr>
+            <tr>
+                <td>Email</td>
+                <td>{{ user.email}}</td>
+            </tr>
+            <tr>
+                <td>Téléphone</td>
+                <td>{{ user.phone}}</td>
+            </tr>
+            <tr>
+                <td>Code Postal</td>
+                <td>{{ user.zip_code}}</td>
+            </tr>
+        </tbody>
+
+    </table>
+
+    <div class="buttons">
+        <a href="/User/edit/{{ user.id }}">
+            <button type="button" class="btn btn-primary btn-sm"
+                    style="background-color: #00A99D">
+                Mettre à jour vos informations personnelles
+            </button>
+        </a>
+    </div>
 
 
 </div>
+
