@@ -126,18 +126,21 @@ class ProductController extends AbstractController
     {
         $manager = new ProductManager();
         $details = $manager->getDetails($productId);
+        $mail = $details[0]['email'];
 
         if (isset($_POST['message'])) {
-            $retour = mail(
-                $_SESSION['email'],
-                'Troc & Troc : Nouveau Message',
-                $_POST['message'],
-                'From: ' . $details['email']
-            );
+            $entete  = 'MIME-Version: 1.0' . "\r\n";
+            $entete .= 'Content-type: text/html; charset=utf-8' . "\r\n";
+            $entete .= $mail . "\r\n";
+
+            $message = '<h1>Message envoyé depuis Troc & Troc</h1>
+                        <p><b>Nom : </b>' . $_SESSION['user']['nickname'] . '<br>
+                        <b>Email : </b>' . $_SESSION['user']['email'] . '<br>
+                        <b>Message : </b>' . $_POST['message'] . '</p>';
+
+            $retour = mail('brice.darmenia@sfr.fr', 'Vous avez reçu une proposition de troc', $message, $entete);
             if ($retour) {
-                echo '<p>Votre message a été envoyé.</p>';
-            } else {
-                echo '<p>Erreur.</p>';
+                header('Location: /');
             }
         }
 

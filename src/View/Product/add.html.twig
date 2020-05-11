@@ -1,12 +1,151 @@
 {% extends "layout.html.twig" %}
 
+{% block stylesheet %}
+    <style>
+        blockquote {
+            text-align: center;
+            font-size: 0.8em;
+            padding: 20px;
+        }
+
+        #add_service, #add_bien {
+            margin: 20px auto 100px;
+            background-color: #FFF;
+            box-shadow: 3px 3px 3px rgba(0,169,157,0.7);
+            padding: 10px;
+            border-radius: 3px;
+            width: 95%;
+        }
+
+        label:first-of-type, label:nth-of-type(2) {
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+
+        textarea {
+            margin-bottom: 30px;
+        }
+
+        #openOrNot {
+            font-size: 0.7em;
+        }
+
+
+        #cat_etat {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 30px;
+            height: 50px;
+            padding: 10px 0;
+        }
+
+        .form-group {
+            margin-bottom: 0;
+        }
+
+        .buttons {
+            display: flex;
+            justify-content: center;
+            margin-top: 40px;
+        }
+
+        .buttons [type="submit"] {
+            background-color: #f59800;
+            border: none;
+            font-weight: 600;
+        }
+        .buttons [type="submit"]:hover {
+            background-color: #FFF;
+            color: #f59800;
+            border: 1px solid #f59800;
+        }
+        .buttons [type="button"] {
+            color: #f59800;
+            border-color: #f59800;
+        }
+        .buttons [type="button"]:hover {
+            background-color: #FFF;
+            color: #f59800;
+            border-color: #f59800;
+            cursor: not-allowed;
+        }
+
+        @media (min-width: 500px) {
+            #add_bien, #add_service {
+                width: 70%;
+
+            }
+        }
+
+        @media (min-width: 800px) {
+            #add_bien, #add_service {
+                width: 35%;
+            }
+        }
+
+        #add_service select {
+            margin-bottom: 40px;
+        }
+
+        #nature {
+            text-align: center;
+            width: 70%;
+            margin: auto auto;
+            box-shadow: 1px 1px 3px #f59800;
+            border-radius: 5px;
+        }
+        #nature label {
+            font-size: 0.9em;
+        }
+        #nature .card-header {
+            background-color: #f59800;
+            color: #FFF;
+            padding-top: 10px;
+            padding-bottom: 0px;
+        }
+        #nature .card-title {
+            font-size: 1em;
+            font-weight: 600;
+
+        }
+
+    </style>
+{% endblock %}
+
+
 {% block content %}
     {% include '_nav_retour.html.twig' %}
     {% include '_nav_bar.html.twig' %}
+    {% if session is empty %}
+        <blockquote>
+            Vous devez être connecté.e pour publier une annonce :)<br>
+            <a href="/user/login">Rendez-vous ici</a> pour profiter de toutes les fonctionnalités du site
+        </blockquote>
+
+    {% endif %}
     {% if var == 'bien' %}
         {% include 'Product/_formGood.html.twig' %}
     {% elseif var == 'service' %}
         {% include 'Product/_formService.html.twig' %}
     {% endif %}
 {% endblock %}
+
+{% block javascripts %}
+    <script>
+        $(function () {
+            const don = $('#don');
+            const echange = $('#echange');
+            const hiddenIfDon = $('.hiddenIfDon');
+
+            don.on('click', function () {
+                hiddenIfDon.fadeOut(400)
+            });
+
+            echange.on('click', function () {
+                hiddenIfDon.fadeIn(400)
+            });
+        });
+    </script>
+{% endblock %}
+
 
