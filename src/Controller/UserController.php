@@ -79,7 +79,7 @@ class UserController extends AbstractController
             $user['zip_code'] = self::cleanInput($_POST['zip_code']);
 
             $userManager->update($user);
-            header("Location :/User/profil/$id");
+            header("Location:/User/profil/$id");
         }
         return $this->twig->render('User/edit.html.twig', ['user' => $user]);
     }
