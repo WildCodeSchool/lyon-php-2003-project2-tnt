@@ -67,7 +67,7 @@ class UserController extends AbstractController
 //    }
 
     /**
-     * @param $id
+     * @param int $id
      * @return string
      * @throws \Twig\Error\LoaderError
      * @throws \Twig\Error\RuntimeError
@@ -93,7 +93,7 @@ class UserController extends AbstractController
 //
 
     /**
-     * @param $id
+     * @param int $id
      * @return string
      * @throws \Twig\Error\LoaderError
      * @throws \Twig\Error\RuntimeError
