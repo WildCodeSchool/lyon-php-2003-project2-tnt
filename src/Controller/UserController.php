@@ -61,7 +61,6 @@ class UserController extends AbstractController
         return $this->twig->render('User/inventaire.html.twig', ['inventaire' => $inventaire]);
     }
 
-//
 //    public function favoris($id)
 //    {
 //        // select favoris.user_id
@@ -111,7 +110,8 @@ class UserController extends AbstractController
                     if ($pass == $user['password']) {
                         $_SESSION['user'] = [
                             'id' => $user['id'],
-                            'nickname' => $user['nickname']
+                            'nickname' => $user['nickname'],
+                            'email' => $user['email']
                         ];
                         header('Location: /');
                     } else {

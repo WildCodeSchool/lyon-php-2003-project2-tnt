@@ -3,6 +3,8 @@
 
 namespace App\Model;
 
+use PDO;
+
 class ProductManager extends AbstractManager
 {
     /**
@@ -29,6 +31,7 @@ class ProductManager extends AbstractManager
         $statement = $this->pdo->prepare("INSERT INTO " . self::TABLE . " " .
             "(`title`,`description`,`user_id`,`product_type_id`,`exchange_type_id`,`category_id`,`etat`,`created_at`)
          VALUES (:title,:description,:user_id,:product_type_id,:exchange_type_id,:category_id,:etat, NOW())");
+      
         $statement->bindValue('title', $product['title'], \PDO::PARAM_STR);
         $statement->bindValue('description', $product['description'], \PDO::PARAM_STR);
         $statement->bindValue('user_id', $userId, \PDO::PARAM_INT);
@@ -36,6 +39,7 @@ class ProductManager extends AbstractManager
         $statement->bindValue('exchange_type_id', $product['exchange_type_id'], \PDO::PARAM_STR);
         $statement->bindValue('category_id', $product['category_id'], \PDO::PARAM_STR);
         $statement->bindValue('etat', $product['etat'], \PDO::PARAM_STR);
+        $statement->bindValue('proposition', $product['fullProp'], \PDO::PARAM_STR);
 
 
         if ($statement->execute()) {
@@ -59,7 +63,7 @@ class ProductManager extends AbstractManager
      * @return bool
      */
 
-    public function update(array $product):bool
+    public function update(array $product): bool
     {
         // prepared request
         $statement = $this->pdo->prepare("UPDATE " . self::TABLE . " SET `title` = :title WHERE id=:id");
@@ -101,7 +105,7 @@ class ProductManager extends AbstractManager
      * @param int $productType
      * @return array
      */
-    public function search(string $search, int $category, int $productType) : array
+    public function search(string $search, int $category, int $productType): array
     {
         $query = "SELECT * FROM ". $this->table .
                 " /*JOIN category ON category.id = product.category_id 
@@ -112,6 +116,29 @@ class ProductManager extends AbstractManager
         $state = $this->pdo->prepare($query);
         $state->bindValue(':productType', $productType, \PDO::PARAM_INT);
         $state->execute();
+        return $state->fetchAll(\PDO::FETCH_ASSOC);
+    }
+
+    /**
+     * Get all details from an ad
+     *
+     * @param string $productId
+     * @return array
+     */
+    public function getDetails(string $productId): array
+    {
+        $query = "SELECT p.id, p.img, p.title, p.description, p.created_at, p.proposition, p.enEchangeDe, x.deal_type, 
+                         /*etat.title, */category.name, user.email, user.nickname, user.zip_code 
+                  FROM product AS p 
+                  JOIN exchange_type as x ON p.exchange_type_id = x.id 
+                  /*JOIN etat ON p.etat_id = etat.id */
+                  JOIN category ON p.category_id = category.id 
+                  JOIN user ON p.user_id = user.id 
+                  WHERE p.id = :id";
+        $state = $this->pdo->prepare($query);
+        $state->bindValue('id', $productId, \PDO::PARAM_STR);
+        $state->execute();
+
         return $state->fetchAll(\PDO::FETCH_ASSOC);
     }
 

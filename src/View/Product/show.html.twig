@@ -1,5 +1,8 @@
 {% extends "layout.html.twig" %}
 
+{% block title %}Liste des biens / services{% endblock %}
+
+
 {% block stylesheet %}
     <style>
         [name="search"] {
@@ -51,6 +54,7 @@
             margin-bottom: 5px;
             box-shadow: 5px 5px 5px #999;
             height: 130px;
+
         }
 
         .card-body > img:first-of-type {
@@ -81,7 +85,6 @@
         }
 
         #liste {
-            z-index: -1;
             padding: 10px;
 
         }
@@ -102,12 +105,24 @@
             left: 160px;
 
         }
+        .row {
+            width: 80%;
+            margin: auto auto;
+        }
+
+        .card {
+            position: relative;
+        }
 
         @media (max-width: 576px) {
 
             #barter { display: none;}
+            .row { width: 100%;}
+        }
 
 
+        .col-md-6 > a {
+            display: block;
         }
 
     </style>
@@ -148,7 +163,7 @@
                 <p>Oups ! Aucun résultat pour cette recherche, blablabla</p>
             {% else %}
 
-                <p>{{ products|length }} {{ var }}s trouvés</p>
+                 <p>{{ products|length }} {{ (products|length > 1) ? 'résultats' : 'résultat' }}</p>
                 <div class="row">
                 {% for product in products %}
 
@@ -164,16 +179,25 @@
                                 <p class="card-text">{{ product.description }}</p>
                                 <h6>Proposé le {{ product.created_at | date("d/m/Y") }}</h6>
                                 {#                            <p class="card-text"><small class="text-muted">Date de Parution : {{ product.created_at|date("m/d/Y") }}</small></p>#}
+
                             </div>
-                            <img src="/assets/images/heart.png" width="40px">
                         </div>
                     </div>
-                </div>
-
                 {% endfor %}
                 </div>
             {% endif %}
         </section>
     </div>
 {% endblock %}
+
+{% block javascripts %}
+    <script>
+        $(function () {
+            const card = $('.card');
+        });
+
+    </script>
+
+{% endblock %}
+
 

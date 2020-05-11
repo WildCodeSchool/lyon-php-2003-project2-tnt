@@ -4,6 +4,9 @@ namespace App\Controller;
 
 use App\Model\ProductManager;
 use DateTime;
+use Twig\Error\LoaderError;
+use Twig\Error\RuntimeError;
+use Twig\Error\SyntaxError;
 
 class ProductController extends AbstractController
 {
@@ -104,6 +107,41 @@ class ProductController extends AbstractController
         return $this->twig->render('Product/show.html.twig', ['products' => $products,
                                                                     'var' => $what,
                                                                     'categories' => $categories]);
+    }
+
+    public function details(string $productId)
+    {
+        $manager = new ProductManager();
+        $details = $manager->getDetails($productId);
+
+//        try {
+            return $this->twig->render('Product/details.html.twig', ['details' => $details, 'id' => $productId]);
+//        } catch (LoaderError $e) {
+//        } catch (RuntimeError $e) {
+//        } catch (SyntaxError $e) {
+//        }
+    }
+
+    public function offre($productId)
+    {
+        $manager = new ProductManager();
+        $details = $manager->getDetails($productId);
+
+        if (isset($_POST['message'])) {
+            $retour = mail(
+                $_SESSION['email'],
+                'Troc & Troc : Nouveau Message',
+                $_POST['message'],
+                'From: ' . $details['email']
+            );
+            if ($retour) {
+                echo '<p>Votre message a été envoyé.</p>';
+            } else {
+                echo '<p>Erreur.</p>';
+            }
+        }
+
+        return $this->twig->render('Product/offre.html.twig', ['details' => $details]);
     }
 
     public function showProduct()
