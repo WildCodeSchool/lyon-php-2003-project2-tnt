@@ -164,19 +164,19 @@ class ProductController extends AbstractController
 
     public function uploadImage()
     {
-        if(!empty($_FILES['files']['name'])) {
+        if (!empty($_FILES['files']['name'])) {
             $files = $_FILES['files'];
-            $file_type = explode('/', $files['type']);
-            $file_ext = end($file_type);
+            $fileType = explode('/', $files['type']);
+            $fileExt = end($fileType);
 
             $fileErrors = self::checkFile($files);
 
             if ($fileErrors == '') {
-                $file_name_new = uniqid('', true) . '.' . $file_ext;
-                $file_destination = $_SERVER['DOCUMENT_ROOT'] . '/uploads/' . $file_name_new;
-                move_uploaded_file($file_tmp, $file_destination);
+                $fileName = uniqid('', true) . '.' . $fileExt;
+                $fileDestination = $_SERVER['DOCUMENT_ROOT'] . '/uploads/' . $fileName;
+                move_uploaded_file($files['tmp'], $fileDestination);
 
-                $image = $productManager->addImage($file_name_new);
+                //$image = $productManager->addImage($fileName);
             }
             return $this->twig->render('Product/add.html.twig', ['files' => $files]);
         }

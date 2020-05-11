@@ -45,15 +45,15 @@ class ProductManager extends AbstractManager
         }
     }
 
-    public function addImage(string $fileName)
-    {
-        $query = "INSERT into " . $this->table . " (image) VALUES ($fileName)";
-        $state = $this->pdo->prepare($query);
-        $state->bindValue(':image', $file_name, \PDO::PARAM_STR);
-        $state->execute();
-        return $state->fetchAll(\PDO::FETCH_ASSOC);
-    }
-
+    /*public function addImage(string $fileName)
+    *{
+     *   $query = "INSERT into " . $this->table . " (image) VALUES ($fileName)";
+      *  $state = $this->pdo->prepare($query);
+       * $state->bindValue(':image', $file_name, \PDO::PARAM_STR);
+        *$state->execute();
+        *return $state->fetchAll(\PDO::FETCH_ASSOC);
+    *}
+    */
     /**
      * @param int $id
      */
