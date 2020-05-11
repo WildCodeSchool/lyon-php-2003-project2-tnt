@@ -4,45 +4,89 @@
 
 {% block stylesheet %}
     <style>
+        .col-6 {
+            max-width: 100%;
+        }
+
+        #nav_top > span:first-of-type {
+            display: none;
+        }
+
         #main_home {
             display: flex;
             flex-direction: column;
             font-size: 1.1em;
             margin-top: 20px;
+            /*background-image: url("/assets/images/paperClip.png");*/
+            /*background-repeat: no-repeat;*/
+            background-color: #FFF;
+
         }
 
-        h6 {
+        #main_home > p:first-of-type {
+            font-size: 0.7em;
             text-align: center;
         }
 
         #carousel {
-            height: 250px;
-            margin: 40px auto;
-            padding: 0px 20px;
-            display: flex;
-        }
-
-        #carousel > img {
             height: 80%;
+            margin: 40px auto 0px;
+            display: flex;
         }
 
         #carousel > blockquote {
-            font-size: 0.8em;
+            font-size: 1em;
             margin-left: 20px;
-            margin-top: 0px;
+            margin-bottom: 20px;
+            margin-right: 20px;
+            padding: 10px;
+            background-color: #f59800;
+            color: #FFF;
+            /*box-shadow: 2px 2px 3px #777777;*/
+            height: 100%;
+            border-radius: 5px;
+        }
+        blockquote > p:first-of-type {
+            font-size: 1.2em;
+            font-weight: 600;
+        }
+        blockquote > p:last-of-type {
+            font-size: 1.1em;
+            margin-bottom: 40px;
+            font-weight: 600;
+        }
+        blockquote > p:nth-of-type(3) {
+            font-size: 0.8em;
+        }
+        blockquote > p > a:link {
+            background-color: #FFF;
+            padding: 5px;
+            border-radius: 5px;
+            font-weight: 600;
+            /*text-decoration: underline;*/
         }
 
-
-         #troc {
-            height: 320px;
-            padding: 20px;
+        #troc {
+             height: 320px;
+             padding: 20px;
              margin-bottom: 100px;
+             display: flex;
+            flex-direction: column;
         }
-
-        #propose, #recherche {
-            height: 160px;
-            display: flex;
-            justify-content: space-between;
+        #troc > img {
+            width: 100%;
+            display: block;
+        }
+        #troc > article {
+            text-align: center;
+            font-size: 1.6em;
+            font-weight: 500;
+        }
+        article a:link, article a:visited {
+            color: #f59800;
+        }
+        article a:hover {
+            color: #00A99D;
         }
 
         #footer_desktop {
@@ -53,6 +97,85 @@
             width: 50%;
         }
 
+        #main_home > .row:first-of-type {
+            display: flex;
+            flex-direction: column-reverse;
+        }
+
+        #clips {
+            display: flex;
+            justify-content: center;
+        }
+        .clip {
+            height: auto;
+            width: 17%;
+            padding: 20px;
+            transform: rotateZ(35deg);
+            display: block;
+        }
+        .left_clip {
+            transform: rotateZ(-30deg);
+        }
+
+
+        @media (min-width: 500px) {
+            #nav_top > span:first-of-type {
+                display: block;
+            }
+
+
+            #main_home {
+                width: 60%;
+                margin: 10px auto 50px;
+            }
+
+            #main_home > div:last-of-type {
+                width: 70%;
+                margin: 50px auto 0px;
+            }
+
+            #main_home > .row:first-of-type {
+                flex-direction: row;
+            }
+
+            #carousel {
+                height: 80%;
+                display: flex;
+                margin-left: -5em;
+            }
+
+            #carousel > blockquote {
+                font-size: 1.2em;
+                margin-left: 20px;
+                margin-bottom: 20px;
+                margin-right: 20px;
+            }
+
+            blockquote > p:first-of-type {
+                font-size: 1.4em;
+                font-weight: 600;
+            }
+
+            #troc {
+                flex-direction: row;
+                align-items: center;
+                height: 220px;
+                margin-top: 40px;
+
+            }
+            #clips > img:not(:last-of-type) {
+                display: none;
+            }
+            .clip {
+                padding: 0px;
+                width: 35%;
+                margin-right: -90px;
+            }
+            #troc article {
+                padding-bottom: 35px;
+            }
+        }
+
     </style>
 {% endblock %}
 
@@ -60,46 +183,55 @@
 {% block content %}
     {% include '_nav_top.html' %}
     <main class="container-fluid" id="main_home">
+        <div class="row">
+            <div class="col-6" id="clips">
+                <img src="/assets/images/paperClip.png" alt="" class="clip left_clip">
+                <img src="/assets/images/paperClip.png" alt="" class="clip">
+                <img src="/assets/images/paperClip.png" alt="" class="clip left_clip">
+                <img src="/assets/images/paperClip.png" alt="" class="clip">
 
-        <h6>"Des échanges sans argent pour des liens plus humains"</h6>
+            </div>
 
-        <section id="carousel">
-            <img src="/assets/images/paperClip.png" alt="">
-            <blockquote>
-                <p>Avez-vous déjà eu vent<br>de cette fabuleuse histoire de troc ?</p>
-                <p>D'un homme qui, à partir d'un simple trombone, obtenu une maison ?</p>
-                <p>Pour connaître son histoire, <a href="">c'est par ici.</a></p>
+            <div class="col-6" id="carousel">
+                <blockquote class="shadow-lg">
+                    <p>Avez-vous déjà eu vent<br>de cette fabuleuse histoire de troc ?</p>
+                    <hr>
+                    <p>D'un homme qui, à partir d'un simple trombone, obtenu une maison ?</p>
+                    <p>Pour connaître son histoire, <a href="">c'est par ici.</a></p>
 
-                <p>Et vous, jusqu'où pourriez-vous aller à partir d'un simple trombone ?</p>
+                    <p>Et vous,<br> quel sera votre troc du jour ?</p>
+                </blockquote>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <section id="troc" class="shadow-lg">
 
-            </blockquote>
-        </section>
+                    <article id="propose">
+                        <a href="/product/bienOuService/propose">Proposer un Troc</a>
+                    </article>
 
-        <section id="troc">
-            <article id="propose">
-                <div>
-                    <a href="/product/bienOuService/propose">je propose</a>
-                </div>
-                <img src="/assets/images/right_hand.jpg" alt="Right_hand">
-            </article>
-            <article id="recherche">
-                <img src="/assets/images/right_hand.jpg" alt="Right_hand">
-                <div>
-                    <a href="/product/bienOuService/recherche">je recherche</a>
-                </div>
-            </article>
-        </section>
+                    <img src="/assets/images/mains4.png" alt="">
 
-        <section id="footer_desktop">
-            <ul>
-                <a href=""><li>En savoir plus</li></a>
-                <a href=""><li>Plan du site</li></a>
-                <a href=""><li>Contactez nous</li></a>
-                <a href=""><li>Mentions Légales</li></a>
-            </ul>
-        </section>
+                    <article id="recherche">
+                        <a href="/product/bienOuService/recherche">Rechercher un troc</a>
+                    </article>
+
+                </section>
+            </div>
+        </div>
+
 
     </main>
+    <section id="footer_desktop">
+        <ul>
+            <a href=""><li>En savoir plus</li></a>
+            <a href=""><li>Plan du site</li></a>
+            <a href=""><li>Contactez nous</li></a>
+            <a href=""><li>Mentions Légales</li></a>
+        </ul>
+    </section>
+
 
     <footer>
         {% include '_nav_bar.html.twig' %}
@@ -126,9 +258,6 @@
                 div_prop.fadeToggle(400);
                 div_search.fadeOut();
             })
-
-
-
         });
 
     </script>

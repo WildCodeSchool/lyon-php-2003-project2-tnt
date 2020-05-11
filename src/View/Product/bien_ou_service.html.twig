@@ -8,11 +8,15 @@
     <style>
 
         #main_bien_service {
-            padding: 20px;
+            padding: 10px;
+            background-color: #FFF;
+            margin: 50px 10px 0;
+            border-radius: 5px;
+            box-shadow: 3px 3px 3px #777;
         }
 
         #main_bien_service > a:first-of-type section {
-            margin-top: 150px;
+            margin-top: 50px;
             margin-bottom: 100px;
         }
 
@@ -37,6 +41,27 @@
             border-radius: 50%;
             border: 1px solid black;
         }
+
+        #service {
+            margin-bottom: 50px;
+        }
+
+        @media (min-width: 500px) {
+            #main_bien_service {
+                width: 50%;
+                padding: 20px;
+                margin-left: auto;
+                margin-right: auto;
+            }
+        }
+
+        @media (min-width: 800px) {
+            #main_bien_service {
+                width: 30%;
+            }
+        }
+
+
 
 
 

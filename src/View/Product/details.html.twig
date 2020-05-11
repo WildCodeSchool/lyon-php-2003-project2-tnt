@@ -49,6 +49,12 @@
 
         button {
             width: 100%;
+            background-color: #f59800;
+            color: #FFF;
+            padding: 10px 0;
+            border-radius: 5px;
+            text-transform: uppercase;
+            font-weight: 600;
         }
 
         /*#core > div > div:first-of-type {*/
@@ -71,12 +77,17 @@
             margin-bottom: 10px;
         }
 
-        #action > a > button:last-of-type {
-            display: none;
+        .breadcrumb {
+            background-color: transparent;
         }
 
 
         @media (min-width: 768px) {
+
+            #main {
+                margin-top: 20px;
+                width: 70%;
+            }
 
             a {
                 width: 100%;
@@ -97,6 +108,9 @@
             #ad {
                 margin-left: 20px;
             }
+            #ad > img {
+                width: 300px;
+            }
 
             aside {
                 padding-left: 0px!important;
@@ -109,16 +123,13 @@
             #action > a > button:last-of-type {
                 display: block;
             }
-
-
-
-
         }
 
-        @media (min-width: 992px) {
-            #main {
-                width: 90%;
-            }
+        #map {
+            height: 100%;
+        }
+        #row_map {
+            height: 200px;
         }
 
 
@@ -126,56 +137,97 @@
 {% endblock %}
 
 {% block content %}
-    {% include '_nav_retour.html.twig' %}
-    {% include '_nav_bar.html.twig' %}
-    <section class="container-fluid" id="main">
-        <div class="row">
-            <div class="col-md-9" id="core">
-                <div class="row">
-                    <div class="col-md-3" id="echange">
-                        <article>
-                            <h5>En echange</h5>
-                            {% if details.0.deal_type == 'echange' %}
-                                <p>{{ details.0.enEchangeDe }}</p>
-                                <p>{{ details.0.proposition }}</p>
-                            {% else %}
-                                <p>Rien du tout :)</p>
-                                <p>(Un sourire tout au plus)</p>
-                            {% endif %}
-                        </article>
-                    </div>
-                    <div class="col-md-8" id="ad">
-                        <img src="{{ details.0.img }}" alt="">
-                        <article>
-                            <h1>{{ details.0.title }}</h1>
-                            <h5>{{ details.0.name }}</h5>
-                            <h6>Etat</h6>
-                            <p>{{ details.0.description }}</p>
-                            <p>{{ details.0.created_at }}</p>
-                        </article>
+    <main class="container-fluid">
+        {% include '_nav_retour.html.twig' %}
+        {% include '_nav_bar.html.twig' %}
+        {% include 'arianne.html.twig' %}
+        <section class="container-fluid" id="main">
+            <div class="row">
+                <div class="col-md-9" id="core">
+                    <div class="row">
+                        <div class="col-md-3" id="echange">
+                            <article>
+                                <h5>En echange</h5>
+                                {% if details.0.deal_type == 'echange' %}
+                                    <p>{{ details.0.enEchangeDe }}</p>
+                                    <p>{{ details.0.proposition }}</p>
+                                {% else %}
+                                    <p>Rien du tout :)</p>
+                                    <p>(Un sourire tout au plus)</p>
+                                {% endif %}
+                            </article>
+                        </div>
+                        <div class="col-md-8" id="ad">
+                            <img src="{{ details.0.img }}" alt="">
+                            <article>
+                                <h1>{{ details.0.title }}</h1>
+                                <h5>{{ details.0.name }}</h5>
+                                <h6>Etat</h6>
+                                <p>{{ details.0.description }}</p>
+                                <p>{{ details.0.created_at }}</p>
+                            </article>
+                        </div>
                     </div>
                 </div>
+                <aside class="col-md-3">
+                    <article id="user">
+                        <img src="" alt="Photo Profil">
+                        <h3>{{ details.0.nickname }}</h3>
+                    </article>
+                    <article id="localisation">
+                        <h3>Localisation</h3>
+                        <p>{{ details.0.zip_code }}</p>
+                        <div class="row" id="row_map">
+                            <div class="col-12">
+                                <div id="map"></div>
+                            </div>
+                        </div>
+                    </article>
+                    <section class="container-fluid" id="action">
+                        <img src="/assets/images/heart.png" alt="favoris" title="Ajouter aux Favoris">
+                        <a href="/product/offre/{{ id }}">
+                            <button type="button" >Faire un Troc</button>
+                        </a>
+                    </section>
+                </aside>
             </div>
-            <aside class="col-md-3">
-                <article id="user">
-                    <img src="" alt="Photo Profil">
-                    <h3>{{ details.0.nickname }}</h3>
-                </article>
-                <article id="localisation">
-                    <h3>Localisation</h3>
-                    <p>{{ details.0.zip_code }}</p>
-                    <iframe src="" frameborder="0"></iframe>
-                </article>
-                <section class="container-fluid" id="action">
-                    <img src="/assets/images/heart.png" alt="favoris" title="Ajouter aux Favoris">
-                    <a href="/product/offre/{{ id }}">
-                        <button type="button" class="btn btn-warning btn-lg">Faire un Troc</button>
-                        <button type="button" class="btn btn-outline-warning btn-sm">Mettre en favoris</button>
-                    </a>
-                </section>
-            </aside>
-        </div>
-    </section>
+        </section>
 
+    </main>
+
+{% endblock %}
+
+{% block javascripts %}
+    <script>
+        function initMap() {
+            var map = new google.maps.Map(document.getElementById('map'), {
+                zoom: 8,
+                center: {lat: -34.397, lng: 150.644}
+            });
+            var geocoder = new google.maps.Geocoder();
+
+            document.getElementById('submit').addEventListener('click', function() {
+                geocodeAddress(geocoder, map);
+            });
+        }
+
+        function geocodeAddress(geocoder, resultsMap) {
+            var address = document.getElementById('address').value;
+            geocoder.geocode({'address': address}, function(results, status) {
+                if (status === 'OK') {
+                    resultsMap.setCenter(results[0].geometry.location);
+                    var marker = new google.maps.Marker({
+                        map: resultsMap,
+                        position: results[0].geometry.location
+                    });
+                } else {
+                    alert('Geocode was not successful for the following reason: ' + status);
+                }
+            });
+        }
+    </script>
+    <script async defer
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAVaXQaad_Vg7tnUN45WoFZoM3ACOc80Qs&callback=initMap">
+    </script>
 {% endblock %}
 
