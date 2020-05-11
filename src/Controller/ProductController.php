@@ -49,6 +49,7 @@ class ProductController extends AbstractController
             $productManager->insert($product, $userId, $productType);
             header('Location:/product/show/' . $bienService);
         }
+
         return $this->twig->render('Product/add.html.twig', ['categories' => $listCategories,
                                                                     'var' => $bienService]);
     }
