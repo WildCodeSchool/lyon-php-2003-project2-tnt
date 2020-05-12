@@ -29,14 +29,16 @@ class ProductManager extends AbstractManager
     {
         // prepared request
         $statement = $this->pdo->prepare("INSERT INTO " . self::TABLE . " " .
-            "(`title`,`description`,`user_id`,`product_type_id`,`exchange_type_id`,`category_id`,`etat`,`created_at`)
-         VALUES (:title,:description,:user_id,:product_type_id,:exchange_type_id,:category_id,:etat, NOW())");
-      
+            "(`title`,`description`,`user_id`,`product_type_id`,`exchange_type_id`,
+            `img`,`category_id`,`etat`,`proposition`)
+            VALUES (:title,:description,:user_id,:product_type_id,:exchange_type_id,
+            :fileName, :category_id,:etat,:proposition)");
         $statement->bindValue('title', $product['title'], \PDO::PARAM_STR);
         $statement->bindValue('description', $product['description'], \PDO::PARAM_STR);
         $statement->bindValue('user_id', $userId, \PDO::PARAM_INT);
         $statement->bindValue('product_type_id', $productTypeId, \PDO::PARAM_INT);
         $statement->bindValue('exchange_type_id', $product['exchange_type_id'], \PDO::PARAM_STR);
+        $statement->bindValue('fileName', $product['fileName'], \PDO::PARAM_STR);
         $statement->bindValue('category_id', $product['category_id'], \PDO::PARAM_STR);
         $statement->bindValue('etat', $product['etat'], \PDO::PARAM_STR);
         $statement->bindValue('proposition', $product['fullProp'], \PDO::PARAM_STR);

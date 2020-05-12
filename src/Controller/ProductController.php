@@ -22,7 +22,6 @@ class ProductController extends AbstractController
         $listCategories = $productManager->selectAllCategories();
         $productType = (($bienService == 'service') ? 2 : 1);
 
-
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $title = self::cleanInput($_POST['title']);
             $description = self::cleanInput($_POST['description']);
@@ -37,12 +36,30 @@ class ProductController extends AbstractController
             $etat = ((isset($_POST['etat'])) ? $_POST['etat'] : 'null');
 
             $exchange = (($_POST['echangeOuDon'] == 'echange') ? 2 : 1);
+
+            $fileName = '';
+
+            if (!empty($_FILES['file']['name'])) {
+                $files = $_FILES['file'];
+                $fileType = explode('/', $files['type']);
+                $fileExt = end($fileType);
+
+                $fileErrors = self::checkFile($files);
+
+                if ($fileErrors == null) {
+                    $fileName = uniqid('', true) . '.' . $fileExt;
+                    $fileDestination = $_SERVER['DOCUMENT_ROOT'] . '/assets/uploads/' . $fileName;
+                    move_uploaded_file($_FILES['file']['tmp_name'], $fileDestination);
+                }
+            }
+
             $product = [
                 'title' => $title,
                 'category_id' => 1,
                 'etat' => $etat,
                 'description' => $description,
                 'exchange_type_id' => $exchange,
+                'fileName' => $fileName,
                 'wantBack' => self::cleanInput($_POST['enEchangeDe']),
                 'fullProp' => $_POST['proposition'],
             ];

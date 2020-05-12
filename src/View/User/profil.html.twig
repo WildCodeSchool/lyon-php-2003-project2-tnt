@@ -185,9 +185,39 @@
             </div>
         </div>
     </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="welcomeModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalCenterTitle">Bienvenue sur Troc & Troc !</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    Nous sommes ravi.e.s de vous compter parmi les membres notre communauté.
+                    Pour toute question, n'hésitez pas à consulter notre <a href="/Footer/faq.html.twig">foire aux questions</a> :)
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">1, 2, 3... troquez !</button>
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}
 
 {% block user %}
 
 
+{% endblock %}
+
+{% block javascripts %}
+    {% if displayModal == true %}
+        <script>
+            $(document).ready(function(){
+                $("#welcomeModal").modal('show');
+            });
+        </script> {% endif %}
 {% endblock %}

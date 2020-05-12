@@ -1,6 +1,6 @@
 {% import 'Product/formTemplate.html.twig' as form %}
 <section class="container-fluid" id="add_bien">
-    <form action="" method="post">
+    <form action="" method="post" enctype="multipart/form-data">
 
         <div class="form-group">
 
@@ -35,6 +35,8 @@
         </div>
 
         <!-- insérer ici les éléments d'upload de photo(s) -->
+        Montrez votre bien !
+        <input type="file" name="file">
 
         <div class="form-group" id="nature">
             <div class="card mx-auto">
