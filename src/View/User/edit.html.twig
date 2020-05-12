@@ -1,9 +1,31 @@
 {% extends 'layout.html.twig' %}
+{% block stylesheet %}
+    <style>
+        form{
+            font-size: 1.2em;
+        }
+        .form-control{
+            font-size: 1.2em;
+        }
 
+        .button{
+            font-size: 1.2em;
+        }
+
+        .col{
+            min-width: 300px;
+        }
+
+        .btn{
+            margin: 30px;
+        }
+
+
+    </style>
+{% endblock %}
 {% block content %}
-    <h1>Edit item {{ item.title }}</h1>
-    {% include 'Item/_formGood.html.twig' %}
-    <a href="/item/show/{{ item.id }}">Back</a>
+    {% include '_nav_retour.html.twig' %}
+    {% include '_nav_bar.html.twig' %}
+    {% include 'User/_form_user.html.twig' %}
 {% endblock %}
 
-// pour éditer une annonce (si connecté)

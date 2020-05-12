@@ -2,11 +2,25 @@
 {% block title %} Inscription {% endblock %}
 {% block stylesheet %}
     <style>
+
+        #inscription {
+            padding: 16px;
+        }
+
         #inscription > div {
             background-color: #FFF;
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 2px 3px 3px #777;
         }
+
+        h1 {
+            margin-bottom: 20px;
+        }
+
         .error {
-            color: #820050;
+            color: #00A99D;
+            font-weight: 600;
         }
 
         form > div > div {
@@ -14,6 +28,16 @@
             font-size: 0.8em;
             display: inline;
         }
+
+        button {
+            margin-bottom: 10px;
+            background-color: #f59800;
+            color: #FFF;
+            border-radius: 5px;
+            font-weight: 600;
+            padding: 5px 10px;
+        }
+
     </style>
 {% endblock %}
 
@@ -22,9 +46,8 @@
     {% include '_nav_bar.html.twig' %}
 <section id="inscription" class="row container-fluid">
     <div class="col-md-4 offset-md-4">
-        <h1>Formulaire d'inscription</h1>
-        <p>Lorem ipsumLorem ipsumLorem ipsumLorem </p>
-        <p>Lorem ipsumLorem ipsumLorem ipsumLorem </p>
+        <h1>Inscription</h1>
+        <hr>
 
         <form action="" method="POST" novalidate>
 
@@ -37,6 +60,11 @@
                 <input type="email" name="email" id="email" placeholder="" required>
                 <p class="error">{{ (errors.email is defined) ? errors.email : '' }}</p>
 
+                <label for="zipCode">Un code postal</label><br>
+                <input type="text" name="zipCode" id="zipCode" pattern="[0-9]{5}"
+                       title="Code Postal à 5 chiffres" placeholder="ex: 69100" />
+                <p class="error">{{ (errors.zipCode is defined) ? errors.zipCode : '' }}</p>
+
                 <label for="pass">Mot de passe</label><br>
                 <input type="password" name="pass" id="pass" placeholder="" required>
 
@@ -45,11 +73,11 @@
                 <p class="error">{{ (errors.pass is defined) ? errors.pass : '' }}</p>
                 <div>
                     <input type="checkbox" name="condition" id="condition" required>
-                    <label for="condition">"J'accepte les <a href=""></a>"</label>
+                    <label for="condition">"J'accepte les <a href="">conditions générales d'utilisations</a>"</label>
                 </div>
             </div>
 
-            <button type="submit" class="btn btn-outline-dark">Créer mon compte</button>
+            <button type="submit">Créer mon compte</button>
 
         </form>
 

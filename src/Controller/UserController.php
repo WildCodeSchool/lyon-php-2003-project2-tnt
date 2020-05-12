@@ -13,19 +13,10 @@ class UserController extends AbstractController
             $userManager = new UserManager();
             $nickname = self::cleanInput($_POST['nickname']);
             $email = self::cleanInput($_POST['email']);
+            $zipCode = self::cleanInput($_POST['zipCode']);
             $pass = $_POST['pass'];
 
-            $errors = [];
-
-            if (empty($_POST['nickname'])) {
-                $errors['nickname'] = "Nom / Pseudo requis";
-            }
-            if (empty($_POST['email'])) {
-                $errors['email'] = "Email requis";
-            }
-            if (empty($_POST['pass'])) {
-                $errors['pass'] = "Vérifiez vos mots de passe";
-            }
+            $errors = self::checkIfEmpty([$_POST['nickname'],$_POST['email'],$_POST['pass'],$_POST['zipCode']]);
 
             if ($userManager->selectOneByEmail($email)) {
                 $errors['email'] = "Email déjà utilisé";
@@ -39,12 +30,14 @@ class UserController extends AbstractController
                 $infos = [
                     'nickname' => $nickname,
                     'email' => $email,
-                    'pass' => $pass
+                    'pass' => $pass,
+                    'zipCode' => $zipCode
                 ];
                 $id = $userManager->createProfil($infos);
                 $_SESSION['user'] = [
                     'id' => $id,
-                    'nickname' => $nickname
+                    'nickname' => $nickname,
+                    'email' => $email
                 ];
                 header('Location: /user/Profil/' . $id);
             }
@@ -53,13 +46,6 @@ class UserController extends AbstractController
         return $this->twig->render('User/inscription.html.twig');
     }
 
-    public function inventaire($id)
-    {
-        $inventaireManager = new UserManager();
-        $inventaire = $inventaireManager->userProduct($id);
-
-        return $this->twig->render('User/inventaire.html.twig', ['inventaire' => $inventaire]);
-    }
 
 //    public function favoris($id)
 //    {
@@ -72,12 +58,50 @@ class UserController extends AbstractController
 //        // select preferences.user_id
 //        return $this->twig->render('User/preferences.html.twig');
 //    }
-//
-    public function profil($id)
+
+    /**
+     * @param int $id
+     * @return string
+     * @throws \Twig\Error\LoaderError
+     * @throws \Twig\Error\RuntimeError
+     * @throws \Twig\Error\SyntaxError
+     */
+    public function edit(int $id):string
     {
-        $profilManager = new UserManager();
-        $profil = $profilManager->selectOneById($id);
-        return $this->twig->render('User/profil.html.twig', ['profil' => $profil]);
+        $userManager = new UserManager();
+        $user = $userManager->selectUserById($id);
+
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $user['lastname'] = self::cleanInput($_POST['lastname']);
+            $user['firstname'] = self::cleanInput($_POST['firstname']);
+            $user['email'] = self::cleanInput($_POST['email']);
+            $user['phone'] = self::cleanInput($_POST['phone']);
+            $user['zip_code'] = self::cleanInput($_POST['zip_code']);
+
+            $userManager->update($user);
+            header("Location:/User/profil/$id");
+        }
+        return $this->twig->render('User/edit.html.twig', ['user' => $user]);
+    }
+//
+
+    /**
+     * @param int $id
+     * @return string
+     * @throws \Twig\Error\LoaderError
+     * @throws \Twig\Error\RuntimeError
+     * @throws \Twig\Error\SyntaxError
+     */
+    public function profil(int $id):string
+    {
+        $userManager = new UserManager();
+        $user = $userManager->selectOneById($id);
+
+        $inventaireManager = new UserManager();
+        $inventaire = $inventaireManager->userProduct($id);
+
+
+        return $this->twig->render('User/profil.html.twig', ['user' => $user, 'inventaire' => $inventaire]);
     }
 
     public function login()
@@ -107,7 +131,7 @@ class UserController extends AbstractController
                 if (empty($user)) {
                     $errors['login'] = "Login introuvable";
                 } else {
-                    if ($pass == $user['password']) {
+                    if (password_verify($pass, $user['password'])) {
                         $_SESSION['user'] = [
                             'id' => $user['id'],
                             'nickname' => $user['nickname'],
@@ -128,5 +152,23 @@ class UserController extends AbstractController
     {
         unset($_SESSION['user']);
         header('Location: /');
+    }
+
+    public static function checkIfEmpty(array $toCheck) : array
+    {
+        $errors = [];
+        if (empty($toCheck[0])) {
+            $errors['nickname'] = "Nom / Pseudo requis";
+        }
+        if (empty($toCheck[1])) {
+            $errors['email'] = "Email requis";
+        }
+        if (empty($toCheck[2])) {
+            $errors['pass'] = "Vérifiez vos mots de passe";
+        }
+        if (empty($toCheck[3])) {
+            $errors['zipCode'] = "Veuillez renseigner un code postal à 5 chiffres svp";
+        }
+        return $errors;
     }
 }
