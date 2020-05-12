@@ -203,10 +203,17 @@ ul > li {
 @media (min-width: 768px) {
     .burger_main {
         flex-direction: row;
-        margin-left: 10%;
+        padding-left: 20px;
+        width: 70%;
     }
     .burger_main article {
         width: 35%;
+    }
+    .others_burger > ul:first-of-type {
+        margin-left: 10px;
+    }
+    .others_burger > ul:last-of-type {
+        margin-left: 180px;
     }
 
 }
