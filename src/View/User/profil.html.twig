@@ -1,4 +1,94 @@
 {% extends "layout.html.twig" %}
+
+{% block stylesheet %}
+    <style>
+        table{
+            margin: 30px;
+        }
+        table tr td{
+            width : 150px;
+        }
+        .buttons{
+            margin: 30px;
+        }
+        #liste{
+            margin: 20px;
+        }
+        .card {
+            position: relative;
+            box-shadow: 3px 3px 3px rgb(0,169,157);
+            border-radius: 5px;
+            background-color: #FFF;
+
+        }
+
+        .card-body {
+            display: flex;
+            padding: 5px;
+            height: auto;
+        }
+
+        .card-body > img:first-of-type {
+            height: 75px;
+            width: 75px;
+            margin: auto 10px;
+            padding: 2px;
+
+        }
+
+        .card-body > img:last-of-type {
+            height: 20px;
+            width: 20px;
+            align-self: center;
+            position: absolute;
+            right: 15px;
+        }
+
+        .card-body h6 {
+            margin-top: 15px;
+            font-weight: 600;
+        }
+
+        .card-body p {
+            font-size: 0.7em;
+            margin-top: 10px;
+        }
+        .detail{
+            width: 80%;
+        }
+
+        .delete{
+            width: 100%;
+            justify-content: flex-end;
+        }
+
+        @media (min-width: 577px) {
+            #recherche_top {
+                margin: 20px auto 40px;
+            }
+
+            #col {
+                width: 70%;
+                margin: 20px;
+            }
+
+            #photo, #sac, #photo, #book, #velo, #shoes, #musik, #pull {
+                display: block;
+            }
+        }
+
+        @media (min-width: 992px) {
+            .row {
+                width: 80%;
+            }
+            #col {
+                width: 80%;
+            }
+        }
+    </style>
+{% endblock %}
+
+
 {% block content %}
     {% include '_nav_retour.html.twig' %}
     {% include '_nav_bar.html.twig' %}
@@ -6,8 +96,8 @@
     <div class="accordion" id="accordionExample">
         <div class="card">
             <div class="card-header" id="headingOne">
-                <h2 class="mb-0">
-                    <h3>Votre compte :</h3>
+                <h2 class="mb-0">Votre compte</h2>
+
                     <button class="btn btn-link"
                             type="button"
                             data-toggle="collapse"
@@ -16,19 +106,21 @@
                             aria-controls="collapseOne">
                           Gérez vos informations
                     </button>
-                </h2>
+
             </div>
+
 
             <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
                 <div class="card-body">
                     {% include 'User/_user_info.html.twig' %}
                 </div>
+
             </div>
         </div>
         <div class="card">
             <div class="card-header" id="headingTwo">
-                <h2 class="mb-0">
-                    <h3>Votre inventaire :</h3>
+                <h2 class="mb-0">Votre inventaire :</h2>
+
                     <button class="btn btn-link collapsed"
                             type="button"
                             data-toggle="collapse"
@@ -37,18 +129,45 @@
                             aria-controls="collapseTwo">
                          liste des biens et services que vous proposez actuellement
                     </button>
-                </h2>
+
             </div>
             <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
-                <div class="card-body" id="inventaire">
-                    {% include 'User/_inventaire.html.twig' %}
-                </div>
+                <section class="container-fluid col-md-12" id="liste">
+
+                    {% if inventaire is empty %}
+                        <p>Oups ! Aucun résultat pour cette recherche, blablabla</p>
+                    {% else %}
+                        <p>{{ inventaire|length }} {{ (inventaire|length > 1) ? 'résultats' : 'résultat' }}</p>
+                        <div class="row">
+                            {% for product in inventaire %}
+                                <div class="col-md-5 col-lg-3" id="col">
+                                    <div class="card mx-auto" id="{{ product.id }}" >
+                                        <div class="card-body">
+                                            <img src="{{ product.img }}" class="card-img" alt="Photo de {{ product.title }}" >
+                                            <div class="detail">
+                                                <h6 class="card-title">{{ product.title }}</h6>
+                                                <span class="badge badge-pill">{{ product.deal_type }}</span>
+                                                <p class="card-text">{{ product.description }}</p>
+                                                <p class="card-text"><small class="text-muted">Proposé le {{ product.created_at | date('d/m/Y') }}</small></p>
+                                                <div class="delete">
+                                                    <a href="/product/deleteProduct/{{product.id}}">Supprimer</a>
+                                                </div>
+
+                                            </div>
+                                            <img src="/assets/images/heart.png" width="40px">
+                                            <a href="/product/details/{{ product.id }}" class="stretched-link"></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                </section>
             </div>
         </div>
         <div class="card">
             <div class="card-header" id="headingThree">
-                <h2 class="mb-0">
-                    <h3>Vos favoris :</h3>
+                <h2 class="mb-0">Vos favoris :</h2>
                     <button class="btn btn-link collapsed"
                             type="button"
                             data-toggle="collapse"
@@ -57,7 +176,7 @@
                             aria-controls="collapseThree">
                          liste des biens et produits que vous avez repérez
                     </button>
-                </h2>
+
             </div>
             <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
                 <div class="card-body">
