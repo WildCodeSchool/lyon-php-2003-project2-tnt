@@ -25,6 +25,9 @@
             {{ form.textarea('form-control','description', 'Description du service', 'Précisez si besoin, et n\'oubliez pas de donner vos disponibilités !') }}
         </div>
         {% if errors.description is defined %}<span style="color: red">{{ errors.description }}</span> {% endif %}
+        <!-- insérer ici les éléments d'upload de photo(s) -->
+        Vous pouvez ajouter une photo !
+        <input type="file" name="file">
 
         <div class="form-group" id="nature">
             <div class="card mx-auto">
