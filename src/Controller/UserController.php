@@ -107,7 +107,10 @@ class UserController extends AbstractController
             }
         }
 
-        return $this->twig->render('User/profil.html.twig', ['user' => $user, 'inventaire' => $inventaire, 'display_modal' => $display_modal]);
+        return $this->twig->render(
+            'User/profil.html.twig', 
+            ['user' => $user, 'inventaire' => $inventaire, 'display_modal' => $display_modal]
+        );
     }
 
     public function login()
