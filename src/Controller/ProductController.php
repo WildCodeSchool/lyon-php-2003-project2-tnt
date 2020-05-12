@@ -37,17 +37,18 @@ class ProductController extends AbstractController
             $exchange = (($_POST['echangeOuDon'] == 'echange') ? 2 : 1);
 
             $fileName = '';
-            if (!empty($_FILES['files']['name'])) {
-                $files = $_FILES['files'];
+
+            if (!empty($_FILES['file']['name'])) {
+                $files = $_FILES['file'];
                 $fileType = explode('/', $files['type']);
                 $fileExt = end($fileType);
 
                 $fileErrors = self::checkFile($files);
 
-                if ($fileErrors == '') {
+                if ($fileErrors == null) {
                     $fileName = uniqid('', true) . '.' . $fileExt;
-                    $fileDestination = $_SERVER['DOCUMENT_ROOT'] . '/public/assets/uploads/' . $fileName;
-                    move_uploaded_file($files['tmp'], $fileDestination);
+                    $fileDestination = $_SERVER['DOCUMENT_ROOT'] . '/assets/uploads/' . $fileName;
+                    move_uploaded_file($_FILES['file']['tmp_name'], $fileDestination);
                 }
             }
 
