@@ -100,16 +100,16 @@ class UserController extends AbstractController
         $inventaireManager = new UserManager();
         $inventaire = $inventaireManager->userProduct($id);
 
-        $display_modal = false;
+        $displayModal = false;
         if (isset($_SERVER['HTTP_REFERER'])) {
             if ($_SERVER['HTTP_REFERER'] == 'http://localhost:8000/user/inscription') {
-                $display_modal = true;
+                $displayModal = true;
             }
         }
 
         return $this->twig->render(
             'User/profil.html.twig', 
-            ['user' => $user, 'inventaire' => $inventaire, 'display_modal' => $display_modal]
+            ['user' => $user, 'inventaire' => $inventaire, 'displayModal' => $displayModal]
         );
     }
 
