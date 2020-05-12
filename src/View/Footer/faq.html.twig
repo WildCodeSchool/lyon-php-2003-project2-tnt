@@ -1,0 +1,78 @@
+{% extends "layout.html.twig" %}
+
+{%  block content %}
+    <h1>Foire Aux Questions</h1>
+    <div class="accordion" id="accordionExample">
+        <div class="card">
+            <div class="card-header" id="headingOne">
+                <h2 class="mb-0">
+                    <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                        A quoi sert Troc & Troc ?
+                    </button>
+                </h2>
+            </div>
+
+            <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+                <div class="card-body">
+                    Troc & Troc est une plateforme qui permet à tout individu d'échanger ses biens ou son temps (ou simplement de les donner!) contre d'autres biens ou des services.
+                    Aucune transaction monétaire n'est admise. C'est une démarche durable et responsable, solidaire et conviviale !
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-header" id="headingTwo">
+                <h2 class="mb-0">
+                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                        Comment proposer mes biens ou services à échanger ?
+                    </button>
+                </h2>
+            </div>
+            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+                <div class="card-body">
+                    Suivez le guide !
+                    Sur la page d'accueil, vous trouverez deux options : "proposer un troc" ou "rechercher un troc".
+                    Cliquez sur "proposer un troc" et choisissez ensuite l'option souhaitée, selon si vous proposez un bien ou un service.
+                    Il suffit alors de remplir et soumettre le formulaire !
+                    Il est conseillé de détailler au mieux chaque champ, pour augmenter vos chances de trouver un deal :)
+
+                    Attention: il est indispensable d'avoir un compte Troc & Troc pour pouvoir faire des échanges ou des dons.
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-header" id="headingTwoBis">
+                <h2 class="mb-0">
+                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwoBis" aria-expanded="false" aria-controls="collapseTwo">
+                        Comment trouver un bien ou service ?
+                    </button>
+                </h2>
+            </div>
+            <div id="collapseTwoBis" class="collapse" aria-labelledby="headingTwoBis" data-parent="#accordionExample">
+                <div class="card-body">
+                    Suivez le guide !
+                    Sur la page d'accueil, vous trouverez deux options : "proposer un troc" ou "rechercher un troc".
+                    Cliquez sur "rechercher un troc".
+                    Il suffit alors de taper le nom du bien ou service recherché dans la barre de recherche !
+
+                    Attention: il est indispensable d'avoir un compte Troc & Troc pour pouvoir faire des échanges ou des dons.
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-header" id="headingThree">
+                <h2 class="mb-0">
+                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                        Mais qui est derrière ce fabuleux site ?
+                    </button>
+                </h2>
+            </div>
+            <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+                <div class="card-body">
+                    Troc & Troc est un projet de 4 étudiants de la Wild Code School de Lyon : Pako, Mack, Nico et Justucru.
+                    Il leur a permis de maitriser le modèle MVC, ce qui n'est pas une mince affaire !
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
