@@ -4,6 +4,11 @@
 
 {% block stylesheet %}
     <style>
+
+        #header_home {
+            box-shadow: 0 3px 3px #777;
+        }
+
         .col-6 {
             max-width: 100%;
         }
@@ -90,7 +95,7 @@
         }
 
         #footer_desktop {
-            display: none;
+            /*display: none;*/
         }
 
         #propose > img, #recherche > img {
@@ -126,7 +131,7 @@
 
             #main_home {
                 width: 60%;
-                margin: 10px auto 50px;
+                margin: 5px auto 0px;
             }
 
             #main_home > div:last-of-type {
@@ -173,6 +178,10 @@
             }
             #troc article {
                 padding-bottom: 35px;
+            }
+            #header_home {
+                /*margin-right: 19%;*/
+                /*margin-left: 19%;*/
             }
         }
 
@@ -221,16 +230,16 @@
             </div>
         </div>
 
+        <section class="row" id="footer_desktop">
+            <ul>
+                <a href=""><li>En savoir plus</li></a>
+                <a href=""><li>Plan du site</li></a>
+                <a href=""><li>Contactez nous</li></a>
+                <a href=""><li>Mentions Légales</li></a>
+            </ul>
+        </section>
 
     </main>
-    <section id="footer_desktop">
-        <ul>
-            <a href=""><li>En savoir plus</li></a>
-            <a href=""><li>Plan du site</li></a>
-            <a href=""><li>Contactez nous</li></a>
-            <a href=""><li>Mentions Légales</li></a>
-        </ul>
-    </section>
 
 
     <footer>

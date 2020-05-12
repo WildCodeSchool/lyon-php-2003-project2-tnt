@@ -11,6 +11,13 @@ body {
     background-color: #F1F1F0;
 }
 
+/*@media (min-width: 600px) {*/
+/*    body {*/
+/*        width: 60%;*/
+/*        margin: auto auto;*/
+/*    }*/
+/*}*/
+
 
 a:link {text-decoration: none; color: #00A99D;}
 a:visited {text-decoration: none; color: #00A99D;}
@@ -19,7 +26,7 @@ a:active {text-decoration: underline; color: #00A99D;}
 
 .breadcrumb { background-color: transparent; font-size: 0.8em;}
 
-ul > li {
+ul li {
     list-style-type: none;
 }
 .custom-radio:last-of-type {
@@ -92,7 +99,6 @@ ul > li {
 #nav_top {
     display: flex;
     justify-content: space-between;
-    box-shadow: 0 3px 3px #777;
 }
 
 #nav_top > h2 {
@@ -277,13 +283,14 @@ ul > li {
 
 
     #footer_desktop {
-        display: block;
         width: 100%;
-        position: absolute;
+        padding-right: 6%;
+        position: static;
         bottom: 0px;
     }
 
     #footer_desktop ul {
+        width: 100%;
         display: flex;
         justify-content: space-around;
         font-weight: bold;
@@ -292,7 +299,7 @@ ul > li {
 
     #footer_desktop ul li {
         list-style-type: none;
-        color: #820050;
+        color: #00A99D;
     }
 }
 
