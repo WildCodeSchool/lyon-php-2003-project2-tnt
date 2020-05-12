@@ -5,12 +5,14 @@ namespace App\Model;
 
 use PDO;
 
-class FavoriteManager extends AbstractManager{
+class FavoriteManager extends AbstractManager
+{
 
     const TABLE = 'Favorite';
 
 
-    public function addFavorite(array $favorite){
+    public function addFavorite(array $favorite)
+    {
 
         $query = "INSERT INTO " . $this->table . " (product_id, user_id) VALUES (:product_id, :user_id)";
         $statement = $this->pdo->prepare($query);
@@ -18,5 +20,4 @@ class FavoriteManager extends AbstractManager{
         $statement->bindValue('user_id', $favorite['user_id'], \PDO::PARAM_INT);
         return $statement->execute();
     }
-
 }
