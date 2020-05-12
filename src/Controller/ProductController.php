@@ -36,6 +36,7 @@ class ProductController extends AbstractController
 
             $exchange = (($_POST['echangeOuDon'] == 'echange') ? 2 : 1);
 
+            $fileName = '';
             if (!empty($_FILES['files']['name'])) {
                 $files = $_FILES['files'];
                 $fileType = explode('/', $files['type']);
@@ -48,8 +49,6 @@ class ProductController extends AbstractController
                     $fileDestination = $_SERVER['DOCUMENT_ROOT'] . '/public/assets/uploads/' . $fileName;
                     move_uploaded_file($files['tmp'], $fileDestination);
                 }
-            } else {
-                $fileName = '';
             }
 
             $product = [

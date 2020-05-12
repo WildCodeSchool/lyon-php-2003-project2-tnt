@@ -29,8 +29,10 @@ class ProductManager extends AbstractManager
     {
         // prepared request
         $statement = $this->pdo->prepare("INSERT INTO " . self::TABLE . " " .
-            "(`title`,`description`,`user_id`,`product_type_id`,`exchange_type_id`, `img`,`category_id`,`etat`,`proposition`)
-         VALUES (:title,:description,:user_id,:product_type_id,:exchange_type_id, :fileName, :category_id,:etat,:proposition)");
+            "(`title`,`description`,`user_id`,`product_type_id`,`exchange_type_id`,
+            `img`,`category_id`,`etat`,`proposition`)
+            VALUES (:title,:description,:user_id,:product_type_id,:exchange_type_id,
+            :fileName, :category_id,:etat,:proposition)");
         $statement->bindValue('title', $product['title'], \PDO::PARAM_STR);
         $statement->bindValue('description', $product['description'], \PDO::PARAM_STR);
         $statement->bindValue('user_id', $userId, \PDO::PARAM_INT);
