@@ -26,7 +26,7 @@ a:active {text-decoration: underline; color: #00A99D;}
 
 .breadcrumb { background-color: transparent; font-size: 0.8em;}
 
-ul li {
+ul > li {
     list-style-type: none;
 }
 .custom-radio:last-of-type {
@@ -284,7 +284,7 @@ ul li {
 
     #footer_desktop {
         width: 100%;
-        padding-right: 6%;
+        padding-right: 10%;
         position: static;
         bottom: 0px;
     }
