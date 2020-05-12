@@ -21,7 +21,6 @@ class ProductController extends AbstractController
         $listCategories = $productManager->selectAllCategories();
         $productType = (($bienService == 'service') ? 2 : 1);
 
-
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $title = self::cleanInput($_POST['title']);
             $description = self::cleanInput($_POST['description']);
@@ -36,12 +35,30 @@ class ProductController extends AbstractController
             $etat = ((isset($_POST['etat'])) ? $_POST['etat'] : 'null');
 
             $exchange = (($_POST['echangeOuDon'] == 'echange') ? 2 : 1);
+
+            if (!empty($_FILES['files']['name'])) {
+                $files = $_FILES['files'];
+                $fileType = explode('/', $files['type']);
+                $fileExt = end($fileType);
+
+                $fileErrors = self::checkFile($files);
+
+                if ($fileErrors == '') {
+                    $fileName = uniqid('', true) . '.' . $fileExt;
+                    $fileDestination = $_SERVER['DOCUMENT_ROOT'] . '/public/assets/uploads/' . $fileName;
+                    move_uploaded_file($files['tmp'], $fileDestination);
+                }
+            } else {
+                $fileName = '';
+            }
+
             $product = [
                 'title' => $title,
                 'category_id' => 1,
                 'etat' => $etat,
                 'description' => $description,
                 'exchange_type_id' => $exchange,
+                'fileName' => $fileName,
                 'wantBack' => self::cleanInput($_POST['enEchangeDe']),
                 'fullProp' => $_POST['proposition'],
             ];
@@ -160,25 +177,5 @@ class ProductController extends AbstractController
         $deleteProduct->delete($idProduct);
 
         header('Location: /user/inventaire/' . $user['user_id']);
-    }
-
-    public function uploadImage()
-    {
-        if (!empty($_FILES['files']['name'])) {
-            $files = $_FILES['files'];
-            $fileType = explode('/', $files['type']);
-            $fileExt = end($fileType);
-
-            $fileErrors = self::checkFile($files);
-
-            if ($fileErrors == '') {
-                $fileName = uniqid('', true) . '.' . $fileExt;
-                $fileDestination = $_SERVER['DOCUMENT_ROOT'] . '/uploads/' . $fileName;
-                move_uploaded_file($files['tmp'], $fileDestination);
-
-                //$image = $productManager->addImage($fileName);
-            }
-            return $this->twig->render('Product/add.html.twig', ['files' => $files]);
-        }
     }
 }
