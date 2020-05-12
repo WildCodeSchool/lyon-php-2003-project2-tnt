@@ -246,6 +246,10 @@
                                 <h6>Proposé le {{ product.created_at | date("d/m/Y") }}</h6>
                                 {#                            <p class="card-text"><small class="text-muted">Date de Parution : {{ product.created_at|date("m/d/Y") }}</small></p>#}
                             </div>
+                            <form method="post">
+                                <input type="hidden" name="product_id" value="{{ product.id }}">
+                                <button type="submit"><img src="/assets/images/icons/heart.png" alt="coeur"></button>
+                            </form>
                         </div>
                     </div>
                 {% endfor %}
