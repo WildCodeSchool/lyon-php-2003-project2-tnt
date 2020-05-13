@@ -43,6 +43,7 @@ class ProductManager extends AbstractManager
         $statement->bindValue('etat', $product['etat'], \PDO::PARAM_STR);
         $statement->bindValue('proposition', $product['fullProp'], \PDO::PARAM_STR);
 
+
         if ($statement->execute()) {
             return (int)$this->pdo->lastInsertId();
         }
@@ -76,7 +77,7 @@ class ProductManager extends AbstractManager
 
     public function selectAllCategories(): array
     {
-        return $this->pdo->query('SELECT * FROM category')->fetchAll();
+        return $this->pdo->query('SELECT * FROM category WHERE parent_id IS NULL')->fetchAll();
     }
 
     /**
@@ -88,7 +89,7 @@ class ProductManager extends AbstractManager
     public function selectAll(int $productType): array
     {
         $query = "SELECT product.id, product.title, product.description, product.exchange_type_id, product.img, 
-                   exchange_type.deal_type FROM " . $this->table .
+                   product.etat, product.created_at,exchange_type.deal_type FROM " . $this->table .
                  " JOIN user ON user.id = product.user_id 
                    JOIN product_type ON product_type.id = product.product_type_id
                    JOIN exchange_type ON exchange_type.id = product.exchange_type_id

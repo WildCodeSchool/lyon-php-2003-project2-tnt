@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Model\ProductManager;
+use App\Model\FavoriteManager;
 use DateTime;
 use Twig\Error\LoaderError;
 use Twig\Error\RuntimeError;
@@ -181,5 +182,17 @@ class ProductController extends AbstractController
         $deleteProduct->delete($idProduct);
 
         header('Location: /user/inventaire/' . $user['user_id']);
+    }
+
+    public function addFavorite()
+    {
+        if (!empty($_POST)) {
+            $favorite = [
+                'product_id' => $_POST('product_id'),
+                'user_id' => $_SESSION['user']['id']
+            ];
+            $favoriteManager = new FavoriteManager('favorite');
+            $favoriteManager->addFavorite($favorite);
+        }
     }
 }

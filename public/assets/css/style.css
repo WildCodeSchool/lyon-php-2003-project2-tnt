@@ -1,16 +1,65 @@
 /*
 /////////////////////////////////////////////////////// GENERAL /////////////////////////////////
 */
+
+/*font-family: 'Fredericka the Great', cursive;*/
+/*font-family: 'Open Sans', sans-serif;*/
+/* blue: #00A99D / gray: #333 */
+
+
 .container-fluid, html, body {padding: 0; margin: 0; box-sizing: border-box;}
 .row { margin: 0px;}
+
+.pseudoCard {
+    margin: 20px;
+    background-color: #FFFFFF;
+    box-shadow: 0 3px 3px #777;
+}
+
+.pseudoCard > h1 {
+    margin: 10px;
+    padding: 10px;
+}
 
 body {
     margin: auto auto;
     display: flex;
     flex-direction: column;
     background-color: #F1F1F0;
+    font-family: 'Open Sans', sans-serif;
 }
 
+h1 {
+    font-family: 'Fredericka the Great', cursive;
+    font-size: 32px;
+    color: #333333;
+}
+
+h2 {
+    font-family: 'Fredericka the Great', cursive;
+    font-size: 32px;
+    color: #00A99D;
+}
+
+p {
+    font-family: 'Open Sans', sans-serif;
+}
+
+.motto {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 16px;
+    padding: 10px;
+    margin: 10px;
+}
+
+<<<<<<< HEAD
+=======
+strong {
+    color: #333333;
+    opacity: 0.8;
+}
+/*
+>>>>>>> dev
 @font-face {
     font-family: Amarillo;
     src: url(Amarillo.ttf);
@@ -27,7 +76,11 @@ body {
     font-family: "Badly";
     src: url(Badly.ttf);
 }
+<<<<<<< HEAD
 
+=======
+*/
+>>>>>>> dev
 /*@media (min-width: 600px) {*/
 /*    body {*/
 /*        width: 60%;*/
@@ -109,6 +162,10 @@ ul > li {
     color: #ffffff;
 }
 
+#header_home {
+    box-shadow: 0 3px 3px #777;
+}
+
 #nav_top > p {
     font-size: 0.8em;
 }
@@ -121,6 +178,7 @@ ul > li {
 #nav_top > h2 {
     margin-right: 120px;
     margin-bottom: 0px;
+    color: #ffffff;
 }
 
 
