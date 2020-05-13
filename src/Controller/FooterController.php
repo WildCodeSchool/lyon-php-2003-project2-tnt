@@ -23,4 +23,17 @@ class FooterController extends AbstractController
     {
         return $this->twig->render('Footer/faq.html.twig');
     }
+
+    /**
+     * Display sitemap page
+     *
+     * @return string
+     * @throws \Twig\Error\LoaderError
+     * @throws \Twig\Error\RuntimeError
+     * @throws \Twig\Error\SyntaxError
+     */
+    public function sitemap()
+    {
+        return $this->twig->render('Footer/plan_site.html.twig');
+    }
 }
