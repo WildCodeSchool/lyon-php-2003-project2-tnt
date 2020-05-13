@@ -191,8 +191,8 @@ class ProductController extends AbstractController
                 'product_id' => $_POST('product_id'),
                 'user_id' => $_SESSION['user']['id']
             ];
-            $FavoriteManager = new FavoriteManager();
-            $FavoriteManager->addFavorite($favorite);
+            $favoriteManager = new FavoriteManager('favorite');
+            $favoriteManager->addFavorite($favorite);
         }
     }
 }

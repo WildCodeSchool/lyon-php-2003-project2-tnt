@@ -47,26 +47,6 @@ class UserController extends AbstractController
         return $this->twig->render('User/inscription.html.twig');
     }
 
-
-    /**
-     * @param $id
-     * @return string
-     * @throws \Twig\Error\LoaderError
-     * @throws \Twig\Error\RuntimeError
-     * @throws \Twig\Error\SyntaxError
-     */
-    public function favoris($id)
-    {
-        
-        return $this->twig->render('User/favoris.html.twig');
-    }
-
-    public function preferences($id)
-    {
-        // select preferences.user_id
-        return $this->twig->render('User/preferences.html.twig');
-    }
-
     /**
      * @param int $id
      * @return string
@@ -100,12 +80,11 @@ class UserController extends AbstractController
      * @throws \Twig\Error\RuntimeError
      * @throws \Twig\Error\SyntaxError
      */
-    public function profil(int $id):string
+    public function profil(int $id) :string
     {
         // select favoris.user_id
-        $FavoriteManager = new FavoriteManager('favorite');
-        $favorite = $FavoriteManager->selectAllFavorite($id);
-        var_dump($favorite);
+        $favoriteManager = new FavoriteManager('favorite');
+        $favorite = $favoriteManager->selectAllFavorite($id);
 
         $userManager = new UserManager();
         $user = $userManager->selectOneById($id);

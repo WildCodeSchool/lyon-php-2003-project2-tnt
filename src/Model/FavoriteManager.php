@@ -11,18 +11,19 @@ class FavoriteManager extends AbstractManager
 
     const TABLE = 'favorite';
 
-    public function selectAllFavorite(string $id){
-            $query = "SELECT f.product_id, f.user_id 
+    public function selectAllFavorite(int $id)
+    {
+        $query = "SELECT f.product_id, f.user_id 
                 FROM favorite AS f  
                 JOIN product as p ON f.product_id = p.id 
                 WHERE f.user_id= :id";
-            $statement = $this->pdo->prepare($query);
-            $statement->bindValue('id', $id, \PDO::PARAM_STR);
+        $statement = $this->pdo->prepare($query);
+        $statement->bindValue('id', strval($id), \PDO::PARAM_STR);
 
-            if ($statement->execute()){
-                return $statement->fetch();
-            }
-            return 'liste vide';
+        if ($statement->execute()) {
+            return $statement->fetch();
+        }
+        return 'liste vide';
     }
 
 
