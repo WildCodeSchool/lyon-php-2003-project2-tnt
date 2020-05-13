@@ -228,23 +228,23 @@
             {% if products is empty %}
                 <p>Oups ! Aucun résultat pour cette recherche, blablabla</p>
             {% else %}
-
                  <p>{{ products|length }} {{ (products|length > 1) ? 'résultats' : 'résultat' }}</p>
                 <div class="row">
-                {% for product in products %}
+                    {% for product in products %}
 
-                <div class="col-md-4" >
-                    <div class="card" style="height: 180px">
-                        <div class="card-body">
-                            <img src="/assets/uploads/{{ product.img }}" class="card-img" alt="Photo de {{ product.title }}" >
-                            <div>
-                                <h4 class="card-title">{{ product.title }}</h4>
-                                <h6>Etat : {{ product.etat }} </h6>
+                    <div class="col-md-4" >
+                        <div class="card" style="height: 180px">
+                            <div class="card-body">
+                                <img src="/assets/uploads/{{ product.img }}" class="card-img" alt="Photo de {{ product.title }}" >
+                                <div>
+                                    <h4 class="card-title">{{ product.title }}</h4>
+                                    <h6>Etat : {{ product.etat }} </h6>
 
-                                <span class="badge badge-success">{{ product.deal_type }}</span>
-                                <p class="card-text">{{ product.description }}</p>
-                                <h6>Proposé le {{ product.created_at | date("d/m/Y") }}</h6>
-                                {#                            <p class="card-text"><small class="text-muted">Date de Parution : {{ product.created_at|date("m/d/Y") }}</small></p>#}
+                                    <span class="badge badge-success">{{ product.deal_type }}</span>
+                                    <p class="card-text">{{ product.description }}</p>
+                                    <h6>Proposé le {{ product.created_at | date("d/m/Y") }}</h6>
+                                    <a href="/product/details/{{ product.id }}" class="stretched-link"></a>
+                                </div>
                             </div>
                             <form method="post">
                                 <input type="hidden" name="product_id" value="{{ product.id }}">
@@ -252,7 +252,8 @@
                             </form>
                         </div>
                     </div>
-                {% endfor %}
+
+                    {% endfor %}
                 </div>
             {% endif %}
         </section>
