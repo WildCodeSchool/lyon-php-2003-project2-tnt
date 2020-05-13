@@ -60,11 +60,6 @@
                 width: 30%;
             }
         }
-
-
-
-
-
     </style>
 {% endblock %}
 
@@ -80,12 +75,12 @@
                     <h1>Un Bien</h1>
                     <p>"Perceuse, Bois, Voiture, ..."</p>
                 </span>
-                <img src="" alt=""> {# idéalement, icones 'dynamiques'#}
+                <img class="rotate" src="" alt="bien"> {# idéalement, icones 'dynamiques'#}
             </section>
         </a>
         <a href="/Product/{{ (var == 'propose') ? 'add/service' : 'show/service' }}">
             <section id="service">
-                <img src="" alt=""> {# idéalement, icones 'dynamiques'#}
+                <img class="" src="/assets/images/service.png" alt=""> {# idéalement, icones 'dynamiques'#}
                 <span>
                     <h1>Un Service</h1>
                     <p>"Cours de soutien, jardinage, courses, ..."</p>
