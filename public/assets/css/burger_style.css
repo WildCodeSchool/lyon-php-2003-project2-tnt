@@ -198,3 +198,14 @@
 .h1orange {
     color: #f59800;
 }
+
+.orange {
+    color: #f59800;
+}
+
+article a:link, article a:visited {
+    color: #f59800;
+}
+article a:hover {
+    color: #00A99D;
+}
