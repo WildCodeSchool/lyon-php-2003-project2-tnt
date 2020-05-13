@@ -77,7 +77,7 @@ class ProductManager extends AbstractManager
 
     public function selectAllCategories(): array
     {
-        return $this->pdo->query('SELECT * FROM category')->fetchAll();
+        return $this->pdo->query('SELECT * FROM category WHERE parent_id IS NULL')->fetchAll();
     }
 
     /**
