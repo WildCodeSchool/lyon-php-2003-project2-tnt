@@ -200,6 +200,9 @@ ul > li {
 .others_burger > ul:first-of-type {
     padding-left: 20px;
 }
+.others_burger a:hover {
+    color: #00A99D;
+}
 @media (min-width: 768px) {
     .burger_main {
         flex-direction: row;
@@ -217,12 +220,22 @@ ul > li {
     }
 
 }
-/*@media (min-width: 992px) {*/
-/*    .burger_main {*/
-/*        display: flex;*/
-/*        width: 100%;*/
-/*    }*/
-/*}*/
+@media (min-width: 992px) {
+    .others_burger ul {
+        display: flex;
+        width: 100%;
+    }
+    .others_burger ul li {
+        width: 100%;
+    }
+    .others_burger > ul:last-of-type {
+        margin-left: 0;
+        padding-left: 0;
+    }
+    #lastid {
+        font-size: 1.2em;
+    }
+}
 
 
 
