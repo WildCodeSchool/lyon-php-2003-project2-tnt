@@ -37,6 +37,7 @@
             height: 80%;
             margin: 40px auto 0px;
             display: flex;
+            padding: 0;
         }
 
         #carousel > blockquote {
@@ -44,9 +45,9 @@
             margin-left: 20px;
             margin-bottom: 20px;
             margin-right: 20px;
-            padding: 10px;
-            background-color: #f59800;
-            color: #FFF;
+            padding: 0;
+            /*background-color: #f59800;*/
+            /*color: #FFF;*/
             /*box-shadow: 2px 2px 3px #777777;*/
             height: 100%;
             border-radius: 5px;
@@ -69,6 +70,19 @@
             border-radius: 5px;
             font-weight: 600;
             /*text-decoration: underline;*/
+        }
+        .Ama {
+            /*color: #f59800;*/
+            font-family: Amarillo;
+        }
+        .Cream {
+            font-family: "Cream Cake";
+        }
+        .Gabriella {
+            font-family: "Gabriella";
+        }
+        .Badly {
+            font-family: "Badly";
         }
 
         #troc {
@@ -95,26 +109,24 @@
         }
 
         #footer_desktop {
-            /*display: none;*/
+            display: none;
         }
 
         #propose > img, #recherche > img {
             width: 50%;
         }
 
-        #main_home > .row:first-of-type {
-            display: flex;
-            flex-direction: column-reverse;
-        }
-
         #clips {
             display: flex;
             justify-content: center;
+            margin-left: 20px;
+
         }
         .clip {
             height: auto;
-            width: 17%;
+            width: 20%;
             padding: 20px;
+            margin-left: 10px;
             transform: rotateZ(35deg);
             display: block;
         }
@@ -122,67 +134,9 @@
             transform: rotateZ(-30deg);
         }
 
-
-        @media (min-width: 500px) {
-            #nav_top > span:first-of-type {
-                display: block;
-            }
-
-
-            #main_home {
-                width: 60%;
-                margin: 5px auto 0px;
-            }
-
-            #main_home > div:last-of-type {
-                width: 70%;
-                margin: 50px auto 0px;
-            }
-
-            #main_home > .row:first-of-type {
-                flex-direction: row;
-            }
-
-            #carousel {
-                height: 80%;
-                display: flex;
-                margin-left: -5em;
-            }
-
-            #carousel > blockquote {
-                font-size: 1.2em;
-                margin-left: 20px;
-                margin-bottom: 20px;
-                margin-right: 20px;
-            }
-
-            blockquote > p:first-of-type {
-                font-size: 1.4em;
-                font-weight: 600;
-            }
-
-            #troc {
-                flex-direction: row;
-                align-items: center;
-                height: 220px;
-                margin-top: 40px;
-
-            }
-            #clips > img:not(:last-of-type) {
-                display: none;
-            }
-            .clip {
-                padding: 0px;
-                width: 100%;
-                /*margin-right: -10px;*/
-            }
-            #troc article {
-                padding-bottom: 35px;
-            }
-            #header_home {
-                /*margin-right: 19%;*/
-                /*margin-left: 19%;*/
-            }
+        blockquote > p:nth-of-type(2), blockquote > p:nth-of-type(1) {
+            font-size: 3em;
+            color: #00A99D;
         }
 
     </style>
@@ -193,23 +147,22 @@
     {% include '_nav_top.html' %}
     <main class="container-fluid" id="main_home">
         <div class="row">
-            <div class="col-2" id="clips">
-                <img src="/assets/images/paperClip.png" alt="" class="clip left_clip">
-                <img src="/assets/images/paperClip.png" alt="" class="clip">
-                <img src="/assets/images/paperClip.png" alt="" class="clip left_clip">
-                <img src="/assets/images/paperClip.png" alt="" class="clip">
-
-            </div>
-
-            <div class="col-10" id="carousel">
-                <blockquote class="shadow-lg">
-                    <p>Avez-vous déjà eu vent<br>de cette fabuleuse histoire de troc ?</p>
-                    <hr>
+            <div class="col-12" id="carousel">
+                <blockquote>
+                    <p class="Badly">Avez-vous déjà eu vent de cette fabuleuse histoire de troc ?</p>
                     <p>D'un homme qui, à partir d'un simple trombone, obtenu une maison ?</p>
                     <p>Pour connaître son histoire, <a href="">c'est par ici.</a></p>
 
                     <p>Et vous,<br> quel sera votre troc du jour ?</p>
                 </blockquote>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-10" id="clips">
+                <img src="/assets/images/paperClip.png" alt="" class="clip left_clip">
+                <img src="/assets/images/paperClip.png" alt="" class="clip">
+                <img src="/assets/images/paperClip.png" alt="" class="clip left_clip">
+                <img src="/assets/images/paperClip.png" alt="" class="clip">
             </div>
         </div>
         <div class="row">

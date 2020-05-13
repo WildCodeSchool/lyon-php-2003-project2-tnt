@@ -11,6 +11,23 @@ body {
     background-color: #F1F1F0;
 }
 
+@font-face {
+    font-family: Amarillo;
+    src: url(Amarillo.ttf);
+}
+@font-face {
+    font-family: "Cream Cake";
+    src: url(CreamCake.ttf);
+}
+@font-face {
+    font-family: "Gabriella";
+    src: url(Gabriella.ttf);
+}
+@font-face {
+    font-family: "Badly";
+    src: url(Badly.ttf);
+}
+
 /*@media (min-width: 600px) {*/
 /*    body {*/
 /*        width: 60%;*/
@@ -21,7 +38,7 @@ body {
 
 a:link {text-decoration: none; color: #00A99D;}
 a:visited {text-decoration: none; color: #00A99D;}
-a:hover {text-decoration: underline; color: #00A99D;}
+a:hover {text-decoration: none; color: #00A99D;}
 a:active {text-decoration: underline; color: #00A99D;}
 
 .breadcrumb { background-color: transparent; font-size: 0.8em;}
@@ -169,11 +186,13 @@ ul > li {
 }
 
 .menu-overlay {
-    background-color: #820050;
-    color: #fff;
+    background-color: #FFF;
+    color: #00A99D;
+    font-weight: 600;
     height: 100%;
     width: 100%;
     position: fixed;
+    top: 0;
     transition: opacity 0.2s ease-in-out;
     z-index: 1000;
     opacity: 0;
@@ -182,28 +201,95 @@ ul > li {
     flex-direction: column;
     align-items: flex-start;
 }
+.burger_main {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+
+}
+.burger_main article {
+    width: 100%;
+}
+.others_burger {
+    display: flex;
+    margin-top: 60px;
+}
+.others_burger > ul:first-of-type {
+    padding-left: 20px;
+}
+.others_burger a:hover {
+    color: #00A99D;
+}
+@media (min-width: 768px) {
+    .burger_main {
+        flex-direction: row;
+        padding-left: 20px;
+        width: 70%;
+    }
+    .burger_main article {
+        width: 35%;
+    }
+    .others_burger > ul:first-of-type {
+        margin-left: 10px;
+    }
+    .others_burger > ul:last-of-type {
+        margin-left: 180px;
+    }
+
+}
+@media (min-width: 992px) {
+    .others_burger ul {
+        display: flex;
+        width: 100%;
+    }
+    .others_burger ul li {
+        width: 100%;
+    }
+    .others_burger > ul:last-of-type {
+        margin-left: 0;
+        padding-left: 0;
+    }
+    #lastid {
+        font-size: 1.2em;
+    }
+}
+
+
+
+/*.menu-overlay a {*/
+/*    color: #fff;*/
+/*    font-weight: 600;*/
+/*    padding: 2%;*/
+/*    margin-top: 20px;*/
+/*}*/
 
 .menu-overlay a {
-    color: #fff;
+    color: #333;
     font-weight: 600;
+    font-size: 32px;
     padding: 2%;
-    margin-top: 20px;
+    display: inline-block;
 }
+
+
+
 .menu-overlay > a:nth-of-type(2),
 .menu-overlay > a:nth-of-type(3) {
     font-size: 32px;
 }
 
 .menu-overlay > ul:last-of-type {
-    margin-bottom: 50px;
+    margin-top: 100px;
+    margin-left: 10%;
 }
 
 .menu-overlay ul li a{
     font-size: 0.9em;
 }
 
-.menu-overlay li {
+.menu-overlay li:not(#lastid) {
     width: 150px;
+    font-size: 1.2em;
 }
 
 
@@ -216,6 +302,7 @@ ul > li {
     left: 0;
     transition: all 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
+
 
 .menu-line-1 { top: 0; }
 
@@ -240,14 +327,15 @@ ul > li {
 
 .menu.open .menu-line-1 {
     transform: translateY(7px) translateY(-50%) rotate(-135deg);
+    background-color: #000;
 }
 
 .menu.open .menu-line-3 {
     transform: translateY(-7px) translateY(50%) rotate(135deg);
+    background-color: #000;
 }
 
 #modal_compte_non_co, #modal_compte_co { display: none;}
-
 /*
 /////////////////////////////////////////////////////////////////////////////////////////////////
 /////////////////// DESKTOP VIEW ////////////////////////////////////////////////////////////////
@@ -308,7 +396,7 @@ ul > li {
 /////////////////// TABLET VIEW ////////////////////////////////////////////////////////////////
 */
 
-@media (min-width: 992px) {
+@media (min-width: 768px) {
 
 }
 
