@@ -1,6 +1,10 @@
 /*
 /////////////////////////////////////////////////////// GENERAL /////////////////////////////////
 */
+
+/*font-family: 'Fredericka the Great', cursive;*/
+/*font-family: 'Open Sans', sans-serif;*/
+
 .container-fluid, html, body {padding: 0; margin: 0; box-sizing: border-box;}
 .row { margin: 0px;}
 
@@ -9,8 +13,23 @@ body {
     display: flex;
     flex-direction: column;
     background-color: #F1F1F0;
+    font-family: 'Open Sans', sans-serif;
 }
 
+h1 {
+    font-family: 'Fredericka the Great', cursive;
+    font-size: 32px;
+}
+
+h2 {
+    font-family: 'Fredericka the Great', cursive;
+    font-size: 32px;
+}
+
+p {
+    font-family: 'Open Sans', sans-serif;
+}
+/*
 @font-face {
     font-family: Amarillo;
     src: url(Amarillo.ttf);
@@ -27,7 +46,7 @@ body {
     font-family: "Badly";
     src: url(Badly.ttf);
 }
-
+*/
 /*@media (min-width: 600px) {*/
 /*    body {*/
 /*        width: 60%;*/
