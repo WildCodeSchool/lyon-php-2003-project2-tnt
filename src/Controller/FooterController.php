@@ -34,6 +34,6 @@ class FooterController extends AbstractController
      */
     public function sitemap()
     {
-        return $this->twig->render('Footer/plan_site.html.twig');
+        return $this->twig->render('Footer/sitemap.html.twig');
     }
 }
