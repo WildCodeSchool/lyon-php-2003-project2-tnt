@@ -18,8 +18,20 @@
 </head>
 
 <body>
+{% block header %}
+    <header>
+    {% include '_nav_top.html' %}
+    </header>
+{% endblock %}
 
 {% block content %}{% endblock %}
+
+{% block footer %}
+    <footer>
+    {% include '_nav_bar.html.twig' %}
+    </footer>
+{% endblock %}
+
 {% block javascripts %}{% endblock %}
 </body>
 </html>

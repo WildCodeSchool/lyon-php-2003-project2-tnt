@@ -10,15 +10,16 @@
 
         <section id="cat_etat">
             <div class="form-group" style="display:flex;">
-                <select name="category" id="selectCategory">
+                <select class="form-control" name="category" id="selectCategory">
+                    <option value="0">Sélectionnez une catégorie</option>
                     {% for category in categories %}
                         <option value="{{ category.id }}">{{ category.name }}</option>
                     {% endfor %}
                 </select>
             </div>
 
-            <div class="form-group" style="display:flex;">
-                <select class="form-group" name="etat" id="etat">
+            <div class="form-group" >
+                <select class="form-control" name="etat" id="etat" style="max-width: 100px">
                     <option>Etat</option>
                     <option>Neuf</option>
                     <option>Bon état</option>
@@ -35,8 +36,12 @@
         </div>
 
         <!-- insérer ici les éléments d'upload de photo(s) -->
-        Montrez votre bien !
-        <input type="file" name="file">
+        <div class="form-group upload">
+            <label for="upload">Montrez votre bien !</label>
+            <input class="button btn btn-primary btn-sm" type="file" name="file" style="background-color: #00A99D">
+        </div>
+
+
 
         <div class="form-group" id="nature">
             <div class="card mx-auto">

@@ -48,6 +48,11 @@
             justify-content: center;
             margin-top: 40px;
         }
+        .upload{
+            padding: 10px;
+            margin: 20px;
+            text-align: center;
+        }
 
         .buttons [type="submit"] {
             background-color: #f59800;
@@ -112,10 +117,8 @@
     </style>
 {% endblock %}
 
-
 {% block content %}
     {% include '_nav_retour.html.twig' %}
-    {% include '_nav_bar.html.twig' %}
     {% if session is empty %}
         <blockquote>
             Vous devez être connecté.e pour publier une annonce :)<br>
