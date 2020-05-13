@@ -7,8 +7,13 @@
 /* blue: #00A99D / gray: #333 / orange : #f59800 */
 
 
-.container-fluid, html, body {padding: 0; margin: 0; box-sizing: border-box;}
+ html, body {padding: 0; margin: 0; box-sizing: border-box;}
 .row { margin: 0px;}
+
+body {
+    display: flex;
+    flex-direction: column;
+}
 
 .pseudoCard {
     margin: 20px;

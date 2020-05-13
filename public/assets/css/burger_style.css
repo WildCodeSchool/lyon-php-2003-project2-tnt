@@ -48,6 +48,7 @@
     width: 100%;
     position: fixed;
     top: 0;
+    right:0;
     transition: opacity 0.2s ease-in-out;
     z-index: 1000;
     opacity: 0;
@@ -78,42 +79,6 @@
 .others_burger a:hover {
     color: #00A99D;
 }
-@media (min-width: 768px) {
-    .burger_main {
-        flex-direction: row;
-        padding-left: 20px;
-        width: 70%;
-    }
-    .burger_main article {
-        width: 35%;
-    }
-    .others_burger > ul:first-of-type {
-        margin-left: 10px;
-    }
-    .others_burger > ul:last-of-type {
-        margin-left: 180px;
-    }
-
-}
-@media (min-width: 992px) {
-    .others_burger ul {
-        display: flex;
-        width: 100%;
-    }
-    .others_burger ul li {
-        width: 100%;
-    }
-    .others_burger > ul:last-of-type {
-        margin-left: 0;
-        padding-left: 0;
-    }
-    #lastid {
-        font-size: 1.2em;
-    }
-}
-
-
-
 /*.menu-overlay a {*/
 /*    color: #fff;*/
 /*    font-weight: 600;*/
@@ -208,4 +173,15 @@ article a:link, article a:visited {
 }
 article a:hover {
     color: #00A99D;
+}
+
+/*
+/////////////////// DESKTOP VIEW ////////////////////////////////////////////////////////////////
+*/
+
+@media (min-width: 992px) {
+    .menu-overlay {
+        width: 30%;
+    }
+
 }
