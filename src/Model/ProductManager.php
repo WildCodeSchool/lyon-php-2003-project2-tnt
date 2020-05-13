@@ -30,9 +30,9 @@ class ProductManager extends AbstractManager
         // prepared request
         $statement = $this->pdo->prepare("INSERT INTO " . self::TABLE . " " .
             "(`title`,`description`,`user_id`,`product_type_id`,`exchange_type_id`,
-            `img`,`category_id`,`etat`,`proposition`)
+            `img`,`category_id`,`etat`,`proposition`,`created_at`)
             VALUES (:title,:description,:user_id,:product_type_id,:exchange_type_id,
-            :fileName, :category_id,:etat,:proposition)");
+            :fileName, :category_id,:etat,:proposition, NOW())");
         $statement->bindValue('title', $product['title'], \PDO::PARAM_STR);
         $statement->bindValue('description', $product['description'], \PDO::PARAM_STR);
         $statement->bindValue('user_id', $userId, \PDO::PARAM_INT);
@@ -130,11 +130,10 @@ class ProductManager extends AbstractManager
     public function getDetails(string $productId): array
     {
         $query = "SELECT p.id, p.img, p.title, p.description, p.created_at, p.proposition, p.enEchangeDe, x.deal_type, 
-                         /*etat.title, */category.name, user.email, user.nickname, user.zip_code, pt.name  
+                         p.etat, category.name as category, user.email, user.nickname, user.zip_code, pt.name  
                   FROM product AS p 
                   JOIN exchange_type as x ON p.exchange_type_id = x.id 
                   JOIN product_type as pt ON pt.id = p.product_type_id     
-                  /*JOIN etat ON p.etat_id = etat.id */
                   JOIN category ON p.category_id = category.id 
                   JOIN user ON p.user_id = user.id 
                   WHERE p.id = :id";

@@ -147,18 +147,24 @@
             margin-left: 10px;
         }
 
+        .card_add img {
+            padding: 15px;
+            width: 100%;
+        }
+
 
     </style>
 {% endblock %}
 
 {% block content %}
     <main class="container-fluid">
-        {% include '_nav_retour.html.twig' %}
         {% include 'arianne.html.twig' %}
+{#        {{ dump() }}#}
         <section class="container-fluid" id="main">
             <div class="row">
                 <div class="col-md-9" id="core">
                     <div class="row">
+
                         <div class="col-md-3" id="echange">
                             <article>
                                 <h4>En echange</h4>
@@ -172,18 +178,24 @@
                                 {% endif %}
                             </article>
                         </div>
+
                         <div class="col-md-8" id="ad">
-                            <img src="{{ details.0.img }}" alt="">
-                            <article>
-                                <h1>{{ details.0.title }}</h1>
-                                <h5>{{ details.0.name }}</h5>
-                                <h6>Etat</h6>
-                                <p>{{ details.0.description }}</p>
-                                <p>{{ details.0.created_at }}</p>
-                            </article>
+
+                            <div class="card_add justify-item-center" >
+                                <img src="{{ details.0.img }}" alt="">
+                                <div class="card-body">
+                                    <h1>{{ details.0.title }}</h1>
+                                    <h5>Catégorie : {{ details.0.category }}</h5>
+                                    <h6>Etat : {{ details.0.etat }}</h6>
+                                    <p>{{ details.0.description }}</p>
+                                    <p><em>{{ details.0.created_at }}</em></p>
+                                </div>
+                            </div>
+
                         </div>
                     </div>
                 </div>
+
                 <aside class="col-md-3">
                     <article id="user">
                         <img src="/assets/images/icons/profil.png" alt="Photo Profil">
