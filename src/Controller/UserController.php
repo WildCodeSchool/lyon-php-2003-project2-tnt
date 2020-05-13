@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Model\UserManager;
+use App\Model\FavoriteManager;
 
 class UserController extends AbstractController
 {
@@ -47,17 +48,24 @@ class UserController extends AbstractController
     }
 
 
-//    public function favoris($id)
-//    {
-//        // select favoris.user_id
-//        return $this->twig->render('User/favoris.html.twig');
-//    }
-//
-//    public function preferences($id)
-//    {
-//        // select preferences.user_id
-//        return $this->twig->render('User/preferences.html.twig');
-//    }
+    /**
+     * @param $id
+     * @return string
+     * @throws \Twig\Error\LoaderError
+     * @throws \Twig\Error\RuntimeError
+     * @throws \Twig\Error\SyntaxError
+     */
+    public function favoris($id)
+    {
+        
+        return $this->twig->render('User/favoris.html.twig');
+    }
+
+    public function preferences($id)
+    {
+        // select preferences.user_id
+        return $this->twig->render('User/preferences.html.twig');
+    }
 
     /**
      * @param int $id
@@ -94,6 +102,11 @@ class UserController extends AbstractController
      */
     public function profil(int $id):string
     {
+        // select favoris.user_id
+        $FavoriteManager = new FavoriteManager('favorite');
+        $favorite = $FavoriteManager->selectAllFavorite($id);
+        var_dump($favorite);
+
         $userManager = new UserManager();
         $user = $userManager->selectOneById($id);
 
@@ -109,7 +122,7 @@ class UserController extends AbstractController
 
         return $this->twig->render(
             'User/profil.html.twig',
-            ['user' => $user, 'inventaire' => $inventaire, 'displayModal' => $displayModal]
+            ['user' => $user, 'inventaire' => $inventaire, 'displayModal' => $displayModal, 'favorites' => $favorite]
         );
     }
 

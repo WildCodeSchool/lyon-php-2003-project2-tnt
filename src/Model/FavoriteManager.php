@@ -3,12 +3,27 @@
 
 namespace App\Model;
 
+use mysql_xdevapi\Exception;
 use PDO;
 
 class FavoriteManager extends AbstractManager
 {
 
-    const TABLE = 'Favorite';
+    const TABLE = 'favorite';
+
+    public function selectAllFavorite(string $id){
+            $query = "SELECT f.product_id, f.user_id 
+                FROM favorite AS f  
+                JOIN product as p ON f.product_id = p.id 
+                WHERE f.user_id= :id";
+            $statement = $this->pdo->prepare($query);
+            $statement->bindValue('id', $id, \PDO::PARAM_STR);
+
+            if ($statement->execute()){
+                return $statement->fetch();
+            }
+            return 'liste vide';
+    }
 
 
     public function addFavorite(array $favorite)

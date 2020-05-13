@@ -184,15 +184,15 @@ class ProductController extends AbstractController
         header('Location: /user/inventaire/' . $user['user_id']);
     }
 
-//    public function addFavorite()
-//    {
-//        if (!empty($_POST)) {
-//            $favorite = [
-//                'product_id' => $_POST('product_id'),
-//                'user_id' => $_SESSION['user']['id']
-//            ];
-////            $FavoriteManager = new FavoriteManager();
-////            $FavoriteManager->addFavorite($favorite);
-//        }
-//    }
+    public function addFavorite()
+    {
+        if (!empty($_POST)) {
+            $favorite = [
+                'product_id' => $_POST('product_id'),
+                'user_id' => $_SESSION['user']['id']
+            ];
+            $FavoriteManager = new FavoriteManager();
+            $FavoriteManager->addFavorite($favorite);
+        }
+    }
 }
