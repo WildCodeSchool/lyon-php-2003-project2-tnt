@@ -1,0 +1,256 @@
+{% extends "layout.html.twig" %}
+
+{% block title %}Liste des biens / services{% endblock %}
+
+
+{% block stylesheet %}
+<style>
+
+    [name="search"] {
+        width: 100%;
+        height: 60px;
+        background-color: rgba(0,169,157,0.5);
+        color: white;
+        font-weight: bold;
+        font-size: 1.2em;
+        text-align: center;
+    }
+
+
+    #categories {
+        display: none;
+    }
+
+    #recherche_top {
+        box-shadow: 2px 2px 5px #999;
+        padding: 5px;
+        margin: 20px 5px 50px;
+        background-color: #fff;
+        border-radius: 5px;
+    }
+
+    #recherche_top > form > div:first-of-type {
+        margin-top: 10px;
+        padding: 0 5px;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    #recherche_top > form > div > span {
+        display: flex;
+    }
+
+    #recherche_top > form > div > span > p {
+        margin-top: 5px;
+        margin-left: 5px;
+        font-size: 0.9em;
+    }
+
+    #recherche_top > form > div > span > img {
+        width: 25px;
+        height: 30px;
+    }
+
+    #recherche_top > div {
+        display: flex;
+    }
+
+
+
+    #col {
+        padding: 5px;
+        background-color: transparent;
+    }
+
+    .card {
+        position: relative;
+        box-shadow: 3px 3px 3px rgb(0,169,157);
+        border-radius: 5px;
+        background-color: #FFF;
+
+    }
+
+    .card-body {
+        display: flex;
+        padding: 5px;
+        height: 130px;
+    }
+
+    .card-body > img:first-of-type {
+        height: 75px;
+        width: 75px;
+        margin: auto 10px;
+        padding: 2px;
+
+    }
+
+    .card-body > img:last-of-type {
+        height: 20px;
+        width: 20px;
+        align-self: center;
+        position: absolute;
+        right: 15px;
+    }
+
+    .card-body h6 {
+        margin-top: 15px;
+        font-weight: 600;
+    }
+
+    .card-body p {
+        font-size: 0.7em;
+        margin-top: 10px;
+    }
+
+    .card-title {
+        margin-bottom: 0;
+    }
+
+    #liste {
+        padding: 10px;
+        margin-bottom: 100px;
+
+    }
+
+    #book, #velo, #shoes, #pull, #musik, #photo, #sac {
+        width: 200px;
+        position: absolute;
+        z-index: -2;
+        opacity: 0.5;
+        display: none;
+    }
+    #velo {
+        right: 120px;
+        top: 100px;
+    }
+    #photo {
+        left: 100px;
+        top: 80px;
+    }
+    #shoes {
+        right: 20px;
+        top: 500px;
+    }
+    #book {
+        left: 30px;
+        top: 600px;
+    }
+    #sac {
+        left: 30px;
+        top: 1300px;
+        opacity: 0.3;
+    }
+    #musik {
+        right: 30px;
+        top: 1000px;
+        width: 200px;
+    }
+    #pull {
+        top: 1400px;
+        right: 200px;
+    }
+
+    .row {
+        width: 100%;
+        margin: auto auto;
+    }
+
+    .badge {
+        font-size: 0.6em;
+        background-color: #f59800;
+        color: #FFF;
+    }
+
+    @media (min-width: 577px) {
+        #recherche_top {
+            margin: 20px auto 40px;
+        }
+
+        #col {
+            width: 80%;
+        }
+
+        #photo, #sac, #photo, #book, #velo, #shoes, #musik, #pull {
+            display: block;
+        }
+    }
+
+    @media (min-width: 992px) {
+        .row {
+            width: 80%;
+        }
+        #col {
+            width: 80%;
+        }
+    }
+</style>
+{% endblock %}
+
+
+{% block content %}
+{% include '_nav_retour.html.twig' %}
+{% include '_nav_bar.html.twig' %}
+{% include 'arianne.html.twig' %}
+
+<div class="row">
+    <section class="col-md-6" id="recherche_top">
+        <form action="" method="get">
+            <input type="text" name="search" placeholder="Votre recherche">
+
+            <div>
+                <span>
+                    <img src="/assets/images/icons/filtre.png" alt="filtre">
+                    <p>Filtrer</p>
+                </span>
+                <div class="form-group" id="categories">
+                    <label for="sel1">Catégories</label>
+                    <select class="form-control" id="sel1" name="category">
+                        {% for category in categories %}
+                        <option value="{{ category.id }}"> {{ category.title }} </option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-outline-dark">Go !</button>
+            </div>
+        </form>
+    </section>
+    <img src="/assets/images/photo.png" alt="" id="photo">
+    <img src="/assets/images/sac.png" alt="" id="sac">
+    <img src="/assets/images/book.png" alt="" id="book">
+    <img src="/assets/images/musik.png" alt="" id="musik">
+    <img src="/assets/images/pull.png" alt="" id="pull">
+    <img src="/assets/images/sac.png" alt="" id="sac">
+    <img src="/assets/images/shoes.png" alt="" id="shoes">
+    <img src="/assets/images/velo.png" alt="" id="velo">
+
+    <section class="container-fluid col-md-12" id="liste">
+
+        {% if products is empty %}
+        <p>Oups ! Aucun résultat pour cette recherche, blablabla</p>
+        {% else %}
+        <p>{{ products|length }} {{ (products|length > 1) ? 'résultats' : 'résultat' }}</p>
+        <div class="row">
+            {% for product in products %}
+            <div class="col-md-4 col-lg-6" id="col">
+                <div class="card mx-auto" id="{{ product.id }}" >
+                    <div class="card-body">
+                        <img src="{{ product.img }}" class="card-img" alt="Photo de {{ product.title }}" >
+                        <div>
+                            <h6 class="card-title">{{ product.title }}</h6>
+                            <span class="badge badge-pill">{{ product.deal_type }}</span>
+                            <p class="card-text">{{ product.description }}</p>
+                            {#                            <p class="card-text"><small class="text-muted">Date de Parution : {{ product.created_at|date("m/d/Y") }}</small></p>#}
+                        </div>
+                        <img src="/assets/images/heart.png" width="40px">
+                        <a href="/product/details/{{ product.id }}" class="stretched-link"></a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+    </section>
+</div>
+{% endblock %}
+
+

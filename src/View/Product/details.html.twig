@@ -76,6 +76,10 @@
             padding: 10px;
             margin-bottom: 10px;
         }
+        #echange article h4 {
+            font-family: 'Fredericka the Great', cursive;
+            font-weight: 600;
+        }
 
         .breadcrumb {
             background-color: transparent;
@@ -132,6 +136,17 @@
             height: 200px;
         }
 
+        #user {
+            display: flex;
+            width: 100%;
+            margin-bottom: 10px;
+            padding: 10px;
+            align-items: center;
+        }
+        #user > h4 {
+            margin-left: 10px;
+        }
+
 
     </style>
 {% endblock %}
@@ -147,7 +162,8 @@
                     <div class="row">
                         <div class="col-md-3" id="echange">
                             <article>
-                                <h5>En echange</h5>
+                                <h4>En echange</h4>
+                                <hr>
                                 {% if details.0.deal_type == 'echange' %}
                                     <p>{{ details.0.enEchangeDe }}</p>
                                     <p>{{ details.0.proposition }}</p>
@@ -171,8 +187,8 @@
                 </div>
                 <aside class="col-md-3">
                     <article id="user">
-                        <img src="" alt="Photo Profil">
-                        <h3>{{ details.0.nickname }}</h3>
+                        <img src="/assets/images/icons/profil.png" alt="Photo Profil">
+                        <h4>{{ details.0.nickname }}</h4>
                     </article>
                     <article id="localisation">
                         <h3>Localisation</h3>
