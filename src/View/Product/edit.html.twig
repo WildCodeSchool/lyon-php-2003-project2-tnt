@@ -1,6 +1,7 @@
 {% extends 'layout.html.twig' %}
 
 {% block content %}
+    {% include '_nav_retour.html.twig' %}
     <h1>Edit item {{ product.title }}</h1>
     {% include 'Item/_form.html.twig' %}
     <a href="/product/show/{{ product.id }}">Back</a>

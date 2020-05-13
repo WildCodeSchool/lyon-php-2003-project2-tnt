@@ -127,33 +127,30 @@
         }
 
 
-            @media (min-width: 992px) {
-                .row {
-                    width: 80%;
-                }
-
-                #col {
-                    width: 80%;
-                }
-
-                .accordion {
-                    margin: 0 50px 0 50px;
-                }
+        @media (min-width: 992px) {
+            .row {
+                width: 80%;
             }
+
+            #col {
+                width: 80%;
+            }
+
+            .accordion {
+                margin: 0 50px 0 50px;
+            }
+
+        }
 
     </style>
 {% endblock %}
 
 
 {% block content %}
-    {% include '_nav_retour.html.twig' %}
-    {% include '_nav_bar.html.twig' %}
-
     <div class="accordion" id="accordionExample">
         <div class="card">
             <div class="card-header" id="headingOne">
                 <h2 class="mb-0">Votre compte</h2>
-
                     <button class="btn btn-link"
                             type="button"
                             data-toggle="collapse"
@@ -162,7 +159,6 @@
                             aria-controls="collapseOne">
                           Gérez vos informations
                     </button>
-
             </div>
 
 
