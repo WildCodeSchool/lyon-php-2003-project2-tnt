@@ -11,6 +11,23 @@ body {
     background-color: #F1F1F0;
 }
 
+@font-face {
+    font-family: Amarillo;
+    src: url(Amarillo.ttf);
+}
+@font-face {
+    font-family: "Cream Cake";
+    src: url(CreamCake.ttf);
+}
+@font-face {
+    font-family: "Gabriella";
+    src: url(Gabriella.ttf);
+}
+@font-face {
+    font-family: "Badly";
+    src: url(Badly.ttf);
+}
+
 /*@media (min-width: 600px) {*/
 /*    body {*/
 /*        width: 60%;*/
