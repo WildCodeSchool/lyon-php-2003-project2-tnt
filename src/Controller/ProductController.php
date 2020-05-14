@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Model\ProductManager;
+use App\Model\FavoriteManager;
 use DateTime;
 use Twig\Error\LoaderError;
 use Twig\Error\RuntimeError;
@@ -54,13 +55,14 @@ class ProductController extends AbstractController
 
             $product = [
                 'title' => $title,
-                'category_id' => 1,
+                'category_id' => $_POST['category'],
                 'etat' => $etat,
                 'description' => $description,
                 'exchange_type_id' => $exchange,
                 'fileName' => $fileName,
                 'wantBack' => self::cleanInput($_POST['enEchangeDe']),
                 'fullProp' => $_POST['proposition'],
+                'frequency' => $_POST['frequency']
             ];
             $userId = $_SESSION['user']['id'];
             $productManager->insert($product, $userId, $productType);
@@ -143,31 +145,16 @@ class ProductController extends AbstractController
     {
         $manager = new ProductManager();
         $details = $manager->getDetails($productId);
-        $mail = $details[0]['email'];
 
-        if (isset($_POST['message'])) {
-            $entete  = 'MIME-Version: 1.0' . "\r\n";
-            $entete .= 'Content-type: text/html; charset=utf-8' . "\r\n";
-            $entete .= $mail . "\r\n";
+        if (!empty($_POST)) {
+            $message= self::cleanInput($_POST['message']);
+            var_dump($message);
+            header('Location:/Product/dealConfirm/');
 
-            $message = '<h1>Message envoyé depuis Troc & Troc</h1>
-                        <p><b>Nom : </b>' . $_SESSION['user']['nickname'] . '<br>
-                        <b>Email : </b>' . $_SESSION['user']['email'] . '<br>
-                        <b>Message : </b>' . $_POST['message'] . '</p>';
-
-            $retour = mail('brice.darmenia@sfr.fr', 'Vous avez reçu une proposition de troc', $message, $entete);
-            if ($retour) {
-                header('Location: /');
-            }
+            //return $this->twig->render('Product/dealConfirm.html.twig', ['details'=>$details, 'message'=>$message]);
         }
 
         return $this->twig->render('Product/offre.html.twig', ['details' => $details]);
-    }
-
-    public function showProduct()
-    {
-
-        return $this->twig->render('Item/show.html.twig');
     }
 
     /**
@@ -181,5 +168,27 @@ class ProductController extends AbstractController
         $deleteProduct->delete($idProduct);
 
         header('Location: /user/inventaire/' . $user['user_id']);
+    }
+
+    public function addFavorite()
+    {
+        if (!empty($_POST)) {
+            $favorite = [
+                'product_id' => $_POST('product_id'),
+                'user_id' => $_SESSION['user']['id']
+            ];
+            $favoriteManager = new FavoriteManager('favorite');
+            $favoriteManager->addFavorite($favorite);
+        }
+    }
+
+    public function dealConfirm()
+    {
+        $product = explode('/', $_SERVER['HTTP_REFERER']);
+        $productId = end($product);
+        $manager= new ProductManager();
+        $product=$manager->getDetails($productId);
+
+        return $this->twig->render('Product/dealConfirm.html.twig', ['product'=>$product]);
     }
 }

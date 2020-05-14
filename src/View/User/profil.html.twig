@@ -14,7 +14,7 @@
             justify-content: space-evenly;
 
         }
-        #liste{
+        #liste {
             margin: 20px;
         }
         .card {
@@ -39,13 +39,13 @@
 
         }
 
-        .card-body > img:last-of-type {
-            height: 20px;
-            width: 20px;
-            align-self: center;
-            position: absolute;
-            right: 15px;
-        }
+        /*.card-body > img:last-of-type {*/
+        /*    height: 20px;*/
+        /*    width: 20px;*/
+        /*    align-self: center;*/
+        /*    position: absolute;*/
+        /*    right: 15px;*/
+        /*}*/
 
         .card-body h6 {
             margin-top: 15px;
@@ -64,6 +64,7 @@
             width: 100%;
             justify-content: flex-end;
         }
+
         .accordion{
             margin: 20px;
         }
@@ -112,8 +113,6 @@
             padding: 0;
         }
 
-
-
         @media (min-width: 577px) {
             #recherche_top {
                 margin: 20px auto 40px;
@@ -129,26 +128,27 @@
             }
         }
 
-
-            @media (min-width: 992px) {
-                .row {
-                    width: 80%;
-                }
-
-                #col {
-                    width: 80%;
-                }
-
-                .accordion {
-                    margin: 0 50px 0 50px;
-                }
+        @media (min-width: 992px) {
+            .row {
+                width: 80%;
             }
+
+            #col {
+                width: 80%;
+            }
+
+            .accordion {
+                margin: 0 50px 0 50px;
+            }
+
+        }
 
     </style>
 {% endblock %}
 
 
 {% block content %}
+
     {% include '_nav_retour.html.twig' %}
     {% include '_nav_bar.html.twig' %}
 
@@ -183,11 +183,13 @@
 
     </div>
 
+
+    <h1>Mon profil</h1>
+
     <div class="accordion" id="accordionExample">
         <div class="card">
             <div class="card-header" id="headingOne">
                 <h2 class="mb-0">Votre compte</h2>
-
                     <button class="btn btn-link"
                             type="button"
                             data-toggle="collapse"
@@ -196,7 +198,6 @@
                             aria-controls="collapseOne">
                           Gérez vos informations
                     </button>
-
             </div>
 
 
@@ -241,7 +242,7 @@
                             <div class="col-md-5 col-lg-3" id="col">
                                 <div class="card mx-auto" id="{{ product.id }}" >
                                     <div class="card-body">
-                                        <img src="{{ product.img }}" class="card-img" alt="Photo de {{ product.title }}" >
+                                        <img src="/assets/uploads/{{ product.img }}" class="card-img" alt="Photo de {{ product.title }}" >
                                         <div class="detail">
                                             <h6 class="card-title">{{ product.title }}</h6>
                                             <span class="badge badge-pill">{{ product.deal_type }}</span>
@@ -252,7 +253,6 @@
                                             </div>
 
                                         </div>
-                                        <img src="/assets/images/heart.png" width="40px">
                                         <a href="/product/details/{{ product.id }}" class="stretched-link"></a>
                                     </div>
                                 </div>
@@ -304,6 +304,9 @@
                 </div>
             </div>
         </div>
+    </div>
+    <div class="modal-footer">
+        <a href="/user/logout"><button type="button" class="btn btn-danger">Se déconnecter</button></a>
     </div>
 {% endblock %}
 
