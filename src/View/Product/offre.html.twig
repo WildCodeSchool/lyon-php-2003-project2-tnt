@@ -71,6 +71,14 @@
 
         }
 
+        .card-text {
+            overflow-wrap: anywhere;
+            /*text-overflow: ellipsis;*/
+            /*overflow: hidden;*/
+            /*white-space: nowrap;*/
+            /*width: 200px;*/
+        }
+
         .badge {
             height: 50%;
             background-color: #f59800;
@@ -111,11 +119,9 @@
                 width: 50%;
                 margin: 20px auto;
             }
-
             .imgProduct {
                 width: 80%;
             }
-
         }
 
 
@@ -138,14 +144,14 @@
                     <div class="card mx-auto">
                         <div class="card-header">
                             <h4 class="card-title">{{ details.0.title }}</h4>
-                            <span class="badge">{{ details.0.deal_type }}</span>
+                            <div style="display: flex; flex-direction: column">
+                                <span class="badge">{{ details.0.deal_type }}</span>
+                                <span class="badge">{{ details.0.etat }}</span>
+                            </div>
                         </div>
-                        <div class="card-body">
+                        <div class="card-body" style="display: flex">
                             <p class="card-text">{{ details.0.description }}</p>
-
                             <img class="imgProduct" src="/assets/uploads/{{ details.0.img }}" alt="{{ details.0.title }}">
-                            
-                            <p class="card-text">{{ details.0.etat }}</p>
                             <a href="/product/details/{{ details.0.id }}" class="stretched-link"></a>
                         </div>
                     </div>
