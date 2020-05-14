@@ -50,6 +50,9 @@
             margin-top: 20px;
             margin-bottom: 100px;
         }
+        form button {
+            font-weight: bold;
+        }
 
         .card {
             box-shadow: 0 2px 2px #777;
@@ -68,12 +71,17 @@
 
         .card-title {
             margin-bottom: 0;
+            color: white;
+            font-weight: 600;
 
         }
 
         .badge {
             height: 50%;
             background-color: #f59800;
+            /*color: white;*/
+            text-transform: capitalize;
+            font-weight: bold;
         }
 
         #echange {
@@ -117,11 +125,9 @@
             }
 
         }
-
-
-
-
-
+        #desc {
+            overflow: hidden;
+        }
     </style>
 {% endblock %}
 
@@ -138,14 +144,13 @@
                     <div class="card mx-auto">
                         <div class="card-header">
                             <h4 class="card-title">{{ details.0.title }}</h4>
-                            <span class="badge">{{ details.0.deal_type }}</span>
+                                <span class="badge">{{ details.0.deal_type }}</span>
                         </div>
                         <div class="card-body">
-                            <p class="card-text">{{ details.0.description }}</p>
+                            <p class="card-text" id="desc">{{ details.0.description }}</p>
 
                             <img class="imgProduct" src="/assets/uploads/{{ details.0.img }}" alt="{{ details.0.title }}">
                             
-                            <p class="card-text">{{ details.0.etat }}</p>
                             <a href="/product/details/{{ details.0.id }}" class="stretched-link"></a>
                         </div>
                     </div>

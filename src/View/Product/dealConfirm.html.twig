@@ -23,14 +23,20 @@
         }
         .exchange{
             background-color: #f59800;
+            padding: 5px;
+            border-radius: 5px;
+            margin-bottom: 20px;
         }
-        .exchange p{
+        .exchange p {
             margin: 10px;
+            color: white;
+            font-weight: 600;
         }
-        .buttons{
-            margin: 30px;
+        .exchange span {
+            font-weight: 800;
+            font-size: 1.3em;
+            text-transform: uppercase;
         }
-
 
         .titre{
 
@@ -59,10 +65,9 @@
         }
         .badge {
             background-color: #00A99D;
-            margin: 20px;
             padding: 5px;
             border: #f59800 solid 1px;
-            margin-bottom: 100px;
+            margin: 20px 20px 100px;
         }
         .btn-secondary:not(:disabled):not(.disabled).active,
         .btn-secondary:not(:disabled):not(.disabled):active,
@@ -88,21 +93,22 @@
             <div class="card mb-3" >
                 <div class="row no-gutters">
                     <div class=" card-header titre col-md-4">
-                        <h1>confirmation</h1>
+                        <h1>Confirmation</h1>
+                        <hr>
                         <img src="/assets/uploads/{{ detail.img }}" class="card-img" alt="Image de {{ detail.title }} ">
                     </div>
                     <div class="col-md-8">
                         <div class="card-body">
                             <div class="exchange">
-                                <p>Propositon : {{ detail.title }}</p>
-                                <p>Type : {{ detail.deal_type }}</p>
+                                <p><span>Propositon </span><br> {{ detail.title|capitalize }}</p>
+                                <p><span>Type </span><br> {{ detail.deal_type|capitalize }}</p>
 
 
                             </div>
                             {% for user in session %}
                             <h5 class="card-title">{{ user.nickname }},</h5>
                             {% endfor %}
-                            <p class="card-text">Nous vous confirmons que votre demande à été envoyée à <big>{{ detail.nickname }}.</big></p>
+                            <p class="card-text">Nous vous confirmons que votre demande à été envoyée à <big>{{ detail.nickname|capitalize }}.</big></p>
                             <p class="card-text">Merci pour votre participation au sein de notre communauté de troqueur.</p>
                         </div>
                     </div>
