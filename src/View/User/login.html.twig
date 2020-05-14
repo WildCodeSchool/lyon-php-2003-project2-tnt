@@ -47,6 +47,9 @@
         label {
             font-weight: 500;
         }
+        a:link, a:visited {
+            color: #00A99D;
+        }
 
     </style>
 {% endblock %}
@@ -80,14 +83,14 @@
 
                 <button type="submit">Me connecter</button>
 
-                <p>Mot de passe oublié ? <a href="">Réinitialiser le</a></p>
+                <p>Mot de passe oublié ? <a href="" class="inverse">Réinitialiser le</a></p>
 
             </form>
 
         </section>
         <section class="card-footer">
             Pas encore inscrit ?
-            <a href="/user/inscription">C'est par ici !</a>
+            <a href="/user/inscription" class="inverse">C'est par ici !</a>
         </section>
     </article>
 {% endblock %}
