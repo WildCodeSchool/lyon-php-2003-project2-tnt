@@ -71,7 +71,7 @@ a:visited {text-decoration: none; color: #00A99D;}
 a:hover {text-decoration: none; font-size: +1.2em;}
 a:active {text-decoration: underline; color: #00A99D;}
 
-.breadcrumb { background-color: transparent; font-size: 0.8em;}
+.breadcrumb { background-color: transparent; font-size: 0.8em; height: 40px;}
 
 ul > li {
     list-style-type: none;
