@@ -8,26 +8,30 @@
             <a href="/" title="accueil">> Accueil</a>
             <ul>
                 <li>
-                    <a href="product/bienOuService/propose" title="je propose">- Je propose</a>
+                    <a href="/product/bienOuService/propose" title="je propose">- Je propose</a>
                     <ul>
-                        <li><a href="Product/add/bien" title="je propose un bien" class="bullet">Un bien</a></li>
-                        <li><a href="Product/add/service" title="je propose un service" class="bullet">Un service</a></li>
+                        <li><a href="/Product/add/bien" title="je propose un bien" class="bullet">Un bien</a></li>
+                        <li><a href="/Product/add/service" title="je propose un service" class="bullet">Un service</a></li>
                     </ul>
                 </li>
                 <li>
-                    <a href="product/bienOuService/recherche" title="je recherche">- Je recherche</a>
+                    <a href="/product/bienOuService/recherche" title="je recherche">- Je recherche</a>
                     <ul>
-                        <li><a href="Product/show/bien" title="je recherche un bien" class="bullet" >Un bien</a></li>
-                        <li><a href="Product/show/service" title="je recherche un service" class="bullet">Un service</a></li>
+                        <li><a href="/Product/show/bien" title="je recherche un bien" class="bullet" >Un bien</a></li>
+                        <li><a href="/Product/show/service" title="je recherche un service" class="bullet">Un service</a></li>
                     </ul>
                 </li>
             </ul>
-        <li><a href="User/inscription" title ="s'inscrire">> S'inscrire</a></li>
-        <li><a href="User/login" title ="se connecter">> Se connecter</a></li>
-        <li><a href="User/favoris" title ="favoris"> >Mes favoris</a></li>
-        <li><a href="User/profil" title ="mon profil">> Mon profil</a></li>
-        <li><a href="Footer/plan_site" title ="plan du site">> Plan du site</a></li>
-        <li><a href="Footer/faq" title ="faq">> FAQ</a></li>
+        <li><a href="/User/inscription" title ="s'inscrire">> S'inscrire</a></li>
+        <li><a href="/User/login" title ="se connecter">> Se connecter</a></li>
+        <li><a href="/User/favoris" title ="favoris">> Mes favoris</a></li>
+        {% if session is empty or session.user is empty%}
+            <li><a href="/user/login">> Mon profil</a></li>
+        {% else %}
+            <li><a href="/user/profil/{{ session.user.id }}">> Mon profil</a></li>
+        {% endif %}
+        <li><a href="/Footer/sitemap" title ="plan du site">> Plan du site</a></li>
+        <li><a href="/Footer/faq" title ="faq">> FAQ</a></li>
     </ul>
     </div>
 {% endblock %}

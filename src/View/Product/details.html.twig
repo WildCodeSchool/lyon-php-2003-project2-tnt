@@ -182,14 +182,13 @@
 
                         <div class="col-md-3" id="echange">
                             <article>
-                                <h4>En echange</h4>
+                                <h4>En échange</h4>
                                 <hr>
                                 {% if details.0.deal_type == 'echange' %}
                                     <p>{{ details.0.enEchangeDe }}</p>
                                     <p>{{ details.0.proposition }}</p>
                                 {% else %}
                                     <p>Rien du tout :)</p>
-                                    <p>(Un sourire tout au plus)</p>
                                 {% endif %}
                             </article>
                         </div>
@@ -240,7 +239,7 @@
                     <section class="container-fluid" id="action">
                         <img src="/assets/images/heart.png" alt="favoris" title="Ajouter aux Favoris">
                         <a href="/product/offre/{{ id }}">
-                            <button type="button" >Faire un Troc</button>
+                            <button type="button">Faire un Troc</button>
                             {% if session is not empty %}
                                 <button type="button" id="fav_button" >Ajouter aux favoris</button>
                             {% endif %}
