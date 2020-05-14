@@ -82,6 +82,12 @@ class ProductManager extends AbstractManager
                                            ORDER BY parent_id ASC ')->fetchAll();
     }
 
+    public function selectAllParentCategories(): array
+    {
+        return $this->pdo->query('SELECT * FROM category WHERE parent_id IS NULL 
+                                           ORDER BY parent_id ASC ')->fetchAll();
+    }
+
     /**
      * Recupère tous les biens OU services
      * @param int $productType

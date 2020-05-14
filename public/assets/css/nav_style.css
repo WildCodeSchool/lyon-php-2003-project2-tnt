@@ -1,11 +1,16 @@
 
 
 #nav_bottom {
-    position: fixed;
+    position: absolute;
     bottom: 0px;
     height: 60px;
     background-color: white;
     z-index: 10;
+}
+@media (min-width: 576px) {
+    #nav_bottom {
+        background-color: transparent;
+    }
 }
 #nav_bottom ul {
     display: flex;
