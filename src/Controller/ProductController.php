@@ -34,6 +34,7 @@ class ProductController extends AbstractController
             }
 
             $etat = ((isset($_POST['etat'])) ? $_POST['etat'] : 'null');
+            $frequency = ((isset($_POST['frequency'])) ? $_POST['frequency'] : 'null');
 
             $exchange = (($_POST['echangeOuDon'] == 'echange') ? 2 : 1);
 
@@ -62,7 +63,7 @@ class ProductController extends AbstractController
                 'fileName' => $fileName,
                 'wantBack' => self::cleanInput($_POST['enEchangeDe']),
                 'fullProp' => $_POST['proposition'],
-                'frequency' => $_POST['frequency']
+                'frequency' => $frequency
             ];
             $userId = $_SESSION['user']['id'];
             $productManager->insert($product, $userId, $productType);
