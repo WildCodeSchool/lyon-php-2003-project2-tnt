@@ -139,7 +139,7 @@ class UserController extends AbstractController
                             'nickname' => $user['nickname'],
                             'email' => $user['email']
                         ];
-                        header('Location: /');
+                        header('Location: /user/Profil/' . $user['id']);
                     } else {
                         $errors['pass'] = "Mauvais mot de passe";
                     }

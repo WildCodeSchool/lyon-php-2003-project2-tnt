@@ -89,13 +89,14 @@
                 <div class="row no-gutters">
                     <div class=" card-header titre col-md-4">
                         <h1>confirmation</h1>
-                        <img src="{{ detail.img }}" class="card-img" alt="Image de {{ detail.title }} ">
+                        <img src="/assets/uploads/{{ detail.img }}" class="card-img" alt="Image de {{ detail.title }} ">
                     </div>
                     <div class="col-md-8">
                         <div class="card-body">
                             <div class="exchange">
-                                <p>Type de proposition : {{ detail.deal_type }}</p>
-                                <p>de : {{ detail.title }}</p>
+                                <p>Propositon : {{ detail.title }}</p>
+                                <p>Type : {{ detail.deal_type }}</p>
+
 
                             </div>
                             {% for user in session %}
