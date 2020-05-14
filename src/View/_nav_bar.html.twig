@@ -6,40 +6,13 @@
             {% if session is empty or session.user is empty%}
                 <li><a href="/user/login"><img src="/assets/images/icons/profil.png" id="home_no_co_"></a></li>
             {% else %}
-                <li><img src="/assets/images/icons/profil_co.png" alt="co" id="home_compte_co" data-toggle="modal" data-target="#modal_compte_co"></li>
+                <li><a href="/user/profil/{{ session.user.id }}"><img src="/assets/images/icons/profil_co.png" id="home_no_co_"></a></li>
             {% endif %}
             <li><a href="/Footer/sitemap" title="Plan du site"><img src="/assets/images/icons/map.png" alt="Plan Site"></a></li>
             <li><a href="/Footer/faq" title="Aides"><img src="/assets/images/icons/help.png" alt="Aides"></a></li>
         </ul>
     </nav>
 </div>
-
-    <!-- The Modal Connect -->
-    <div class="modal fade" id="modal_compte_co">
-        <div class="modal-dialog">
-            <div class="modal-content">
-
-                <!-- Modal Header -->
-                <div class="modal-header">
-                    <h4 class="modal-title">Menu Personnel</h4>
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                </div>
-
-                <!-- Modal body -->
-                <div class="modal-body" id="menu_profil">
-                    <ul>
-                        <li><img src="/assets/images/icons/malle.png" alt=""><a href="/user/inventaire/{{ session.user.id }}">Mon inventaire</a></li>
-                        <li><img src="/assets/images/heart.png" alt=""><a href="/user/favoris/{{ session.user.id }}">Mes favoris</a></li>
-                        <li><img src="/assets/images/icons/profil.png" alt=""><a href="/user/profil/{{ session.user.id }}">Mon profil</a></li>
-                    </ul>
-                </div>
-
-                <!-- Modal footer -->
-
-
-            </div>
-        </div>
-    </div>
 
 
 
