@@ -11,7 +11,7 @@
         <section id="cat_etat">
             <div class="form-group" style="display:flex;">
                 <select class="form-control" name="category" id="selectCategory">
-                    <option value="0">Sélectionnez une catégorie</option>
+                    <option value="0">Catégorie</option>
                     {% for category in categories %}
                         <option value="{{ category.id }}">{{ category.name }}</option>
                     {% endfor %}
@@ -19,8 +19,8 @@
             </div>
 
             <div class="form-group" >
-                <select class="form-control" name="etat" id="etat" style="max-width: 100px" required>
-                    <option disabled>Etat</option>
+                <select class=" status form-control" name="etat" id="etat"  required>
+                    <option value="">Etat</option>
                     <option value="Neuf">Neuf</option>
                     <option value="Bon état">Bon état</option>
                     <option value="Satisfaisant">Satisfaisant</option>
