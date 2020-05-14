@@ -7,20 +7,25 @@
             {{ form.input('text', 'form-control','title', 'Titre de votre annonce', 'ex.: 2h de bêchage') }}
             {% if errors.title is defined %}<span style="color: red"> {{ errors.title }}</span> {% endif %}
         </div>
-        <span style="display: flex;">
-            <div class="form-group">
-                {{ form.select('form-control', 'category_is','Choisissez une catégorie') }}
+        <section id="cat_etat">
+            <div class="form-group" style="display:flex;">
+                <select class="form-control" name="category" id="selectCategory">
+                    <option value="0">Sélectionnez une catégorie</option>
+                    {% for category in categories %}
+                        <option value="{{ category.id }}">{{ category.name }}</option>
+                    {% endfor %}
+                </select>
             </div>
 
             <div class="form-group">
-                <select class="form-control" name="Récurrence" required>
-                    <option disabled>Fréquence</option>
+                <select class="form-control" name="frequency" required>
+                    <option disabled selected>Fréquence</option>
                     <option>Une fois</option>
                     <option>A définir</option>
                 </select>
                 {% if errors.etat is defined %}<span style="color: red">{{ errors.etat }}</span> {% endif %}
             </div>
-        </span>
+        </section>
         <div class="form-group">
             {{ form.textarea('form-control','description', 'Description du service', 'Précisez si besoin, et n\'oubliez pas de donner vos disponibilités !') }}
         </div>

@@ -160,7 +160,7 @@
 {% block content %}
     <main class="container-fluid">
         {% include 'arianne.html.twig' %}
-{#        {{ dump() }}#}
+        {{ dump() }}
         <section class="container-fluid" id="main">
             <div class="row">
                 <div class="col-md-9" id="core">
@@ -189,6 +189,9 @@
                                     <h5>Catégorie : {{ details.0.category }}</h5>
                                     {% if details.0.name == 'bien' %}
                                         <h6>Etat : {{ details.0.etat }}</h6>
+                                        {% else %}
+                                            <h6>Fréquence : {{ details.0.frequency }}</h6>
+
                                     {% endif %}
                                     <p>{{ details.0.description }}</p>
                                     <p><em>{{ details.0.created_at }}</em></p>
