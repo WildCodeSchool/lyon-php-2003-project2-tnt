@@ -4,13 +4,14 @@
 
 {% block stylesheet %}
     <style>
-
         .col-6 {
             max-width: 100%;
         }
 
-        #nav_top > span:first-of-type {
-            display: none;
+        .container-fluid {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
 
         #main_home {
@@ -21,7 +22,6 @@
             /*background-image: url("/assets/images/paperClip.png");*/
             /*background-repeat: no-repeat;*/
             background-color: #FFF;
-
         }
 
         #main_home > p:first-of-type {
@@ -42,13 +42,10 @@
             margin-bottom: 20px;
             margin-right: 20px;
             padding: 0;
-            /*background-color: #f59800;*/
-            /*color: #FFF;*/
-            /*box-shadow: 2px 2px 3px #777777;*/
             height: 100%;
             border-radius: 5px;
         }
-        /*blockquote > p:first-of-type {
+        blockquote > p:first-of-type {
             font-size: 1.2em;
             font-weight: 600;
         }
@@ -67,19 +64,6 @@
             font-weight: 600;
             /*text-decoration: underline;*/
         }
-        /*.Ama {
-            /*color: #f59800;
-            font-family: Amarillo;
-        }
-        .Cream {
-            font-family: "Cream Cake";
-        }
-        .Gabriella {
-            font-family: "Gabriella";
-        }
-        .Badly {
-            font-family: "Badly";
-        }*/
 
         #troc {
              height: 320px;
@@ -115,12 +99,11 @@
         #clips {
             display: flex;
             justify-content: center;
-            margin: 0 auto;
-
+            margin: -30px auto 20px;
         }
         .clip {
             height: auto;
-            width: 15%;
+            width: 25%;
             padding: 20px;
             margin-left: 10px;
             transform: rotateZ(35deg);
@@ -140,7 +123,7 @@
             text-align: center;
         }
 
-        p {
+        #main_home p {
             text-align: center;
         }
 
@@ -158,13 +141,21 @@
             <div class="col-12" id="carousel">
                 <blockquote>
                     <h1>Avez-vous déjà eu vent de cette fabuleuse histoire de troc ?</h1>
-                    <p>L'histoire d'un homme qui, en partant d'un simple trombone, a fini par obtenir une maison ? <small>Découvrez-la <a href="">ici</a></small></p>
+                    <p>L'histoire d'un homme qui, en partant d'un simple trombone, a fini par obtenir une maison ? <small> <a href="https://fr.wikipedia.org/wiki/Kyle_MacDonald" target="_blank">Découvrez-la ici</a></small></p>
 
                     <p><strong>Et vous,<br> quel sera votre troc du jour ?</strong></p>
                 </blockquote>
             </div>
         </div>
         <div class="row">
+            <div class="col-10" id="clips">
+                <img src="/assets/images/paperClip.png" alt="" class="clip left_clip">
+                <img src="/assets/images/paperClip.png" alt="" class="clip">
+                <img src="/assets/images/paperClip.png" alt="" class="clip left_clip">
+                <img src="/assets/images/paperClip.png" alt="" class="clip">
+            </div>
+        </div>
+        <div class="row" style="display:none;">
             <div class="col-10" id="clips">
                 <img src="/assets/images/paperClip.png" alt="" class="clip left_clip">
                 <img src="/assets/images/paperClip.png" alt="" class="clip">
