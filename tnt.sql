@@ -192,6 +192,7 @@ CREATE TABLE `product` (
   `img` text,
   `proposition` text,
   `enEchangeDE` text,
+  `frequency` varchar(10) DEFAULT NULL,
   PRIMARY KEY (`id`,`user_id`,`product_type_id`,`exchange_type_id`,`category_id`),
   KEY `fk_product_user1_idx` (`user_id`),
   KEY `fk_product_product_type1_idx` (`product_type_id`),
