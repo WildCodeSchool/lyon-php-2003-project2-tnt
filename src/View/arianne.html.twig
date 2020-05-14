@@ -1,35 +1,38 @@
 <ul class="breadcrumb">
     <li class="breadcrumb-item"><a href="/">Accueil</a></li>
-    {% if 'add' not in url %}
-        <li class="breadcrumb-item"><a href="/Product/bienOuService/recherche">Recherche</a></li>
+    {% if 'bienOuService' not in url %}
+        {% if 'add' not in url %}
+            <li class="breadcrumb-item"><a href="/Product/bienOuService/recherche">Recherche</a></li>
         {% else %}
             <li class="breadcrumb-item"><a href="/Product/bienOuService/propose">Proposer</a></li>
             <li class="breadcrumb-item">{{ var|capitalize }}</li>
 
-    {% endif %}
+        {% endif %}
 
-    {% if 'bien' in url and 'add' not in url %}
-        <li class="breadcrumb-item"><a href="/Product/show/bien">Bien</a></li>
-    {% elseif 'service' in url and 'add' not in url %}
-        <li class="breadcrumb-item"><a href="/Product/show/service">Service</a></li>
-    {% endif %}
-
-    {% if 'details' in url %}
-        {% if details.0.name == 'bien' %}
+        {% if 'bien' in url and 'add' not in url and 'show' not in url %}
             <li class="breadcrumb-item"><a href="/Product/show/bien">Bien</a></li>
-        {% else %}
+        {% elseif 'service' in url and 'add' not in url and 'show' not in url %}
             <li class="breadcrumb-item"><a href="/Product/show/service">Service</a></li>
         {% endif %}
-        <li class="breadcrumb-item">{{ details.0.title }}</li>
-    {% endif %}
 
-    {% if 'offre' in url %}
-        {% if details.0.name == 'bien' %}
-            <li class="breadcrumb-item"><a href="/Product/show/bien">Bien</a></li>
+        {% if 'details' in url %}
+            {% if details.0.name == 'bien' %}
+                <li class="breadcrumb-item"><a href="/Product/show/bien">Bien</a></li>
             {% else %}
                 <li class="breadcrumb-item"><a href="/Product/show/service">Service</a></li>
+            {% endif %}
+            <li class="breadcrumb-item">{{ details.0.title }}</li>
         {% endif %}
-        <li class="breadcrumb-item"><a href="/Product/details/{{ details.0.id }}">{{ details.0.title }}</a></li>
+
+        {% if 'offre' in url %}
+            {% if details.0.name == 'bien' %}
+                <li class="breadcrumb-item"><a href="/Product/show/bien">Bien</a></li>
+            {% else %}
+                <li class="breadcrumb-item"><a href="/Product/show/service">Service</a></li>
+            {% endif %}
+            <li class="breadcrumb-item"><a href="/Product/details/{{ details.0.id }}">{{ details.0.title }}</a></li>
+        {% endif %}
+
     {% endif %}
 
 
