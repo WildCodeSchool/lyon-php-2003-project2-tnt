@@ -107,6 +107,13 @@
             margin-bottom: 0;
         }
 
+        .card-text {
+            text-overflow: ellipsis;
+            overflow: hidden;
+            white-space: nowrap;
+            width: 200px;
+        }
+
         #liste {
             padding: 10px;
             margin-bottom: 100px;
@@ -236,7 +243,7 @@
                         <div class="col-md-4 col-lg-6" id="col">
                             <div class="card mx-auto" id="{{ product.id }}" >
                                 <div class="card-body">
-                                    <img src="/assets/uploads/{{ product.img }}" class="card-img" alt="Photo de {{ product.title }}" >
+                                    <img src="{{ product.img }}" class="card-img" alt="Photo de {{ product.title }}" >
                                     <div>
                                         <h6 class="card-title">{{ product.title }}</h6>
                                         <span class="badge badge-pill">{{ product.deal_type }}</span>
