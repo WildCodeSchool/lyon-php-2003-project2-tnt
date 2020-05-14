@@ -1,16 +1,28 @@
 {% extends "layout.html.twig" %}
 
+{% block stylesheet %}
+    <style>
+        a:link {text-decoration: none; color: #00A99D;}
+        a:visited {text-decoration: none; color: #00A99D;}
+        a:hover {text-decoration: none; font-size: +1.2em;}
+        a:active {text-decoration: underline; color: #00A99D;}
+
+        .collapsed, button:first-of-type {
+            color: #00A99D;
+        }
+
+    </style>
+{% endblock %}
+
+
 {%  block content %}
-<<<<<<< HEAD
-=======
     <div class="pseudoCard">
->>>>>>> dev
     <h1>Foire Aux Questions</h1>
     <div class="accordion" id="accordionExample">
         <div class="card">
             <div class="card-header" id="headingOne">
                 <h2 class="mb-0">
-                    <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                    <button class="btn" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
                         A quoi sert Troc & Troc ?
                     </button>
                 </h2>
@@ -26,7 +38,7 @@
         <div class="card">
             <div class="card-header" id="headingTwo">
                 <h2 class="mb-0">
-                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                    <button class="btn collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
                         Comment proposer mes biens ou services à échanger ?
                     </button>
                 </h2>
@@ -46,7 +58,7 @@
         <div class="card">
             <div class="card-header" id="headingTwoBis">
                 <h2 class="mb-0">
-                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwoBis" aria-expanded="false" aria-controls="collapseTwo">
+                    <button class="btn collapsed" type="button" data-toggle="collapse" data-target="#collapseTwoBis" aria-expanded="false" aria-controls="collapseTwo">
                         Comment trouver un bien ou service ?
                     </button>
                 </h2>
@@ -65,7 +77,7 @@
         <div class="card">
             <div class="card-header" id="headingThree">
                 <h2 class="mb-0">
-                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                    <button class="btn collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
                         Mais qui est derrière ce fabuleux site ?
                     </button>
                 </h2>
@@ -78,9 +90,7 @@
             </div>
         </div>
     </div>
-<<<<<<< HEAD
-=======
     </div>
->>>>>>> dev
+
 
 {% endblock %}
