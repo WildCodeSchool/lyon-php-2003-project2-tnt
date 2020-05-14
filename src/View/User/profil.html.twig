@@ -39,14 +39,6 @@
 
         }
 
-        /*.card-body > img:last-of-type {*/
-        /*    height: 20px;*/
-        /*    width: 20px;*/
-        /*    align-self: center;*/
-        /*    position: absolute;*/
-        /*    right: 15px;*/
-        /*}*/
-
         .card-body h6 {
             margin-top: 15px;
             font-weight: 600;
@@ -113,6 +105,19 @@
             padding: 0;
         }
 
+        .soustitre {
+            color: #333333;
+        }
+
+        .soustitre:hover{
+            color: #333333;
+        }
+
+        .profilTitle {
+            padding: 20px;
+            margin: 0 5px;
+        }
+
         @media (min-width: 577px) {
             #recherche_top {
                 margin: 20px auto 40px;
@@ -140,9 +145,7 @@
             .accordion {
                 margin: 0 50px 0 50px;
             }
-
         }
-
     </style>
 {% endblock %}
 
@@ -182,13 +185,13 @@
     </div>
 
 
-    <h1>Mon profil</h1>
+    <h1 class="profilTitle">Mon profil</h1>
 
     <div class="accordion" id="accordionExample">
         <div class="card">
             <div class="card-header" id="headingOne">
-                <h2 class="mb-0">Votre compte</h2>
-                    <button class="btn btn-link"
+                <h2 class="mb-0">Mes informations personnelles</h2>
+                    <button class="btn btn-link soustitre"
                             type="button"
                             data-toggle="collapse"
                             data-target="#collapseOne"
@@ -208,15 +211,15 @@
         </div>
         <div class="card">
             <div class="card-header" id="headingTwo">
-                <h2 class="mb-0">Votre inventaire :</h2>
+                <h2 class="mb-0">Mon inventaire</h2>
 
-                    <button class="btn btn-link collapsed"
+                    <button class="btn btn-link collapsed soustitre"
                             type="button"
                             data-toggle="collapse"
                             data-target="#collapseTwo"
                             aria-expanded="false"
                             aria-controls="collapseTwo">
-                         liste des biens et services que vous proposez actuellement
+                         Liste des biens et services que vous proposez actuellement
                     </button>
 
             </div>
@@ -263,8 +266,8 @@
         </div>
         <div class="card">
             <div class="card-header" id="headingThree">
-                <h2 class="mb-0">Vos favoris :</h2>
-                    <button class="btn btn-link collapsed"
+                <h2 class="mb-0">Mes favoris</h2>
+                    <button class="btn btn-link collapsed soustitre"
                             type="button"
                             data-toggle="collapse"
                             data-target="#collapseThree"
