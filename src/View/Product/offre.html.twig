@@ -41,8 +41,8 @@
 
         textarea {
             margin-bottom: 10px;
-            background-color: rgba(0,169,157,0.7);
-            color: #FFF;
+            //background-color: rgba(0,169,157,0.7);
+            color: #000000;
             font-weight: 800;
         }
 
@@ -62,7 +62,7 @@
 
         .card-header {
             background-color: rgba(0,169,157,0.8);
-            color: #FFF;
+            color: #000000;
             font-weight: bold;
         }
 
@@ -104,7 +104,7 @@
                 width: 100%;
             }
             .row, form {
-                width: 34%;
+                width: 50%;
                 margin: 20px auto;
             }
 
@@ -118,7 +118,6 @@
 {% endblock %}
 
 {% block content %}
-{#    {{ dump() }}#}
     {% include '_nav_retour.html.twig' %}
     <section class="container-fluid" id="main">
         <main>
@@ -134,6 +133,7 @@
                         </div>
                         <div class="card-body">
                             <p class="card-text">{{ details.0.description }}</p>
+                            <img src="{{ details.0.img }}" alt="{{ details.0.title }}">
                             <p class="card-text">{{ details.0.etat }}</p>
                             <a href="/product/details/{{ details.0.id }}" class="stretched-link"></a>
                         </div>
