@@ -1,7 +1,7 @@
 
 
 #nav_bottom {
-    position: absolute;
+    position: fixed;
     bottom: 0px;
     height: 60px;
     background-color: white;
@@ -10,6 +10,7 @@
 @media (min-width: 576px) {
     #nav_bottom {
         background-color: transparent;
+        position: absolute;
     }
 }
 #nav_bottom ul {
