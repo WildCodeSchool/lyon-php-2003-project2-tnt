@@ -55,13 +55,14 @@ class ProductController extends AbstractController
 
             $product = [
                 'title' => $title,
-                'category_id' => 1,
+                'category_id' => $_POST['category'],
                 'etat' => $etat,
                 'description' => $description,
                 'exchange_type_id' => $exchange,
                 'fileName' => $fileName,
                 'wantBack' => self::cleanInput($_POST['enEchangeDe']),
                 'fullProp' => $_POST['proposition'],
+                'frequency' => $_POST['frequency']
             ];
             $userId = $_SESSION['user']['id'];
             $productManager->insert($product, $userId, $productType);

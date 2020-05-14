@@ -50,35 +50,17 @@ p {
     font-family: 'Open Sans', sans-serif;
 }
 
+.motto {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 16px;
+    padding: 10px;
+    margin: 10px;
+}
+
 strong {
     color: #333333;
     opacity: 0.8;
 }
-/*
-@font-face {
-    font-family: Amarillo;
-    src: url(Amarillo.ttf);
-}
-@font-face {
-    font-family: "Cream Cake";
-    src: url(CreamCake.ttf);
-}
-@font-face {
-    font-family: "Gabriella";
-    src: url(Gabriella.ttf);
-}
-@font-face {
-    font-family: "Badly";
-    src: url(Badly.ttf);
-}
-*/
-/*@media (min-width: 600px) {*/
-/*    body {*/
-/*        width: 60%;*/
-/*        margin: auto auto;*/
-/*    }*/
-/*}*/
-
 
 a:link {text-decoration: none; color: #00A99D;}
 a:visited {text-decoration: none; color: #00A99D;}
@@ -167,14 +149,6 @@ ul > li {
     }
 }
 
-/*
-/////////////////////////////////////////////////////////////////////////////////////////////////
-/////////////////// TABLET VIEW ////////////////////////////////////////////////////////////////
-*/
-
-@media (min-width: 768px) {
-
-}
 
 
 

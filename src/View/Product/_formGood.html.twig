@@ -19,12 +19,12 @@
             </div>
 
             <div class="form-group" >
-                <select class="form-control" name="etat" id="etat" style="max-width: 100px">
-                    <option>Etat</option>
-                    <option>Neuf</option>
-                    <option>Bon état</option>
-                    <option>Etat satisfaisant</option>
-                    <option>Satisfaisant</option>
+                <select class="form-control" name="etat" id="etat" style="max-width: 100px" required>
+                    <option disabled>Etat</option>
+                    <option value="Neuf">Neuf</option>
+                    <option value="Bon état">Bon état</option>
+                    <option value="Satisfaisant">Satisfaisant</option>
+                    <option value="Mauvais état">Mauvais état</option>
 
                 </select>
                 {% if errors.etat is defined %}<span style="color: red">{{ errors.etat }}</span> {% endif %}
@@ -40,8 +40,6 @@
             <label for="upload">Montrez votre bien !</label>
             <input class="button btn btn-primary btn-sm" type="file" name="file" style="background-color: #00A99D">
         </div>
-
-
 
         <div class="form-group" id="nature">
             <div class="card mx-auto">
