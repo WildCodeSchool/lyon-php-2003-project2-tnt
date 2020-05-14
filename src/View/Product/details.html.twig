@@ -80,6 +80,9 @@
             font-family: 'Fredericka the Great', cursive;
             font-weight: 600;
         }
+         .date{
+             text-align: end;
+         }
 
         .breadcrumb {
             background-color: transparent;
@@ -204,7 +207,10 @@
 
                                     {% endif %}
                                     <p>{{ details.0.description }}</p>
-                                    <p><em>{{ details.0.created_at }}</em></p>
+                                    <div class="date">
+                                        <p>En ligne depuis le <em>{{ details.0.created_at | date('d/m/Y') }}</em></p>
+                                    </div>
+
                                 </div>
                             </div>
 
