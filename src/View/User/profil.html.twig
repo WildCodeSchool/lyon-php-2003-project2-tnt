@@ -149,6 +149,37 @@
     {% include '_nav_retour.html.twig' %}
     {% include '_nav_bar.html.twig' %}
 
+    <div class="badge">
+        <div class="">
+            <h3>Du coup, on fait quoi aujourd'hui?</h3>
+        </div>
+        <div>
+            <div class=" btn-group">
+                <button class="btn btn-secondary btn-lg dropdown-toggle buttons" type="button"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    On propose
+                </button>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="/Product/add/bien">Un Bien</a>
+                    <a class="dropdown-item" href="/Product/add/service">Un Service</a>
+                </div>
+            </div>
+
+            <div class=" btn-group">
+                <button class="buttons btn btn-secondary btn-lg dropdown-toggle" type="button"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    On recherche
+                </button>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="/Product/show/bien">Un Bien</a>
+                    <a class="dropdown-item" href="/Product/show/service">Un Service</a>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
     <div class="accordion" id="accordionExample">
         <div class="card">
             <div class="card-header" id="headingOne">
@@ -249,36 +280,7 @@
             </div>
         </div>
     </div>
-    <div class="badge">
-        <div class="">
-            <h3>Du coup, on fait quoi aujourd'hui?</h3>
-        </div>
-        <div>
-        <div class=" btn-group">
-            <button class="btn btn-secondary btn-lg dropdown-toggle buttons" type="button"
-                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                On propose
-            </button>
-            <div class="dropdown-menu">
-                <a class="dropdown-item" href="/Product/add/bien">Un Bien</a>
-                <a class="dropdown-item" href="/Product/add/service">Un Service</a>
-            </div>
-        </div>
 
-        <div class=" btn-group">
-            <button class="buttons btn btn-secondary btn-lg dropdown-toggle" type="button"
-                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                On recherche
-            </button>
-            <div class="dropdown-menu">
-                <a class="dropdown-item" href="/Product/show/bien">Un Bien</a>
-                <a class="dropdown-item" href="/Product/show/service">Un Service</a>
-            </div>
-        </div>
-        </div>
-
-
-    </div>
 
     <!-- Modal -->
     <div class="modal fade" id="welcomeModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
