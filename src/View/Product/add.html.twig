@@ -2,6 +2,9 @@
 
 {% block stylesheet %}
     <style>
+        .container-fluid {
+            padding: 0;
+        }
         blockquote {
             text-align: center;
             font-size: 0.8em;
@@ -118,7 +121,7 @@
 {% endblock %}
 
 {% block content %}
-    {% include '_nav_retour.html.twig' %}
+{#    {% include '_nav_retour.html.twig' %}#}
     {% if session is empty %}
         <blockquote>
             Vous devez être connecté.e pour publier une annonce :)<br>
