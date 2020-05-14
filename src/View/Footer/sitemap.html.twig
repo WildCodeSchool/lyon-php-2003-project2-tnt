@@ -25,7 +25,11 @@
         <li><a href="/User/inscription" title ="s'inscrire">> S'inscrire</a></li>
         <li><a href="/User/login" title ="se connecter">> Se connecter</a></li>
         <li><a href="/User/favoris" title ="favoris">> Mes favoris</a></li>
-        <li><a href="/User/profil" title ="mon profil">> Mon profil</a></li>
+        {% if session is empty or session.user is empty%}
+            <li><a href="/user/login">> Mon profil</a></li>
+        {% else %}
+            <li><a href="/user/profil/{{ session.user.id }}">> Mon profil</a></li>
+        {% endif %}
         <li><a href="/Footer/sitemap" title ="plan du site">> Plan du site</a></li>
         <li><a href="/Footer/faq" title ="faq">> FAQ</a></li>
     </ul>
