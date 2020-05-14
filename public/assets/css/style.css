@@ -15,6 +15,10 @@ body {
     flex-direction: column;
 }
 
+.container-fluid {
+    padding: 0;
+}
+
 .pseudoCard {
     margin: 20px;
     background-color: #FFFFFF;
@@ -53,8 +57,8 @@ p {
 .motto {
     font-family: 'Open Sans', sans-serif;
     font-size: 16px;
-    padding: 10px;
-    margin: 10px;
+    /*padding: 10px;*/
+    /*margin: 10px;*/
 }
 
 strong {
@@ -64,7 +68,7 @@ strong {
 
 a:link {text-decoration: none; color: #00A99D;}
 a:visited {text-decoration: none; color: #00A99D;}
-a:hover {text-decoration: none; color: #00A99D;}
+a:hover {text-decoration: none; font-size: +1.2em;}
 a:active {text-decoration: underline; color: #00A99D;}
 
 .breadcrumb { background-color: transparent; font-size: 0.8em;}
@@ -103,12 +107,13 @@ ul > li {
 
     #nav_bottom {
         position: absolute;
-        top: 70px;
+        top: 40px;
         right: 0px;
         height: 50px;
         width: 50px;
         border: none;
-        background-color: #F1F1F0;
+        background-color: transparent;
+
     }
 
     #nav_bottom ul{

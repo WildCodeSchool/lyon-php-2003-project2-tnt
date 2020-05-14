@@ -16,10 +16,6 @@
             background-color: white;
         }
 
-        header {
-            margin-bottom: 5px;
-        }
-
         #ad {
             margin-bottom: 10px;
         }
@@ -76,10 +72,13 @@
             padding: 10px;
             margin-bottom: 10px;
         }
-         article h4 {
+        article h4 {
             font-family: 'Fredericka the Great', cursive;
             font-weight: 600;
         }
+         .date{
+             text-align: end;
+         }
 
         .breadcrumb {
             background-color: transparent;
@@ -127,13 +126,18 @@
             #action > a > button:last-of-type {
                 display: block;
             }
+
+            #fav_button {
+                display: block;
+            }
         }
 
-        #map {
+        #row_map iframe {
             height: 100%;
+            width: 100%;
         }
         #row_map {
-            height: 200px;
+            height: auto;
         }
 
         #user {
@@ -159,15 +163,18 @@
             padding: 10px;
         }
 
+        #fav_button {
+            display: none;
+        }
+
 
 
     </style>
 {% endblock %}
 
 {% block content %}
-    <main class="container-fluid">
         {% include 'arianne.html.twig' %}
-{#        {{ dump() }}#}
+        {#        {{ dump() }}#}
         <section class="container-fluid" id="main">
             <div class="row">
                 <div class="col-md-9" id="core">
@@ -192,19 +199,22 @@
                             <div class="card_add justify-item-center" >
                                 <div style="width: 100%; margin: auto auto">
                                     <img src="/assets/uploads/{{ details.0.img }}" alt="">
-{#                                    <img src="/assets/images/image_placeholder.png" alt="">#}
+                                    {#                                    <img src="/assets/images/image_placeholder.png" alt="">#}
                                 </div>
                                 <div class="card-body">
                                     <h1>{{ details.0.title }}</h1>
                                     <h5>Catégorie : {{ details.0.category }}</h5>
                                     {% if details.0.name == 'bien' %}
                                         <h6>Etat : {{ details.0.etat }}</h6>
-                                        {% else %}
-                                            <h6>Fréquence : {{ details.0.frequency }}</h6>
+                                    {% else %}
+                                        <h6>Fréquence : {{ details.0.frequency }}</h6>
 
                                     {% endif %}
                                     <p>{{ details.0.description }}</p>
-                                    <p><em>{{ details.0.created_at }}</em></p>
+                                    <div class="date">
+                                        <p>En ligne depuis le <em>{{ details.0.created_at | date('d/m/Y') }}</em></p>
+                                    </div>
+
                                 </div>
                             </div>
 
@@ -214,16 +224,16 @@
 
                 <aside class="col-md-3">
                     <article id="user">
-                        <img src="/assets/images/icons/profil.png" alt="Photo Profil">
+                        <img src="/assets/images/icons/placeholderprofil.png" alt="Photo Profil">
                         <h4>{{ details.0.nickname }}</h4>
                     </article>
                     <article id="localisation">
                         <h4>Localisation</h4>
-                        <hr>
                         <p>{{ details.0.zip_code }}</p>
+                        <hr>
                         <div class="row" id="row_map">
                             <div class="col-12">
-                                <div id="map"></div>
+                                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d45546.59467522495!2d4.650224283382518!3d44.48109714900073!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12b51239767b58f7%3A0x4093cafcbeb80c0!2s07220%20Viviers!5e0!3m2!1sfr!2sfr!4v1589445064097!5m2!1sfr!2sfr" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
                             </div>
                         </div>
                     </article>
@@ -231,6 +241,9 @@
                         <img src="/assets/images/heart.png" alt="favoris" title="Ajouter aux Favoris">
                         <a href="/product/offre/{{ id }}">
                             <button type="button" >Faire un Troc</button>
+                            {% if session is not empty %}
+                                <button type="button" id="fav_button" >Ajouter aux favoris</button>
+                            {% endif %}
                         </a>
                     </section>
                 </aside>

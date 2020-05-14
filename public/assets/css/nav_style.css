@@ -47,13 +47,19 @@
 }
 
 #header_home, #nav_top, #retour {
-    height: 60px;
     background-color: #00A99D;
     color: #ffffff;
 }
 
+#nav_top, #retour {
+    height: 60px;
+}
+
 #header_home {
     box-shadow: 0 3px 3px #777;
+}
+#header_home p {
+    margin-left: 10px;
 }
 
 #nav_top > p {

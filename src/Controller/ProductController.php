@@ -63,7 +63,7 @@ class ProductController extends AbstractController
                 'fileName' => $fileName,
                 'wantBack' => self::cleanInput($_POST['enEchangeDe']),
                 'fullProp' => $_POST['proposition'],
-                'frequency' =>$frequency
+                'frequency' => $frequency
             ];
             $userId = $_SESSION['user']['id'];
             $productManager->insert($product, $userId, $productType);
