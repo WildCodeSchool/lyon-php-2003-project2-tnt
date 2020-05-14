@@ -99,6 +99,10 @@
             font-size: 1.2em;
         }
 
+        .imgProduct {
+            width: 60%;
+        }
+
         @media (min-width: 768px) {
             .container-fluid {
                 width: 100%;
@@ -107,6 +111,14 @@
                 width: 50%;
                 margin: 20px auto;
             }
+<<<<<<< HEAD
+=======
+
+            .imgProduct {
+                width: 80%;
+            }
+
+>>>>>>> e18d0143a90b0a7efd18308f0306937c4ba672ad
         }
 
 
@@ -133,7 +145,7 @@
                         </div>
                         <div class="card-body">
                             <p class="card-text">{{ details.0.description }}</p>
-                            <img class="imgProduct" src="{{ details.0.img }}" alt="{{ details.0.title }}">
+                            <img class="imgProduct" src="/assets/uploads/{{ details.0.img }}" alt="{{ details.0.title }}">
                             <p class="card-text">{{ details.0.etat }}</p>
                             <a href="/product/details/{{ details.0.id }}" class="stretched-link"></a>
                         </div>

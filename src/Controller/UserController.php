@@ -60,6 +60,7 @@ class UserController extends AbstractController
         $user = $userManager->selectUserById($id);
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $user['nickname'] = self::cleanInput($_POST['nickname']);
             $user['lastname'] = self::cleanInput($_POST['lastname']);
             $user['firstname'] = self::cleanInput($_POST['firstname']);
             $user['email'] = self::cleanInput($_POST['email']);
@@ -138,7 +139,7 @@ class UserController extends AbstractController
                             'nickname' => $user['nickname'],
                             'email' => $user['email']
                         ];
-                        header('Location: /');
+                        header('Location: /user/Profil/' . $user['id']);
                     } else {
                         $errors['pass'] = "Mauvais mot de passe";
                     }

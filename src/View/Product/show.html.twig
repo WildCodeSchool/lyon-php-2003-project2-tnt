@@ -107,6 +107,13 @@
             margin-bottom: 0;
         }
 
+        .card-text {
+            text-overflow: ellipsis;
+            overflow: hidden;
+            white-space: nowrap;
+            width: 200px;
+        }
+
         #liste {
             padding: 10px;
             margin-bottom: 100px;
@@ -232,6 +239,7 @@
                 <p>{{ products|length }} {{ (products|length > 1) ? 'résultats' : 'résultat' }}</p>
                 <div class="row">
                     {% for product in products %}
+
                         <div class="col-md-4 col-lg-6" id="col">
                             <div class="card mx-auto" id="{{ product.id }}" >
                                 <div class="card-body">
