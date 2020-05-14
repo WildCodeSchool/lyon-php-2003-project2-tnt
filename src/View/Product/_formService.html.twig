@@ -52,7 +52,7 @@
             {{ form.textarea('form-control','enEchangeDe', '', 'Précisez ici le(s) bien(s)/service(s) souhaité(s) en échange') }}
         </div>
         <div class="form-group hiddenIfDon" id="openOrNot">
-            {{ form.radio('proposition', 'ouvert', 'Je suis ouvert à d\'autres propositions', 'checked') }}
+            {{ form.radio('proposition', 'ouvert', 'Je suis ouvert.e à d\'autres propositions', 'checked') }}
             {{ form.radio('proposition', 'pasOuvert', 'Je souhaite uniquement ces biens / services', '') }}
         </div>
         {% if session is not empty %}
