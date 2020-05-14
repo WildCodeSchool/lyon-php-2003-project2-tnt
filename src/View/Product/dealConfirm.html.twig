@@ -1,0 +1,143 @@
+{% extends "layout.html.twig" %}
+
+{% block stylesheet %}
+    <style>
+        .confirm{
+            display: flex;
+            justify-content: center;
+            width: 100%;
+
+        }
+        .card{
+            width: 80%;
+            max-width: 750px;
+            margin:20px;
+            position: relative;
+            box-shadow: 3px 3px 3px rgb(0,169,157);
+            border-radius: 5px;
+            background-color: #FFF;
+
+        }
+        .card-body{
+            max-width: 500px;
+        }
+        .exchange{
+            background-color: #f59800;
+        }
+        .exchange p{
+            margin: 10px;
+        }
+        .buttons{
+            margin: 30px;
+        }
+
+
+        .titre{
+
+            flex-direction: column;
+            text-align: center;
+            display: table-cell;
+            vertical-align: middle;
+        }
+        .card-img{
+           width: 200px;
+        }
+        .buttons  {
+            width: 100%;
+            background-color: #f59800;
+            color: #FFFFFF;
+            border-color: #f59800;
+            font-size: 1.2em;
+            margin-top: 10px;
+            margin-bottom: 0;
+        }
+        .buttons:hover {
+            background-color: #00A99D;
+            color: white;
+            border-color: #f59800;
+
+        }
+        .badge {
+            background-color: #00A99D;
+            margin: 20px;
+            padding: 5px;
+            border: #f59800 solid 1px;
+            margin-bottom: 100px;
+        }
+        .btn-secondary:not(:disabled):not(.disabled).active,
+        .btn-secondary:not(:disabled):not(.disabled):active,
+        .show>.btn-secondary.dropdown-toggle {
+            color: #fff;
+            background-color: #00A99D;
+            border-color: #f59800;
+        }
+
+        h3{
+            color: #FFF;
+            font-size: 2.5vmax;
+            padding: 0;
+        }
+
+    </style>
+{% endblock %}
+
+
+{% block content %}
+    {% include '_nav_retour.html.twig' %}
+    {% for detail in product %}
+        <div class="confirm">
+            <div class="card mb-3" >
+                <div class="row no-gutters">
+                    <div class=" card-header titre col-md-4">
+                        <h1>confirmation</h1>
+                        <img src="{{ detail.img }}" class="card-img" alt="Image de {{ detail.title }} ">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <div class="exchange">
+                                <p>Type de proposition : {{ detail.deal_type }}</p>
+                                <p>de : {{ detail.title }}</p>
+
+                            </div>
+                            {% for user in session %}
+                            <h5 class="card-title">{{ user.nickname }},</h5>
+                            {% endfor %}
+                            <p class="card-text">Nous vous confirmons que votre demande à été envoyée à <big>{{ detail.nickname }}.</big></p>
+                            <p class="card-text">Merci pour votre participation au sein de notre communauté de troqueur.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+    <div class="badge">
+        <div class="">
+            <h3>Et Maintenant, on fait quoi?</h3>
+        </div>
+        <div>
+            <div class=" btn-group">
+                <button class="btn btn-secondary btn-lg dropdown-toggle buttons" type="button"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    On propose
+                </button>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="/Product/add/bien">Un Bien</a>
+                    <a class="dropdown-item" href="/Product/add/service">Un Service</a>
+                </div>
+            </div>
+
+            <div class=" btn-group">
+                <button class="buttons btn btn-secondary btn-lg dropdown-toggle" type="button"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    On recherche
+                </button>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="/Product/show/bien">Un Bien</a>
+                    <a class="dropdown-item" href="/Product/show/service">Un Service</a>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+{% endblock %}
