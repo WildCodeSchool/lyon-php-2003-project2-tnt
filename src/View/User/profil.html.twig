@@ -36,13 +36,13 @@
 
         }
 
-        .card-body > img:last-of-type {
-            height: 20px;
-            width: 20px;
-            align-self: center;
-            position: absolute;
-            right: 15px;
-        }
+        /*.card-body > img:last-of-type {*/
+        /*    height: 20px;*/
+        /*    width: 20px;*/
+        /*    align-self: center;*/
+        /*    position: absolute;*/
+        /*    right: 15px;*/
+        /*}*/
 
         .card-body h6 {
             margin-top: 15px;
@@ -202,7 +202,7 @@
                             <div class="col-md-5 col-lg-3" id="col">
                                 <div class="card mx-auto" id="{{ product.id }}" >
                                     <div class="card-body">
-                                        <img src="{{ product.img }}" class="card-img" alt="Photo de {{ product.title }}" >
+                                        <img src="/assets/uploads/{{ product.img }}" class="card-img" alt="Photo de {{ product.title }}" >
                                         <div class="detail">
                                             <h6 class="card-title">{{ product.title }}</h6>
                                             <span class="badge badge-pill">{{ product.deal_type }}</span>
@@ -213,7 +213,6 @@
                                             </div>
 
                                         </div>
-                                        <img src="/assets/images/heart.png" width="40px">
                                         <a href="/product/details/{{ product.id }}" class="stretched-link"></a>
                                     </div>
                                 </div>
