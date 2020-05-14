@@ -30,9 +30,9 @@ class ProductManager extends AbstractManager
         // prepared request
         $statement = $this->pdo->prepare("INSERT INTO " . self::TABLE . " " .
             "(`title`,`description`,`user_id`,`product_type_id`,`exchange_type_id`,
-            `img`,`category_id`,`etat`,`proposition`,`created_at`,`frequency`)
+            `img`,`category_id`,`etat`,`proposition`,`created_at`,`frequency`,`enEchangeDE`)
             VALUES (:title,:description,:user_id,:product_type_id,:exchange_type_id,
-            :fileName, :category_id,:etat,:proposition, NOW(), :frequency)");
+            :fileName, :category_id,:etat,:proposition, NOW(), :frequency, :enEchangeDE)");
         $statement->bindValue('title', $product['title'], \PDO::PARAM_STR);
         $statement->bindValue('description', $product['description'], \PDO::PARAM_STR);
         $statement->bindValue('user_id', $userId, \PDO::PARAM_INT);
@@ -43,6 +43,7 @@ class ProductManager extends AbstractManager
         $statement->bindValue('etat', $product['etat'], \PDO::PARAM_STR);
         $statement->bindValue('proposition', $product['fullProp'], \PDO::PARAM_STR);
         $statement->bindValue('frequency', $product['frequency'], \PDO::PARAM_STR);
+        $statement->bindValue('enEchangeDE', $product['wantBack'], \PDO::PARAM_STR);
 
 
         if ($statement->execute()) {

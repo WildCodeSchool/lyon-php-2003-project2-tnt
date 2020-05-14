@@ -151,7 +151,12 @@
                         </div>
                         <div class="card-body" style="display: flex">
                             <p class="card-text">{{ details.0.description }}</p>
-                            <img class="imgProduct" src="/assets/uploads/{{ details.0.img }}" alt="{{ details.0.title }}">
+                            <img class="imgProduct"
+                                    {% if (details.0.img is not empty) %}
+                                        src="/assets/uploads/{{ details.0.img  }}"
+                                    {% else %}
+                                        src="/assets/images/placeholder.png"
+                                    {% endif%}>
                             <a href="/product/details/{{ details.0.id }}" class="stretched-link"></a>
                         </div>
                     </div>
