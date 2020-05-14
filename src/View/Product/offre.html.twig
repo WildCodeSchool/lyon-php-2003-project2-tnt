@@ -107,7 +107,6 @@
                 width: 50%;
                 margin: 20px auto;
             }
-
         }
 
 
@@ -134,7 +133,7 @@
                         </div>
                         <div class="card-body">
                             <p class="card-text">{{ details.0.description }}</p>
-                            <img src="{{ details.0.img }}" alt="{{ details.0.title }}">
+                            <img class="imgProduct" src="{{ details.0.img }}" alt="{{ details.0.title }}">
                             <p class="card-text">{{ details.0.etat }}</p>
                             <a href="/product/details/{{ details.0.id }}" class="stretched-link"></a>
                         </div>
