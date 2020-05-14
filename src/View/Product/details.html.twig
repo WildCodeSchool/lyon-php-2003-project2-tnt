@@ -76,7 +76,7 @@
             padding: 10px;
             margin-bottom: 10px;
         }
-        #echange article h4 {
+         article h4 {
             font-family: 'Fredericka the Great', cursive;
             font-weight: 600;
         }
@@ -148,10 +148,17 @@
         }
 
         .card_add img {
-            padding: 15px;
+            padding: 20px;
             height: auto;
-            width: 300px;
+            width: 250px;
+            display: block;
+            margin: auto auto;
         }
+
+        #localisation {
+            padding: 10px;
+        }
+
 
 
     </style>
@@ -160,7 +167,7 @@
 {% block content %}
     <main class="container-fluid">
         {% include 'arianne.html.twig' %}
-        {{ dump() }}
+{#        {{ dump() }}#}
         <section class="container-fluid" id="main">
             <div class="row">
                 <div class="col-md-9" id="core">
@@ -183,7 +190,10 @@
                         <div class="col-md-8" id="ad">
 
                             <div class="card_add justify-item-center" >
-                                <img src="/assets/uploads/{{ details.0.img }}" alt="">
+                                <div style="width: 100%; margin: auto auto">
+                                    <img src="/assets/uploads/{{ details.0.img }}" alt="">
+{#                                    <img src="/assets/images/image_placeholder.png" alt="">#}
+                                </div>
                                 <div class="card-body">
                                     <h1>{{ details.0.title }}</h1>
                                     <h5>Catégorie : {{ details.0.category }}</h5>
@@ -208,7 +218,8 @@
                         <h4>{{ details.0.nickname }}</h4>
                     </article>
                     <article id="localisation">
-                        <h3>Localisation</h3>
+                        <h4>Localisation</h4>
+                        <hr>
                         <p>{{ details.0.zip_code }}</p>
                         <div class="row" id="row_map">
                             <div class="col-12">
