@@ -130,8 +130,10 @@ class ProductManager extends AbstractManager
      */
     public function getDetails(string $productId): array
     {
+
         $query = "SELECT p.id, p.img, p.title, p.description, p.created_at, p.proposition, p.enEchangeDe, x.deal_type, 
                   p.etat, p.frequency, category.name as category, user.email, user.nickname, user.zip_code, pt.name  
+
                   FROM product AS p 
                   JOIN exchange_type as x ON p.exchange_type_id = x.id 
                   JOIN product_type as pt ON pt.id = p.product_type_id     
