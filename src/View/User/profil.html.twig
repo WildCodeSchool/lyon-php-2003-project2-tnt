@@ -48,27 +48,29 @@
             font-size: 0.7em;
             margin-top: 10px;
         }
-        .detail{
+        .detail {
             width: 80%;
         }
 
-        .delete{
+        .delete {
             width: 100%;
             justify-content: flex-end;
         }
 
-        .accordion{
+        .accordion {
             margin: 20px;
         }
-        .btn-maj{
-            background-color: #f59800;
+        .btn-maj {
+            background-color: #00A99D;
+            color: white;
             margin: 20px;
         }
-        .btn-maj:hover{
+        .btn-maj:hover {
             margin: 20px;
-            color: #f59800;
-            border-color: #f59800;
-            box-shadow: 0 0 0px 2px #f59800;
+            color: #00A99D;
+            border-color: #00A99D;
+            background-color: white;
+            font-weight: 800;
         }
         .buttons  {
             width: 100%;
@@ -87,8 +89,9 @@
         }
         .badge {
             background-color: #00A99D;
+            display: block;
             margin: 20px;
-            padding: 5px;
+            padding: 20px;
             border: #f59800 solid 1px;
         }
         .btn-secondary:not(:disabled):not(.disabled).active,
@@ -99,7 +102,7 @@
             border-color: #f59800;
         }
 
-        h3{
+        h3 {
             color: #FFF;
             font-size: 2.5vmax;
             padding: 0;
@@ -145,6 +148,46 @@
             .accordion {
                 margin: 0 50px 0 50px;
             }
+            .last {
+                margin-top: 20px;
+                margin-right: 30px;
+            }
+            .badge {
+                width: 60%;
+                margin: 40px auto;
+            }
+
+        }
+        .last {
+            margin-bottom: 100px;
+            display: flex;
+            justify-content: end;
+            padding-right: 20px;
+        }
+        .last button {
+            border: 1px solid #00A99D;
+            color: #00A99D;
+            font-weight: bold;
+        }
+        .last a:hover button {
+            color: #FFF;
+            background-color: #00A99D;
+        }
+        [data-toggle="collapse"] {
+            padding-left: 0;
+            text-align: left;
+            font-size: 0.9em;
+        }
+
+        #collapseTwo {
+            padding-right: 20px;
+        }
+        .card.mx-auto {
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+        .card-header button:hover {
+            font-weight: 800;
         }
     </style>
 {% endblock %}
@@ -152,38 +195,37 @@
 
 {% block content %}
     {% include '_nav_bar.html.twig' %}
+    <section class="container-fluid">
+        <div class="badge">
+            <div style="margin: auto;">
+                <h3>Que fait-on aujourd'hui?</h3>
+            </div>
+            <div class="btn-profil">
+                <div class=" btn-group">
+                    <button class="btn btn-secondary btn-lg dropdown-toggle buttons" type="button"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        On propose
+                    </button>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="/Product/add/bien">Un Bien</a>
+                        <a class="dropdown-item" href="/Product/add/service">Un Service</a>
+                    </div>
+                </div>
 
-    <div class="badge">
-        <div class="">
-            <h3>Du coup, on fait quoi aujourd'hui?</h3>
-        </div>
-        <div class="btn-profil">
-            <div class=" btn-group">
-                <button class="btn btn-secondary btn-lg dropdown-toggle buttons" type="button"
-                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    On propose
-                </button>
-                <div class="dropdown-menu">
-                    <a class="dropdown-item" href="/Product/add/bien">Un Bien</a>
-                    <a class="dropdown-item" href="/Product/add/service">Un Service</a>
+                <div class=" btn-group">
+                    <button class="buttons btn btn-secondary btn-lg dropdown-toggle" type="button"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        On recherche
+                    </button>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="/Product/show/bien">Un Bien</a>
+                        <a class="dropdown-item" href="/Product/show/service">Un Service</a>
+                    </div>
                 </div>
             </div>
 
-            <div class=" btn-group">
-                <button class="buttons btn btn-secondary btn-lg dropdown-toggle" type="button"
-                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    On recherche
-                </button>
-                <div class="dropdown-menu">
-                    <a class="dropdown-item" href="/Product/show/bien">Un Bien</a>
-                    <a class="dropdown-item" href="/Product/show/service">Un Service</a>
-                </div>
-            </div>
+
         </div>
-
-
-    </div>
-
 
     <h1 class="profilTitle">Mon profil</h1>
 
@@ -197,16 +239,17 @@
                             data-target="#collapseOne"
                             aria-expanded="true"
                             aria-controls="collapseOne">
-                          Gérez vos informations
+                        Gérez vos informations personnelles
                     </button>
-            </div>
-
-
-            <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
-                <div class="card-body">
-                    {% include 'User/_user_info.html.twig' %}
                 </div>
 
+
+                <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+                    <div class="card-body">
+                        {% include 'User/_user_info.html.twig' %}
+                    </div>
+
+                </div>
             </div>
         </div>
         <div class="card">
@@ -219,49 +262,50 @@
                             data-target="#collapseTwo"
                             aria-expanded="false"
                             aria-controls="collapseTwo">
-                         Liste des biens et services que vous proposez actuellement
+                        Retrouvez ici toutes vos publications
                     </button>
 
-            </div>
-            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
-                <section class="container-fluid col-md-12" id="liste">
+                </div>
+                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+                    <section class="container-fluid col-md-12" id="liste">
 
-                {% if inventaire is empty %}
-                    <p>Vous n'avez aucun bien ou service proposé pour le moment</p>
-                    <div class="buttons">
-                        <a href="/Product/bienOuService/propose">
-                            <button type="button" class="btn btn-primary btn-sm"
-                                    style="background-color: #00A99D">
-                                 == > Faire une proposition
-                            </button>
-                        </a>
-                    </div>
-                {% else %}
-                    <p>{{ inventaire|length }} {{ (inventaire|length > 1) ? 'résultats' : 'résultat' }}</p>
-                    <div class="row">
-                        {% for product in inventaire %}
-                            <div class="col-md-5 col-lg-3" id="col">
-                                <div class="card mx-auto" id="{{ product.id }}" >
-                                    <div class="card-body">
-                                        <img src="/assets/uploads/{{ product.img }}" class="card-img" alt="Photo de {{ product.title }}" >
-                                        <div class="detail">
-                                            <h6 class="card-title">{{ product.title }}</h6>
-                                            <span class="badge badge-pill">{{ product.deal_type }}</span>
-                                            <p class="card-text">{{ product.description }}</p>
-                                            <p class="card-text"><small class="text-muted">Proposé le {{ product.created_at | date('d/m/Y') }}</small></p>
-                                            <div class="delete">
-                                                <a href="/product/deleteProduct/{{product.id}}">Supprimer</a>
-                                            </div>
-
-                                        </div>
-                                        <a href="/product/details/{{ product.id }}" class="stretched-link"></a>
-                                    </div>
-                                </div>
+                        {% if inventaire is empty %}
+                            <p>Vous n'avez aucun bien ou service proposé pour le moment</p>
+                            <div class="buttons">
+                                <a href="/Product/bienOuService/propose">
+                                    <button type="button" class="btn btn-primary btn-sm"
+                                            style="background-color: #00A99D">
+                                        == > Faire une proposition
+                                    </button>
+                                </a>
                             </div>
-                        {% endfor %}
-                    </div>
-                {% endif %}
-                </section>
+                        {% else %}
+                            <p>{{ inventaire|length }} {{ (inventaire|length > 1) ? 'résultats' : 'résultat' }}</p>
+                            <div class="row">
+                                {% for product in inventaire %}
+                                    <div class="col-md-5 col-lg-3" id="col">
+                                        <div class="card mx-auto" id="{{ product.id }}" >
+                                            <div class="card-body">
+                                                <img src="/assets/uploads/{{ product.img }}" class="card-img" alt="Photo de {{ product.title }}" >
+                                                <div class="detail">
+                                                    <h6 class="card-title">{{ product.title }}</h6>
+                                                    <span class="badge badge-pill">{{ product.deal_type }}</span>
+                                                    <p class="card-text">{{ product.description }}</p>
+                                                    <p class="card-text"><small class="text-muted">Proposé le {{ product.created_at | date('d/m/Y') }}</small></p>
+                                                    <div class="delete">
+                                                        <a href="/product/deleteProduct/{{product.id}}">Supprimer</a>
+                                                    </div>
+
+                                                </div>
+                                                <a href="/product/details/{{ product.id }}" class="stretched-link"></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    </section>
+                </div>
             </div>
         </div>
         <div class="card">
@@ -273,42 +317,47 @@
                             data-target="#collapseThree"
                             aria-expanded="false"
                             aria-controls="collapseThree">
-                         Liste des biens et services que vous avez repéré
+                        Liste des biens et services que vous avez repérés
                     </button>
-            </div>
+                </div>
 
-            <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
-                <div class="card-body">
+                <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+                    <div class="card-body" style="padding: 20px">
                         {#  Affichage des favoris#}
+                        Aucun favoris
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
+
+        <div class="last">
+            <a href="/user/logout"><button type="button" class="btn">Se déconnecter</button></a>
+        </div>
 
 
-    <!-- Modal -->
-    <div class="modal fade" id="welcomeModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalCenterTitle">Bienvenue sur Troc & Troc !</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    Nous sommes ravi.e.s de vous compter parmi les membres notre communauté.
-                    Pour toute question, n'hésitez pas à consulter notre <a href="/Footer/faq.html.twig">foire aux questions</a> :)
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" data-dismiss="modal">1, 2, 3... troquez !</button>
+        <!-- Modal -->
+        <div class="modal fade" id="welcomeModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalCenterTitle">Bienvenue sur Troc & Troc !</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        Nous sommes ravi.e.s de vous compter parmi les membres notre communauté.
+                        Pour toute question, n'hésitez pas à consulter notre <a href="/Footer/faq">foire aux questions</a> :)
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" data-dismiss="modal">1, 2, 3... troquez !</button>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-    <div class="modal-footer">
-        <a href="/user/logout"><button type="button" class="btn btn-danger">Se déconnecter</button></a>
-    </div>
+
+    </section>
+
 {% endblock %}
 
 {% block user %}

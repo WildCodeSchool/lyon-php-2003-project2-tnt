@@ -7,6 +7,12 @@
     background-color: white;
     z-index: 10;
 }
+@media (min-width: 576px) {
+    #nav_bottom {
+        background-color: transparent;
+        position: absolute;
+    }
+}
 #nav_bottom ul {
     display: flex;
     justify-content: space-around;
@@ -70,7 +76,11 @@
     justify-content: space-between;
 }
 
-#nav_top > h2 {
+#nav_top > a {
+    width: 100%;
+}
+
+#nav_top > a > h2 {
     margin-right: 120px;
     margin-bottom: 0px;
     color: #ffffff;
@@ -79,3 +89,12 @@
 #nav_top > span:first-of-type {
     display: none;
 }
+
+#nav_top > a:link, #nav_top > a:active, #nav_top > a:hover, #nav_top > a:visited {
+    color: white;
+    text-decoration: none;
+}
+
+ small {
+     font-weight: 600;
+ }

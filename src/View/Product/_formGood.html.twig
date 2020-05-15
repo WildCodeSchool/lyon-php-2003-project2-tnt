@@ -12,8 +12,12 @@
             <div class="form-group" style="display:flex;">
                 <select class="form-control" name="category" id="selectCategory">
                     <option value="0">Catégorie</option>
-                    {% for category in categories %}
-                        <option value="{{ category.id }}">{{ category.name }}</option>
+                    {% for parent in parents %}
+                        <optgroup label="{{ parent.name }}">
+                            {% for category in categories if category.parent_id == parent.id %}
+                                <option value="{{ category.id }}">{{ category.name }}</option>
+                            {% endfor %}
+                        </optgroup>
                     {% endfor %}
                 </select>
             </div>

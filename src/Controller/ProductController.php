@@ -20,6 +20,7 @@ class ProductController extends AbstractController
     {
         $productManager = new ProductManager();
         $listCategories = $productManager->selectAllCategories();
+        $listParentCategories = $productManager->selectAllParentCategories();
         $productType = (($bienService == 'service') ? 2 : 1);
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -30,6 +31,7 @@ class ProductController extends AbstractController
                                          $_POST['enEchangeDe'],$_POST['proposition']]);
             if (!empty($errors)) {
                 return $this->twig->render('Product/add.html.twig', ['categories' => $listCategories,
+                                                                           'parents' => $listParentCategories,
                                                                            'errors' => $errors, 'var' => $bienService]);
             }
 
@@ -71,7 +73,8 @@ class ProductController extends AbstractController
         }
 
         return $this->twig->render('Product/add.html.twig', ['categories' => $listCategories,
-                                                                    'var' => $bienService]);
+                                                                   'parents' => $listParentCategories,
+                                                                    'var' => $bienService ]);
     }
 
     /**

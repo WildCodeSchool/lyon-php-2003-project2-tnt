@@ -168,7 +168,7 @@
     color: #f59800;
 }
 
-article a:link, article a:visited {
+#main_home article a:link, #main_home article a:visited {
     color: #f59800;
 }
 article a:hover {
