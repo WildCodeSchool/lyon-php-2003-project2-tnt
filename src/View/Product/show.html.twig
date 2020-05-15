@@ -133,11 +133,11 @@
         }
         #velo {
             right: 120px;
-            top: 100px;
+            top: 120px;
         }
         #photo {
             left: 100px;
-            top: 80px;
+            top: 100px;
         }
         #shoes {
             right: 20px;
@@ -247,9 +247,11 @@
                         <div class="col-md-4 col-lg-6" id="col">
                             <div class="card mx-auto" id="{{ product.id }}" >
                                 <div class="card-body">
+
                                     <img {% if (product.img is not empty) %}src="/assets/uploads/{{ product.img }}"
                                             {% else %} src="/assets/images/placeholder.png"
                                             {% endif%} class="card-img" alt="Photo de {{ product.title }}" >
+
                                     <div>
                                         <h6 class="card-title" >{{ product.title }}</h6>
                                         <span class="badge badge-pill">{{ product.deal_type }}</span>

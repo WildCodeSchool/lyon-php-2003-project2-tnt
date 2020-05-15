@@ -38,6 +38,10 @@ body {
     font-family: 'Open Sans', sans-serif;
 }
 
+h1, h2, h3, h4, h5, h6 {
+    line-height: 1.5;
+}
+
 h1 {
     font-family: 'Fredericka the Great', cursive;
     font-size: 32px;
@@ -68,10 +72,15 @@ strong {
 
 a:link {text-decoration: none; color: #00A99D;}
 a:visited {text-decoration: none; color: #00A99D;}
-a:hover {text-decoration: none; font-size: +1.2em;}
+a:hover {text-decoration: none; color: #00A99D;}
 a:active {text-decoration: underline; color: #00A99D;}
 
-.breadcrumb { background-color: transparent; font-size: 0.8em;}
+.breadcrumb {
+    background-color: transparent;
+    font-size: 0.8em;
+    height: 40px;
+    font-weight: 600;
+}
 
 ul > li {
     list-style-type: none;
