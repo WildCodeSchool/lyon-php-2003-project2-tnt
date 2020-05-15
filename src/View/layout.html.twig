@@ -15,15 +15,16 @@
     <link rel="stylesheet" href="/assets/css/style.css">
     <link rel="stylesheet" href="/assets/css/nav_style.css">
 
-    <link href="https://fonts.googleapis.com/css2?family=Fredericka+the+Great&family=Open+Sans:wght@300&display=swap" rel="stylesheet">    {% block stylesheet %}{% endblock %}
+    <link href="https://fonts.googleapis.com/css2?family=Fredericka+the+Great&family=Open+Sans:wght@300&display=swap" rel="stylesheet">
+    {% block stylesheet %}{% endblock %}
 
-    <link rel="icon" href="/assets/images/favicon.png">
+    <link rel="icon" href="/assets/images/paperClip.png">
 </head>
 
 <body>
 {% block header %}
     <header>
-    {% include '_nav_top.html' %}
+    {% include '_nav_top.html.twig' %}
     </header>
 {% endblock %}
 
