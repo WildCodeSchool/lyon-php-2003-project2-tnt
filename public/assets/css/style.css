@@ -1,0 +1,168 @@
+/*
+/////////////////////////////////////////////////////// GENERAL /////////////////////////////////
+*/
+
+/*font-family: 'Fredericka the Great', cursive;*/
+/*font-family: 'Open Sans', sans-serif;*/
+/* blue: #00A99D / gray: #333 / orange : #f59800 */
+
+
+ html, body {padding: 0; margin: 0; box-sizing: border-box;}
+.row { margin: 0px;}
+
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+.container-fluid {
+    padding: 0;
+}
+
+.pseudoCard {
+    margin: 20px;
+    background-color: #FFFFFF;
+    box-shadow: 0 3px 3px #777;
+}
+
+.pseudoCard > h1 {
+    margin: 10px;
+    padding: 10px;
+}
+
+body {
+    margin: auto auto;
+    display: flex;
+    flex-direction: column;
+    background-color: #F1F1F0;
+    font-family: 'Open Sans', sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    line-height: 1.5;
+}
+
+h1 {
+    font-family: 'Fredericka the Great', cursive;
+    font-size: 32px;
+    color: #333333;
+}
+
+h2 {
+    font-family: 'Fredericka the Great', cursive;
+    font-size: 32px;
+    color: #00A99D;
+}
+
+p {
+    font-family: 'Open Sans', sans-serif;
+}
+
+.motto {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 16px;
+    /*padding: 10px;*/
+    /*margin: 10px;*/
+}
+
+strong {
+    color: #333333;
+    opacity: 0.8;
+}
+
+a:link {text-decoration: none; color: #00A99D;}
+a:visited {text-decoration: none; color: #00A99D;}
+a:hover {text-decoration: none; color: #00A99D;}
+a:active {text-decoration: underline; color: #00A99D;}
+
+.breadcrumb {
+    background-color: transparent;
+    font-size: 0.8em;
+    height: 40px;
+    font-weight: 600;
+}
+
+ul > li {
+    list-style-type: none;
+}
+.custom-radio:last-of-type {
+    margin-bottom: 30px;
+}
+/*
+////////////////////////////////////////////////// User/Inscription /////////////////////////
+*/
+
+#inscription form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+#inscription form span {
+    display: flex;
+    justify-content: space-around;
+}
+
+
+
+#modal_compte_non_co #input_by_mail { display: none;}
+
+/*
+/////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////// DESKTOP VIEW ////////////////////////////////////////////////////////////////
+*/
+
+@media (min-width: 992px) {
+
+    #nav_bottom {
+        position: absolute;
+        top: 40px;
+        right: 0px;
+        height: 50px;
+        width: 50px;
+        border: none;
+        background-color: transparent;
+
+    }
+
+    #nav_bottom ul{
+        flex-direction: column;
+    }
+
+    #nav_bottom ul li {
+        margin-top: 5px;
+    }
+
+    #nav_bottom ul li:not(:nth-of-type(3)){
+        display: none;
+    }
+
+    #main_home {
+        box-shadow: 3px 3px 3px #777;
+    }
+
+
+    #footer_desktop {
+        width: 100%;
+        padding-right: 10%;
+        position: static;
+        bottom: 0px;
+    }
+
+    #footer_desktop ul {
+        width: 100%;
+        display: flex;
+        justify-content: space-around;
+        font-weight: bold;
+        text-transform: uppercase;
+    }
+
+    #footer_desktop ul li {
+        list-style-type: none;
+        color: #00A99D;
+    }
+}
+
+
+
+

@@ -1,0 +1,369 @@
+{% extends "layout.html.twig" %}
+
+{% block stylesheet %}
+    <style>
+        table{
+            margin: 30px;
+        }
+        table tr td{
+            width : 150px;
+        }
+
+        .btn-profil{
+            display: flex;
+            justify-content: space-evenly;
+
+        }
+        #liste {
+            margin: 20px;
+        }
+        .card {
+            position: relative;
+            box-shadow: 3px 3px 3px rgb(0,169,157);
+            border-radius: 5px;
+            background-color: #FFF;
+            margin: 10px;
+
+        }
+
+        .card-body {
+            display: flex;
+            padding: 5px;
+            height: auto;
+        }
+
+        .card-body > img:first-of-type {
+            height: 75px;
+            width: 75px;
+            margin: auto 10px;
+            padding: 2px;
+
+        }
+
+        .card-body h6 {
+            margin-top: 15px;
+            font-weight: 600;
+        }
+
+        .card-body p {
+            font-size: 0.7em;
+            margin-top: 10px;
+        }
+        .detail {
+            width: 80%;
+        }
+
+        .delete {
+            width: 100%;
+            justify-content: flex-end;
+        }
+
+        .btn-maj {
+            background-color: #00A99D;
+            color: white;
+            margin: 20px;
+        }
+        .btn-maj:hover {
+            margin: 20px;
+            color: #00A99D;
+            border-color: #00A99D;
+            background-color: white;
+            font-weight: 800;
+        }
+        .buttons  {
+            width: 100%;
+            background-color: #f59800;
+            color: #FFFFFF;
+            border-color: #f59800;
+            font-size: 1.5em;
+            margin-top: 10px;
+            margin-bottom: 0;
+        }
+        .buttons:hover {
+            background-color: #00A99D;
+            color: white;
+            border-color: #f59800;
+
+        }
+        .badge {
+            background-color: #00A99D;
+            display: block;
+            margin: 20px;
+            padding: 20px;
+            border: #f59800 solid 1px;
+        }
+        .btn-secondary:not(:disabled):not(.disabled).active,
+        .btn-secondary:not(:disabled):not(.disabled):active,
+        .show>.btn-secondary.dropdown-toggle {
+            color: #fff;
+            background-color: #00A99D;
+            border-color: #f59800;
+        }
+
+        h3 {
+            color: #FFF;
+            font-size: 2.5vmax;
+            padding: 0;
+        }
+
+        .soustitre {
+            color: #333333;
+        }
+
+        .soustitre:hover{
+            color: #333333;
+        }
+
+        .profilTitle {
+            padding: 20px;
+            margin: 0 5px;
+        }
+
+        @media (min-width: 577px) {
+            #recherche_top {
+                margin: 20px auto 40px;
+            }
+
+            #col {
+                width: 70%;
+                margin: 20px;
+            }
+
+            #photo, #sac, #photo, #book, #velo, #shoes, #musik, #pull {
+                display: block;
+            }
+        }
+
+        @media (min-width: 992px) {
+            .row {
+                width: 80%;
+            }
+
+            #col {
+                width: 80%;
+            }
+
+            .last {
+                margin-top: 20px;
+                margin-right: 30px;
+            }
+            .badge {
+                width: 60%;
+                margin: 40px auto;
+            }
+
+        }
+        .last {
+            margin-bottom: 100px;
+            display: flex;
+            justify-content: end;
+            padding-right: 20px;
+        }
+        .last button {
+            border: 1px solid #00A99D;
+            color: #00A99D;
+            font-weight: bold;
+        }
+        .last a:hover button {
+            color: #FFF;
+            background-color: #00A99D;
+        }
+        [data-toggle="collapse"] {
+            padding-left: 0;
+            text-align: left;
+            font-size: 0.9em;
+        }
+
+        #collapseTwo {
+            padding-right: 20px;
+        }
+        .card.mx-auto {
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+        .card-header button:hover {
+            font-weight: 800;
+        }
+    </style>
+{% endblock %}
+
+
+{% block content %}
+    {% include '_nav_bar.html.twig' %}
+    <section class="container-fluid">
+        <div class="badge">
+            <div style="margin: auto;">
+                <h3>Que fait-on aujourd'hui?</h3>
+            </div>
+            <div class="btn-profil">
+                <div class=" btn-group">
+                    <button class="btn btn-secondary btn-lg dropdown-toggle buttons" type="button"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        On propose
+                    </button>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="/Product/add/bien">Un Bien</a>
+                        <a class="dropdown-item" href="/Product/add/service">Un Service</a>
+                    </div>
+                </div>
+
+                <div class=" btn-group">
+                    <button class="buttons btn btn-secondary btn-lg dropdown-toggle" type="button"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        On recherche
+                    </button>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="/Product/show/bien">Un Bien</a>
+                        <a class="dropdown-item" href="/Product/show/service">Un Service</a>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+
+    <h1 class="profilTitle">Mon profil</h1>
+
+    <div class="accordion" id="accordionExample">
+        <div class="card">
+            <div class="card-header" id="headingOne">
+                <h2 class="mb-0">Mes informations personnelles</h2>
+                    <button class="btn btn-link soustitre"
+                            type="button"
+                            data-toggle="collapse"
+                            data-target="#collapseOne"
+                            aria-expanded="true"
+                            aria-controls="collapseOne">
+                        Gérez vos informations personnelles
+                    </button>
+                </div>
+
+
+                <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+                    <div class="card-body">
+                        {% include 'User/_user_info.html.twig' %}
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-header" id="headingTwo">
+                <h2 class="mb-0">Mon inventaire</h2>
+
+                    <button class="btn btn-link collapsed soustitre"
+                            type="button"
+                            data-toggle="collapse"
+                            data-target="#collapseTwo"
+                            aria-expanded="false"
+                            aria-controls="collapseTwo">
+                        Retrouvez ici toutes vos publications
+                    </button>
+
+            </div>
+            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+                <section class="container-fluid col-md-12" id="liste">
+
+                {% if inventaire is empty %}
+                    <p>Vous n'avez aucun bien ou service proposé pour le moment</p>
+                    <div class="buttons">
+                        <a href="/Product/bienOuService/propose">
+                            <button type="button" class="btn btn-primary btn-sm"
+                                    style="background-color: #00A99D">
+                                 == > Faire une proposition
+                            </button>
+                        </a>
+                    </div>
+                {% else %}
+                    <p>{{ inventaire|length }} {{ (inventaire|length > 1) ? 'résultats' : 'résultat' }}</p>
+                    <div class="row">
+                        {% for product in inventaire %}
+                            <div class="col-md-5 col-lg-3" id="col">
+                                <div class="card mx-auto" id="{{ product.id }}" >
+                                    <div class="card-body">
+                                        <img {% if (product.img is not empty) %}src="/assets/uploads/{{ product.img }}"
+                                                {% else %} src="/assets/images/placeholder.png"
+                                                {% endif%} class="card-img" alt="Photo de {{ product.title }}" >
+                                        <div class="detail">
+                                            <h6 class="card-title">{{ product.title }}</h6>
+                                            <span class="badge badge-pill">{{ product.deal_type }}</span>
+                                            <p class="card-text">{{ product.description }}</p>
+                                            <p class="card-text"><small class="text-muted">Proposé le {{ product.created_at | date('d/m/Y') }}</small></p>
+                                            <div class="delete">
+                                                <a href="/product/deleteProduct/{{product.id}}">Supprimer</a>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    </section>
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-header" id="headingThree">
+                <h2 class="mb-0">Mes favoris</h2>
+                    <button class="btn btn-link collapsed soustitre"
+                            type="button"
+                            data-toggle="collapse"
+                            data-target="#collapseThree"
+                            aria-expanded="false"
+                            aria-controls="collapseThree">
+                        Liste des biens et services que vous avez repérés
+                    </button>
+                </div>
+
+
+            <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+                <div class="card-body" style="padding: 30px">
+                        Vous n'avez aucun favoris pour le moment...
+
+                </div>
+            </div>
+        </div>
+
+        <div class="last">
+            <a href="/user/logout"><button type="button" class="btn">Se déconnecter</button></a>
+        </div>
+
+
+        <!-- Modal -->
+        <div class="modal fade" id="welcomeModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalCenterTitle">Bienvenue sur Troc & Troc !</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        Nous sommes ravi.e.s de vous compter parmi les membres notre communauté.
+                        Pour toute question, n'hésitez pas à consulter notre <a href="/Footer/faq">foire aux questions</a> :)
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" data-dismiss="modal">1, 2, 3... troquez !</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+{% endblock %}
+
+{% block user %}
+
+
+{% endblock %}
+
+{% block javascripts %}
+    {% if displayModal == true %}
+        <script>
+            $(document).ready(function(){
+                $("#welcomeModal").modal('show');
+            });
+        </script> {% endif %}
+{% endblock %}

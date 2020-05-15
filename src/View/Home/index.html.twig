@@ -1,5 +1,250 @@
 {% extends 'layout.html.twig' %}
 
-{% block content %}
-    <h1>Hello Wilder !</h1>
+{% block title %} Troc & Troc {% endblock %}
+
+{% block stylesheet %}
+    <style>
+        .col-6 {
+            max-width: 100%;
+        }
+
+        .container-fluid {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        #main_home {
+            display: flex;
+            flex-direction: column;
+            font-size: 1.1em;
+            margin-top: 20px;
+            background-color: #FFF;
+        }
+
+        #main_home > p:first-of-type {
+            font-size: 0.7em;
+            text-align: center;
+        }
+
+        #carousel {
+            height: 80%;
+            margin: 40px auto 0px;
+            display: flex;
+            padding: 0;
+        }
+
+        #carousel > blockquote {
+            font-size: 1em;
+            margin-left: 20px;
+            margin-bottom: 20px;
+            margin-right: 20px;
+            padding: 0;
+            height: 100%;
+            border-radius: 5px;
+        }
+        blockquote > p:first-of-type {
+            font-size: 1.2em;
+            font-weight: 600;
+        }
+        blockquote > p:last-of-type {
+            font-size: 1.1em;
+            margin-bottom: 40px;
+            font-weight: 600;
+        }
+        blockquote > p:nth-of-type(3) {
+            font-size: 0.8em;
+        }
+        blockquote > p > a:link {
+            background-color: #FFF;
+            padding: 5px;
+            border-radius: 5px;
+            font-weight: 600;
+            /*text-decoration: underline;*/
+        }
+
+        #troc {
+             height: auto;
+             padding: 20px;
+             margin-bottom: 100px;
+             display: flex;
+            flex-direction: column;
+        }
+        #troc > img {
+            width: 100%;
+            display: block;
+        }
+        #troc > article {
+            text-align: center;
+            font-size: 1.6em;
+            font-weight: 500;
+        }
+        article a:link, article a:visited {
+            color: #f59800;
+        }
+        article a:hover {
+            /*color: #00A99D;*/
+        }
+
+        #footer_desktop {
+            display: none;
+        }
+
+        #propose > img, #recherche > img {
+            width: 50%;
+        }
+
+        #clips {
+            display: flex;
+            justify-content: center;
+            margin: -30px auto 20px;
+        }
+        .clip {
+            height: auto;
+            width: 25%;
+            padding: 20px;
+            margin-left: 10px;
+            transform: rotateZ(35deg);
+            display: block;
+        }
+        .left_clip {
+            transform: rotateZ(-30deg);
+        }
+
+        blockquote > p:nth-of-type(2), blockquote > p:nth-of-type(1) {
+            font-size: 1em;
+            color: #00A99D;
+        }
+
+        h1 {
+            font-size: 42px;
+            text-align: center;
+        }
+
+        #main_home p {
+            text-align: center;
+        }
+
+        #propose > a, #recherche > a{
+            font-weight: bold;
+            cursor: pointer;
+        }
+        #propose > a:hover, #recherche > a:hover {
+            font-size: +0.8em;
+            cursor: pointer;
+        }
+
+        @media (min-width: 576px) {
+            #row2 {
+                display: inline-block;
+            }
+            #troc {
+                height: 100%;
+                width: 40%;
+                margin: auto;
+            }
+            #troc img {
+                width: 100%;
+                margin: auto;
+            }
+
+            .clip {
+                width: 5%;
+            }
+            #footer_desktop {
+                display: block;
+                margin-top: 100px;
+            }
+            #footer_desktop a:hover {
+                text-decoration: underline;
+            }
+
+            #carousel blockquote {
+                margin: auto;
+            }
+        }
+    </style>
 {% endblock %}
+
+
+{% block content %}
+    <div class="pseudoCard">
+    <main class="container-fluid" id="main_home">
+        <div class="row">
+            <div class="col-12" id="carousel">
+                <blockquote>
+                    <h1>Avez-vous déjà eu vent de cette fabuleuse histoire de troc ?</h1>
+                    <p>C'est l'histoire d'un homme qui, en partant d'un simple trombone, a fini par obtenir une maison ? <small><a href="https://fr.wikipedia.org/wiki/Kyle_MacDonald" target="_blank">Découvrez-la ici</a></small></p>
+
+                    <p><strong>Et vous,<br> quel sera votre troc du jour ?</strong></p>
+                </blockquote>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-10" id="clips">
+                <img src="/assets/images/paperClip.png" alt="" class="clip left_clip">
+                <img src="/assets/images/paperClip.png" alt="" class="clip">
+                <img src="/assets/images/paperClip.png" alt="" class="clip left_clip">
+                <img src="/assets/images/paperClip.png" alt="" class="clip">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <section id="troc" class="shadow-lg">
+
+                    <article id="propose">
+                        <a href="/product/bienOuService/propose">Proposer un Troc</a>
+                    </article>
+
+                    <img src="/assets/images/mains4.png" alt="">
+
+                    <article id="recherche">
+                        <a href="/product/bienOuService/recherche">Rechercher un troc</a>
+                    </article>
+
+                </section>
+            </div>
+        </div>
+        <section class="row" id="footer_desktop">
+            <ul>
+                <a href="/Footer/faq"><li>En savoir plus</li></a>
+                <a href="/Footer/sitemap"><li>Plan du site</li></a>
+                <a href=""><li>Contactez nous</li></a>
+                <a href=""><li>Mentions Légales</li></a>
+            </ul>
+        </section>
+
+    </div>
+
+
+    </main>
+{% endblock %}
+
+{% block javascripts %}
+    <script>
+        $(function () {
+            const div_search = $('#div_one');
+            const div_prop = $('#div_two');
+            const button_search = $('#button_search');
+            const button_prop = $('#button_prop');
+
+            div_search.fadeOut();
+            div_prop.fadeOut();
+
+            button_search.on('click', function () {
+                div_search.fadeToggle(400);
+                div_prop.fadeOut();
+            })
+
+            button_prop.on('click', function () {
+                div_prop.fadeToggle(400);
+                div_search.fadeOut();
+            })
+        });
+
+    </script>
+{% endblock %}
+
+
+
+

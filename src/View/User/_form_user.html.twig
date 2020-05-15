@@ -1,0 +1,39 @@
+<form method="post">
+
+    <div class="row">
+        <div class="col">
+            <label for="nickname">Nickname</label>
+            <input type="text" class="form-control" name="nickname" value="{{ user.nickname }}" id="lastname">
+        </div>
+        <div class="col">
+            <label for="lastname">Nom</label>
+            <input type="text" class="form-control" name="lastname" value="{{ user.lastname }}" id="lastname">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <label for="firstname">Prénom</label>
+            <input type="text" class="form-control" name="firstname" value="{{ user.firstname }}" id="firstname">
+        </div>
+        <div class="col">
+            <label for="email">Email</label>
+            <input type="email" class="form-control" name="email" value="{{ user.email }}" id="email">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <label for="phone">N° de téléphone</label>
+            <input type="text" class="form-control" name="phone" value="{{ user.phone }}" id="phone">
+        </div>
+        <div class="col">
+            <label for="zip_code">Code postal</label>
+            <input type="text" class="form-control" name="zip_code" value="{{ user.zip_code }}" id="zip_code">
+        </div>
+    </div>
+    <div>
+        <button type="submit" class="button btn btn-primary btn-sm" style="background-color: #00A99D">
+            Mise à jour de vos informations
+        </button>
+    </div>
+
+</form>

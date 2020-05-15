@@ -1,0 +1,25 @@
+{% macro input(type, class, name, label, placeholder) %}
+    <label for="{{ name }}">{{ label }}</label>
+    <input type="{{ type }}" class="{{ class }}" id="{{ name }}" name = "{{ name }}" placeholder="{{ placeholder }}">
+{% endmacro %}
+
+{% macro textarea(class, name, label, placeholder) %}
+    <label for="{{ name }}">{{ label }}</label>
+    <textarea class="{{ class }}" id="{{ name }}" name = "{{ name }}" placeholder="{{ placeholder }}" rows="8"></textarea>
+{% endmacro %}
+
+
+{% macro radio(group, name, label, checked) %}
+    <div class="form-check-inline">
+        <input type="radio" id="{{ name }}" name="{{ group }}" value="{{ name }}" {{ checked }} = "" class="form-check-input">
+        <label class="form-check-label" for="{{ name }}">{{ label }}</label>
+    </div>
+{% endmacro %}
+
+{% macro select(class, name, placeholder) %}
+
+    <select class="{{ class }}" id="{{ name }}" name="{{ name }}">
+        <option>{{ placeholder }}</option>
+    </select>
+
+{% endmacro %}

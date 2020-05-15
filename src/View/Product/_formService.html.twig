@@ -1,0 +1,68 @@
+{% import 'Product/formTemplate.html.twig' as form %}
+
+<div class="container-fluid" id="add_service" >
+    <form action="" method="post" enctype="multipart/form-data">
+
+        <div class="form-group">
+            {{ form.input('text', 'form-control','title', 'Titre de votre annonce', 'ex.: 2h de bêchage') }}
+            {% if errors.title is defined %}<span style="color: red"> {{ errors.title }}</span> {% endif %}
+        </div>
+        <section id="cat_etat">
+            <div class="form-group" style="display:flex;">
+                <select class="form-control" name="category" id="selectCategory">
+                    <option value="0">Catégorie</option>
+                    {% for parent in parents %}
+                        <optgroup label="{{ parent.name }}">
+                            {% for category in categories if category.parent_id == parent.id %}
+                                <option value="{{ category.id }}">{{ category.name }}</option>
+                            {% endfor %}
+                        </optgroup>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="form-group">
+                <select class=" status form-control" name="frequency" required>
+                    <option disabled selected>Fréquence</option>
+                    <option>Une fois</option>
+                    <option>A définir</option>
+                </select>
+                {% if errors.etat is defined %}<span style="color: red">{{ errors.etat }}</span> {% endif %}
+            </div>
+        </section>
+        <div class="form-group">
+            {{ form.textarea('form-control','description', 'Description du service', 'Précisez si besoin, et n\'oubliez pas de donner vos disponibilités !') }}
+        </div>
+        {% if errors.description is defined %}<span style="color: red">{{ errors.description }}</span> {% endif %}
+        <!-- insérer ici les éléments d'upload de photo(s) -->
+        <div class="form-group upload">
+            <label for="upload">Illustrez votre service </label>
+            <input class="button btn btn-primary btn-sm" type="file" name="file" style="background-color: #00A99D">
+        </div>
+
+        <div class="form-group" id="nature">
+            <div class="card mx-auto">
+                <div class="card-header">
+                    <h4 class="card-title">Nature de l'offre</h4>
+                </div>
+                <div class="card-body">
+                    {{ form.radio('echangeOuDon', 'echange', 'Echange', 'checked') }}
+                    {{ form.radio('echangeOuDon', 'don', 'Don', '') }}
+                </div>
+            </div>
+        </div>
+        <!--TODO hiddenIfDon à cacher si 'don' est coché (JS)-->
+        <div class="form-group hiddenIfDon">
+            {{ form.textarea('form-control','enEchangeDe', '', 'Précisez ici le(s) bien(s)/service(s) souhaité(s) en échange') }}
+        </div>
+        <div class="form-group hiddenIfDon" id="openOrNot">
+            {{ form.radio('proposition', 'ouvert', 'Je suis ouvert.e à d\'autres propositions', 'checked') }}
+            {{ form.radio('proposition', 'pasOuvert', 'Je souhaite uniquement ces biens / services', '') }}
+        </div>
+        {% if session is not empty %}
+            <div class="buttons">
+                <button type="submit" class="btn btn-primary">Publier !</button>
+            </div>
+        {% endif %}
+    </form>
+</div>

@@ -1,0 +1,29 @@
+{% extends 'layout.html.twig' %}
+{% block stylesheet %}
+    <style>
+        form{
+            font-size: 1.2em;
+        }
+        .form-control{
+            font-size: 1.2em;
+        }
+
+        .button{
+            font-size: 1.2em;
+        }
+
+        .col{
+            min-width: 300px;
+        }
+
+        .btn{
+            margin: 30px;
+        }
+
+
+    </style>
+{% endblock %}
+{% block content %}
+    {% include 'User/_form_user.html.twig' %}
+{% endblock %}
+

@@ -1,0 +1,96 @@
+{% extends "layout.html.twig" %}
+
+{% block title %}
+    Bien ou Service
+{% endblock %}
+
+{% block stylesheet %}
+    <style>
+
+        #main_bien_service {
+            padding: 10px;
+            background-color: #FFF;
+            margin: 50px 10px 0;
+            border-radius: 5px;
+            box-shadow: 3px 3px 3px #777;
+        }
+
+        #main_bien_service > a:first-of-type section {
+            margin-top: 50px;
+            margin-bottom: 100px;
+        }
+
+        #main_bien_service > a:first-of-type section {
+            padding: 0 20px;
+        }
+
+
+        #main_bien_service section {
+            display: flex;
+            justify-content: space-between;
+
+        }
+
+        #main_bien_service section > span > p {
+            font-size: 0.8em;
+            font-weight: 600;
+        }
+
+        #main_bien_service section > img {
+            height: 120px;
+            width: 120px;
+            border-radius: 50%;
+            border: 1px solid black;
+        }
+
+        #service {
+            margin-bottom: 50px;
+        }
+
+        @media (min-width: 500px) {
+            #main_bien_service {
+                width: 50%;
+                padding: 20px;
+                margin-left: auto;
+                margin-right: auto;
+            }
+        }
+
+        @media (min-width: 800px) {
+            #main_bien_service {
+                width: 30%;
+            }
+        }
+    </style>
+{% endblock %}
+
+
+
+{% block content %}
+    {% include 'arianne.html.twig' %}
+
+    <main id="main_bien_service">
+        <a href="/Product/{{ (var == 'propose') ? 'add/bien' : 'show/bien' }}">
+            <section id="bien">
+                <span>
+                    <h1>Un Bien</h1>
+                    <p>"Perceuse, Bois, Voiture, ..."</p>
+                </span>
+                <img src="/assets/images/biens.png" alt="Image de bien"> {# idéalement, icones 'dynamiques'#}
+            </section>
+        </a>
+        <a href="/Product/{{ (var == 'propose') ? 'add/service' : 'show/service' }}">
+            <section id="service">
+                <img src="/assets/images/service.jpg" alt="Image de service"> {# idéalement, icones 'dynamiques'#}
+                <span>
+                    <h1>Un Service</h1>
+                    <p>"Cours de soutien, jardinage ..."</p>
+                </span>
+            </section>
+        </a>
+    </main>
+{% endblock %}
+
+
+
+

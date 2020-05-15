@@ -1,0 +1,100 @@
+
+
+#nav_bottom {
+    position: fixed;
+    bottom: 0px;
+    height: 60px;
+    background-color: white;
+    z-index: 10;
+}
+@media (min-width: 992px) {
+    #nav_bottom {
+        background-color: transparent;
+        position: absolute;
+    }
+}
+#nav_bottom ul {
+    display: flex;
+    justify-content: space-around;
+    padding: 0px;
+    margin-top: 10px;
+
+}
+#nav_bottom ul li {
+    list-style-type: none;
+    cursor: pointer;
+}
+
+#nav_bottom ul li img {
+    width: 36px;
+}
+
+#retour img {
+    padding-top: 15px;
+    padding-left: 15px;
+}
+
+#retour h4 {
+    color: white;
+}
+
+#retour section {
+    display: flex;
+    justify-content: space-between;
+
+}
+
+#menu_profil img {
+    width: 26px;
+    margin-right: 10px;
+    margin-bottom: 15px;
+    padding-top: 10px;
+}
+
+#header_home, #nav_top, #retour {
+    background-color: #00A99D;
+    color: #ffffff;
+}
+
+#nav_top, #retour {
+    height: 60px;
+}
+
+#header_home {
+    box-shadow: 0 3px 3px #777;
+}
+#header_home p {
+    margin-left: 10px;
+}
+
+#nav_top > p {
+    font-size: 0.8em;
+}
+
+#nav_top {
+    display: flex;
+    justify-content: space-between;
+}
+
+#nav_top > a {
+    width: 100%;
+}
+
+#nav_top > a > h2 {
+    margin-right: 120px;
+    margin-bottom: 0px;
+    color: #ffffff;
+}
+
+#nav_top > span:first-of-type {
+    display: none;
+}
+
+#nav_top > a:link, #nav_top > a:active, #nav_top > a:hover, #nav_top > a:visited {
+    color: white;
+    text-decoration: none;
+}
+
+ small {
+     font-weight: 600;
+ }

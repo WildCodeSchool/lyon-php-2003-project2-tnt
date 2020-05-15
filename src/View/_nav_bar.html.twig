@@ -1,0 +1,18 @@
+<div class="container-fluid" id="nav_bottom">
+    <nav>
+        <ul>
+            <li><a href="/home/index" title="Retour à l'accueil"><img src="/assets/images/icons/home.png" alt="Accueil"></a></li>
+            <li><a href="" title="Mes Favoris"><img src="/assets/images/icons/fav.png" alt="Favoris"></a></li>
+            {% if session is empty or session.user is empty%}
+                <li><a href="/user/login"><img src="/assets/images/icons/profil.png" id="home_no_co_"></a></li>
+            {% else %}
+                <li><a href="/user/profil/{{ session.user.id }}"><img src="/assets/images/icons/profil_co.png" id="home_no_co_"></a></li>
+            {% endif %}
+            <li><a href="/Footer/sitemap" title="Plan du site"><img src="/assets/images/icons/map.png" alt="Plan Site"></a></li>
+            <li><a href="/Footer/faq" title="Aides"><img src="/assets/images/icons/help.png" alt="Aides"></a></li>
+        </ul>
+    </nav>
+</div>
+
+
+
