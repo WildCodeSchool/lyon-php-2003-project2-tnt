@@ -41,8 +41,11 @@
     <section class="others_burger">
         <ul>
             <li><a href="/user/inscription" title="s'inscrire">S'inscrire</a></li>
-            <li><a href="/user/login" title="se connecter">Se connecter</a></li>
-            <li><a href="#">Contact</a></li>
+            {% if session is empty or session.user is empty%}
+            <li><a href="/user/login">Se connecter</a></li>
+            {% else %}
+            <li><a href="/user/profil/{{ session.user.id }}">Mon profil</a></li>
+            {% endif %}            <li><a href="#">Contact</a></li>
         </ul>
         <ul>
             <li><a href="/Footer/sitemap">Plan du site</a></li>

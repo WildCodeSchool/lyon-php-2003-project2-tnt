@@ -7,7 +7,7 @@
     background-color: white;
     z-index: 10;
 }
-@media (min-width: 576px) {
+@media (min-width: 992px) {
     #nav_bottom {
         background-color: transparent;
         position: absolute;
