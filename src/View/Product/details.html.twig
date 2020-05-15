@@ -65,7 +65,7 @@
         }
 
         #echange {
-            padding: 0px;
+            padding: 0;
         }
 
         #echange > article {
@@ -195,12 +195,15 @@
                         </div>
 
                         <div class="col-md-8" id="ad">
-
                             <div class="card_add justify-item-center" >
                                 <div style="width: 100%; margin: auto auto">
-                                    <img src="/assets/uploads/{{ details.0.img }}" alt="">
-                                    {#                                    <img src="/assets/images/image_placeholder.png" alt="">#}
+                                    <img {% if (details.0.img is not empty) %}
+                                            src="/assets/uploads/{{ details.0.img  }}"
+                                        {% else %} src="/assets/images/placeholder.png"
+                                    {% endif%}>
                                 </div>
+
+
                                 <div class="card-body">
                                     <h1>{{ details.0.title }}</h1>
                                     <h5>Catégorie : {{ details.0.category }}</h5>
@@ -249,8 +252,6 @@
                 </aside>
             </div>
         </section>
-
-    </main>
 
 {% endblock %}
 

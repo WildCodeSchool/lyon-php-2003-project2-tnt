@@ -265,39 +265,38 @@
                         Retrouvez ici toutes vos publications
                     </button>
 
-                </div>
-                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
-                    <section class="container-fluid col-md-12" id="liste">
+            </div>
+            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+                <section class="container-fluid col-md-12" id="liste">
 
-                        {% if inventaire is empty %}
-                            <p>Vous n'avez aucun bien ou service proposé pour le moment</p>
-                            <div class="buttons">
-                                <a href="/Product/bienOuService/propose">
-                                    <button type="button" class="btn btn-primary btn-sm"
-                                            style="background-color: #00A99D">
-                                        == > Faire une proposition
-                                    </button>
-                                </a>
-                            </div>
-                        {% else %}
-                            <p>{{ inventaire|length }} {{ (inventaire|length > 1) ? 'résultats' : 'résultat' }}</p>
-                            <div class="row">
-                                {% for product in inventaire %}
-                                    <div class="col-md-5 col-lg-3" id="col">
-                                        <div class="card mx-auto" id="{{ product.id }}" >
-                                            <div class="card-body">
-                                                <img src="/assets/uploads/{{ product.img }}" class="card-img" alt="Photo de {{ product.title }}" >
-                                                <div class="detail">
-                                                    <h6 class="card-title">{{ product.title }}</h6>
-                                                    <span class="badge badge-pill">{{ product.deal_type }}</span>
-                                                    <p class="card-text">{{ product.description }}</p>
-                                                    <p class="card-text"><small class="text-muted">Proposé le {{ product.created_at | date('d/m/Y') }}</small></p>
-                                                    <div class="delete">
-                                                        <a href="/product/deleteProduct/{{product.id}}">Supprimer</a>
-                                                    </div>
+                {% if inventaire is empty %}
+                    <p>Vous n'avez aucun bien ou service proposé pour le moment</p>
+                    <div class="buttons">
+                        <a href="/Product/bienOuService/propose">
+                            <button type="button" class="btn btn-primary btn-sm"
+                                    style="background-color: #00A99D">
+                                 == > Faire une proposition
+                            </button>
+                        </a>
+                    </div>
+                {% else %}
+                    <p>{{ inventaire|length }} {{ (inventaire|length > 1) ? 'résultats' : 'résultat' }}</p>
+                    <div class="row">
+                        {% for product in inventaire %}
+                            <div class="col-md-5 col-lg-3" id="col">
+                                <div class="card mx-auto" id="{{ product.id }}" >
+                                    <div class="card-body">
+                                        <img {% if (product.img is not empty) %}src="/assets/uploads/{{ product.img }}"
+                                                {% else %} src="/assets/images/placeholder.png"
+                                                {% endif%} class="card-img" alt="Photo de {{ product.title }}" >
+                                        <div class="detail">
+                                            <h6 class="card-title">{{ product.title }}</h6>
+                                            <span class="badge badge-pill">{{ product.deal_type }}</span>
+                                            <p class="card-text">{{ product.description }}</p>
+                                            <p class="card-text"><small class="text-muted">Proposé le {{ product.created_at | date('d/m/Y') }}</small></p>
+                                            <div class="delete">
+                                                <a href="/product/deleteProduct/{{product.id}}">Supprimer</a>
 
-                                                </div>
-                                                <a href="/product/details/{{ product.id }}" class="stretched-link"></a>
                                             </div>
                                         </div>
                                     </div>
@@ -321,11 +320,11 @@
                     </button>
                 </div>
 
-                <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
-                    <div class="card-body" style="padding: 20px">
-                        {#  Affichage des favoris#}
-                        Aucun favoris
-                    </div>
+
+            <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+                <div class="card-body" style="padding: 30px">
+                        Vous n'avez aucun favoris pour le moment...
+
                 </div>
             </div>
         </div>

@@ -105,6 +105,10 @@
 
         .card-title {
             margin-bottom: 0;
+            white-space: nowrap;
+            width: 200px;
+            text-overflow: ellipsis;
+            overflow: hidden;
         }
 
         .card-text {
@@ -243,9 +247,13 @@
                         <div class="col-md-4 col-lg-6" id="col">
                             <div class="card mx-auto" id="{{ product.id }}" >
                                 <div class="card-body">
-                                    <img src="/assets/uploads/{{ product.img }}" class="card-img" alt="Photo de {{ product.title }}" >
+
+                                    <img {% if (product.img is not empty) %}src="/assets/uploads/{{ product.img }}"
+                                            {% else %} src="/assets/images/placeholder.png"
+                                            {% endif%} class="card-img" alt="Photo de {{ product.title }}" >
+
                                     <div>
-                                        <h6 class="card-title">{{ product.title }}</h6>
+                                        <h6 class="card-title" >{{ product.title }}</h6>
                                         <span class="badge badge-pill">{{ product.deal_type }}</span>
                                         <p class="card-text">{{ product.description }}</p>
                                         {#                            <p class="card-text"><small class="text-muted">Date de Parution : {{ product.created_at|date("m/d/Y") }}</small></p>#}
