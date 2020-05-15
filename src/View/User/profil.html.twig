@@ -264,17 +264,18 @@
             <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
                 <section class="container-fluid col-md-12" id="liste">
 
-                {% if inventaire is empty %}
-                    <p>Vous n'avez aucun bien ou service proposé pour le moment</p>
-                    <div class="buttons">
-                        <a href="/Product/bienOuService/propose">
-                            <button type="button" class="btn btn-primary btn-sm"
-                                    style="background-color: #00A99D">
-                                 == > Faire une proposition
-                            </button>
-                        </a>
-                    </div>
-                {% else %}
+                        {% if inventaire is empty %}
+                            <p>Vous n'avez aucun bien ou service proposé pour le moment</p>
+                            <div class="buttons">
+                                <a href="/Product/bienOuService/propose">
+                                    <button type="button" class="btn btn-primary btn-sm"
+                                            style="background-color: #00A99D">
+                                         == > Faire une proposition
+                                    </button>
+                                </a>
+                            </div>
+                        {% else %}
+
                     <p>{{ inventaire|length }} {{ (inventaire|length > 1) ? 'résultats' : 'résultat' }}</p>
                     <div class="row">
                         {% for product in inventaire %}
@@ -291,12 +292,13 @@
                                             <p class="card-text"><small class="text-muted">Proposé le {{ product.created_at | date('d/m/Y') }}</small></p>
                                             <div class="delete">
                                                 <a href="/product/deleteProduct/{{product.id}}">Supprimer</a>
-
                                             </div>
                                         </div>
                                     </div>
-                                {% endfor %}
+                                </div>
                             </div>
+                        {% endfor %}
+
                         {% endif %}
                     </section>
                 </div>
